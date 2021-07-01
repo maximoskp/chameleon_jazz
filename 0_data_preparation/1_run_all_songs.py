@@ -25,7 +25,7 @@ pieces_undefied_tonality = {}
 
 # construct name substitutions dictionary
 names_dict = {}
-names_txt = open('..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'library_name_symbols.txt')
+names_txt = open('..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'library_name_symbols.txt', encoding='utf-8')
 for line in names_txt.readlines():
     arrow_split = line.split(' -> ')
     if len(arrow_split) > 1:

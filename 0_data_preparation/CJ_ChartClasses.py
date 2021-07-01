@@ -6,22 +6,36 @@ Created on Sat Jul 1 2021
 @author: maximoskaliakatsos-papakostas
 """
 
+import numpy as np
+
 class Chord:
-    def __init__(self, chord_symbol_in):
+    def __init__(self, chord_symbol):
         # symbolic information
-        self.chord_symbol = None
-        self.root_symbol = None
+        self.chord_symbol = chord_symbol
+        self.root_symbol = self.get_root_from_chord_symbol()
         self.type_symbol = None
-        self.chord_symbol_in_tonality = None
+        self.chord_symbol_in_chart_tonality = None
+        self.chord_symbol_in_section_tonality = None
         # numeric information
         self.pitch_classes = None
         self.root_number = None
-        self.root_number_in_tonality = None
+        self.root_number_in_chart_tonality = None
+        self.root_number_in_section_tonality = None
         self.type_numeric = None
         # time information
         self.position_in_measure = None
         self.position_in_piece = None
+        # bass chords
+        # polychords
     # end __init__
+
+    def get_root_from_chord_symbol(self):
+        print('get_root_from_chord_symbol')
+    # end get_root_from_chord_symbol
+
+    def get_type_from_chord_symbol(self):
+        print('get_type_from_chord_symbol')
+    # end get_type_from_chord_symbol
 
     def neutralise_for_tonality(self, tonality=None):
         if tonality == None:
@@ -69,12 +83,67 @@ class Measure:
     # end update_chord_positions
 # end Measure
 
+class ChordTransition:
+    def __init__(self, first_chord=None, second_chord=None):
+        self.first_chord_symbol = first_chord.chord_symbol
+        self.second_chord_symbol = second_chord.chord_symbol
+        self.first_chord = first_chord
+        self.first_chord = first_chord
+    # end __init__
+# end ChordTransition
+
+class Section:
+    def __init__(self, symbol=None):
+        # meta data
+        self.symbol = symbol
+        # content
+        self.measures = None # list of measures
+        self.chords = None # list of objects
+        self.chord_symbols_list = None # list of chord symbols for debugging
+        self.chord_symbols_in_tonality_list = None # list of isolated symbols for Markov table
+        self.cadence = None # ChordTransition object
+        # computed tonality with Krumhansl
+        self.pcp = np.zeros(12)
+        self.computed_tonality = None # Krumhansl
+    # end __init__
+
+    def add_measure(self, m=None):
+        # measures added herein do not (necessarily) need to obtain onset_in_chart
+        if self.measures == None:
+            self.measures = [ m ]
+        else:
+            self.measures.append( m )
+    # end add_measure
+
+    def extract_pcp(self):
+        print('extract_pcp')
+        # TODO: collect pcp from each chord
+        # assign value to self.pcp
+    # end extract_pcp
+
+    def compute_tonality(self):
+        print('compute_tonality')
+        # TODO: employ Krumhansl
+        # assign value to self.computed_tonality
+    # end compute_tonality
+
+    def assign_section_tonality_to_chords(self):
+        print('assign_section_tonality_to_chords')
+    # end assign_section_tonality_to_chords
+
+    def process_section(self):
+        self.extract_pcp()
+        self.compute_tonality()
+    # end process_section
+# end Section
+
 class Chart:
     def __init__(self, name=None, tonality=None):
         # meta data
         self.piece_name = name
         self.tonality = tonality
         # content information
+        # keep sections as phrases
         self.measures = None # list of objects
         self.unfolded_measures = None # list of objects
         self.chords = None # list of objects
@@ -97,4 +166,19 @@ class Chart:
         # TODO: run update_chord_positions for each unfolded measure
         # TODO: construct chords, chord_symbols_list and chord_symbols_in_tonality_list
     # end serialise_measures
+
+    def make_sections(self):
+        print('make_sections')
+        # TODO: collect unfolded measures in sections
+        # for each section after section measures are all collected, process section
+    # end make_sections
+
+    def assign_chart_tonality_to_chords(self):
+        print('assign_chart_tonality_to_chords')
+    # end assign_chart_tonality_to_chords
+
+    def process_chart(self):
+        self.serialise_measures()
+        self.make_sections()
+    # end process_chart
 # end Chart
