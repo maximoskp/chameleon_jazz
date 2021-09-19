@@ -9,6 +9,11 @@ Created on Sat Dec  7 19:28:55 2019
 import xmlChart2String
 import sys
 
+# run as:
+# python test_xml2xcodeString_piece.py FULL_PATH_TO_FILE.mxl
+# example
+# python test_xml2xcodeString_piece.py C:\Users\user\Documents\repos\chameleon_jazz\data\Songs\Library\A_Beautiful_Friendship.mxl
+
 # get number of arguments:
 num_args = len(sys.argv)
 
