@@ -538,3 +538,31 @@ def checkRepeatVersionEnd( m_idx , rb ):
                 already_found = True
     return result
 # end checkRepeatVersionStart
+
+def unfold_chart(s):
+    # split in bar
+    bars = s.split('bar')
+    # repetition markers
+    repStart = -1
+    repEnd = -1
+    repApplyAfter = -1
+    i = 0
+    while i < len(bars):
+        b = bars[i]
+        if 'repeatStart' in b:
+            repStart = i
+        if 'repeatVersionStart' in b:
+            repEnd = i
+        if 'repeatEnd' in b:
+            repApplyAfter = i+1
+            if repEnd == -1:
+                repEnd = i
+            # apply repetition
+            repetition_part = bars[repStart:repEnd]
+            for j in range( len(repetition_part)-1, -1, -1 ):
+                r = repetition_part[j]
+                bars.insert( repApplyAfter , r )
+                i += 1
+        i += 1
+    return 'bar'.join(bars)
+# end unfold_chart
