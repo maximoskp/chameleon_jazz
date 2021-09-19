@@ -8,6 +8,7 @@ Created on Sun Sep 19 07:53:07 2021
 import numpy as np
 import os
 import json
+import CJ_ChartClasses as ccc
 
 # load all piece
 with open('..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'songslibrary.json') as json_file:
@@ -15,3 +16,5 @@ with open('..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'songslibrary.jso
 
 songs_keys = list( songs.keys() )
 
+i = 10
+s = ccc.Chart( songs[songs_keys[i]] )
