@@ -7,21 +7,40 @@ Created on Sat Jul 1 2021
 """
 
 import numpy as np
+import os
+import json
 
-class Chord:
+class ChameleonContext:
+    # static scope for chord dictionary and initiall (0s) transition matrix
+    with open('..' + os.sep + 'data' + os.sep + 'Lexikon' + os.sep + 'type2pcs_dictionary.json') as json_file:
+        type2pc = json.load(json_file)
+    type_names = list(type2pc.keys())
+    type_names.sort()
+    type2index = { k : i for i,k in enumerate(type_names) }
+    index2type = { i : k for i,k in enumerate(type_names) }
+    accidental_symbols = ['-', 'b', '#']
+    # TODO: construct root2int for numerical roots
+# end ChameleonContext
+
+class Chord(ChameleonContext):
     def __init__(self, chord_in):
         print('Chord - chord_in: ', chord_in)
         at_split = chord_in.split('@')
         self.chord_symbol = at_split[0]
         comma_split = at_split[1].split(',')
         self.onset_in_measure = float(comma_split[0])
+        # symbolic root
+        root_idx = 1
+        if self.chord_symbol[1] in self.accidental_symbols:
+            root_idx = 2
+        self.symbolic_root = self.chord_symbol[:root_idx]
+        self.symbolic_type = self.chord_symbol[root_idx:]
+        self.pc_set = self.type2pc[ self.symbolic_type ]
         # TODO:
-        # get symbolic root
-        # get numeric root
+        # get numeric root - check ChameleonContext: root2ind
         # get numeric root relative to PIECE tonality
         # get numeric root relative to COMPUTED tonality
         # get symbolic type
-        # get pitch class set
         # get PIECE tonality-relative pitch class set
         # get COMPUTED tonality-relative pitch class set
         # get GCT
@@ -108,6 +127,7 @@ class Section:
         # possibly need to assign_section_tonality_to_chords HERE
         self.make_chords()
         self.make_chord_transitions()
+        self.make_transition_matrix()
     # end __init__
     
     def make_measures(self, section_in):
@@ -138,6 +158,10 @@ class Section:
                     first_chord=prv, second_chord=nxt ) )
     # end make_chord_transitions
     
+    def make_transition_matrix(self):
+        print('Sections - make_transition_matrix')
+    # end make_transition_matrix
+    
     def extract_pcp(self):
         print('extract_pcp')
         # TODO: collect pcp from each chord
@@ -160,7 +184,7 @@ class Section:
     # end process_section
 # end Section
 
-class Chart:
+class Chart(ChameleonContext):
     def __init__(self, struct_in):
         # meta data
         self.unfolded_string = struct_in['unfolded_string']
