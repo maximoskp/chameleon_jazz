@@ -20,6 +20,7 @@ class ChameleonContext:
     index2type = { i : k for i,k in enumerate(type_names) }
     accidental_symbols = ['-', 'b', '#']
     # TODO: construct root2int for numerical roots
+    # TODO: construct a global transition matrix with 0s
 # end ChameleonContext
 
 class Chord(ChameleonContext):
