@@ -137,6 +137,7 @@ class Section:
         self.make_chords()
         self.make_chord_transitions()
         self.make_transition_matrix()
+        # keep cadences
     # end __init__
     
     def make_measures(self, section_in):
