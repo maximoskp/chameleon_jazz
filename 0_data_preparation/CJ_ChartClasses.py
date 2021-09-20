@@ -35,8 +35,16 @@ class Chord(ChameleonContext):
         if self.chord_symbol[1] in self.accidental_symbols:
             root_idx = 2
         self.symbolic_root = self.chord_symbol[:root_idx]
-        self.symbolic_type = self.chord_symbol[root_idx:]
+        # get bass
+        bass_split = self.chord_symbol[root_idx:].split('/')
+        # TODO: fix polychords
+        self.symbolic_type = bass_split[0]
+        if self.symbolic_type == '':
+            self.symbolic_type == ' '
         self.pc_set = self.type2pc[ self.symbolic_type ]
+        self.bass_symbol = ''
+        if len( bass_split ) > 1:
+            self.bass_symbol = bass_split[1]
         # TODO:
         # get numeric root - check ChameleonContext: root2ind
         # get numeric root relative to PIECE tonality
