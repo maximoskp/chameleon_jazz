@@ -65,7 +65,10 @@ for s in os.listdir( '..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'My_So
             'tonality': song_tonality,
             'original_key': tmp_song_key,
             'appearing_name': appearing_name,
-            'is_favourite': False
+            'is_favourite': False,
+            'composer': 'X',
+            'composition_date': 1964,
+            'performed_by': 'Y'
 
         }
         mysongs[ tmp_song_key ] = tmp_json
@@ -106,7 +109,10 @@ for s in os.listdir('..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'Librar
             'tonality': song_tonality,
             'original_key': tmp_song_key,
             'appearing_name': appearing_name,
-            'is_favourite': False
+            'is_favourite': False,
+            'composer': 'X',
+            'composition_date': 1964,
+            'performed_by': 'Y'
         }
         songslibrary[ tmp_song_key ] = tmp_json
         # songs.append( tmp_json )
