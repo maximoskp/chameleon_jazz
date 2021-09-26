@@ -9,6 +9,7 @@ Created on Sat Jul 1 2021
 import numpy as np
 import os
 import json
+import music21 as m21
 
 class ChameleonContext:
     # static scope for chord dictionary and initiall (0s) transition matrix
@@ -20,7 +21,60 @@ class ChameleonContext:
     index2type = { i : k for i,k in enumerate(type_names) }
     accidental_symbols = ['-', 'b', '#']
     # TODO: construct root2int for numerical roots
-    # TODO: construct a global transition matrix with 0s
+    root2int = {
+        'C': 0,
+        'B#': 0,
+        'C#': 1,
+        'Db': 1,
+        'D-': 1,
+        'D': 2,
+        'D#': 3,
+        'Eb': 3,
+        'E-': 3,
+        'E': 4,
+        'Fb': 4,
+        'F-': 4,
+        'F': 5,
+        'F#': 6,
+        'Gb': 6,
+        'G-': 6,
+        'G': 7,
+        'G#': 8,
+        'Ab': 8,
+        'A-': 8,
+        'A': 9,
+        'A#': 10,
+        'Bb': 10,
+        'B-': 10,
+        'B': 11,
+        'Cb': 11,
+        'C-': 11
+    }
+    # TODO: construct a global transition matrix with 0s (is it necassary, 
+    # key finding
+    major_profile = m21.analysis.discrete.KrumhanslSchmuckler().getWeights('major')
+    minor_profile = m21.analysis.discrete.KrumhanslSchmuckler().getWeights('minor')
+    def tonality_from_pcp( self, pcp ):
+        major_corrs = np.zeros(12).astype(np.float32)
+        minor_corrs = np.zeros(12).astype(np.float32)
+        for i in range(12):
+            major_corrs[i] = np.corrcoef( pcp, np.roll( 
+                self.major_profile, i ) )[0][1]
+            minor_corrs[i] = np.corrcoef( pcp, np.roll( 
+                self.minor_profile, i ) )[0][1]
+        major_max_idx = np.argmax( major_corrs )
+        minor_max_idx = np.argmax( minor_corrs )
+        major_max = np.max( major_corrs )
+        minor_max = np.max( minor_corrs )
+        if major_max > minor_max:
+            return {'root': major_max_idx,
+                    'mode': 'major',
+                    'correlation': major_max}
+        else:
+            return {'root': minor_max_idx,
+                    'mode': 'minor',
+                    'correlation': minor_max}
+    # or even safe enough?)
 # end ChameleonContext
 
 class Chord(ChameleonContext):
@@ -42,33 +96,37 @@ class Chord(ChameleonContext):
         if self.symbolic_type == '':
             self.symbolic_type == ' '
         self.pc_set = self.type2pc[ self.symbolic_type ]
+        # TODO:
+        # get numeric root - check ChameleonContext: root2ind
+        self.numeric_root = self.root2int[ self.symbolic_root ]
+        self.numeric_type = np.array( 
+            self.type2pc[ self.symbolic_type ]['extended_type'] )
+        # get pcp
+        self.pcp = np.zeros(12).astype(np.float32)
+        self.pcp[ np.mod(self.numeric_root + self.numeric_type , 12) ] = 1
+        # get position in section
+        # get position in piece
         self.bass_symbol = ''
         if len( bass_split ) > 1:
             self.bass_symbol = bass_split[1]
-        # TODO:
-        # get numeric root - check ChameleonContext: root2ind
-        # get numeric root relative to PIECE tonality
-        # get numeric root relative to COMPUTED tonality
-        # get symbolic type
-        # get PIECE tonality-relative pitch class set
-        # get COMPUTED tonality-relative pitch class set
-        # get GCT
-        # get position in section
-        # get position in piece
-        # get bass symbol
-        # get bass pitch class
-        # get bass PIECE tonality-relative pitch class
-        # get bass COMPUTED tonality-relative pitch class
+            # get bass pitch class
+            self.bass_pitch_class = self.root2int[ self.bass_symbol ]
+            self.pcp[ self.bass_pitch_class ] = 1
         # discuss polychords...
     # end __init__
 
-    def get_root_from_chord_symbol(self):
-        print('get_root_from_chord_symbol')
-    # end get_root_from_chord_symbol
-
-    def get_type_from_chord_symbol(self):
-        print('get_type_from_chord_symbol')
-    # end get_type_from_chord_symbol
+    def set_tonalities(self, piece_tonality=None, computed_tonality=None):
+        print('Chord - set_tonalities')
+        self.piece_tonality = piece_tonality
+        self.computed_tonality = computed_tonality
+        # get numeric root relative to PIECE tonality
+        # get numeric root relative to COMPUTED tonality
+        # get PIECE tonality-relative pitch class set
+        # get COMPUTED tonality-relative pitch class set
+        # get GCT
+        # if bass
+        # get bass PIECE tonality-relative pitch class
+        # get bass COMPUTED tonality-relative pitch class
 
     def neutralise_for_tonality(self, tonality=None):
         if tonality == None:
@@ -118,8 +176,8 @@ class ChordTransition:
     # end __init__
 # end ChordTransition
 
-class Section:
-    def __init__(self, section_in):
+class Section(ChameleonContext):
+    def __init__(self, section_in, piece_tonality):
         # meta data
         self.symbol = section_in[0]
         self.style = ''
@@ -135,6 +193,10 @@ class Section:
         # and put the following in a function called by Chart
         # possibly need to assign_section_tonality_to_chords HERE
         self.make_chords()
+        self.make_pcp()
+        self.piece_tonality = piece_tonality
+        self.computed_tonality = self.tonality_from_pcp( self.pcp )
+        self.assign_tonalities_to_chords()
         self.make_chord_transitions()
         self.make_transition_matrix()
         # keep cadences
@@ -156,6 +218,21 @@ class Section:
             for c in m.chords:
                 self.chords.append( c )
     # end make_chords
+    
+    def make_pcp(self):
+        print('Section - make pcp')
+        self.pcp = np.zeros(12).astype(np.float32)
+        for c in self.chords:
+            self.pcp += c.pcp
+        if np.sum(self.pcp) != 0:
+            self.pcp /= np.sum(self.pcp)
+    # end make_pcp
+    
+    def assign_tonalities_to_chords(self):
+        print('Section - assign_tonalities_to_chords')
+        for c in self.chords:
+            c.set_tonalities(piece_tonality=self.piece_tonality,
+                             computed_tonality=self.computed_tonality)
     
     def make_chord_transitions(self):
         print('Section - make_chord_transitions')
@@ -213,7 +290,7 @@ class Chart(ChameleonContext):
         self.sections = []
         for s in sections_split[1:]:
             print('making section: ', s)
-            self.sections.append( Section( s ) )
+            self.sections.append( Section( s, self.tonality ) )
             print('self.sections: ', self.sections)
     # end make_sections
     
