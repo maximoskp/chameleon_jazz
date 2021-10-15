@@ -7,9 +7,11 @@ Created on Sat Jul 1 2021
 """
 
 import numpy as np
+from itertools import combinations
 import os
 import json
 import music21 as m21
+import newGCT as ng
 
 class ChameleonContext:
     # static scope for chord dictionary and initiall (0s) transition matrix
@@ -104,8 +106,14 @@ class Chord(ChameleonContext):
         # get pcp
         self.pcp = np.zeros(12).astype(np.float32)
         self.pcp[ np.mod(self.numeric_root + self.numeric_type , 12) ] = 1
+        ## self.gct = ng.GCT_sum_all_from_root(numeric_type)[0]
         # get position in section
-        # get position in piece
+        # get position in piece            
+        s = list(combinations(numberic_type, 2))
+        for i in s:
+            interval = (i[1]-i[0])%12
+            int_content[interval] += 1
+        self.interval_vector = int_content
         self.bass_symbol = ''
         if len( bass_split ) > 1:
             self.bass_symbol = bass_split[1]
@@ -124,6 +132,8 @@ class Chord(ChameleonContext):
         # get PIECE tonality-relative pitch class set
         # get COMPUTED tonality-relative pitch class set
         # get GCT
+        self.gct_piece_tonality = ng.GCT_in_key(numeric_type, piece_tonality)
+        self.gct_computed_tonality = ng.GCT_in_key(numeric_type, computed_tonality)
         # if bass
         # get bass PIECE tonality-relative pitch class
         # get bass COMPUTED tonality-relative pitch class
