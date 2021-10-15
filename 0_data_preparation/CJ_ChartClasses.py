@@ -94,7 +94,7 @@ class Chord(ChameleonContext):
         # TODO: fix polychords
         self.symbolic_type = bass_split[0]
         if self.symbolic_type == '':
-            self.symbolic_type == ' '
+            self.symbolic_type = ' '
         self.pc_set = self.type2pc[ self.symbolic_type ]
         # TODO:
         # get numeric root - check ChameleonContext: root2ind
