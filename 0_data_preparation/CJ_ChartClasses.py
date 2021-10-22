@@ -96,7 +96,7 @@ class Chord(ChameleonContext):
         # TODO: fix polychords
         self.symbolic_type = bass_split[0]
         if self.symbolic_type == '':
-            self.symbolic_type == ' '
+            self.symbolic_type = ' '
         self.pc_set = self.type2pc[ self.symbolic_type ]
         # TODO:
         # get numeric root - check ChameleonContext: root2ind
@@ -127,8 +127,27 @@ class Chord(ChameleonContext):
         print('Chord - set_tonalities')
         self.piece_tonality = piece_tonality
         self.computed_tonality = computed_tonality
-        # get numeric root relative to PIECE tonality
-        # get numeric root relative to COMPUTED tonality
+        # get chord numeric root relative to PIECE tonality
+        print(self.chord_symbol[:2])
+        print(self.chord_symbol[1])
+        if self.chord_symbol[1] != "#" or self.chord_symbol[1] == "b" or self.chord_symbol[1] == "-":
+            if self.root2int[self.piece_tonality] > self.root2int[self.chord_symbol[0]]:
+                self.root2int[self.chord_symbol[0]] = self.root2int[self.chord_symbol[0]] + 12
+            numeric_root_to_piece_tonality = abs(self.root2int[self.piece_tonality]-self.root2int[self.chord_symbol[0]])
+                #print(self.root2int[self.chord_symbol[0]])    
+        elif self.chord_symbol[1] == "#" or self.chord_symbol[1] == "b" or self.chord_symbol[1] == "-":
+            print("yes ")
+            if self.root2int[self.piece_tonality] > self.root2int[self.chord_symbol[:2]]:
+                self.root2int[self.chord_symbol[:2]] = self.root2int[self.chord_symbol[:2]] + 12
+                #print(self.root2int[self.chord_symbol[:2]])
+            numeric_root_to_piece_tonality = abs(self.root2int[self.piece_tonality]-self.root2int[self.chord_symbol[:2]])
+            print(numeric_root_to_piece_tonality)   
+        # get chord numeric root relative to COMPUTED tonality
+        if self.computed_tonality['root'] > self.root2int[self.chord_symbol[0]]:
+            self.root2int[self.chord_symbol[0]] = self.root2int[self.chord_symbol[0]] + 12
+            print(self.root2int[self.chord_symbol[0]])
+        numeric_root_to_computed_tonality = abs(self.computed_tonality['root']-self.root2int[self.chord_symbol[0]])
+        #print(numeric_root_to_computed_tonality)
         # get PIECE tonality-relative pitch class set
         # get COMPUTED tonality-relative pitch class set
         # get GCT
