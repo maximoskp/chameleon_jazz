@@ -9,7 +9,6 @@ Created on Sat Oct 23 15:58:11 2021
 import numpy as np
 import os
 import json
-import CJ_ChartClasses as ccc
 import pickle
 
 # %% load pickle
@@ -20,17 +19,14 @@ with open('../data/all_structs.pickle', 'rb') as handle:
 # %% isolate section features
 
 section_names = []
-section_features = np.array([])
+section_features = []
 
-for struct in all_structs:
-    print('processing: ' + struct.piece_name)
+for i_struct,struct in enumerate(all_structs):
+    print('processing (' + str(i_struct) + '/' + str(len(all_structs))  + '): ' + struct.piece_name)
     for i,s in enumerate(struct.sections):
         print('section: '+ str(i))
         section_names.append( struct.piece_name + '_section_' + str(i) )
-        if section_features.shape[0] == 0:
-            section_features = s.get_features()
-        else:
-            section_features = np.c_[section_features, s.get_features()]
+        section_features.append( s.get_features() )
 
 # %% save names and features
 

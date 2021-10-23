@@ -302,6 +302,7 @@ class Section(ChameleonContext):
         for c in self.chords:
             c.set_tonalities(piece_tonality=self.piece_tonality,
                              estimated_tonality=self.estimated_tonality)
+    # end assign_tonalities_to_chords
     
     def make_chord_transitions(self):
         # print('Section - make_chord_transitions')
@@ -350,7 +351,7 @@ class Section(ChameleonContext):
             f = np.r_[ f , t.reshape(len(self.all_chord_states)**2) ]
         if rpcp is not None:
             f = np.r_[ f , self.rpcp[rpcp] ]
-        return f
+        return sparse.csr_matrix(f)
     # end get_features
 # end Section
 
