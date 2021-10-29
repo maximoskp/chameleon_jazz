@@ -106,10 +106,11 @@ class Chord(ChameleonContext):
         # get pcp
         self.pcp = np.zeros(12).astype(np.float32)
         self.pcp[ np.mod(self.numeric_root + self.numeric_type , 12) ] = 1
-        ## self.gct = ng.GCT_sum_all_from_root(numeric_type)[0]
+        self.gct = ng.GCT_sum_all_from_root(self.numeric_type)[0]
         # get position in section
         # get position in piece            
-        s = list(combinations(numberic_type, 2))
+        s = list(combinations(self.numeric_type, 2))
+        int_content = np.zeros(6, dtype=int)
         for i in s:
             interval = (i[1]-i[0])%12
             int_content[interval] += 1
@@ -133,26 +134,26 @@ class Chord(ChameleonContext):
         if self.chord_symbol[1] != "#" or self.chord_symbol[1] == "b" or self.chord_symbol[1] == "-":
             if self.root2int[self.piece_tonality] > self.root2int[self.chord_symbol[0]]:
                 self.root2int[self.chord_symbol[0]] = self.root2int[self.chord_symbol[0]] + 12
-            numeric_root_to_piece_tonality = abs(self.root2int[self.piece_tonality]-self.root2int[self.chord_symbol[0]])
+            self.numeric_root_to_piece_tonality = abs(self.root2int[self.piece_tonality]-self.root2int[self.chord_symbol[0]])
                 #print(self.root2int[self.chord_symbol[0]])    
         elif self.chord_symbol[1] == "#" or self.chord_symbol[1] == "b" or self.chord_symbol[1] == "-":
             print("yes ")
             if self.root2int[self.piece_tonality] > self.root2int[self.chord_symbol[:2]]:
                 self.root2int[self.chord_symbol[:2]] = self.root2int[self.chord_symbol[:2]] + 12
                 #print(self.root2int[self.chord_symbol[:2]])
-            numeric_root_to_piece_tonality = abs(self.root2int[self.piece_tonality]-self.root2int[self.chord_symbol[:2]])
-            print(numeric_root_to_piece_tonality)   
+            self.numeric_root_to_piece_tonality = abs(self.root2int[self.piece_tonality]-self.root2int[self.chord_symbol[:2]])
+            print(self.numeric_root_to_piece_tonality)   
         # get chord numeric root relative to COMPUTED tonality
         if self.computed_tonality['root'] > self.root2int[self.chord_symbol[0]]:
             self.root2int[self.chord_symbol[0]] = self.root2int[self.chord_symbol[0]] + 12
             print(self.root2int[self.chord_symbol[0]])
-        numeric_root_to_computed_tonality = abs(self.computed_tonality['root']-self.root2int[self.chord_symbol[0]])
-        #print(numeric_root_to_computed_tonality)
+        self.numeric_root_to_computed_tonality = abs(self.computed_tonality['root']-self.root2int[self.chord_symbol[0]])
+        #print(self.numeric_root_to_computed_tonality)
         # get PIECE tonality-relative pitch class set
         # get COMPUTED tonality-relative pitch class set
         # get GCT
-        self.gct_piece_tonality = ng.GCT_in_key(numeric_type, piece_tonality)
-        self.gct_computed_tonality = ng.GCT_in_key(numeric_type, computed_tonality)
+        self.gct_piece_tonality = ng.GCT_in_key(self.numeric_type, self.piece_tonality)
+        self.gct_computed_tonality = ng.GCT_in_key(self.numeric_type, self.computed_tonality)
         # if bass
         # get bass PIECE tonality-relative pitch class
         # get bass COMPUTED tonality-relative pitch class
