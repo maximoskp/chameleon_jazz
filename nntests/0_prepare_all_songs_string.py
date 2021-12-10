@@ -11,8 +11,17 @@ import json
 from collections import Counter
 import numpy as np
 
-from tensorflow import keras
-from tensorflow.keras import layers
+import sys
+if sys.version_info >= (3,8):
+    import pickle
+else:
+    import pickle5 as pickle
+
+# from tensorflow import keras
+# from tensorflow.keras import layers
+# import tensorflow as tf
+# physical_devices = tf.config.list_physical_devices('GPU')
+# tf.config.experimental.set_memory_growth(physical_devices[0], enable=True)
 
 # %% 
 
@@ -53,57 +62,71 @@ for i, sentence in enumerate(sentences):
         x[i, t, char2idx[char]] = 1
     y[i, char2idx[next_chars[i]]] = 1
 
-# %% 
+saved_data = {
+    'x': x,
+    'y': y,
+    'maxlen': maxlen,
+    'step': step,
+    'songs_string': songs_string,
+    'chars': chars,
+    'char2idx': char2idx,
+    'idx2char': idx2char
+}
 
-model = keras.Sequential(
-    [
-        keras.Input(shape=(maxlen, len(chars))),
-        layers.LSTM(128),
-        layers.Dense(len(chars), activation="softmax"),
-    ]
-)
-optimizer = keras.optimizers.RMSprop(learning_rate=0.01)
-model.compile(loss="categorical_crossentropy", optimizer=optimizer)
-
-def sample(preds, temperature=1.0):
-    # helper function to sample an index from a probability array
-    preds = np.asarray(preds).astype("float64")
-    preds = np.log(preds) / temperature
-    exp_preds = np.exp(preds)
-    preds = exp_preds / np.sum(exp_preds)
-    probas = np.random.multinomial(1, preds, 1)
-    return np.argmax(probas)
+with open('data/' + os.sep + 'saved_data.pickle', 'wb') as handle:
+    pickle.dump(saved_data, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 # %% 
 
-epochs = 40
-batch_size = 128
+# model = keras.Sequential(
+#     [
+#         keras.Input(shape=(maxlen, len(chars))),
+#         layers.LSTM(128),
+#         layers.Dense(len(chars), activation="softmax"),
+#     ]
+# )
+# optimizer = keras.optimizers.RMSprop(learning_rate=0.01)
+# model.compile(loss="categorical_crossentropy", optimizer=optimizer)
 
-for epoch in range(epochs):
-    model.fit(x, y, batch_size=batch_size, epochs=1)
-    print()
-    print("Generating text after epoch: %d" % epoch)
+# def sample(preds, temperature=1.0):
+#     # helper function to sample an index from a probability array
+#     preds = np.asarray(preds).astype("float64")
+#     preds = np.log(preds) / temperature
+#     exp_preds = np.exp(preds)
+#     preds = exp_preds / np.sum(exp_preds)
+#     probas = np.random.multinomial(1, preds, 1)
+#     return np.argmax(probas)
 
-    start_index = np.random.randint(0, len(songs_string) - maxlen - 1)
-    for diversity in [0.2, 0.5, 1.0, 1.2]:
-        print("...Diversity:", diversity)
+# # %% 
 
-        generated = ""
-        sentence = songs_string[start_index : start_index + maxlen]
-        print('...Generating with seed: "' + sentence + '"')
+# epochs = 40
+# batch_size = 128
 
-        for i in range(400):
-            x_pred = np.zeros((1, maxlen, len(chars)))
-            for t, char in enumerate(sentence):
-                x_pred[0, t, char2idx[char]] = 1.0
-            preds = model.predict(x_pred, verbose=0)[0]
-            next_index = sample(preds, diversity)
-            next_char = idx2char[next_index]
-            sentence = sentence[1:] + next_char
-            generated += next_char
+# for epoch in range(epochs):
+#     model.fit(x, y, batch_size=batch_size, epochs=1)
+#     print()
+#     print("Generating text after epoch: %d" % epoch)
 
-        print("...Generated: ", generated)
-        print()
+#     start_index = np.random.randint(0, len(songs_string) - maxlen - 1)
+#     for diversity in [0.2, 0.5, 1.0, 1.2]:
+#         print("...Diversity:", diversity)
+
+#         generated = ""
+#         sentence = songs_string[start_index : start_index + maxlen]
+#         print('...Generating with seed: "' + sentence + '"')
+
+#         for i in range(400):
+#             x_pred = np.zeros((1, maxlen, len(chars)))
+#             for t, char in enumerate(sentence):
+#                 x_pred[0, t, char2idx[char]] = 1.0
+#             preds = model.predict(x_pred, verbose=0)[0]
+#             next_index = sample(preds, diversity)
+#             next_char = idx2char[next_index]
+#             sentence = sentence[1:] + next_char
+#             generated += next_char
+
+#         print("...Generated: ", generated)
+#         print()
 
 
 
