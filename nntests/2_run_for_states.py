@@ -62,8 +62,8 @@ c_all = []
 sizes = []
 h_final_states = []
 c_final_states = []
-for song_idx in range(3):
-    print('song_idx: ' + str(song_idx))
+for song_idx in range(len(songs_keys)):
+    print('song_idx: ' + str(song_idx) + ' / ' + str(len(songs_keys)))
     # get a piece
     p = songs[songs_keys[song_idx]]['unfolded_string']
     # transform it
@@ -78,7 +78,7 @@ for song_idx in range(3):
     # h_all = []
     # c_all = []
     for i in range( x.shape[1]-50 ):
-        print('step: ' + str(i) + ' / ' +str(x.shape[1]-50))
+        # print('step: ' + str(i) + ' / ' +str(x.shape[1]-50))
         y, h, c = model(x[:, i:i+50, :])
         h_all.append( h )
         c_all.append( c )
@@ -90,12 +90,23 @@ c_np = np.array( c_all )
 h_final_np = np.array( h_final_states )
 c_final_np = np.array( c_final_states )
 
+states_data = {
+    'h_final_np': h_final_np,
+    'c_final_np': c_final_np,
+    'h_np': h_np,
+    'c_np': c_np,
+}
+
+with open('data/' + os.sep + 'states_data.pickle', 'wb') as handle:
+    pickle.dump(states_data, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
 # %% 
 
+'''
 for i in range(0, c_np.shape[0]-100, 100):
     # plt.imshow(h_np[:,0,:])
     plt.imshow(c_np[i:i+100,0,:])
     plt.pause(0.1)
-
+'''
 # plt.plot(h_np[-1,0,:])
 # plt.plot(c_np[-1,0,:])
