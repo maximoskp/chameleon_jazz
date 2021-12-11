@@ -21,7 +21,7 @@ model1 = keras.models.load_model( 'models/lstm128/lstm128_current_best.hdf5' )
 # model.compile(loss="categorical_crossentropy", optimizer=optimizer)
 
 with open('data/' + os.sep + 'saved_data.pickle', 'rb') as handle:
-        saved_data = pickle.load(handle)
+    saved_data = pickle.load(handle)
 
 x = saved_data['x']
 y = saved_data['y']
@@ -62,6 +62,11 @@ c_all = []
 sizes = []
 h_final_states = []
 c_final_states = []
+song_names = []
+song_tonalities = []
+song_time_signatures = []
+song_tempi = []
+song_styles = []
 for song_idx in range(len(songs_keys)):
     print('song_idx: ' + str(song_idx) + ' / ' + str(len(songs_keys)))
     # get a piece
