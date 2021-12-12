@@ -22,6 +22,9 @@ from sklearn.manifold import TSNE
 with open('data/' + os.sep + 'states_data.pickle', 'rb') as handle:
     states_data = pickle.load(handle)
 
+with open('data/' + os.sep + 'metadata.pickle', 'rb') as handle:
+    metadata = pickle.load(handle)
+
 h_final_np = states_data['h_final_np'][:,0,:]
 c_final_np = states_data['c_final_np'][:,0,:]
 
@@ -46,7 +49,12 @@ annot = ax.annotate("", xy=(0,0), xytext=(20,20),textcoords="offset points",
 def update_annot(ind):
     pos = sc.get_offsets()[ind["ind"][0]]
     annot.xy = pos
-    text = 'lala' + str(ind)
+    # text = 'lala' + str(ind)
+    metakeys = list(metadata.keys())
+    idxs = ind["ind"]
+    text = ''
+    for i in idxs:
+        text += metadata[metakeys[i]]['all'] + '\n'
     # text = "{}, {}".format(" ".join(list(map(str,ind["ind"]))), 
     #                        " ".join([names[n] for n in ind["ind"]]))
     annot.set_text(text)
