@@ -108,7 +108,7 @@ idx2char = saved_data['idx2char']
 
 # create new model but keep weights
 nn_in = keras.Input(shape=(maxlen, len(chars)))
-lstm = layers.LSTM(128, return_state=True, return_sequences=True)
+lstm = layers.LSTM(64, return_state=True, return_sequences=True)
 seq_out, states_h, states_c = lstm(nn_in)
 nn_out = layers.Dense(len(chars), activation="softmax")(seq_out)
 
