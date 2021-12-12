@@ -27,8 +27,9 @@ def neutralize_song( song ):
         t = chameleon_context.tonality_from_symbol(song['tonality'])
         c.set_tonalities(piece_tonality=t, estimated_tonality=t)
         # print( str(c.relative_root['piece_tonality']) + ':' + str(c.symbolic_type) )
-        unfolded_neutralized += 'chord~' + str(c.relative_root['piece_tonality']) + ':' + str(c.symbolic_type) + '@' + str(c.onset_in_measure)
-        unfolded_neutralized += ',' + commasplit[1]
+        unfolded_neutralized += 'chord~' + str(c.relative_root['piece_tonality']) + ':' + str(c.symbolic_type) + '@' + str(c.onset_in_measure) + ','
+        if len(commasplit[1]) > 0:
+            unfolded_neutralized += commasplit[1] + ','
     return unfolded_neutralized
 # end neutralize_song
 

@@ -31,7 +31,8 @@ c_final_np = states_data['c_final_np'][:,0,:]
 # plt.imshow( h_final_np )
 # plt.imshow( c_final_np )
 
-X_embedded = TSNE(n_components=2, learning_rate='auto', init='pca', verbose=2, n_iter=3000).fit_transform(c_final_np)
+X_embedded = TSNE(n_components=2, learning_rate='auto', init='pca', verbose=2, n_iter=3000).fit_transform(h_final_np)
+# X_embedded = TSNE(n_components=2, learning_rate='auto', init='pca', verbose=2, n_iter=3000).fit_transform(c_final_np)
 
 plt.clf()
 plt.scatter( X_embedded[:,0], X_embedded[:,1], alpha=0.5, s=3 )
