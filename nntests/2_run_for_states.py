@@ -116,7 +116,7 @@ sizes = []
 h_final_states = []
 c_final_states = []
 metadata = {}
-for song_idx in range(2): # range(len(songs_keys)):
+for song_idx in range(len(songs_keys)):
     print('song_idx: ' + str(song_idx) + ' / ' + str(len(songs_keys)))
     # get a piece
     p = songs[songs_keys[song_idx]]['unfolded_string']
