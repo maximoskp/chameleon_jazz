@@ -46,7 +46,7 @@ annot = ax.annotate("", xy=(0,0), xytext=(20,20),textcoords="offset points",
 def update_annot(ind):
     pos = sc.get_offsets()[ind["ind"][0]]
     annot.xy = pos
-    text = 'lala'
+    text = 'lala' + str(ind)
     # text = "{}, {}".format(" ".join(list(map(str,ind["ind"]))), 
     #                        " ".join([names[n] for n in ind["ind"]]))
     annot.set_text(text)

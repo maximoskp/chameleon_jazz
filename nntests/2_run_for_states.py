@@ -11,6 +11,59 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 
+def get_metadata_from_string(s, title=''):
+    # style
+    styles = ''
+    t = s.split('style~')
+    for i in range( len(t)-1 ):
+        c = t[i+1].split(',')
+        if i > 0:
+            styles += ', '
+        styles += c[0]
+    # sections
+    sections = ''
+    t = s.split('section~')
+    for i in range( len(t)-1 ):
+        c = t[i+1].split(',')
+        sections += c[0]
+    # tempi
+    tempi = ''
+    t = s.split('tempo~')
+    for i in range( len(t)-1 ):
+        c = t[i+1].split(',')
+        if i > 0:
+            tempi += ', '
+        tempi += c[0]
+    # tonalities
+    tonalities = ''
+    t = s.split('tonality~')
+    for i in range( len(t)-1 ):
+        c = t[i+1].split(',')
+        if i > 0:
+            tonalities += ', '
+        tonalities += c[0]
+    # time signatures
+    time_sigs = []
+    time_sigs_str = ''
+    t = s.split('bar~')
+    for i in range( len(t)-1 ):
+        c = t[i+1].split(',')
+        if c[0] not in time_sigs:
+            if i > 0 and c[0] not in time_sigs:
+                time_sigs_str += ', '
+            time_sigs_str += c[0]
+            time_sigs.append( c[0] )
+    return {
+        'title': title,
+        'styles': styles,
+        'sections': sections,
+        'tempi': tempi,
+        'tonalities': tonalities,
+        'time_signatures': time_sigs,
+        'all': title + '\n' + styles + '-' + sections + '\n' + tonalities + '-' + tempi + '-' + time_sigs_str
+    }
+# end get_metadata_from_string
+
 # load model
 model1 = keras.models.load_model( 'models/lstm128/lstm128_current_best.hdf5' )
 
@@ -57,20 +110,18 @@ with open('..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'songslibrary.jso
 songs_keys = list( songs.keys() )
 
 # for the first three songs
-h_all = []
-c_all = []
+# h_all = []
+# c_all = []
 sizes = []
 h_final_states = []
 c_final_states = []
-song_names = []
-song_tonalities = []
-song_time_signatures = []
-song_tempi = []
-song_styles = []
-for song_idx in range(len(songs_keys)):
+metadata = {}
+for song_idx in range(2): # range(len(songs_keys)):
     print('song_idx: ' + str(song_idx) + ' / ' + str(len(songs_keys)))
     # get a piece
     p = songs[songs_keys[song_idx]]['unfolded_string']
+    # get 'metadata'
+    metadata[ songs_keys[song_idx] ] = get_metadata_from_string(p, title=songs_keys[song_idx])
     # transform it
     x = np.zeros((1, len(p), len(chars)), dtype=bool)
     sizes.append( len(p) )
@@ -85,25 +136,26 @@ for song_idx in range(len(songs_keys)):
     for i in range( x.shape[1]-50 ):
         # print('step: ' + str(i) + ' / ' +str(x.shape[1]-50))
         y, h, c = model(x[:, i:i+50, :])
-        h_all.append( h )
-        c_all.append( c )
+        # h_all.append( h )
+        # c_all.append( c )
     h_final_states.append( h )
     c_final_states.append( c )
 
-h_np = np.array( h_all )
-c_np = np.array( c_all )
+# h_np = np.array( h_all )
+# c_np = np.array( c_all )
 h_final_np = np.array( h_final_states )
 c_final_np = np.array( c_final_states )
 
 states_data = {
     'h_final_np': h_final_np,
     'c_final_np': c_final_np,
-    'h_np': h_np,
-    'c_np': c_np,
 }
 
 with open('data/' + os.sep + 'states_data.pickle', 'wb') as handle:
     pickle.dump(states_data, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+with open('data/' + os.sep + 'metadata.pickle', 'wb') as handle:
+    pickle.dump(metadata, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 # %% 
 
