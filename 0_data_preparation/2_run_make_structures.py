@@ -9,6 +9,7 @@ import numpy as np
 import os
 import json
 import CJ_ChartClasses as ccc
+import pickle
 
 # load all piece
 with open('..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'songslibrary.json') as json_file:
@@ -16,5 +17,24 @@ with open('..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'songslibrary.jso
 
 songs_keys = list( songs.keys() )
 
-i = 10
+# %% run example
+
+i = 56
 s = ccc.Chart( songs[songs_keys[i]] )
+
+print( 'size of object: ' + str(len(pickle.dumps(s, -1))) )
+
+# %% run for all pieces
+
+all_structs = []
+
+for i in range( len( songs_keys ) ):
+    print('Processing (' + str(i) + '/' + str(len(songs_keys)) + '): ' + songs[songs_keys[i]]['appearing_name'])
+    all_structs.append( ccc.Chart( songs[songs_keys[i]] ) )
+    print( 'size of object: ' + str(len(pickle.dumps(all_structs, -1))) )
+
+# %% save pickle
+
+with open('../data/all_structs.pickle', 'wb') as handle:
+    pickle.dump(all_structs, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
