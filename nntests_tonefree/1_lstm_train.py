@@ -28,13 +28,19 @@ idx2char = saved_data['idx2char']
 nn_in = keras.Input(shape=(maxlen, len(chars)))
 # lstm, states_h, states_c = layers.LSTM(units=64,dropout=0.3,recurrent_dropout=0.2, return_state=True, return_sequences=True)
 # lstm = layers.LSTM(64,dropout=0.3,recurrent_dropout=0.2, return_state=True, return_sequences=True)
-lstm = layers.LSTM(64)
+d1 = layers.Dense(256, activation="selu", input_shape=[len(chars)])
+d2 = layers.Dense(128, activation="selu")
+lstm = layers.LSTM(128)
+d3 = layers.Dense(128, activation="selu")
 nn_out = layers.Dense(len(chars), activation="softmax")
 
 model = keras.Sequential(
     [
         nn_in,
+        d1,
+        d2,
         lstm,
+        d3,
         nn_out,
     ]
 )

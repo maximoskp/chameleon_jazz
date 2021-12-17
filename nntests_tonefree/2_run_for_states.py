@@ -109,9 +109,16 @@ idx2char = saved_data['idx2char']
 
 # create new model but keep weights
 nn_in = keras.Input(shape=(maxlen, len(chars)))
-lstm = layers.LSTM(64, return_state=True, return_sequences=True)
-seq_out, states_h, states_c = lstm(nn_in)
-nn_out = layers.Dense(len(chars), activation="softmax")(seq_out)
+# lstm = layers.LSTM(64, return_state=True, return_sequences=True)
+# seq_out, states_h, states_c = lstm(nn_in)
+# nn_out = layers.Dense(len(chars), activation="softmax")(seq_out)
+
+d1 = layers.Dense(256, activation="selu", input_shape=[len(chars)])(nn_in)
+d2 = layers.Dense(128, activation="selu")(d1)
+lstm = layers.LSTM(128, return_state=True, return_sequences=True)
+seq_out, states_h, states_c = lstm(d2)
+d3 = layers.Dense(128, activation="selu")(seq_out)
+nn_out = layers.Dense(len(chars), activation="softmax")(d3)
 
 model = keras.Model( inputs=nn_in, outputs=[nn_out, states_h, states_c], name='lstm128' )
 
@@ -123,8 +130,8 @@ model = keras.Model( inputs=nn_in, outputs=[nn_out, states_h, states_c], name='l
 #     ]
 # )
 # pass weights to new model
-model.layers[1].set_weights( model1.layers[0].get_weights() )
-model.layers[2].set_weights( model1.layers[1].get_weights() )
+for i in range( len( model.layers ) - 1 ):
+    model.layers[i+1].set_weights( model1.layers[i].get_weights() )
 
 with open('..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'songslibrary.json') as json_file:
     songs = json.load(json_file)
