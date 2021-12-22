@@ -137,18 +137,16 @@ class Chord(ChameleonContext):
         # get pcp
         self.pcp = np.zeros(12).astype(np.float32)
         self.pcp[ np.mod(self.numeric_root + self.numeric_type , 12) ] = 1
-        self.gct = ng.GCT_sum_all_from_root(self.numeric_type)[0]
+        ## self.gct = ng.GCT_sum_all_from_root(numeric_type)[0]
         # get position in section
         # get position in piece            
         s = list(combinations(self.numeric_type, 2))
-        self.ic_vector = np.zeros(6, dtype=int)
-        self.interval_vector = np.zeros(12, dtype=int)
+        # __@GIANNOS__ only ascending intervals are generated, is it correct?
+        # e.g. only (0,4)->4-0=4 is generated, not (4,0)->0-4=8
+        self.interval_vector = np.zeros(12)
         for i in s:
             interval = (i[1]-i[0])%12
-            self.interval_vector[interval-1] += 1
-            if interval > 6: #take interval classes for complementary intervals
-                interval = 12-interval
-            self.ic_vector[interval-1] += 1
+            self.interval_vector[interval] += 1
         self.bass_symbol = ''
         if len( bass_split ) > 1:
             self.bass_symbol = bass_split[1]
@@ -161,30 +159,6 @@ class Chord(ChameleonContext):
     def set_tonalities(self, piece_tonality=None, estimated_tonality=None):
         # print('Chord - set_tonalities')
         self.piece_tonality = piece_tonality
-<<<<<<< HEAD
-        self.computed_tonality = computed_tonality
-        # get chord numeric root relative to PIECE tonality
-        print(self.chord_symbol[:2])
-        print(self.chord_symbol[1])
-        if self.chord_symbol[1] != "#" or self.chord_symbol[1] == "b" or self.chord_symbol[1] == "-":
-            if self.root2int[self.piece_tonality] > self.root2int[self.chord_symbol[0]]:
-                self.root2int[self.chord_symbol[0]] = self.root2int[self.chord_symbol[0]] + 12
-            self.numeric_root_to_piece_tonality = abs(self.root2int[self.piece_tonality]-self.root2int[self.chord_symbol[0]])
-                #print(self.root2int[self.chord_symbol[0]])    
-        elif self.chord_symbol[1] == "#" or self.chord_symbol[1] == "b" or self.chord_symbol[1] == "-":
-            print("yes ")
-            if self.root2int[self.piece_tonality] > self.root2int[self.chord_symbol[:2]]:
-                self.root2int[self.chord_symbol[:2]] = self.root2int[self.chord_symbol[:2]] + 12
-                #print(self.root2int[self.chord_symbol[:2]])
-            self.numeric_root_to_piece_tonality = abs(self.root2int[self.piece_tonality]-self.root2int[self.chord_symbol[:2]])
-            print(self.numeric_root_to_piece_tonality)   
-        # get chord numeric root relative to COMPUTED tonality
-        if self.computed_tonality['root'] > self.root2int[self.chord_symbol[0]]:
-            self.root2int[self.chord_symbol[0]] = self.root2int[self.chord_symbol[0]] + 12
-            print(self.root2int[self.chord_symbol[0]])
-        self.numeric_root_to_computed_tonality = abs(self.computed_tonality['root']-self.root2int[self.chord_symbol[0]])
-        #print(self.numeric_root_to_computed_tonality)
-=======
         self.estimated_tonality = estimated_tonality
         # get chord numeric root relative to PIECE and ESTIMATED tonality
         self.relative_root = {
@@ -212,14 +186,9 @@ class Chord(ChameleonContext):
         #     print(self.root2int[self.chord_symbol[0]])
         # numeric_root_to_estimated_tonality = abs(self.estimated_tonality['root']-self.root2int[self.chord_symbol[0]])
         #print(numeric_root_to_estimated_tonality)
->>>>>>> d0282acdda96ab79ec13bd5afe5b4564259e70a8
         # get PIECE tonality-relative pitch class set
         # get ESTIMATED tonality-relative pitch class set
         # get GCT
-<<<<<<< HEAD
-        self.gct_piece_tonality = ng.GCT_in_key(self.numeric_type, self.piece_tonality)
-        self.gct_computed_tonality = ng.GCT_in_key(self.numeric_type, self.computed_tonality)
-=======
         # __@GIANNOS__ the following two lines don't work:
         '''
         UFuncTypeError: ufunc 'subtract' did not contain a loop with signature 
@@ -227,7 +196,6 @@ class Chord(ChameleonContext):
         '''
         # self.gct_piece_tonality = ng.GCT_in_key(self.numeric_type, piece_tonality)
         # self.gct_estimated_tonality = ng.GCT_in_key(self.numeric_type, estimated_tonality)
->>>>>>> d0282acdda96ab79ec13bd5afe5b4564259e70a8
         # if bass
         # get bass PIECE tonality-relative pitch class
         # get bass ESTIMATED tonality-relative pitch class
