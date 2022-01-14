@@ -13,6 +13,10 @@ import json
 import music21 as m21
 import newGCT as ng
 from scipy import sparse
+from scipy.sparse import hstack
+from scipy.sparse import *
+
+
 
 class ChameleonContext:
     # static scope for chord dictionary and initiall (0s) transition matrix
@@ -102,7 +106,7 @@ class ChameleonContext:
         all_chord_states = []
         for i in range(12):
             for v in self.type2pc.values():
-                all_chord_states.append( self.chord2state(numeric_root=i, numeric_type=v['extended_type']) )
+                all_chord_states.append( self.chord2state(numeric_root=i, numeric_type=v['extended_type'], tonality= "piece_tonality" ))
         return all_chord_states
     # end get_all_chord_states
 # end ChameleonContext
@@ -362,6 +366,7 @@ class Chart(ChameleonContext):
         self.piece_name = struct_in['appearing_name']
         self.tonality = self.tonality_from_symbol( struct_in['tonality'] )
         self.make_sections()
+        self.make_stats()        
         # do we need to keep:
         # chords?
         # tonalities (estimated) per section?
@@ -377,4 +382,47 @@ class Chart(ChameleonContext):
             self.sections.append( Section( s, self.tonality ) )
             # print('self.sections: ', self.sections)
     # end make_sections
+    def make_stats(self):
+        print("\n")
+        print("Chord Distribution")
+        print("\n")
+        #gather chord_distribution info
+        chord_distr_sum = 0
+        testnormalization = 0
+        for s in self.sections:
+            chord_distr_sum += len(s.chords)
+        for s in self.sections:
+            s.cx = coo_matrix(s.chords_distribution)
+            s.s0 = s.cx.tocsr()
+            for i,j,v in zip(s.cx.row, s.cx.col, s.cx.data): 
+                s.s0[i,j] = (v * chord_distr_sum) / len(s.chords) / 10            
+        self.chords_distribution_all = np.add(self.sections[0].s0,self.sections[1].s0)
+        self.chords_distribution_all = np.add(self.chords_distribution_all, self.sections[2].s0)       
+        print(self.chords_distribution_all)
+        
+        #gather chord_transition_matrix info
+        print("\n")
+        print("Chord Transition Matrix")
+        print("\n")
+        chord_trans_sum = 0        
+        for p in self.sections:
+            p.cx = coo_matrix(p.chord_transition_matrix)
+            p.p0 = p.cx.tocsr()
+            chord_trans_sum += len(p.chord_transitions)
+        for p in self.sections:   
+            for i,j,v in zip(p.cx.row, p.cx.col, p.cx.data):               
+                p.p0[i,j] = (v * len(p.chord_transitions))                  
+        self.chords_transition_matrix_all = np.add(self.sections[0].p0,self.sections[1].p0)
+        self.chords_transition_matrix_all = np.add(self.chords_transition_matrix_all, self.sections[2].p0)
+        t = coo_matrix(self.chords_transition_matrix_all)
+        t.t0 = t.tocsr()
+        rowsum = np.zeros(np.shape(t.t0)[0])
+        for i,j,v in zip(t.row, t.col, t.data):      
+            rowsum[i] = t.t0[i].sum()   
+        for i,j,v in zip(t.row, t.col, t.data):
+            t.t0[i,j] = v / rowsum[i]  
+        self.chords_transition_matrix_all = t.t0
+        print(self.chords_transition_matrix_all)
+        
+    # end make_stats
 # end Chart
