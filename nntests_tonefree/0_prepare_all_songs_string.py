@@ -47,6 +47,26 @@ def neutralize_song( song ):
     return unfolded_neutralized
 # end neutralize_song
 
+def remove_keyword( song, w ):
+    w_split = song.split( w )
+    out_song = ''
+    for s in w_split:
+        if ',' in s:
+            comma_split = s.split(',')
+            out_song += ','.join(comma_split[ 1: ])
+    return out_song
+# end remove_keyword
+
+def remove_metadata(song, metadata=['section~', 'style~', 'tempo~', 'tonality~']):
+    for m in metadata:
+        song = remove_keyword(song, m)
+    return song
+# end remove_metadata
+
+def prepare_song(s):
+    n = remove_metadata( neutralize_song( s ).split(',end,')[0] )
+    return 'start,' + n*4 + ',end,'
+# end prepare_song
 
 # %% 
 
@@ -58,8 +78,14 @@ songs_keys = list( songs.keys() )
 # make string
 songs_string = ''
 for s in songs_keys:
-    n = neutralize_song( songs[s] )
+    n = remove_metadata( neutralize_song( songs[s] ) )
+    # keep neutralised string for debugging
+    songs[s]['neutralized'] = n
     songs_string += n
+
+# save neutralised json
+with open('data' + os.sep + 'neutralizedsongslibrary.json', 'w') as fp:
+    json.dump(songs, fp)
 
 # keep unique characters
 chars = sorted( list( set(songs_string) ) )

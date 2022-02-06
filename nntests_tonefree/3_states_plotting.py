@@ -18,6 +18,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from sklearn.manifold import TSNE
+from sklearn.decomposition import PCA
 
 with open('data/' + os.sep + 'states_data.pickle', 'rb') as handle:
     states_data = pickle.load(handle)
@@ -31,6 +32,8 @@ c_final_np = states_data['c_final_np'][:,0,:]
 # plt.imshow( h_final_np )
 # plt.imshow( c_final_np )
 
+# %% 
+
 X_embedded = TSNE(n_components=2, learning_rate='auto', init='pca', verbose=2, n_iter=3000).fit_transform(c_final_np)
 
 with open('data/' + os.sep + 'X_embedded.pickle', 'wb') as handle:
@@ -39,6 +42,17 @@ with open('data/' + os.sep + 'X_embedded.pickle', 'wb') as handle:
 plt.clf()
 plt.scatter( X_embedded[:,0], X_embedded[:,1], alpha=0.5, s=3 )
 plt.savefig( 'data/tsne0.png', dpi=500 )
+
+# %% 
+
+X_PCA_embedded = PCA(n_components=2).fit_transform(c_final_np)
+
+with open('data/' + os.sep + 'X_PCA_embedded.pickle', 'wb') as handle:
+    pickle.dump(X_PCA_embedded, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+plt.clf()
+plt.scatter( X_PCA_embedded[:,0], X_PCA_embedded[:,1], alpha=0.5, s=3 )
+plt.savefig( 'data/pca0.png', dpi=500 )
 
 # %% interactive hovering
 

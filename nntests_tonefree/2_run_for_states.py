@@ -15,6 +15,8 @@ import sys
 sys.path.insert(1, '../0_data_preparation')
 import CJ_ChartClasses as ccc
 
+# %%
+
 def neutralize_song( song ):
     unfolded_neutralized = ''
     chordsplit = song['unfolded_string'].split('chord~')
@@ -32,6 +34,29 @@ def neutralize_song( song ):
             unfolded_neutralized += commasplit[1] + ','
     return unfolded_neutralized
 # end neutralize_song
+
+def remove_keyword( song, w ):
+    w_split = song.split( w )
+    out_song = ''
+    for s in w_split:
+        if ',' in s:
+            comma_split = s.split(',')
+            out_song += ','.join(comma_split[ 1: ])
+    return out_song
+# end remove_keyword
+
+def remove_metadata(song, metadata=['section~', 'style~', 'tempo~', 'tonality~']):
+    for m in metadata:
+        song = remove_keyword(song, m)
+    return song
+# end remove_metadata
+
+def prepare_song(s):
+    n = remove_metadata( neutralize_song( s ).split(',end,')[0] )
+    return 'start,' + n*4 + ',end,'
+# end prepare_song
+
+# %%
 
 def get_metadata_from_string(s, title=''):
     # style
@@ -148,7 +173,7 @@ metadata = {}
 for song_idx in range(len(songs_keys)):
     print('song_idx: ' + str(song_idx) + ' / ' + str(len(songs_keys)))
     # get a piece
-    n = neutralize_song(songs[songs_keys[song_idx]])
+    n = prepare_song(songs[songs_keys[song_idx]])
     p = n
     # get 'metadata'
     metadata[ songs_keys[song_idx] ] = get_metadata_from_string(p, title=songs_keys[song_idx])
