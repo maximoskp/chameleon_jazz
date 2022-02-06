@@ -25,13 +25,15 @@ chars = saved_data['chars']
 char2idx = saved_data['char2idx']
 idx2char = saved_data['idx2char']
 
+unit_mult = 8
+
 nn_in = keras.Input(shape=(maxlen, len(chars)))
 # lstm, states_h, states_c = layers.LSTM(units=64,dropout=0.3,recurrent_dropout=0.2, return_state=True, return_sequences=True)
 # lstm = layers.LSTM(64,dropout=0.3,recurrent_dropout=0.2, return_state=True, return_sequences=True)
-d1 = layers.Dense(256, activation="selu", input_shape=[len(chars)])
-d2 = layers.Dense(128, activation="selu")
-lstm = layers.LSTM(128)
-d3 = layers.Dense(128, activation="selu")
+d1 = layers.Dense(32*unit_mult, activation="selu", input_shape=[len(chars)])
+d2 = layers.Dense(16*unit_mult, activation="selu")
+lstm = layers.LSTM(16*unit_mult)
+d3 = layers.Dense(16*unit_mult, activation="selu")
 nn_out = layers.Dense(len(chars), activation="softmax")
 
 model = keras.Sequential(
@@ -47,7 +49,7 @@ model = keras.Sequential(
 # only for states
 # model_states = keras.Model(nn_in, [lstm, states_h, states_c])
 
-optimizer = keras.optimizers.Adam(learning_rate=0.01)
+optimizer = keras.optimizers.Adam(learning_rate=0.001)
 model.compile(loss="categorical_crossentropy", optimizer=optimizer)
 
 os.makedirs( 'models/lstm128', exist_ok=True )
@@ -78,9 +80,9 @@ checkpoint_current_best = ModelCheckpoint(filepath=filepath_current_best,
 # %% 
 
 epochs = 40
-batch_size = 128
+batch_size = 32
 
-model.fit(x, y, batch_size=batch_size, epochs=epochs, validation_data=(x[:100,:,:],y[:100,:]),
+model.fit(x, y, batch_size=batch_size, epochs=epochs, validation_data=(x[:10000,:,:],y[:10000,:]),
         callbacks=[checkpoint, checkpoint_current_best])
 
 # for epoch in range(epochs):

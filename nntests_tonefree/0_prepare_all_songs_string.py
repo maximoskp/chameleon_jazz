@@ -63,9 +63,9 @@ def remove_metadata(song, metadata=['section~', 'style~', 'tempo~', 'tonality~']
     return song
 # end remove_metadata
 
-def prepare_song(s):
-    n = remove_metadata( neutralize_song( s ).split(',end,')[0] )
-    return 'start,' + n*4 + ',end,'
+def prepare_song(s, metadata=['section~', 'style~', 'tempo~', 'tonality~'], reps=1):
+    n = remove_metadata( neutralize_song( s ).split(',end,')[0], metadata=metadata )
+    return 'start,' + n*reps + ',end,'
 # end prepare_song
 
 # %% 
@@ -78,7 +78,7 @@ songs_keys = list( songs.keys() )
 # make string
 songs_string = ''
 for s in songs_keys:
-    n = remove_metadata( neutralize_song( songs[s] ) )
+    n = prepare_song( songs[s],metadata=[],reps=1)
     # keep neutralised string for debugging
     songs[s]['neutralized'] = n
     songs_string += n

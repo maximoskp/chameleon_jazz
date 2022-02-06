@@ -51,9 +51,9 @@ def remove_metadata(song, metadata=['section~', 'style~', 'tempo~', 'tonality~']
     return song
 # end remove_metadata
 
-def prepare_song(s):
-    n = remove_metadata( neutralize_song( s ).split(',end,')[0] )
-    return 'start,' + n*4 + ',end,'
+def prepare_song(s, metadata=['section~', 'style~', 'tempo~', 'tonality~'], reps=1):
+    n = remove_metadata( neutralize_song( s ).split(',end,')[0], metadata=metadata )
+    return 'start,' + n*reps + ',end,'
 # end prepare_song
 
 # %%
@@ -173,7 +173,8 @@ metadata = {}
 for song_idx in range(len(songs_keys)):
     print('song_idx: ' + str(song_idx) + ' / ' + str(len(songs_keys)))
     # get a piece
-    n = prepare_song(songs[songs_keys[song_idx]])
+    # n = prepare_song(songs[songs_keys[song_idx]])
+    n = prepare_song( songs[songs_keys[song_idx]],metadata=[],reps=1)
     p = n
     # get 'metadata'
     metadata[ songs_keys[song_idx] ] = get_metadata_from_string(p, title=songs_keys[song_idx])
