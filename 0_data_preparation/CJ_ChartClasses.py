@@ -13,6 +13,10 @@ import json
 import music21 as m21
 import newGCT as ng
 from scipy import sparse
+from scipy.sparse import hstack
+from scipy.sparse import *
+
+
 
 class ChameleonContext:
     # static scope for chord dictionary and initiall (0s) transition matrix
@@ -102,14 +106,14 @@ class ChameleonContext:
         all_chord_states = []
         for i in range(12):
             for v in self.type2pc.values():
-                all_chord_states.append( self.chord2state(numeric_root=i, numeric_type=v['extended_type']) )
+                all_chord_states.append( self.chord2state(numeric_root=i, numeric_type=v['extended_type'], tonality= "piece_tonality" ))
         return all_chord_states
     # end get_all_chord_states
 # end ChameleonContext
 
 class Chord(ChameleonContext):
     def __init__(self, chord_in):
-        # print('Chord - chord_in: ', chord_in)
+        #print('Chord - chord_in: ', chord_in)
         at_split = chord_in.split('@')
         self.chord_symbol = at_split[0]
         comma_split = at_split[1].split(',')
@@ -138,6 +142,9 @@ class Chord(ChameleonContext):
         self.pcp = np.zeros(12).astype(np.float32)
         self.pcp[ np.mod(self.numeric_root + self.numeric_type , 12) ] = 1
         ## self.gct = ng.GCT_sum_all_from_root(numeric_type)[0]
+        # TODO:
+        #print(self.onset_in_measure) 
+         
         # get position in section
         # get position in piece            
         s = list(combinations(self.numeric_type, 2))
@@ -166,26 +173,6 @@ class Chord(ChameleonContext):
             'estimated_tonality': (self.numeric_root -self.estimated_tonality['root'])%12
         }
         self.chord_state = self.chord2state()
-        # print(self.chord_symbol[:2])
-        # print(self.chord_symbol[1])
-        # if self.chord_symbol[1] != "#" or self.chord_symbol[1] == "b" or self.chord_symbol[1] == "-":
-        #     if self.root2int[self.piece_tonality] > self.root2int[self.chord_symbol[0]]:
-        #         self.root2int[self.chord_symbol[0]] = self.root2int[self.chord_symbol[0]] + 12
-        #     numeric_root_to_piece_tonality = abs(self.root2int[self.piece_tonality]-self.root2int[self.chord_symbol[0]])
-        #         #print(self.root2int[self.chord_symbol[0]])    
-        # elif self.chord_symbol[1] == "#" or self.chord_symbol[1] == "b" or self.chord_symbol[1] == "-":
-        #     print("yes ")
-        #     if self.root2int[self.piece_tonality] > self.root2int[self.chord_symbol[:2]]:
-        #         self.root2int[self.chord_symbol[:2]] = self.root2int[self.chord_symbol[:2]] + 12
-        #         #print(self.root2int[self.chord_symbol[:2]])
-        #     numeric_root_to_piece_tonality = abs(self.root2int[self.piece_tonality]-self.root2int[self.chord_symbol[:2]])
-        #     print(numeric_root_to_piece_tonality)
-        # get chord numeric root relative to ESTIMATED tonality
-        # if self.estimated_tonality['root'] > self.root2int[self.chord_symbol[0]]:
-        #     self.root2int[self.chord_symbol[0]] = self.root2int[self.chord_symbol[0]] + 12
-        #     print(self.root2int[self.chord_symbol[0]])
-        # numeric_root_to_estimated_tonality = abs(self.estimated_tonality['root']-self.root2int[self.chord_symbol[0]])
-        #print(numeric_root_to_estimated_tonality)
         # get PIECE tonality-relative pitch class set
         # get ESTIMATED tonality-relative pitch class set
         # get GCT
@@ -207,6 +194,8 @@ class Measure:
     def __init__(self, measure_in):
         self.time_signature = measure_in.split(',')[0]
         self.make_chords( measure_in )
+        #self.chord_potisions(measure_in)
+        # self.measure_potisions()
         # TODO:
         # get position in section
         # get position in chart
@@ -224,8 +213,13 @@ class Measure:
         chords_split = measure_in.split('chord~')
         self.chords = []
         for c in chords_split[1:]:
+            #print(c)
             self.chords.append( Chord( c ) )
     # end make_chords        
+    
+    #def chord_potisions(self, measure_in):
+        #print(measure_in)
+        
     
     # def update_chord_positions(self):
     #     # print('TODO: update position_in_piece for chords')
@@ -268,6 +262,7 @@ class Section(ChameleonContext):
         self.assign_tonalities_to_chords()
         self.make_chord_transitions()
         self.make_stats()
+        #print(section_in)
         # keep cadences
     # end __init__
     
@@ -276,7 +271,7 @@ class Section(ChameleonContext):
         measures_split = section_in.split('bar~')
         self.measures = []
         for m in measures_split[1:]:
-            # print('measure: ', m)
+            #print('measure: ', m)
             self.measures.append( Measure( m ) )
     # end make_measures
     
@@ -362,6 +357,7 @@ class Chart(ChameleonContext):
         self.piece_name = struct_in['appearing_name']
         self.tonality = self.tonality_from_symbol( struct_in['tonality'] )
         self.make_sections()
+        self.make_stats()        
         # do we need to keep:
         # chords?
         # tonalities (estimated) per section?
@@ -373,8 +369,65 @@ class Chart(ChameleonContext):
         sections_split = self.unfolded_string.split('section~')
         self.sections = []
         for s in sections_split[1:]:
-            # print('making section: ', s)
+            #print('making section: ', s)
             self.sections.append( Section( s, self.tonality ) )
             # print('self.sections: ', self.sections)
     # end make_sections
+    def make_stats(self):
+        #gather chord_distribution info
+        chord_distr_sum = 0
+        testnormalization = 0     
+        for s in self.sections:
+            chord_distr_sum += len(s.chords)
+        for s in self.sections:
+            s.cx = coo_matrix(s.chords_distribution)
+            s.s0 = s.cx.tocsr()
+            for i,j,v in zip(s.cx.row, s.cx.col, s.cx.data): 
+                s.s0[i,j] = (v * len(s.chords))  
+        sumarr = self.sections[0].s0           
+        for i in range(1, len(self.sections), 1):    
+            sumarr += self.sections[i].s0         
+        self.chords_distribution_all = sumarr
+        k = coo_matrix(self.chords_distribution_all)
+        k.k0 = k.tocsr()
+        rowsum = np.zeros(np.shape(k.k0)[0])
+        for i,j,v in zip(k.row, k.col, k.data):      
+            rowsum[i] = k.k0[i].sum()   
+        for i,j,v in zip(k.row, k.col, k.data):
+            k.k0[i,j] = v / rowsum[i]  
+        self.chords_distribution_all = k.k0
+        
+        #gather chord_transition_matrix info
+        chord_trans_sum = 0        
+        for p in self.sections:
+            p.cx = coo_matrix(p.chord_transition_matrix)
+            p.p0 = p.cx.tocsr()
+            chord_trans_sum += len(p.chord_transitions)
+        for p in self.sections:   
+            for i,j,v in zip(p.cx.row, p.cx.col, p.cx.data):               
+                p.p0[i,j] = (v * len(p.chord_transitions))   
+        sumarrtr = self.sections[0].p0 
+        for i in range(1, len(self.sections), 1):    
+            sumarrtr += self.sections[i].p0       
+        self.chords_transition_matrix_all = sumarrtr
+        t = coo_matrix(self.chords_transition_matrix_all)
+        t.t0 = t.tocsr()
+        rowsum = np.zeros(np.shape(t.t0)[0])
+        for i,j,v in zip(t.row, t.col, t.data):      
+            rowsum[i] = t.t0[i].sum()   
+        for i,j,v in zip(t.row, t.col, t.data):
+            t.t0[i,j] = v / rowsum[i]  
+        self.chords_transition_matrix_all = t.t0
+        #print(self.sections[0].chords[5].chord_symbol)
+        
+        #gather chord potision in chart
+        self.chord_potision_in_chart = []
+        for s in range(0, len(self.sections), 1):    
+            print(s)
+            for i in range(0, len(self.sections[s].chords), 1):  
+                #if i==len(self.sections[s].chords)
+                self.chord_potision_in_chart.append(self.sections[s].chords[i].chord_symbol)
+        print(self.chord_potision_in_chart[5])
+        
+    # end make_stats
 # end Chart
