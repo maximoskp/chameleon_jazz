@@ -368,12 +368,13 @@ class Chart(ChameleonContext):
         # split sections
         sections_split = self.unfolded_string.split('section~')
         self.sections = []
-        for s in sections_split[1:]:
+        for s in sections_split[min(1, len(sections_split)-1):]:
             #print('making section: ', s)
             self.sections.append( Section( s, self.tonality ) )
             # print('self.sections: ', self.sections)
     # end make_sections
     def make_stats(self):
+        self.all_chord_states = self.get_all_chord_states()
         #gather chord_distribution info
         chord_distr_sum = 0
         testnormalization = 0     
@@ -423,11 +424,11 @@ class Chart(ChameleonContext):
         #gather chord potision in chart
         self.chord_potision_in_chart = []
         for s in range(0, len(self.sections), 1):    
-            print(s)
+            # print(s)
             for i in range(0, len(self.sections[s].chords), 1):  
                 #if i==len(self.sections[s].chords)
                 self.chord_potision_in_chart.append(self.sections[s].chords[i].chord_symbol)
-        print(self.chord_potision_in_chart[5])
+        # print(self.chord_potision_in_chart[5])
     # end make_stats
 
     def get_features(self, chords_distribution_all=True, chords_transition_matrix_all=True):

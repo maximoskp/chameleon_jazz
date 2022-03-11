@@ -10,6 +10,9 @@ import numpy as np
 import os
 import json
 import pickle
+import sys
+sys.path.insert(1, '../0_data_preparation')
+import CJ_ChartClasses as ccc
 
 # %% load pickle
 
