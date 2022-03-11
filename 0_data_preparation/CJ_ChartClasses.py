@@ -428,6 +428,15 @@ class Chart(ChameleonContext):
                 #if i==len(self.sections[s].chords)
                 self.chord_potision_in_chart.append(self.sections[s].chords[i].chord_symbol)
         print(self.chord_potision_in_chart[5])
-        
     # end make_stats
+
+    def get_features(self, chords_distribution_all=True, chords_transition_matrix_all=True):
+        f = np.array([])
+        if chords_distribution_all:
+            f = np.r_[ f , self.chords_distribution_all.toarray().astype(np.float32).reshape(len(self.all_chord_states)) ]
+        if chords_transition_matrix_all:
+            t = self.chords_transition_matrix_all.toarray().astype(np.float32)
+            f = np.r_[ f , t.reshape(len(self.all_chord_states)**2) ]
+        return sparse.csr_matrix(f)  
+    # end get_features
 # end Chart
