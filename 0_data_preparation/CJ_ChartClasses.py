@@ -172,7 +172,7 @@ class Chord(ChameleonContext):
             'piece_tonality': (self.numeric_root -self.piece_tonality['root'])%12,
             'estimated_tonality': (self.numeric_root -self.estimated_tonality['root'])%12
         }
-        self.chord_state = self.chord2state()
+        self.chord_state = self.chord2state(tonality='piece_tonality')
         # get PIECE tonality-relative pitch class set
         # get ESTIMATED tonality-relative pitch class set
         # get GCT
