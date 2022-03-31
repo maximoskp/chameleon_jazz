@@ -118,4 +118,5 @@ def get_songcsvcomplex():
 # end get_songcsv
 
 if __name__ == '__main__':
-    api.run()
+    # api.run()
+    api.run(host='0.0.0.0', port=5000, debug=True)
