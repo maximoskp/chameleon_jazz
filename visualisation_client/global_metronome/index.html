@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<!-- workbench initialises audio manager -->
+<script type="text/javascript" src="js/audioManager.js"></script>
+<!-- workbench also needs to initialise audio sources -->
+<script type="text/javascript" src="js/audioSources.js"></script>
+<!-- workbench loads metronome -->
+<script type="text/javascript" src="metronome_js/metronome.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+<div>
+  <span id='tempo_span'> Tempo: </span>
+  <span id='tempo'>  </span>
+</div>
+
+<div>
+    <span id='beatTime_span'> BeatTime: </span>
+    <span id='beatTime'> -- </span>
+</div>
+
+<div>
+    <span id='playstop_span'> Play/Stop: </span>
+    <input type="checkbox" id="playStop" onclick="toolSendsPlayStop(this.checked)">
+</div>
+
+<script type="text/javascript">
+  // VELENIS: PASS TEMPO TO METRONOME
+  metronome.setTempo(60);
+  document.addEventListener('beatTimeEvent', function (e){
+      document.getElementById('beatTime').innerHTML = e.metroBeatTimeStamp;
+      // VELENIS: ADD PLAYER HERE
+      // e.metroBeatTimeStamp is called very frequently and it includes the
+      // time that we need to trigger notes
+      // CAUTION: metronome currently does not work for tempo changes.
+      // TODO: we need to fix it
+  });
+  function toolSendsPlayStop(b){
+    metronome.toolSendsPlayStop(b);
+  }
+  document.getElementById('tempo').innerHTML = metronome.tempo;
+</script>
+
+</body>
+</html>

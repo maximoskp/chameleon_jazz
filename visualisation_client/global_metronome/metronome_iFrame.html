@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <script>
+      try {
+        if(document.domain == 'athena.imuscica.eu'){
+          console.log("[Metro] Initial domain is: " + document.domain);
+          document.domain = 'imuscica.eu';
+          console.log("[Metro] domain overwritten to: " + document.domain);
+          }
+          else{
+            console.log("[Metro] domain remained: " + document.domain);  
+          }
+        }
+      catch(e) {
+        console.log("[Metro] cannot overwrite domain.");
+      }
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width user-scalable=no">
+    <title>Metro</title>
+
+  </head>
+  <body>
+    <span id='header'> This is the workbench metronome iFrame</span>
+    <span id='misc'> --------------------------------</span>
+    <div>
+      <span id='tempo'> Tempo: </span>
+      <input type="range" min="10" max="200" value="90" class="slider" id="tempoSlider" oninput="setTempo(this.value)">
+      <span id='tempoValue'> -- </span>
+    </div>
+    <div>
+      <span id='timeSignature'> Time Signature: </span>
+        <select id="TSNumerator" onchange="setNumerator(this.value)" style="width:50px;">
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+        </select>
+        <span> / </span>
+        <select id="TSDenominator" onchange="setDenominator(this.value)" style="width:50px;">
+            <!-- <option value="2">2</option> -->
+          <option value="4">4</option>
+          <option value="8">8</option>
+        </select>
+    </div>
+    <div>
+      <span id='resolution_span'> Resolution: </span>
+        <select id="resolution" onchange="setResolution(this.value)" style="width:100px;">
+          <option value="4">4ths</option>
+          <option value="8">8ths</option>
+          <option value="16">16ths</option>
+        </select>
+    </div>
+    <div>
+        <span id='position_span'> Position: </span>
+        <span id='bar'>1</span>
+        <span> - </span>
+        <span id='beat'>1</span>
+        <span> - </span>
+        <span id='16th'>1</span>
+    </div>
+    <div>
+        <span id='playstop_span'> Play/Stop: </span>
+        <input type="checkbox" id="playStop" onclick="setPlayStop(this.checked)">
+    </div>
+
+    <script type="text/javascript">
+
+      // initialise UI
+      document.getElementById('tempoValue').innerHTML = document.getElementById('tempoSlider').value;
+      document.getElementById('TSNumerator').selectedIndex = 2;
+      document.getElementById('TSDenominator').selectedIndex = 0;
+      document.getElementById('resolution').selectedIndex = 2;
+      document.getElementById('playStop').checked = false;
+
+      // 1 -- communicate changes to the metronome through these functions
+      function setNumerator(v){
+        console.log('numerator changed to: ', v);
+        parent.metronome.setNumerator(v);
+      }
+      function setDenominator(v){
+        console.log('denominator changed to: ', v);
+        parent.metronome.setDenominator(v);
+      }
+      function setTempo(t){
+        parent.metronome.setTempo(t);
+        document.getElementById('tempoValue').innerHTML = t;
+      }
+      function setResolution(r){
+        console.log('resolution changed to: ', r);
+        parent.metronome.setResolution(r);
+      }
+      function setPlayStop(b){
+        parent.metronome.setPlayStop(b);
+        console.log('playStop changed to: ', b);
+      }
+
+      // NOT REQUIRED for the current version - events for time changes
+      parent.document.addEventListener('barEvent', function (e){
+        console.log('on iframe bar event');
+        document.getElementById('bar').innerHTML = e.barNum;
+      });
+      parent.document.addEventListener('beatEvent', function (e){
+        document.getElementById('beat').innerHTML = e.beatNum;
+      });
+      parent.document.addEventListener('sixteenthEvent', function (e){
+        document.getElementById('16th').innerHTML = e.sixteenthNum;
+      });
+
+      // subscribe to start/stop events
+      // subscribe to setup metronome messages caused by tool
+      // 2 -- subscribe to metronome messages for changing the UI of the metronome when tool changes its behaviour
+      parent.document.addEventListener('startedSoundEvent', function (e){
+        document.getElementById('playStop').checked = true;
+      });
+      parent.document.addEventListener('stoppedEvent', function (e){
+        document.getElementById('playStop').checked = false;
+      });
+    </script>
+   </body>
+</html>

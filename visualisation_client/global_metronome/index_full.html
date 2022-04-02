@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+  try {
+    if(document.domain == 'athena.imuscica.eu'){
+      console.log("[WBWB] Initial domain is: " + document.domain);
+      document.domain = 'imuscica.eu';
+      console.log("[WBWB] domain overwritten to: " + document.domain);
+      }
+      else{
+        console.log("[WBWB] domain remained: " + document.domain);  
+      }
+    }
+  catch(e) {
+    console.log("[WBWB] cannot overwrite domain.");
+  }
+</script>
+
+<!-- workbench initialises audio manager -->
+<script type="text/javascript" src="js/audioManager.js"></script>
+<!-- workbench also needs to initialise audio sources -->
+<script type="text/javascript" src="js/audioSources.js"></script>
+<!-- workbench loads metronome -->
+<script type="text/javascript" src="metronome_js/metronome.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+<div>
+  <iframe src="metronome_iFrame.html" frameborder="1" scrolling="no" height="230px" width="330px"></iframe>
+</div>
+<div>
+	<iframe src="iFrame_using_metro.html" frameborder="1" scrolling="no" height="480px" width="330px"></iframe>
+</div>
+
+</body>
+</html>

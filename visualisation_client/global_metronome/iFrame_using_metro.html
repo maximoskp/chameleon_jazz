@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <script>
+      try {
+        if(document.domain == 'athena.imuscica.eu'){
+          console.log("[Tool_Metro] Initial domain is: " + document.domain);
+          document.domain = 'imuscica.eu';
+          console.log("[Tool_Metro] domain overwritten to: " + document.domain);
+          }
+          else{
+            console.log("[Tool_Metro] domain remained: " + document.domain);  
+          }
+        }
+      catch(e) {
+        console.log("[Tool_Metro] cannot overwrite domain.");
+      }
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width user-scalable=no">
+    <title>Tool_Metro</title>
+    <!-- tool needs to initialise audio sources -->
+    <script type="text/javascript" src="js/audioSources.js"></script>
+  </head>
+  <body>
+    <span id='header'> This is a tool's iFrame using the metronome</span>
+    <span id='misc'> -------------------------------- </span>
+    <div>
+        <span id='receiving_events'> receiving timing events from the metronome:</span>
+        <div>
+          <span id='bar_span'> Bar: </span>
+          <span id='bar'> -- </span>
+        </div>
+        <div>
+          <span id='beat_span'> Beat: </span>
+          <span id='beat'> -- </span>
+        </div>
+        <div>
+          <span id='sixteenth_span'> 16th: </span>
+          <span id='sixteenth'> -- </span>
+        </div>
+        <div>
+          <span id='pulse_span'> Pulse: </span>
+          <span id='pulse'> -- </span>
+        </div>
+        <div>
+          <span id='time_span'> Time: </span>
+          <span id='time'> -- </span>
+        </div>
+        <div>
+          <span id='beatTime_span'> BeatTime: </span>
+          <span id='beatTime'> -- </span>
+        </div>
+    </div>
+    <span id='misc'> -------------------------------- </span>
+    <div>
+        <span id='receiving_events'> receiving setup events from the metronome:</span>
+        <div>
+          <span id='numerator_span'> Numerator changed to: </span>
+          <span id='numerator'> -- </span>
+          <span id='numerator_time_span'> at time: </span>
+          <span id='numerator_time'> -- </span>
+        </div>
+        <div>
+            <span id='denominator_span'> Denominator changed to: </span>
+            <span id='denominator'> -- </span>
+            <span id='denominator_time_span'> at time: </span>
+            <span id='denominator_time'> -- </span>
+        </div>
+        <div>
+            <span id='resolution_span'> Resolution changed to: </span>
+            <span id='resolution'> -- </span>
+            <span id='resolution_time_span'> at time: </span>
+            <span id='resolution_time'> -- </span>
+        </div>
+        <div>
+            <span id='metroStop_span'> Metronome stop: </span>
+            <span id='resolution'> -- </span>
+            <span id='resolution_time_span'> at time: </span>
+            <span id='resolution_time'> -- </span>
+        </div>
+    </div>
+    <span id='misc'> -------------------------------- </span>
+    <div>
+        <span id='receiving_info'> tool can take info from the metronome:</span>
+        <div>
+          <span id='startTime_span'> Start Time: </span>
+          <span id='metroStartTime'> -- </span>
+        </div>
+        <div>
+          <span id='currentTime_span'> Current tatum time: </span>
+          <span id='metroCurrentTime'> -- </span>
+        </div>
+        <div>
+          <span id='nextTime_span'> Next tatum time: </span>
+          <span id='metroNextTime'> -- </span>
+        </div>
+    </div>
+
+    <span id='misc'> -------------------------------- </span>
+    <div>
+        <span id='sending'> sending actions to the metronome:</span>
+        <div>
+            <span id='playstop_span'> Play/Stop: </span>
+            <input type="checkbox" id="playStop" onclick="setPlayStop(this.checked)">
+        </div>
+
+        <div>
+          <span id='playstopSound_span'> Play/Stop with metro sound: </span>
+          <input type="checkbox" id="playStopSound" onclick="setPlayStopSound(this.checked)">
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+      // for making sound
+      var oscObject = new OscillatorClass(parent.audioManager.audioContext, 440.0);
+      parent.audioManager.receiveAudioFromNode(oscObject.gainNode);
+      // the notes that the tool plays
+      var notes = [880.0, 880*2/3, 880*4/5];
+      var note = [];
+
+      // 1 - tool receives time-related events
+      // tool receives pulse event
+      parent.document.addEventListener('pulseEvent', function (e){
+        document.getElementById('pulse').innerHTML = e.pulseNum;
+        // play a random note
+        // oscObject.playClick(440.0, 0.0);
+        if (document.getElementById('playStop').checked ){
+          if (Math.random() > 0.6){
+            oscObject.playClick(notes[Math.floor(Math.random()*notes.length)], 0.0);
+          }
+        }
+      });
+      // tool receives continuous timing, e.g. Drawme could use it.
+      parent.document.addEventListener('timeEvent', function (e){
+        document.getElementById('time').innerHTML = e.metroTimeStamp;
+      });
+      // tool receives continuous timing in beats, counting quarters based on tempo.
+      parent.document.addEventListener('beatTimeEvent', function (e){
+        document.getElementById('beatTime').innerHTML = e.metroBeatTimeStamp;
+      });
+
+      // subscribe to metronome messages for time-related events
+      parent.document.addEventListener('barEvent', function (e){
+        console.log('on iframe bar event');
+        document.getElementById('bar').innerHTML = e.barNum;
+      });
+      parent.document.addEventListener('beatEvent', function (e){
+        document.getElementById('beat').innerHTML = e.beatNum;
+      });
+      parent.document.addEventListener('sixteenthEvent', function (e){
+        document.getElementById('sixteenth').innerHTML = e.sixteenthNum;
+      });
+
+      // 2 - tool can receive metronome setup messages
+      // subscribe to setup metronome messages - metronome sends these messages when changing parameters
+      parent.document.addEventListener('numeratorEvent', function (e){
+        document.getElementById('numerator').innerHTML = e.numerator;
+        document.getElementById('numerator_time').innerHTML = parent.metronome.audioManager.getCurrentTime();
+      });
+      parent.document.addEventListener('denominatorEvent', function (e){
+        document.getElementById('denominator').innerHTML = e.denominator;
+        document.getElementById('denominator_time').innerHTML = parent.metronome.audioManager.getCurrentTime();
+      });
+      parent.document.addEventListener('resolutionrEvent', function (e){
+        document.getElementById('resolution').innerHTML = e.resolution;
+        document.getElementById('resolution_time').innerHTML = parent.metronome.audioManager.getCurrentTime();
+      });
+
+      // printing metronome inner state
+      // the tool can directly access the inner-state variables of the metronome
+      setInterval(function(){
+        document.getElementById('metroStartTime').innerHTML = 'start time: ' + parent.metronome.startTime;
+        document.getElementById('metroCurrentTime').innerHTML = 'current time: ' + parent.metronome.currentNoteTime;
+        // Drawme could use that
+        document.getElementById('metroNextTime').innerHTML = 'next event at: ' + parent.metronome.nextNoteTime;
+      }, 10);
+
+      function setPlayStop(b){
+        parent.metronome.toolSendsPlayStop(b);
+        if (!b){
+          document.getElementById('playStopSound').checked = b;
+        }
+      }
+      // performance recording could use that
+      function setPlayStopSound(b){
+        parent.metronome.toolSendsPlayStop(b);
+        parent.metronome.setSoundOnOff(b);
+        document.getElementById('playStop').checked = b;
+      }
+    </script>
+   </body>
+</html>
