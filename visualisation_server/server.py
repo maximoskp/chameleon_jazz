@@ -6,7 +6,12 @@ import sys
 
 api = Flask(__name__)
 
-datapath = '/Users/max/repos/gjt_web/GJTWeb/executable/generated_csvs'
+# datapath = '/Users/max/repos/gjt_web/GJTWeb/executable/generated_csvs'
+
+if len(sys.argv) > 1:
+    datapath = sys.argv[1]
+else:
+    sys.exit('ERROR: no path to CSV files was given as as argument')
 
 if len(sys.argv) > 1:
     datapath = sys.argv[1]
