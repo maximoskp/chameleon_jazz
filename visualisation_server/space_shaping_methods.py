@@ -45,7 +45,7 @@ def angle_stretch(x , i1, i2):
         a1 = math.atan2( x[i1,1], x[i1,0] )
         a2 = math.atan2( x[i2,1], x[i2,0] )
         rand_mult += 0.001
-    d = np.pi/2 - a1
+    d = np.pi - a1
     # print('i1', i1)
     # print('i2', i2)
     # print('a1', a1)
