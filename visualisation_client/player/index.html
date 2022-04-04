@@ -15,15 +15,19 @@
 		<!-- <script src='WebAudioFontPlayer.js'></script> -->
 		<!-- <script src='soundfonts_js/piano.js'></script> -->
 		<script>
-			var AudioContextFunc = window.AudioContext || window.webkitAudioContext;
-			var audioContext = new AudioContextFunc();
+			// var AudioContextFunc = window.AudioContext || window.webkitAudioContext;
+			// var audioContext = new AudioContextFunc();
+			var audioContext = audioManager.audioContext;
 			var piano_player = new WebAudioFontPlayer();
             var bass_player = new WebAudioFontPlayer();
             var drums_player = new WebAudioFontPlayer();
 			piano_player.loader.decodeAfterLoading(audioContext, '0000_JCLive_sf2_file');
             bass_player.loader.decodeAfterLoading(audioContext, '0320_Aspirin_sf2_file');
             bass_player.loader.decodeAfterLoading(audioContext, '35_12_JCLive_sf2_file');
+			var playstop = false;
 			function play(){
+				playstop = !playstop;
+				metronome.toolSendsPlayStop(playstop);
 				// piano_player.queueWaveTable(audioContext, audioContext.destination
 				// 	, _tone_0000_JCLive_sf2_file, 0, 12*4+0, 2, 0.7);
                 // piano_player.queueWaveTable(audioContext, audioContext.destination
@@ -32,12 +36,13 @@
 				// 	, _tone_0000_JCLive_sf2_file, 0, 12*4+7, 2, 0.7);
                 // bass_player.queueWaveTable(audioContext, audioContext.destination
 				// 	, _tone_0320_Aspirin_sf2_file, 0, 12*2+7, 2, 0.5); // 0.5 is volume
-                var pitch = 35+Math.floor(Math.random() * 20);
-                console.log('pitch: ', pitch);
-                drums_player.queueWaveTable(audioContext, audioContext.destination
-					, _drum_35_12_JCLive_sf2_file, 0, pitch, 1, Math.random()); // 0.5 is volume
-				return false;
+                // var pitch = 35+Math.floor(Math.random() * 20);
+                // console.log('pitch: ', pitch);
+                // drums_player.queueWaveTable(audioContext, audioContext.destination
+				// 	, _drum_35_12_JCLive_sf2_file, 0, pitch, 1, Math.random()); // 0.5 is volume
+				// return false;
 			}
+			send_GJT_request( 'http://155.207.188.7:5000/songcsvcomplex?name=ALL_THE_THINGS_YOU_ARE&r=3&h=3' );
 		</script>
 	</head>
 	<body>
