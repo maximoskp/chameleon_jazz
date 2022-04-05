@@ -43,6 +43,16 @@ function play_note_for_instrument(a, tempo){
   console.log('pitch: ', a[1]);
   console.log('duration: ', a[3]*(60.0/tempo));
   console.log('volume: ', a[4]/127.0);
+  if (a[0] == 'Piano'){
+    piano_player.queueWaveTable(audioContext, audioContext.destination
+      , _tone_0000_JCLive_sf2_file, 0, a[1], a[3]*(60.0/tempo), a[4]/127.0);
+  }else if(a[0] == 'Bass'){
+    bass_player.queueWaveTable(audioContext, audioContext.destination
+      , _tone_0320_Aspirin_sf2_file, 0, a[1], a[3]*(60.0/tempo), a[4]/127.0);
+  }else{
+    drums_player.queueWaveTable(audioContext, audioContext.destination
+      , _drum_35_16_JCLive_sf2_file, 0, a[1], a[3]*(60.0/tempo), a[4]/127.0);
+  }
 }
 function show_chord(a){
   console.log('CHORD: ', a[1]);
