@@ -44,6 +44,27 @@ def rotate(origin, point, angle):
     return np.array([qx, qy])
 # end rotate
 
+def dist_point_line( p, l1, l2 ):
+    return np.abs(np.cross(l2-l1, l1-p))/np.linalg.norm(l2-l1)
+# d=np.cross(p2-p1,p3-p1)/norm(p2-p1)
+
+def color_mapping(x , i1, i2):
+    # three coordinates:
+    # c[i,0]: value of color 1, e.g., R value
+    # c[i,1]: value of color 2, e.g., B value
+    # luminosity can be obtained by (c[i,0]+c[i,1])/2
+    # colors are between 0 and 1
+    c = np.zeros( (x.shape[0] , 2) )
+    for i in range( x.shape[0] ):
+        r = max( 0, 1-(np.linalg.norm(x[i,:]-x[i1,:])/max(0.0001, np.linalg.norm(x[i1,:]-x[i2,:])) ) )
+        b = max( 0, 1-(np.linalg.norm(x[i,:]-x[i2,:])/max(0.0001, np.linalg.norm(x[i1,:]-x[i2,:])) ) )
+        l = max( 0, 1-(dist_point_line( x[i,:] , x[i1,:], x[i2,:] )/max(0.0001, np.linalg.norm(x[i1,:]-x[i2,:])) ) )
+        # print('r: ' + str(r) + ' - b: ' + str(b) + ' - l: ' + str(l))
+        c[i,0] = l*r
+        c[i,1] = l*b
+    return c
+# end color_mapping
+
 def angle_stretch(x , i1, i2):
     a1 = math.atan2( x[i1,1], x[i1,0] )
     a2 = math.atan2( x[i2,1], x[i2,0] )
@@ -68,13 +89,15 @@ def angle_stretch(x , i1, i2):
     return x
 # end angle_stretch
 
-def differential_plotting(h, i1, i2, k=None, alpha=1.0, stretch=True, plot=True):
+def differential_plotting(h, i1, i2, k=None, alpha=1.0, colors=True, stretch=True, plot=True):
     # make axis multiplier
     w = np.c_[ h[i1,:] , h[i2,:] ]
     # make reduction
     hh = h@w
     # print('hh[i1,:]', hh[i1,:])
     # print('hh[i2,:]', hh[i2,:])
+    if colors:
+        c = color_mapping(hh, i1, i2)
     if stretch:
         hh = angle_stretch( hh, i1, i2 )
     if plot:
@@ -83,7 +106,7 @@ def differential_plotting(h, i1, i2, k=None, alpha=1.0, stretch=True, plot=True)
         if k is not None:
             plt.text(hh[i1,0], hh[i1,1], str(k[i1]))
             plt.text(hh[i2,0], hh[i2,1], str(k[i2]))
-    return hh
+    return hh,c
 # end differential_plotting
 
 def nn_shaping( piece_name1, piece_name2, tonality=True, plot=False, nonnegativity=False, stretch=True ):
@@ -103,8 +126,8 @@ def nn_shaping( piece_name1, piece_name2, tonality=True, plot=False, nonnegativi
     # get piece indexes
     i1 = k.index( piece_name1 )
     i2 = k.index( piece_name2 )
-    hh = differential_plotting( h, i1, i2, k=k, alpha=1.0, stretch=True, plot=True )
-    return hh
+    hh,c = differential_plotting( h, i1, i2, k=k, alpha=1.0, colors=True, stretch=True, plot=True )
+    return hh,c
 # end nn_shaping
 
 def mnist_example_save():
@@ -123,7 +146,7 @@ def mnist_example_save():
          pickle.dump(y_mnist, handle, protocol=pickle.HIGHEST_PROTOCOL)
 # end mnist_example_save
 
-def mnist_shaping( digit1, digit2, plot=True, stretch=True ):
+def mnist_shaping( digit1, digit2, plot=True, color=True, stretch=True ):
     datapath = 'data/'
     with open(datapath + 'x_mnist.pickle', 'rb') as handle:
         x_mnist = pickle.load(handle)
@@ -136,7 +159,9 @@ def mnist_shaping( digit1, digit2, plot=True, stretch=True ):
     i1 = where1[ np.random.randint(0,where1.size) ]
     where2 = np.where( digit2 == y_mnist )[0]
     i2 = where2[ np.random.randint(0,where2.size) ]
-    hh = differential_plotting( h_mnist, i1, i2, k=y_mnist, alpha=1.0, stretch=True, plot=False )
+    hh, c2 = differential_plotting( h_mnist, i1, i2, k=y_mnist, alpha=1.0, colors=True, stretch=True, plot=False )
+    # make rgbcolor
+    c = np.insert( c2 , 1, 0, axis=1 )
     # plot
     fig = plt.figure(constrained_layout=True, figsize=(4, 6))
     gs = GridSpec(nrows=3, ncols=2, figure=fig)
@@ -149,7 +174,11 @@ def mnist_shaping( digit1, digit2, plot=True, stretch=True ):
     ax3 = fig.add_subplot(gs[2, 1])
     ax3.set_xticks([])
     ax3.set_yticks([])
-    ax1.plot( hh[:,0], hh[:,1], 'kx', alpha=0.3);ax1.plot(hh[i1,0], hh[i1,1], 'ro');ax1.plot(hh[i2,0], hh[i2,1], 'ro')
+    ax1.scatter( hh[:,0], hh[:,1], c=c, alpha=0.2)
+    ax1.scatter(hh[i1,0], hh[i1,1], marker='o', c=[[0,0,0]])
+    ax1.scatter(hh[i2,0], hh[i2,1], marker='o', c=[[0,0,0]])
+    ax1.scatter(hh[i1,0], hh[i1,1], marker='x', c=[c[i1,:]])
+    ax1.scatter(hh[i2,0], hh[i2,1], marker='x', c=[c[i2,:]])
     k = y_mnist
     ax1.text(hh[i1,0], hh[i1,1], str(k[i1]))
     ax1.text(hh[i2,0], hh[i2,1], str(k[i2]))
@@ -167,5 +196,5 @@ def mnist_shaping( digit1, digit2, plot=True, stretch=True ):
     # plt.imshow( np.reshape( x_mnist[i1,:] , (28,28) ), cmap='gray_r')
     # plt.subplot(3,2,6)
     # plt.imshow( np.reshape( x_mnist[i2,:] , (28,28) ), cmap='gray_r')
-    return hh
+    return hh, c, c2
 # end nn_shaping
