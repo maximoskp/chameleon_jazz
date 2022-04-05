@@ -97,19 +97,28 @@ def differential_plotting(h, i1, i2, k=None, alpha=1.0, colors=True, stretch=Tru
     # print('hh[i1,:]', hh[i1,:])
     # print('hh[i2,:]', hh[i2,:])
     if colors:
-        c = color_mapping(hh, i1, i2)
+        c2 = color_mapping(hh, i1, i2)
+    else:
+        c2 = np.zeros( (hh.shape[0],2) )
+    # make rgbcolor
+    c = np.insert( c2 , 1, 0, axis=1 )
     if stretch:
         hh = angle_stretch( hh, i1, i2 )
     if plot:
         plt.clf()
-        plt.plot( hh[:,0], hh[:,1], 'x' );plt.plot(hh[i1,0], hh[i1,1], 'ro');plt.plot(hh[i2,0], hh[i2,1], 'ro', alpha=alpha)
+        plt.scatter( hh[:,0], hh[:,1], c=c, alpha=0.3)
+        plt.scatter(hh[i1,0], hh[i1,1], marker='o', c=[[0,0,0]])
+        plt.scatter(hh[i2,0], hh[i2,1], marker='o', c=[[0,0,0]])
+        plt.scatter(hh[i1,0], hh[i1,1], marker='x', c=[c[i1,:]])
+        plt.scatter(hh[i2,0], hh[i2,1], marker='x', c=[c[i2,:]])
+        # plt.plot( hh[:,0], hh[:,1], 'x' );plt.plot(hh[i1,0], hh[i1,1], 'ro');plt.plot(hh[i2,0], hh[i2,1], 'ro', alpha=alpha)
         if k is not None:
             plt.text(hh[i1,0], hh[i1,1], str(k[i1]))
             plt.text(hh[i2,0], hh[i2,1], str(k[i2]))
     return hh,c
 # end differential_plotting
 
-def nn_shaping( piece_name1, piece_name2, tonality=True, plot=False, nonnegativity=False, stretch=True ):
+def nn_shaping( piece_name1, piece_name2, tonality=True, plot=False, nonnegativity=False, colors=True, stretch=True ):
     datapath = '../nntests_tonefree/data/'
     if tonality:
         datapath = '../nntests/data/'
@@ -126,7 +135,7 @@ def nn_shaping( piece_name1, piece_name2, tonality=True, plot=False, nonnegativi
     # get piece indexes
     i1 = k.index( piece_name1 )
     i2 = k.index( piece_name2 )
-    hh,c = differential_plotting( h, i1, i2, k=k, alpha=1.0, colors=True, stretch=True, plot=True )
+    hh,c = differential_plotting( h, i1, i2, k=k, alpha=1.0, colors=colors, stretch=True, plot=True )
     return hh,c
 # end nn_shaping
 
