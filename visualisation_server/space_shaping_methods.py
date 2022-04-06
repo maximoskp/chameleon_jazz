@@ -155,7 +155,7 @@ def mnist_example_save():
          pickle.dump(y_mnist, handle, protocol=pickle.HIGHEST_PROTOCOL)
 # end mnist_example_save
 
-def mnist_shaping( digit1, digit2, plot=True, color=True, stretch=True ):
+def mnist_shaping( digit1, digit2, plot=True, color=True, stretch=True, savedata=False ):
     datapath = 'data/'
     with open(datapath + 'x_mnist.pickle', 'rb') as handle:
         x_mnist = pickle.load(handle)
@@ -169,29 +169,40 @@ def mnist_shaping( digit1, digit2, plot=True, color=True, stretch=True ):
     where2 = np.where( digit2 == y_mnist )[0]
     i2 = where2[ np.random.randint(0,where2.size) ]
     hh, c = differential_plotting( h_mnist, i1, i2, k=y_mnist, alpha=1.0, colors=True, stretch=True, plot=False )
+    if savedata:
+        z_dimension = (np.linalg.norm(hh[i1,:])/2 + np.linalg.norm(hh[i2,:])/2)*np.mean(c, axis=1)
+        with open( datapath + 'hh_mnist_example.pickle', 'wb' ) as handle:
+            pickle.dump( hh, handle, protocol=pickle.HIGHEST_PROTOCOL )
+        with open( datapath + 'c_mnist_example.pickle', 'wb' ) as handle:
+            pickle.dump( c, handle, protocol=pickle.HIGHEST_PROTOCOL )
+        with open( datapath + 'z_mnist_example.pickle', 'wb' ) as handle:
+            pickle.dump( z_dimension, handle, protocol=pickle.HIGHEST_PROTOCOL )
+        with open( datapath + 'i1i2_mnist_example.pickle', 'wb' ) as handle:
+            pickle.dump( [i1,i2], handle, protocol=pickle.HIGHEST_PROTOCOL )
     # plot
-    fig = plt.figure(constrained_layout=True, figsize=(4, 6))
-    gs = GridSpec(nrows=3, ncols=2, figure=fig)
-    ax1 = fig.add_subplot(gs[:2, :])
-    ax1.set_xticks([])
-    ax1.set_yticks([])
-    ax2 = fig.add_subplot(gs[2, 0])
-    ax2.set_xticks([])
-    ax2.set_yticks([])
-    ax3 = fig.add_subplot(gs[2, 1])
-    ax3.set_xticks([])
-    ax3.set_yticks([])
-    ax1.scatter( hh[:,0], hh[:,1], c=c, alpha=0.2)
-    ax1.scatter(hh[i1,0], hh[i1,1], marker='o', c=[[0,0,0]])
-    ax1.scatter(hh[i2,0], hh[i2,1], marker='o', c=[[0,0,0]])
-    ax1.scatter(hh[i1,0], hh[i1,1], marker='x', c=[c[i1,:]])
-    ax1.scatter(hh[i2,0], hh[i2,1], marker='x', c=[c[i2,:]])
-    k = y_mnist
-    ax1.text(hh[i1,0], hh[i1,1], str(k[i1]))
-    ax1.text(hh[i2,0], hh[i2,1], str(k[i2]))
-    ax2.imshow( np.reshape( x_mnist[i1,:] , (28,28) ), cmap='gray_r')
-    ax3.imshow( np.reshape( x_mnist[i2,:] , (28,28) ), cmap='gray_r')
-    plt.show()
+    if plot:
+        fig = plt.figure(constrained_layout=True, figsize=(4, 6))
+        gs = GridSpec(nrows=3, ncols=2, figure=fig)
+        ax1 = fig.add_subplot(gs[:2, :])
+        ax1.set_xticks([])
+        ax1.set_yticks([])
+        ax2 = fig.add_subplot(gs[2, 0])
+        ax2.set_xticks([])
+        ax2.set_yticks([])
+        ax3 = fig.add_subplot(gs[2, 1])
+        ax3.set_xticks([])
+        ax3.set_yticks([])
+        ax1.scatter( hh[:,0], hh[:,1], c=c, alpha=0.2)
+        ax1.scatter(hh[i1,0], hh[i1,1], marker='o', c=[[0,0,0]])
+        ax1.scatter(hh[i2,0], hh[i2,1], marker='o', c=[[0,0,0]])
+        ax1.scatter(hh[i1,0], hh[i1,1], marker='x', c=[c[i1,:]])
+        ax1.scatter(hh[i2,0], hh[i2,1], marker='x', c=[c[i2,:]])
+        k = y_mnist
+        ax1.text(hh[i1,0], hh[i1,1], str(k[i1]))
+        ax1.text(hh[i2,0], hh[i2,1], str(k[i2]))
+        ax2.imshow( np.reshape( x_mnist[i1,:] , (28,28) ), cmap='gray_r')
+        ax3.imshow( np.reshape( x_mnist[i2,:] , (28,28) ), cmap='gray_r')
+        plt.show()
     # plt.clf()
     # plt.subplot(3,2,1)
     # plt.plot( hh[:,0], hh[:,1], 'x');plt.plot(hh[i1,0], hh[i1,1], 'ro');plt.plot(hh[i2,0], hh[i2,1], 'ro', alpha=0.5)
