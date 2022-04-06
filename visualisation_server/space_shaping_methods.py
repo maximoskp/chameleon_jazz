@@ -168,9 +168,7 @@ def mnist_shaping( digit1, digit2, plot=True, color=True, stretch=True ):
     i1 = where1[ np.random.randint(0,where1.size) ]
     where2 = np.where( digit2 == y_mnist )[0]
     i2 = where2[ np.random.randint(0,where2.size) ]
-    hh, c2 = differential_plotting( h_mnist, i1, i2, k=y_mnist, alpha=1.0, colors=True, stretch=True, plot=False )
-    # make rgbcolor
-    c = np.insert( c2 , 1, 0, axis=1 )
+    hh, c = differential_plotting( h_mnist, i1, i2, k=y_mnist, alpha=1.0, colors=True, stretch=True, plot=False )
     # plot
     fig = plt.figure(constrained_layout=True, figsize=(4, 6))
     gs = GridSpec(nrows=3, ncols=2, figure=fig)
@@ -205,5 +203,5 @@ def mnist_shaping( digit1, digit2, plot=True, color=True, stretch=True ):
     # plt.imshow( np.reshape( x_mnist[i1,:] , (28,28) ), cmap='gray_r')
     # plt.subplot(3,2,6)
     # plt.imshow( np.reshape( x_mnist[i2,:] , (28,28) ), cmap='gray_r')
-    return hh, c, c2
+    return hh, c
 # end nn_shaping
