@@ -31,11 +31,17 @@
 			var playstop = false;
 			// get names list
 			var nameslist = [];
-			send_request_get_response( location.href + 'nameslist' );
 			function apply_names_list(l){
 				nameslist = l;
 				console.log('nameslist: ', nameslist);
 			}
+			send_request_get_response( location.href + 'nameslist', apply_names_list );
+			// EXAMPLES
+			function trans_visualisation( response ){
+				console.log('response: ', response);
+				// TODO: plot hh, z and c - check response in the console
+			}
+			send_request_get_response( location.href + 'visualizenn?name1=ALL_OF_ME&name2=GIANT_STEPS', trans_visualisation );
 			function play(){
 				send_GJT_play_request( location.href + 'songcsvcomplex?name=CHEESE_CAKE&r=3&h=3' );
 				// playstop = !playstop;

@@ -77,6 +77,7 @@ def angle_stretch(x , i1, i2):
         a1 = math.atan2( x[i1,1], x[i1,0] )
         a2 = math.atan2( x[i2,1], x[i2,0] )
         rand_mult += 0.001
+        # print('rand_mult: ', rand_mult)
     d = np.pi - a1
     # print('i1', i1)
     # print('i2', i2)
@@ -118,7 +119,7 @@ def differential_plotting(h, i1, i2, k=None, alpha=1.0, colors=True, stretch=Tru
     return hh,c
 # end differential_plotting
 
-def nn_shaping( piece_name1, piece_name2, tonality=True, plot=False, nonnegativity=False, colors=True, stretch=True ):
+def nn_shaping( piece_name1, piece_name2, tonality=False, plot=False, nonnegativity=False, colors=True, stretch=True ):
     datapath = '../nntests_tonefree/data/'
     if tonality:
         datapath = '../nntests/data/'
@@ -141,12 +142,12 @@ def nn_shaping( piece_name1, piece_name2, tonality=True, plot=False, nonnegativi
 # end nn_shaping
 
 def distr_shaping( piece_name1, piece_name2, tonality=True, plot=False, nonnegativity=False, colors=True, stretch=True ):
-    datapath = '../data/'
+    datapath = 'data/'
     # if tonality:
     #     datapath = '../nntests/data/'
     with open(datapath + 'h_distr.pickle', 'rb') as handle:
         states_data = pickle.load(handle)
-    with open(datapath + 'chart_names.pickle', 'rb') as handle:
+    with open(datapath + 'chart_keys.pickle', 'rb') as handle:
         metadata = pickle.load(handle)
     # get states combined
     h = states_data
@@ -161,6 +162,52 @@ def distr_shaping( piece_name1, piece_name2, tonality=True, plot=False, nonnegat
     z_dimension = (np.linalg.norm(hh[i1,:])/2 + np.linalg.norm(hh[i2,:])/2)*np.mean(c, axis=1)
     return hh,c, z_dimension
 # end distr_shaping
+
+def trans_shaping( piece_name1, piece_name2, tonality=True, plot=False, nonnegativity=False, colors=True, stretch=True ):
+    datapath = 'data/'
+    # if tonality:
+    #     datapath = '../nntests/data/'
+    with open(datapath + 'h_trans.pickle', 'rb') as handle:
+        states_data = pickle.load(handle)
+    with open(datapath + 'chart_keys.pickle', 'rb') as handle:
+        metadata = pickle.load(handle)
+    # get states combined
+    h = states_data
+    if nonnegativity:
+        h -= np.min(h)
+    # get piece name keys
+    k = metadata
+    # get piece indexes
+    i1 = k.index( piece_name1 )
+    i2 = k.index( piece_name2 )
+    hh,c = differential_plotting( h, i1, i2, k=k, alpha=1.0, colors=colors, stretch=stretch, plot=plot )
+    z_dimension = (np.linalg.norm(hh[i1,:])/2 + np.linalg.norm(hh[i2,:])/2)*np.mean(c, axis=1)
+    return hh,c, z_dimension
+# end distr_shaping
+
+def distrans_shaping( piece_name1, piece_name2, tonality=True, plot=False, nonnegativity=False, colors=True, stretch=True ):
+    datapath = 'data/'
+    # if tonality:
+    #     datapath = '../nntests/data/'
+    with open(datapath + 'h_distr.pickle', 'rb') as handle:
+        h_distr = pickle.load(handle)
+    with open(datapath + 'h_trans.pickle', 'rb') as handle:
+        h_trans = pickle.load(handle)
+    with open(datapath + 'chart_keys.pickle', 'rb') as handle:
+        metadata = pickle.load(handle)
+    # get states combined
+    h = h = np.c_[ h_distr , h_trans ]
+    if nonnegativity:
+        h -= np.min(h)
+    # get piece name keys
+    k = metadata
+    # get piece indexes
+    i1 = k.index( piece_name1 )
+    i2 = k.index( piece_name2 )
+    hh,c = differential_plotting( h, i1, i2, k=k, alpha=1.0, colors=colors, stretch=stretch, plot=plot )
+    z_dimension = (np.linalg.norm(hh[i1,:])/2 + np.linalg.norm(hh[i2,:])/2)*np.mean(c, axis=1)
+    return hh,c, z_dimension
+# end distrans_shaping
 
 def mnist_example_save():
     mnist = keras.datasets.mnist
@@ -238,4 +285,4 @@ def mnist_shaping( digit1, digit2, plot=True, colors=True, stretch=True, savedat
     # plt.subplot(3,2,6)
     # plt.imshow( np.reshape( x_mnist[i2,:] , (28,28) ), cmap='gray_r')
     return hh, c, z_dimension
-# end nn_shaping
+# end mnist_shaping

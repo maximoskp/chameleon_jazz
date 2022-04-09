@@ -137,6 +137,107 @@ def get_songcsvcomplex():
     return json.dumps(resp)
 # end get_songcsv
 
+# for visualisation
+
+@api.route('/visualizenn', methods=['GET'])
+def get_visualizenn():
+    # example run: http://localhost:5000/visualizenn?name1="NAME_WITH_UNDERSCORES"&name2="NAME_WITH_UNDERSCORES"
+    # keywords should be:
+    # 'index': NUMBER
+    # 'name': NAME
+    args = request.args
+    argkeys = args.keys()
+    resp = {}
+    print('args: ', args)
+    name1 = None
+    name2 = None
+    for k in argkeys:
+        if k == 'name1':
+            name1 = args[k].replace('_', ' ')
+        if k == 'name2':
+            name2 = args[k].replace('_', ' ')
+    if name1 is not None and name2 is not None:
+        hh, c, z = ssm.nn_shaping( name1, name2  )
+        resp = {
+            'hh': hh.tolist(),
+            'c': c.tolist(),
+            'z': z.tolist(),
+            'info':{
+                'hh': 'x and y coordinates',
+                'c': 'R and B color values - G is a zero column',
+                'z': 'z coordinate'
+            }
+        }
+    print('resp: ', resp)
+    return json.dumps(resp)
+# end get_visualizenn
+
+@api.route('/visualizedistr', methods=['GET'])
+def get_visualizedistr():
+    # example run: http://localhost:5000/visualizedistr?name1="NAME_WITH_UNDERSCORES"&name2="NAME_WITH_UNDERSCORES"
+    # keywords should be:
+    # 'index': NUMBER
+    # 'name': NAME
+    args = request.args
+    argkeys = args.keys()
+    resp = {}
+    print('args: ', args)
+    name1 = None
+    name2 = None
+    for k in argkeys:
+        if k == 'name1':
+            name1 = args[k].replace('_', ' ')
+        if k == 'name2':
+            name2 = args[k].replace('_', ' ')
+    if name1 is not None and name2 is not None:
+        hh, c, z = ssm.distr_shaping( name1, name2  )
+        resp = {
+            'hh': hh.tolist(),
+            'c': c.tolist(),
+            'z': z.tolist(),
+            'info':{
+                'hh': 'x and y coordinates',
+                'c': 'R and B color values - G is a zero column',
+                'z': 'z coordinate'
+            }
+        }
+    # print(resp)
+    return json.dumps(resp)
+# end get_visualizedistr
+
+@api.route('/visualizetrans', methods=['GET'])
+def get_visualizetrans():
+    # example run: http://localhost:5000/visualizetrans?name1="NAME_WITH_UNDERSCORES"&name2="NAME_WITH_UNDERSCORES"
+    # keywords should be:
+    # 'index': NUMBER
+    # 'name': NAME
+    args = request.args
+    argkeys = args.keys()
+    resp = {}
+    print('args: ', args)
+    name1 = None
+    name2 = None
+    for k in argkeys:
+        if k == 'name1':
+            name1 = args[k].replace('_', ' ')
+        if k == 'name2':
+            name2 = args[k].replace('_', ' ')
+    if name1 is not None and name2 is not None:
+        hh, c, z = ssm.trans_shaping( name1, name2  )
+        resp = {
+            'hh': hh.tolist(),
+            'c': c.tolist(),
+            'z': z.tolist(),
+            'info':{
+                'hh': 'x and y coordinates',
+                'c': 'R and B color values - G is a zero column',
+                'z': 'z coordinate'
+            }
+        }
+    # print(resp)
+    return json.dumps(resp)
+# end get_visualizetrans
+
 # # for tackling CORS etc
 # FRONTEND_HOST = "http://155.207.188.7:1234"
 # @api.after_request
