@@ -355,6 +355,7 @@ class Chart(ChameleonContext):
         # meta data
         self.unfolded_string = struct_in['unfolded_string']
         self.piece_name = struct_in['appearing_name']
+        self.key = struct_in['original_key']
         self.tonality = self.tonality_from_symbol( struct_in['tonality'] )
         self.make_sections()
         self.make_stats()        

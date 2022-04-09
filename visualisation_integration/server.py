@@ -3,6 +3,7 @@ import json
 import os
 import csv
 import sys
+import space_shaping_methods as ssm
 
 api = Flask(__name__)
 
@@ -18,6 +19,10 @@ if len(sys.argv) > 1:
     print('datapath: ', datapath)
 
 fileslist = os.listdir( datapath )
+nameslist = []
+for f in fileslist:
+    if f.split('_r~')[0] not in nameslist:
+        nameslist.append( f.split('_r~')[0] )
 
 # print('fileslist: ', fileslist)
 
@@ -62,6 +67,12 @@ def get_songslist():
     # example run: http://localhost:5000/songslist
     return json.dumps(fileslist)
 # end songslist
+
+@api.route('/nameslist', methods=['GET'])
+def get_nameslist():
+    # example run: http://localhost:5000/nameslist
+    return json.dumps(nameslist)
+# end nameslist
 
 @api.route('/songcsv', methods=['GET'])
 def get_songcsv():

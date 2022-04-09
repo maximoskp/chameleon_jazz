@@ -25,6 +25,7 @@ section_names = []
 section_features = []
 
 chart_names = []
+chart_keys = []
 chart_features = []
 
 chart_features_chords_distribution = []
@@ -33,16 +34,17 @@ chart_features_chords_transition_matrix_all = []
 for i_struct,struct in enumerate(all_structs):
     print('processing (' + str(i_struct) + '/' + str(len(all_structs))  + '): ' + struct.piece_name)
     chart_names.append(struct.piece_name)
+    chart_keys.append(struct.key)
     chart_features.append(struct.get_features())
     
 for i_struct,struct in enumerate(all_structs):
     print('processing (' + str(i_struct) + '/' + str(len(all_structs))  + '): ' + struct.piece_name)
-    chart_names.append(struct.piece_name)
+    # chart_names.append(struct.piece_name)
     chart_features_chords_distribution.append(struct.get_features(chords_transition_matrix_all=False))
     
 for i_struct,struct in enumerate(all_structs):
     print('processing (' + str(i_struct) + '/' + str(len(all_structs))  + '): ' + struct.piece_name)
-    chart_names.append(struct.piece_name)
+    # chart_names.append(struct.piece_name)
     chart_features_chords_transition_matrix_all.append(struct.get_features(chords_distribution_all=False))
 
 for i_struct,struct in enumerate(all_structs):

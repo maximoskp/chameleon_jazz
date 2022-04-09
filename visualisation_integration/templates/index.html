@@ -29,8 +29,15 @@
             bass_player.loader.decodeAfterLoading(audioContext, '0320_Aspirin_sf2_file');
             // drums_player.loader.decodeAfterLoading(audioContext, '35_16_JCLive_sf2_file');
 			var playstop = false;
+			// get names list
+			var nameslist = [];
+			send_request_get_response( location.href + 'nameslist' );
+			function apply_names_list(l){
+				nameslist = l;
+				console.log('nameslist: ', nameslist);
+			}
 			function play(){
-				send_GJT_request( location.href + 'songcsvcomplex?name=CHEESE_CAKE&r=3&h=3' );
+				send_GJT_play_request( location.href + 'songcsvcomplex?name=CHEESE_CAKE&r=3&h=3' );
 				// playstop = !playstop;
 				// metronome.toolSendsPlayStop(playstop);
 				// piano_player.queueWaveTable(audioContext, audioContext.destination

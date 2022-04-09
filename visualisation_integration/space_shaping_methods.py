@@ -135,9 +135,32 @@ def nn_shaping( piece_name1, piece_name2, tonality=True, plot=False, nonnegativi
     # get piece indexes
     i1 = k.index( piece_name1 )
     i2 = k.index( piece_name2 )
-    hh,c = differential_plotting( h, i1, i2, k=k, alpha=1.0, colors=colors, stretch=True, plot=True )
-    return hh,c
+    hh,c = differential_plotting( h, i1, i2, k=k, alpha=1.0, colors=colors, stretch=stretch, plot=plot )
+    z_dimension = (np.linalg.norm(hh[i1,:])/2 + np.linalg.norm(hh[i2,:])/2)*np.mean(c, axis=1)
+    return hh,c, z_dimension
 # end nn_shaping
+
+def distr_shaping( piece_name1, piece_name2, tonality=True, plot=False, nonnegativity=False, colors=True, stretch=True ):
+    datapath = '../data/'
+    # if tonality:
+    #     datapath = '../nntests/data/'
+    with open(datapath + 'h_distr.pickle', 'rb') as handle:
+        states_data = pickle.load(handle)
+    with open(datapath + 'chart_names.pickle', 'rb') as handle:
+        metadata = pickle.load(handle)
+    # get states combined
+    h = states_data
+    if nonnegativity:
+        h -= np.min(h)
+    # get piece name keys
+    k = metadata
+    # get piece indexes
+    i1 = k.index( piece_name1 )
+    i2 = k.index( piece_name2 )
+    hh,c = differential_plotting( h, i1, i2, k=k, alpha=1.0, colors=colors, stretch=stretch, plot=plot )
+    z_dimension = (np.linalg.norm(hh[i1,:])/2 + np.linalg.norm(hh[i2,:])/2)*np.mean(c, axis=1)
+    return hh,c, z_dimension
+# end distr_shaping
 
 def mnist_example_save():
     mnist = keras.datasets.mnist
@@ -155,7 +178,7 @@ def mnist_example_save():
          pickle.dump(y_mnist, handle, protocol=pickle.HIGHEST_PROTOCOL)
 # end mnist_example_save
 
-def mnist_shaping( digit1, digit2, plot=True, color=True, stretch=True, savedata=False ):
+def mnist_shaping( digit1, digit2, plot=True, colors=True, stretch=True, savedata=False ):
     datapath = 'data/'
     with open(datapath + 'x_mnist.pickle', 'rb') as handle:
         x_mnist = pickle.load(handle)
@@ -168,9 +191,9 @@ def mnist_shaping( digit1, digit2, plot=True, color=True, stretch=True, savedata
     i1 = where1[ np.random.randint(0,where1.size) ]
     where2 = np.where( digit2 == y_mnist )[0]
     i2 = where2[ np.random.randint(0,where2.size) ]
-    hh, c = differential_plotting( h_mnist, i1, i2, k=y_mnist, alpha=1.0, colors=True, stretch=True, plot=False )
+    hh, c = differential_plotting( h_mnist, i1, i2, k=y_mnist, alpha=1.0, colors=colors, stretch=stretch, plot=False )
+    z_dimension = (np.linalg.norm(hh[i1,:])/2 + np.linalg.norm(hh[i2,:])/2)*np.mean(c, axis=1)
     if savedata:
-        z_dimension = (np.linalg.norm(hh[i1,:])/2 + np.linalg.norm(hh[i2,:])/2)*np.mean(c, axis=1)
         with open( datapath + 'hh_mnist_example.pickle', 'wb' ) as handle:
             pickle.dump( hh, handle, protocol=pickle.HIGHEST_PROTOCOL )
         with open( datapath + 'c_mnist_example.pickle', 'wb' ) as handle:
@@ -214,5 +237,5 @@ def mnist_shaping( digit1, digit2, plot=True, color=True, stretch=True, savedata
     # plt.imshow( np.reshape( x_mnist[i1,:] , (28,28) ), cmap='gray_r')
     # plt.subplot(3,2,6)
     # plt.imshow( np.reshape( x_mnist[i2,:] , (28,28) ), cmap='gray_r')
-    return hh, c
+    return hh, c, z_dimension
 # end nn_shaping

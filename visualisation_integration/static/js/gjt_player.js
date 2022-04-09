@@ -48,7 +48,7 @@ function get_chords_from_array( a ){
   }
 }
 
-function send_GJT_request(url){
+function send_GJT_play_request(url){
   Http.open("GET", url);
   Http.send();
 
