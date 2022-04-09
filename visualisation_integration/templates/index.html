@@ -15,6 +15,8 @@
 		<!-- <script src='WebAudioFontPlayer.js'></script> -->
 		<!-- <script src='soundfonts_js/piano.js'></script> -->
 		<script>
+			// get address argument to check if it needs to run on local host
+			console.log( location.href );
 			// var AudioContextFunc = window.AudioContext || window.webkitAudioContext;
 			// var audioContext = new AudioContextFunc();
 			var audioContext = audioManager.audioContext;
@@ -28,7 +30,7 @@
             // drums_player.loader.decodeAfterLoading(audioContext, '35_16_JCLive_sf2_file');
 			var playstop = false;
 			function play(){
-				send_GJT_request( 'http://localhost:5000/songcsvcomplex?name=CHEESE_CAKE&r=3&h=3' );
+				send_GJT_request( location.href + 'songcsvcomplex?name=CHEESE_CAKE&r=3&h=3' );
 				// playstop = !playstop;
 				// metronome.toolSendsPlayStop(playstop);
 				// piano_player.queueWaveTable(audioContext, audioContext.destination
