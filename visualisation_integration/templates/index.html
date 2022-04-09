@@ -1,0 +1,66 @@
+<html>
+	<head>
+        <script src='https://surikov.github.io/webaudiofont/npm/dist/WebAudioFontPlayer.js'></script>
+		<script src='https://surikov.github.io/webaudiofontdata/sound/0000_JCLive_sf2_file.js'></script>
+        <script src='https://surikov.github.io/webaudiofontdata/sound/0320_Aspirin_sf2_file.js'></script>
+        <!-- <script src='https://surikov.github.io/webaudiofontdata/sound/12835_16_JCLive_sf2_file.js'></script> -->
+        <script type="text/javascript" src="static/js/gjt_player.js"></script>
+        <!-- workbench initialises audio manager -->
+        <script type="text/javascript" src="static/js/audioManager.js"></script>
+        <!-- workbench also needs to initialise audio sources -->
+        <script type="text/javascript" src="static/js/audioSources.js"></script>
+        <!-- workbench loads metronome -->
+        <script type="text/javascript" src="static/metronome_js/metronome.js"></script>
+        <script type="text/javascript" src="static/js/main.js"></script>
+		<!-- <script src='WebAudioFontPlayer.js'></script> -->
+		<!-- <script src='soundfonts_js/piano.js'></script> -->
+		<script>
+			// var AudioContextFunc = window.AudioContext || window.webkitAudioContext;
+			// var audioContext = new AudioContextFunc();
+			var audioContext = audioManager.audioContext;
+			var piano_player = new WebAudioFontPlayer();
+            var bass_player = new WebAudioFontPlayer();
+            var drums_player = new WebAudioFontPlayer();
+			console.log('load_all_drums 1');
+			load_all_drums();
+			piano_player.loader.decodeAfterLoading(audioContext, '0000_JCLive_sf2_file');
+            bass_player.loader.decodeAfterLoading(audioContext, '0320_Aspirin_sf2_file');
+            // drums_player.loader.decodeAfterLoading(audioContext, '35_16_JCLive_sf2_file');
+			var playstop = false;
+			function play(){
+				send_GJT_request( 'http://localhost:5000/songcsvcomplex?name=CHEESE_CAKE&r=3&h=3' );
+				// playstop = !playstop;
+				// metronome.toolSendsPlayStop(playstop);
+				// piano_player.queueWaveTable(audioContext, audioContext.destination
+				// 	, _tone_0000_JCLive_sf2_file, 0, 12*4+0, 2, 0.7);
+                // piano_player.queueWaveTable(audioContext, audioContext.destination
+				// 	, _tone_0000_JCLive_sf2_file, 0, 12*4+4, 2, 0.7);
+                // piano_player.queueWaveTable(audioContext, audioContext.destination
+				// 	, _tone_0000_JCLive_sf2_file, 0, 12*4+7, 2, 0.7);
+                // bass_player.queueWaveTable(audioContext, audioContext.destination
+				// 	, _tone_0320_Aspirin_sf2_file, 0, 12*2+7, 2, 0.5); // 0.5 is volume
+                // var pitch = 35+Math.floor(Math.random() * 20);
+                // console.log('pitch: ', pitch);
+                // drums_player.queueWaveTable(audioContext, audioContext.destination
+				// 	, _drum_35_12_JCLive_sf2_file, 0, pitch, 1, Math.random()); // 0.5 is volume
+				// return false;
+			}
+			// send_GJT_request( 'http://155.207.188.7:5000/songcsvcomplex?name=ALL_THE_THINGS_YOU_ARE&r=3&h=3' );
+			// send_GJT_request( 'http://155.207.188.7:5000/songcsvcomplex?name=GIANT_STEPS&r=3&h=3' );
+			// send_GJT_request( 'http://155.207.188.7:5000/songcsvcomplex?name=CHEESE_CAKE&r=3&h=3' );
+		</script>
+	</head>
+	<body>
+		<p><a href='javascript:play();'>Play - Stop</a></p>
+		<div>
+			<span id='chord_span'> Chord: </span>
+			<span id='chord'> -- </span>
+			<span id='chord1_span'>  |  </span>
+			<span id='chord1'> -- </span>
+			<span id='chord2_span'>  |  </span>
+			<span id='chord2'> -- </span>
+			<span id='chord3_span'>  |  </span>
+			<span id='chord3'> -- </span>
+		</div>
+	</body>
+</html>
