@@ -52,7 +52,7 @@ def NMF_preprocessing(x, d):
     return W
 # end NMF_preprocessing
 
-h_trans = NMF_preprocessing(transitions_dense, 100)
+h_trans = NMF_preprocessing(transitions_dense, 10)
 
 # %% save
 

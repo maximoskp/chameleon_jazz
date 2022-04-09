@@ -65,6 +65,9 @@ with open('../data/section_features.pickle', 'wb') as handle:
 with open('../data/chart_names.pickle', 'wb') as handle:
     pickle.dump(chart_names, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
+with open('../data/chart_keys.pickle', 'wb') as handle:
+    pickle.dump(chart_keys, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
 with open('../data/chart_features.pickle', 'wb') as handle:
     pickle.dump(chart_features, handle, protocol=pickle.HIGHEST_PROTOCOL)
     
