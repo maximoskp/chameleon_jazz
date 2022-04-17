@@ -31,7 +31,9 @@ c_final_np = states_data['c_final_np'][:,0,:]
 # plt.imshow( h_final_np )
 # plt.imshow( c_final_np )
 
-X_embedded = TSNE(n_components=2, learning_rate='auto', init='pca', verbose=2, n_iter=3000).fit_transform(c_final_np)
+# X_embedded = TSNE(n_components=2, learning_rate='auto', init='pca', verbose=2, n_iter=3000).fit_transform(c_final_np)
+overall_states = np.c_[ np.squeeze( states_data['h_final_np'] ) , np.squeeze( states_data['h_final_np'] ) ]
+X_embedded = TSNE(n_components=2, init='pca', verbose=2, n_iter=3000).fit_transform(overall_states)
 
 with open('data/' + os.sep + 'X_embedded.pickle', 'wb') as handle:
     pickle.dump(X_embedded, handle, protocol=pickle.HIGHEST_PROTOCOL)
@@ -39,6 +41,11 @@ with open('data/' + os.sep + 'X_embedded.pickle', 'wb') as handle:
 plt.clf()
 plt.scatter( X_embedded[:,0], X_embedded[:,1], alpha=0.5, s=3 )
 plt.savefig( 'data/tsne0.png', dpi=500 )
+
+# also save 3D TSNE
+lstm_tsne_3D_tonalities = TSNE(n_components=3, init='pca', verbose=2, n_iter=3000).fit_transform(overall_states)
+with open('data/' + os.sep + 'lstm_tsne_3D_tonalities.pickle', 'wb') as handle:
+    pickle.dump(lstm_tsne_3D_tonalities, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 # %% interactive hovering
 
