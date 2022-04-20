@@ -47,6 +47,30 @@ lstm_tsne_3D_tonalities = TSNE(n_components=3, init='pca', verbose=2, n_iter=300
 with open('data/' + os.sep + 'lstm_tsne_3D_tonalities.pickle', 'wb') as handle:
     pickle.dump(lstm_tsne_3D_tonalities, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
+# %% clustering
+
+from sklearn.cluster import KMeans
+
+with open('data/lstm_tsne_3D_tonalities.pickle', 'rb') as handle:
+    lstm_tsne_3D_tonalities = pickle.load(handle)
+
+clusters_info = {}
+
+for n_clusters in range(2,20,1):
+    print('running for number of clusters: ', n_clusters)
+    kmeans = KMeans(n_clusters=n_clusters, random_state=0).fit(lstm_tsne_3D_tonalities)
+    clusters_info[n_clusters] = {
+        'id_per_point': list( kmeans.labels_ ),
+        'centroids': {}
+    }
+    centroids = kmeans.cluster_centers_
+    for i in range( n_clusters ):
+        clusters_info[n_clusters]['centroids'][i] = list(list(centroids)[i])
+
+with open('data/' + os.sep + 'clusters_lstm_3D_tonalities.pickle', 'wb') as handle:
+    pickle.dump(clusters_info, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+
 # %% interactive hovering
 
 # fig,ax = plt.subplots()

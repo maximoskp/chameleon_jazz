@@ -4,10 +4,24 @@ import os
 import csv
 import sys
 import space_shaping_methods as ssm
+import sys
+if sys.version_info >= (3,8):
+    import pickle
+else:
+    import pickle5 as pickle
 
 api = Flask(__name__)
 
 # datapath = '/Users/max/repos/gjt_web/GJTWeb/executable/generated_csvs'
+
+
+with open('data/chart_keys.pickle', 'rb') as handle:
+    chart_keys = pickle.load(handle)
+
+nameslist = []
+for ck in chart_keys:
+    nameslist.append( ck.replace(' ', '_') )
+
 
 if len(sys.argv) > 1:
     datapath = sys.argv[1]
@@ -18,11 +32,12 @@ if len(sys.argv) > 1:
     datapath = sys.argv[1]
     print('datapath: ', datapath)
 
+
 fileslist = os.listdir( datapath )
-nameslist = []
-for f in fileslist:
-    if f.split('_r~')[0] not in nameslist:
-        nameslist.append( f.split('_r~')[0] )
+# nameslist = []
+# for f in fileslist:
+#     if f.split('_r~')[0] not in nameslist:
+#         nameslist.append( f.split('_r~')[0] )
 
 # print('fileslist: ', fileslist)
 

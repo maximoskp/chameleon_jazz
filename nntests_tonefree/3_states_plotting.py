@@ -46,10 +46,33 @@ plt.scatter( X_embedded[:,0], X_embedded[:,1], alpha=0.5, s=3 )
 plt.savefig( 'data/tsne0.png', dpi=500 )
 
 # also save 3D TSNE
-lstm_tsne_3D_tonalities = TSNE(n_components=3, init='pca', verbose=2, n_iter=3000).fit_transform(overall_states)
+lstm_tsne_3D_neutral = TSNE(n_components=3, init='pca', verbose=2, n_iter=3000).fit_transform(overall_states)
 with open('data/' + os.sep + 'lstm_tsne_3D_neutral.pickle', 'wb') as handle:
-    pickle.dump(lstm_tsne_3D_tonalities, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    pickle.dump(lstm_tsne_3D_neutral, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
+
+# %% clustering
+
+from sklearn.cluster import KMeans
+
+with open('data/lstm_tsne_3D_neutral.pickle', 'rb') as handle:
+    lstm_tsne_3D_neutral = pickle.load(handle)
+
+clusters_info = {}
+
+for n_clusters in range(2,20,1):
+    print('running for number of clusters: ', n_clusters)
+    kmeans = KMeans(n_clusters=n_clusters, random_state=0).fit(lstm_tsne_3D_neutral)
+    clusters_info[n_clusters] = {
+        'id_per_point': list( kmeans.labels_ ),
+        'centroids': {}
+    }
+    centroids = kmeans.cluster_centers_
+    for i in range( n_clusters ):
+        clusters_info[n_clusters]['centroids'][i] = list(list(centroids)[i])
+
+with open('data/' + os.sep + 'clusters_lstm_3D_neutral.pickle', 'wb') as handle:
+    pickle.dump(clusters_info, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 # %% 
 
