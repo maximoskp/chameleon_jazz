@@ -63,13 +63,20 @@ clusters_info = {}
 for n_clusters in range(2,20,1):
     print('running for number of clusters: ', n_clusters)
     kmeans = KMeans(n_clusters=n_clusters, random_state=0).fit(lstm_tsne_3D_neutral)
-    clusters_info[n_clusters] = {
-        'id_per_point': list( kmeans.labels_ ),
+    clusters_info[str(n_clusters)] = {
+        'id_per_point': repr(list( kmeans.labels_ )),
         'centroids': {}
     }
     centroids = kmeans.cluster_centers_
+    # min and max for normalization
+    val_min = np.min( centroids, axis=0 )
+    val_max = np.max( centroids, axis=0 )
+    diff_max_min = val_max - val_min
+    x = np.add( centroids, -val_min )
+    d = 1/diff_max_min
+    c = np.floor(np.multiply( x, d )*255).astype(int)
     for i in range( n_clusters ):
-        clusters_info[n_clusters]['centroids'][i] = list(list(centroids)[i])
+        clusters_info[str(n_clusters)]['centroids'][str(i)] = repr(list(list(c)[i]))
 
 with open('data/' + os.sep + 'clusters_lstm_3D_neutral.pickle', 'wb') as handle:
     pickle.dump(clusters_info, handle, protocol=pickle.HIGHEST_PROTOCOL)
