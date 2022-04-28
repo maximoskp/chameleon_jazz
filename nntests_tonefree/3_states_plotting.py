@@ -74,7 +74,7 @@ for n_clusters in range(2,20,1):
     diff_max_min = val_max - val_min
     x = np.add( centroids, -val_min )
     d = 1/diff_max_min
-    c = np.floor(np.multiply( x, d )*255).astype(int)
+    c = np.floor( np.power( np.multiply( x, d ) , 5 )*255).astype(int)
     for i in range( n_clusters ):
         clusters_info[str(n_clusters)]['centroids'][str(i)] = repr(list(list(c)[i]))
 
