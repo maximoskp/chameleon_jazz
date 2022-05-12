@@ -118,6 +118,7 @@ class Chord(ChameleonContext):
         self.chord_symbol = at_split[0]
         comma_split = at_split[1].split(',')
         self.onset_in_measure = float(comma_split[0])
+        self.onset_in_chart = None # TODO: __GIANNOS__ assign in chart
         # symbolic root
         root_idx = 1
         if len(self.chord_symbol) > 1 and self.chord_symbol[1] in self.accidental_symbols:
@@ -142,11 +143,8 @@ class Chord(ChameleonContext):
         self.pcp = np.zeros(12).astype(np.float32)
         self.pcp[ np.mod(self.numeric_root + self.numeric_type , 12) ] = 1
         ## self.gct = ng.GCT_sum_all_from_root(numeric_type)[0]
-        # TODO:
-        #print(self.onset_in_measure) 
-         
-        # get position in section
-        # get position in piece            
+        # TODO: __GIANNOS__ set default underlying melody distribution (rPCPs grounded on piece tonality)
+        self.melody_information = None # TODO: assign default or Chord class here          
         s = list(combinations(self.numeric_type, 2))
         # __@GIANNOS__ only ascending intervals are generated, is it correct?
         # e.g. only (0,4)->4-0=4 is generated, not (4,0)->0-4=8
@@ -194,8 +192,6 @@ class Measure:
     def __init__(self, measure_in):
         self.time_signature = measure_in.split(',')[0]
         self.make_chords( measure_in )
-        #self.chord_potisions(measure_in)
-        # self.measure_potisions()
         # TODO:
         # get position in section
         # get position in chart
@@ -216,10 +212,6 @@ class Measure:
             #print(c)
             self.chords.append( Chord( c ) )
     # end make_chords        
-    
-    #def chord_potisions(self, measure_in):
-        #print(measure_in)
-        
     
     # def update_chord_positions(self):
     #     # print('TODO: update position_in_piece for chords')
@@ -360,8 +352,8 @@ class Chart(ChameleonContext):
         self.make_sections()
         self.make_stats()        
         # do we need to keep:
-        # chords?
-        # tonalities (estimated) per section?
+        # chords with their time in chart (if we happen to need harmonic rhythm)
+        self.make_chords()
     # end __init__
     
     def make_sections(self):
@@ -421,16 +413,17 @@ class Chart(ChameleonContext):
             t.t0[i,j] = v / rowsum[i]  
         self.chords_transition_matrix_all = t.t0
         #print(self.sections[0].chords[5].chord_symbol)
-        
-        #gather chord potision in chart
-        self.chord_potision_in_chart = []
+    # end make_stats
+
+    def make_chords(self):
+        # TODO: __GIANNOS__ add .onset_in_chart information for chords
+        # gather all chords in one array
+        self.chords = []
         for s in range(0, len(self.sections), 1):    
             # print(s)
             for i in range(0, len(self.sections[s].chords), 1):  
-                #if i==len(self.sections[s].chords)
-                self.chord_potision_in_chart.append(self.sections[s].chords[i].chord_symbol)
-        # print(self.chord_potision_in_chart[5])
-    # end make_stats
+                self.chords.append(self.sections[s].chords[i])
+    # end make_chords
 
     def get_features(self, chords_distribution_all=True, chords_transition_matrix_all=True):
         f = np.array([])
@@ -442,3 +435,22 @@ class Chart(ChameleonContext):
         return sparse.csr_matrix(f)  
     # end get_features
 # end Chart
+
+# __GIANNOS__ fill out the following class
+class GlobalHMM(ChameleonContext):
+    def __init__(self):
+        # dictionary with keys: chord symbol, values: melody rPCP
+        self.melody_per_chord = {}
+        # make matrix from melody_per_chord dictionary
+        # rows: 840, columns: 12
+        # make sure rows are in the correct order, according to
+        # self.get_all_chord_states() , inhereted from ChameleonContext
+        self.observation_matrix = None
+        # weighted average for transitions matrices per chart - speak with Velenis
+        self.transition_matrix = None
+    # end init
+
+    def add_melody_per_chord_information(self, chord, melody):
+        # __GIANNOS__ 
+        pass
+# end GlobalHMM
