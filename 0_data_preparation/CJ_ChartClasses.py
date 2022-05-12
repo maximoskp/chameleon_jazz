@@ -146,7 +146,7 @@ class Chord(ChameleonContext):
         # TODO: __GIANNOS__ set default underlying melody distribution (rPCPs grounded on piece tonality)
         self.melody_information = None # TODO: assign default or Chord class here          
         s = list(combinations(self.numeric_type, 2))
-        # __@GIANNOS__ only ascending intervals are generated, is it correct?
+        # __@GIANNOS__ OLD only ascending intervals are generated, is it correct?
         # e.g. only (0,4)->4-0=4 is generated, not (4,0)->0-4=8
         self.interval_vector = np.zeros(12)
         for i in s:
@@ -436,7 +436,7 @@ class Chart(ChameleonContext):
     # end get_features
 # end Chart
 
-# __GIANNOS__ fill out the following class
+# TODO: __GIANNOS__ fill out the following class
 class GlobalHMM(ChameleonContext):
     def __init__(self):
         # dictionary with keys: chord symbol, values: melody rPCP
@@ -451,6 +451,6 @@ class GlobalHMM(ChameleonContext):
     # end init
 
     def add_melody_per_chord_information(self, chord, melody):
-        # __GIANNOS__ 
+        # TODO: __GIANNOS__ 
         pass
 # end GlobalHMM
