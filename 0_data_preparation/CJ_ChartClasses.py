@@ -185,6 +185,11 @@ class Chord(ChameleonContext):
         # get bass PIECE tonality-relative pitch class
         # get bass ESTIMATED tonality-relative pitch class
     # end set_tonalities
+
+    def set_default_melody_info_with_tonality( self, t ):
+        # TODO: __GIANNOS__ self.melody_information here
+        pass
+    # end set_default_melody_info_with_tonality
 # end Chord
 
 class Measure:
@@ -423,6 +428,9 @@ class Chart(ChameleonContext):
             # print(s)
             for i in range(0, len(self.sections[s].chords), 1):  
                 self.chords.append(self.sections[s].chords[i])
+                # add onset_in_chart information here
+                # add melody_information here (since chart tonality information is required)
+                # self.chords[-1].set_default_melody_info_with_tonality( self.tonality )
     # end make_chords
 
     def get_features(self, chords_distribution_all=True, chords_transition_matrix_all=True):
