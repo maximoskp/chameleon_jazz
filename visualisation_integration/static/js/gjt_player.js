@@ -1,4 +1,4 @@
-const Http = new XMLHttpRequest();
+var xhttp = new XMLHttpRequest();
 // const url='https://jsonplaceholder.typicode.com/posts';
 // const url = 'http://155.207.188.7:5000/songcsvcomplex?name=ALL_THE_THINGS_YOU_ARE&r=3&h=3'
 // Http.open("GET", url);
@@ -19,7 +19,7 @@ const Http = new XMLHttpRequest();
 function dynamicallyLoadScript(url) {
   var script = document.createElement("script");  // create a script DOM node
   script.src = url;  // set its src to the provided URL
- 
+
   document.head.appendChild(script);  // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
 }
 
@@ -30,10 +30,10 @@ var currentChordIdx = 0;
 // load all drums
 function load_all_drums(){
   console.log('load_all_drums 2');
-  drumsKeys = drums_player.loader.drumKeys();
+  drumsKeys = player.loader.drumKeys();
   var drumInfo = [];
   for(var i=0; i<drumsKeys.length; i++){
-    drumInfo.push( drums_player.loader.drumInfo(i) );
+    drumInfo.push( player.loader.drumInfo(i) );
     dynamicallyLoadScript( drumInfo[drumInfo.length-1].url );
   }
   console.log('drumInfo:', drumInfo);
@@ -49,26 +49,44 @@ function get_chords_from_array( a ){
 }
 
 function send_GJT_play_request(url){
-  Http.open("GET", url);
-  Http.send();
 
+  xhttp.open("GET", url, true);
+  xhttp.setRequestHeader("Content-Type", "application/json");
+  xhttp.send();
   var name = url.split('name=')[1].replace('&r=', '_r~').replace('&h=', '_h~') + '.csv'
+  xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+         //window.alert(xhttp.responseText);
 
-  Http.onreadystatechange = (e) => {
-    var jsonObj = JSON.parse( Http.responseText );
-    // var jsonObj = Http.responseText;
+         //console.log(xhttp.responseText);
+         var jsonObj = JSON.parse(xhttp.response);
+         //console.log(jsonObj);
+         play_array( jsonObj[name] );
+         playstop = !playstop;
+     		 metronome.toolSendsPlayStop(playstop);
+      }
+  };
 
-    // console.log( 'jsonObj:', jsonObj );
-    // console.log( 'keys', Object.keys( jsonObj ) );
-    // console.log( 'name', name );
-    // console.log('jsonObj[name]:', jsonObj[name]);
-
-    // returning the array part
-    play_array( jsonObj[name] );
-    playstop = !playstop;
-		metronome.toolSendsPlayStop(playstop);
-    // return jsonObj[name]
-  }
+  // Http.open("GET", url);
+  // Http.send();
+  //
+  // var name = url.split('name=')[1].replace('&r=', '_r~').replace('&h=', '_h~') + '.csv'
+  //
+  // Http.onreadystatechange = (e) => {
+  //   var jsonObj = JSON.parse( Http.responseText );
+  //   // var jsonObj = Http.responseText;
+  //
+  //   // console.log( 'jsonObj:', jsonObj );
+  //   // console.log( 'keys', Object.keys( jsonObj ) );
+  //   // console.log( 'name', name );
+  //   // console.log('jsonObj[name]:', jsonObj[name]);
+  //
+  //   // returning the array part
+  //   play_array( jsonObj[name] );
+  //   playstop = !playstop;
+	// 	metronome.toolSendsPlayStop(playstop);
+  //   // return jsonObj[name]
+  // }
 }
 
 function play_note_for_instrument(a, tempo){
@@ -78,15 +96,15 @@ function play_note_for_instrument(a, tempo){
   // console.log('duration: ', a[3]*(60.0/tempo));
   // console.log('volume: ', a[4]/127.0);
   if (a[0] == 'Piano'){
-    piano_player.queueWaveTable(audioContext, audioContext.destination
+    player.queueWaveTable(audioContext, audioContext.destination
       , _tone_0000_JCLive_sf2_file, 0, a[1], a[3]*(60.0/tempo), 0.8*a[4]/127.0);
   }else if(a[0] == 'Bass'){
-    bass_player.queueWaveTable(audioContext, audioContext.destination
+    player.queueWaveTable(audioContext, audioContext.destination
       , _tone_0320_Aspirin_sf2_file, 0, a[1], a[3]*(60.0/tempo), a[4]/127.0);
   }else{
-    var drum_variable =  '_drum_' + drumsKeys[drums_player.loader.findDrum( a[1] )];
+    var drum_variable =  '_drum_' + drumsKeys[player.loader.findDrum( a[1] )];
     // console.log('drum_variable:', drum_variable);
-    drums_player.queueWaveTable(audioContext, audioContext.destination
+    player.queueWaveTable(audioContext, audioContext.destination
       , eval(drum_variable), 0, a[1], a[3]*(60.0/tempo), a[4]/127.0);
   }
 }
@@ -161,4 +179,3 @@ function play_array( a ){
       // console.log( 'time: ', e.metroBeatTimeStamp - starting_onset );
   });
 }
-

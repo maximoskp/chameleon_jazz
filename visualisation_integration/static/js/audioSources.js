@@ -112,10 +112,10 @@ class MicInClass{
 		// console.log("sourceNode - outside da callback2: ", this.sourceNode);
 		this.isPlaying = false;
 	}
-	
+
 	getUserMedia(dictionary, callback) {
 	    try {
-	        navigator.getUserMedia = 
+	        navigator.getUserMedia =
 	        	navigator.getUserMedia ||
 	        	navigator.webkitGetUserMedia ||
 	        	navigator.mozGetUserMedia;
@@ -177,7 +177,7 @@ class AudioFileClass{
 		var that = this;
 
 		this.request.onload = function() {
-		  that.context.decodeAudioData( that.request.response, function(buffer) { 
+		  that.context.decodeAudioData( that.request.response, function(buffer) {
 		    	// parent.theBuffer = buffer;
 		    	that.myBuffer = buffer;
 			} );
@@ -199,7 +199,7 @@ class AudioFileClass{
 			this.sourceNode = this.context.createBufferSource();
 			this.sourceNode.outNodes = outNodes;
 			// console.log("this.sourceNode -- 2: ", this.sourceNode);
-			for (var i=0;i<this.sourceNode.outNodes.length;i++){				
+			for (var i=0;i<this.sourceNode.outNodes.length;i++){
 				this.sourceNode.connect(outNodes[i]);
 			}
 			// this.sourceNode.buffer = parent.theBuffer;

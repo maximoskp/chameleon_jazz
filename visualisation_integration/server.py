@@ -1,13 +1,37 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
+import pickle
 import json
 import os
 import csv
 import sys
 import space_shaping_methods as ssm
+if sys.version_info >= (3,8):
+    import pickle
+else:
+    import pickle5 as pickle
+
+with open('data/lstm_tsne_3D_neutral.pickle', 'rb') as handle:
+    lstm_tsne_3D_neutral_raw = pickle.load(handle)
+with open('data/lstm_tsne_3D_tonalities.pickle', 'rb') as handle:
+    lstm_tsne_3D_tonalities_raw = pickle.load(handle)
+with open('data/clusters_lstm_3D_tonalities.pickle', 'rb') as handle:
+    clusters_lstm_3D_tonalities_raw = pickle.load(handle)
+with open('data/clusters_lstm_3D_neutral.pickle', 'rb') as handle:
+    clusters_lstm_3D_neutral_raw = pickle.load(handle)
+with open('data/chart_info_structs.pickle', 'rb') as handle:
+    chart_info_structs = pickle.load(handle)
 
 api = Flask(__name__)
 
-# datapath = '/Users/max/repos/gjt_web/GJTWeb/executable/generated_csvs'
+#datapath = '/Users/konstantinosvelenis/Documents/repos/visualization_server/chameleon_jazz-dev/visualisation_server/generated_csvs'
+
+with open('data/chart_keys.pickle', 'rb') as handle:
+    chart_keys = pickle.load(handle)
+
+nameslist = []
+for ck in chart_keys:
+    nameslist.append( ck.replace(' ', '_') )
+
 
 if len(sys.argv) > 1:
     datapath = sys.argv[1]
@@ -18,13 +42,10 @@ if len(sys.argv) > 1:
     datapath = sys.argv[1]
     print('datapath: ', datapath)
 
-fileslist = os.listdir( datapath )
-nameslist = []
-for f in fileslist:
-    if f.split('_r~')[0] not in nameslist:
-        nameslist.append( f.split('_r~')[0] )
 
-# print('fileslist: ', fileslist)
+fileslist = os.listdir( datapath )
+#print(nameslist)
+#print(nameslist)
 
 def is_number(string):
     try:
@@ -58,21 +79,65 @@ def getSongFromCSVFile( f ):
                     else:
                         tmp_arr.append( r )
             resp.append( tmp_arr )
+
     return resp
 # end getSongFromCSVFile
 
+def getTempoFromCSVFile( f ):
+    print('datapath + os.sep + f: ', datapath + os.sep + f)
+    resp = []
+    with open( datapath + os.sep + f , newline='\n', encoding='utf-16') as csvfile:
+        songreader = csv.reader(csvfile, delimiter='\t', quotechar='|')
+        for row in songreader:
+            # print( ','.join( row ) )
+            # print( row )
+            row_elements = row[0].split(',')
+            tmp_arr = []
+            for r in row_elements:
+                if r[0] == ' ' and len(r) > 1:
+                    r = r[1:]
+                if r.isdigit():
+                    tmp_arr.append( int(r) )
+                else:
+                    if is_number(r):
+                        tmp_arr.append( float(r) )
+                    else:
+                        tmp_arr.append( r )
+            resp.append( tmp_arr )
+        resp = resp[0]
+    return resp
+
+@api.route('/lstm_tsne_3D_neutral', methods=['GET'])
+def get_lstm_tsne_neutral_data():
+    # example run: http://localhost:5000/lstm_tsne_3D_neutral
+    lstm_tsne_3D_neutral = lstm_tsne_3D_neutral_raw.tolist()
+    return jsonify(lstm_tsne_3D_neutral)
+# end lstm_tsne_3D_neutral
+
+@api.route('/lstm_tsne_3D_tonalities', methods=['GET'])
+def get_lstm_tsne_tonalities_data():
+    # example run: http://localhost:5000/lstm_tsne_3D_tonalities
+    lstm_tsne_3D_tonalities = lstm_tsne_3D_tonalities_raw.tolist()
+    return jsonify(lstm_tsne_3D_tonalities)
+# end lstm_tsne_3D_tonalities
 
 @api.route('/songslist', methods=['GET'])
 def get_songslist():
     # example run: http://localhost:5000/songslist
-    return json.dumps(fileslist)
+    return jsonify(fileslist)
 # end songslist
 
 @api.route('/nameslist', methods=['GET'])
 def get_nameslist():
     # example run: http://localhost:5000/nameslist
-    return json.dumps(nameslist)
+    #return render_template("", nameslist=nameslist)
+    return jsonify(nameslist)
+    #return json.dumps(nameslist)
 # end nameslist
+
+@api.route('/infostructure', methods=['GET'])
+def get_infostructure():
+    return jsonify(chart_info_structs)
 
 @api.route('/songcsv', methods=['GET'])
 def get_songcsv():
@@ -101,7 +166,7 @@ def get_songcsv():
         if k != 'index' and k != 'name':
             print('ERROR: arguments named \'index\' and \'name\' are only available')
     # print(resp)
-    return json.dumps(resp)
+    return jsonify(resp)
 # end get_songcsv
 
 @api.route('/songcsvcomplex', methods=['GET'])
@@ -134,7 +199,40 @@ def get_songcsvcomplex():
     else:
         resp[propername] = getSongFromCSVFile( propername )
     # print(resp)
-    return json.dumps(resp)
+    return jsonify(resp)
+# end get_songcsv
+
+@api.route('/songtempo', methods=['GET'])
+def get_songtempo():
+    # example run: http://localhost:5000/songcsvcomplex?name="NAME_WITH_UNDERSCORES"&r=3&h=3
+    # keywords should be:
+    # 'index': NUMBER
+    # 'name': NAME
+    args = request.args
+    argkeys = args.keys()
+    resp = {}
+    print('args: ', args)
+    propername = ''
+    for k in argkeys:
+        if k == 'name':
+            propername = args[k] + propername
+        if k == 'r':
+            if '_h~' in propername:
+                tmp_split = propername.split('_h~')
+                propername = '_h~'.join( [tmp_split[0] + '_r~' + args[k] , tmp_split[1]] )
+            else:
+                propername = propername + '_r~' + args[k]
+        if k == 'h':
+            propername = propername + '_h~' + args[k]
+        if k != 'r' and k != 'name' and k != 'h':
+            print('ERROR: arguments named \'index\' and \'name\' are only available')
+    propername += '.csv'
+    if propername not in fileslist:
+        print('ERROR: ' + propername + ' not in song names')
+    else:
+        resp[propername] = getTempoFromCSVFile( propername )
+    # print(resp)
+    return jsonify(resp)
 # end get_songcsv
 
 # for visualisation
@@ -169,7 +267,7 @@ def get_visualizenn():
             }
         }
     print('resp: ', resp)
-    return json.dumps(resp)
+    return jsonify(resp)
 # end get_visualizenn
 
 @api.route('/visualizedistr', methods=['GET'])
@@ -202,7 +300,7 @@ def get_visualizedistr():
             }
         }
     # print(resp)
-    return json.dumps(resp)
+    return jsonify(resp)
 # end get_visualizedistr
 
 @api.route('/visualizetrans', methods=['GET'])
@@ -235,22 +333,32 @@ def get_visualizetrans():
             }
         }
     # print(resp)
-    return json.dumps(resp)
+    return jsonify(resp)
 # end get_visualizetrans
 
+@api.route('/clusters_lstm_3D_tonalities', methods=['GET'])
+def get_clusters_lstm_3D_tonalities():
+    clusters_lstm_3D_tonalities = clusters_lstm_3D_tonalities_raw;
+    return jsonify(clusters_lstm_3D_tonalities);
+
+@api.route('/clusters_lstm_3D_neutral', methods=['GET'])
+def get_clusters_lstm_3D_neutral():
+    clusters_lstm_3D_neutral = clusters_lstm_3D_neutral_raw;
+    return jsonify(clusters_lstm_3D_neutral);
+
 # # for tackling CORS etc
-# FRONTEND_HOST = "http://155.207.188.7:1234"
-# @api.after_request
-# def after_request(response):
-#     """!
-#     @brief Add necessary info to headers. Useful for preventing CORS permission errors.
-#     """
-#     response.headers.add("Access-Control-Allow-Origin", FRONTEND_HOST)
-#     response.headers.add("Access-Control-Allow-Credentials", "true")
-#     response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
-#     response.headers.add("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS")
-#     return response
-# # end after_request
+#FRONTEND_HOST = "http://155.207.188.7:1234"
+#@api.after_request
+#def after_request(response):
+#    """!
+#    @brief Add necessary info to headers. Useful for preventing CORS permission errors.
+#    """
+#    response.headers.add("Access-Control-Allow-Origin", FRONTEND_HOST)
+#    response.headers.add("Access-Control-Allow-Credentials", "true")
+#    response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
+#    response.headers.add("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS")
+#    return response
+ # end after_request
 
 '''
 HOSTNAME_WHITELIST = [
