@@ -33,15 +33,30 @@ for ck in chart_keys:
     nameslist.append( ck.replace(' ', '_') )
 
 
+
+with open('data/chart_keys.pickle', 'rb') as handle:
+    chart_keys = pickle.load(handle)
+
+nameslist = []
+for ck in chart_keys:
+    nameslist.append( ck.replace(' ', '_') )
+
+
 if len(sys.argv) > 1:
     datapath = sys.argv[1]
 else:
     sys.exit('ERROR: no path to CSV files was given as as argument')
 
-if len(sys.argv) > 1:
-    datapath = sys.argv[1]
-    print('datapath: ', datapath)
+# if len(sys.argv) > 1:
+#     datapath = sys.argv[1]
+#     print('datapath: ', datapath)
 
+
+# fileslist = os.listdir( datapath )
+# nameslist = []
+# for f in fileslist:
+#     if f.split('_r~')[0] not in nameslist:
+#         nameslist.append( f.split('_r~')[0] )
 
 fileslist = os.listdir( datapath )
 #print(nameslist)

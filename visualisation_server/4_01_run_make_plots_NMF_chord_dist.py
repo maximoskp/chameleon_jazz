@@ -62,7 +62,6 @@ with open( datapath + 'h_distr.pickle', 'wb' ) as handle:
     pickle.dump( h_distr, handle, protocol=pickle.HIGHEST_PROTOCOL )
 
 
-# %%
 
 # %% plot NMF
 

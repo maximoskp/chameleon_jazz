@@ -27,6 +27,8 @@ section_features = []
 chart_names = []
 chart_keys = []
 chart_features = []
+chart_info_structs = {}
+roots = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B']
 
 chart_features_chords_distribution = []
 chart_features_chords_transition_matrix_all = []
@@ -36,6 +38,11 @@ for i_struct,struct in enumerate(all_structs):
     chart_names.append(struct.piece_name)
     chart_keys.append(struct.key)
     chart_features.append(struct.get_features())
+    chart_info_structs[ struct.key.replace(' ', '_') ] = {
+        'title': struct.piece_name,
+        'tonality': roots[struct.tonality['root']] + ' ' + struct.tonality['mode'],
+        'style': struct.sections[0].style
+    }
     
 for i_struct,struct in enumerate(all_structs):
     print('processing (' + str(i_struct) + '/' + str(len(all_structs))  + '): ' + struct.piece_name)
@@ -67,6 +74,9 @@ with open('../data/chart_names.pickle', 'wb') as handle:
 
 with open('../data/chart_keys.pickle', 'wb') as handle:
     pickle.dump(chart_keys, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+with open('../data/chart_info_structs.pickle', 'wb') as handle:
+    pickle.dump(chart_info_structs, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 with open('../data/chart_features.pickle', 'wb') as handle:
     pickle.dump(chart_features, handle, protocol=pickle.HIGHEST_PROTOCOL)

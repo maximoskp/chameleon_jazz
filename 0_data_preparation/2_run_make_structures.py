@@ -40,3 +40,8 @@ for i in range( len( songs_keys ) ):
 with open('../data/all_structs.pickle', 'wb') as handle:
     pickle.dump(all_structs, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
+# %% TODO: make melody-chord stats for all chords
+# Run through all items in all_structs and add/append in dictionary with
+# add_melody_per_chord_information 
+# keys: all chords (840)
+# values: distribution of piece_tonality-rPCPs of melodies in GlobalHMM melody_per_chord
