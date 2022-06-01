@@ -100,9 +100,11 @@ class ChameleonContext:
             mode = 'minor'
         return {'root': self.root2int[s[:root_idx]], 'mode':mode}
     # end tonality_from_symbol
+    
     def make_empty_chords_distribution(self):
         chords_distribution = np.zeros( 12*len(list(self.type2pc.keys())) )
     # end make_empty_chords_distribution
+    
     def get_all_chord_states(self):
         all_chord_states = []
         for i in range(12):
@@ -479,6 +481,7 @@ class Chart(ChameleonContext):
         # do we need to keep:
         # chords with their time in chart (if we happen to need harmonic rhythm)
         self.make_chords()
+        self.make_transitions()
     # end __init__
     
     def make_sections(self):
@@ -491,6 +494,7 @@ class Chart(ChameleonContext):
             self.sections.append( Section( s, self.tonality ) )
             # print('self.sections: ', self.sections)
     # end make_sections
+    
     def make_stats(self):
         self.all_chord_states = self.get_all_chord_states()
         #gather chord_distribution info
@@ -551,6 +555,15 @@ class Chart(ChameleonContext):
                 # add onset_in_chart information here
                 # add melody_information here (since chart tonality information is required)
                 # self.chords[-1].set_default_melody_info_with_tonality( self.tonality )
+    # end make_chords
+    
+    def make_transitions(self):
+        # gather all transitions in one array
+        self.chord_transitions = []
+        for s in range(0, len(self.sections), 1):    
+            # print(s)
+            for i in range(0, len(self.sections[s].chord_transitions), 1):  
+                self.chord_transitions.append(self.sections[s].chord_transitions[i])
     # end make_chords
 
     def get_features(self, chords_distribution_all=True, chords_transition_matrix_all=True):
