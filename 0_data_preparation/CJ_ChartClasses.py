@@ -15,6 +15,7 @@ import newGCT as ng
 from scipy import sparse
 from scipy.sparse import hstack
 from scipy.sparse import *
+import computeDIC as dic
 
 
 
@@ -109,10 +110,20 @@ class ChameleonContext:
                 all_chord_states.append( self.chord2state(numeric_root=i, numeric_type=v['extended_type'], tonality= "piece_tonality" ))
         return all_chord_states
     # end get_all_chord_states
+
+    def compute_dic_value(self, c1, c2, d):
+        b = False
+        p1 = np.mod( c1[0]+c1[1:], 12 )
+        p2 = np.mod( c2[0]+c2[1:], 12 )
+        v,ids = dic.computeDICfromMIDI(p1,p2)
+        if v[ np.where( ids == d )[0][0] ] > 0:
+            b = True
+        return b
+    # end compute_dic_value
 # end ChameleonContext
 
 class Chord(ChameleonContext):
-    def __init__(self, chord_in):
+    def __init__(self, chord_in, piece_tonality=None):
         #print('Chord - chord_in: ', chord_in)
         at_split = chord_in.split('@')
         self.chord_symbol = at_split[0]
@@ -158,19 +169,37 @@ class Chord(ChameleonContext):
             # get bass pitch class
             self.bass_pitch_class = self.root2int[ self.bass_symbol ]
             self.pcp[ self.bass_pitch_class ] = 1
+        if piece_tonality is not None:
+            self.piece_tonality = piece_tonality
+            self.relative_root = {
+                'piece_tonality': (self.numeric_root -self.piece_tonality['root'])%12,
+                'estimated_tonality': None
+            }
+            self.chord_state = self.chord2state(tonality='piece_tonality')
+            self.state_np = np.fromstring( self.chord_state[1:-1].replace(' ', '') , dtype=int, sep=',' )
         # discuss polychords...
     # end __init__
 
-    def set_tonalities(self, piece_tonality=None, estimated_tonality=None):
+    def set_tonalities(self, piece_tonality=None, estimated_tonality=None, states_tonality='piece_tonality'):
         # print('Chord - set_tonalities')
-        self.piece_tonality = piece_tonality
-        self.estimated_tonality = estimated_tonality
-        # get chord numeric root relative to PIECE and ESTIMATED tonality
-        self.relative_root = {
-            'piece_tonality': (self.numeric_root -self.piece_tonality['root'])%12,
-            'estimated_tonality': (self.numeric_root -self.estimated_tonality['root'])%12
-        }
-        self.chord_state = self.chord2state(tonality='piece_tonality')
+        if piece_tonality is not None:
+            self.piece_tonality = piece_tonality
+            if not hasattr(self, 'relative_root'):
+                self.relative_root = {
+                    'piece_tonality': (self.numeric_root -self.piece_tonality['root'])%12,
+                }
+            else:
+                self.relative_root['piece_tonality'] = (self.numeric_root -self.piece_tonality['root'])%12
+        if estimated_tonality is not None:
+            self.estimated_tonality = estimated_tonality
+            if not hasattr(self, 'relative_root'):
+                self.relative_root = {
+                'estimated_tonality': (self.numeric_root -self.estimated_tonality['root'])%12
+            }
+            else:
+                self.relative_root['estimated_tonality'] = (self.numeric_root -self.estimated_tonality['root'])%12
+        self.chord_state = self.chord2state(tonality=states_tonality)
+        self.state_np = np.fromstring( self.chord_state.replace(' ', '').replace('[', '').replace(']', '') , dtype=int, sep=',' )
         # get PIECE tonality-relative pitch class set
         # get ESTIMATED tonality-relative pitch class set
         # get GCT
@@ -223,13 +252,104 @@ class Measure:
     # # end update_chord_positions
 # end Measure
 
-class ChordTransition:
+class ChordTransition(ChameleonContext):
     def __init__(self, first_chord=None, second_chord=None):
         self.first_chord = first_chord
         self.second_chord = second_chord
         # TODO:
         # keep information from chord transitions that are relevant to blending
+        # Blending information is available after tonality is made known
+        if hasattr(first_chord, 'state_np') and hasattr(second_chord, 'state_np'):
+            self.make_blending_properties()
     # end __init__
+
+    def make_blending_properties(self):
+        self.properties_list = ['from_chord_np', 'to_chord_np', 'from_rpc', 'to_rpc', 'dic_has_0', 'dic_has_1', 'dic_has_N1', 'asc_semitone_to_root', 'desc_semitone_to_root', 'semitone_to_root']
+        # remember to retrive object property from string of attribute as:
+        # attr = getattr( obj, STR_ATTR )
+        c1_np = self.first_chord.state_np
+        c2_np = self.second_chord.state_np
+        self.from_chord_np = {
+            'property': c1_np,
+            'priority_idiom': 0,
+            'priority_other': 0,
+            'priority': 0,
+            'matching': 'chord_name',
+            'necessary': True,
+        }
+        self.to_chord_np = {
+            'property': c2_np,
+            'priority_idiom': 0,
+            'priority_other': 0,
+            'priority': 0,
+            'matching': 'chord_name',
+            'necessary': True
+        }
+        self.from_rpc = {
+            'property': np.mod( c1_np[0]+c1_np[1:], 12 ),
+            'priority_idiom': 0,
+            'priority_other': 0,
+            'priority': 0,
+            'matching': 'subset_match',
+            'necessary': True
+        }
+        self.to_rpc = {
+            'property': np.mod( c2_np[0]+c2_np[1:], 12 ),
+            'priority_idiom': 0,
+            'priority_other': 0,
+            'priority': 0,
+            'matching': 'subset_match',
+            'necessary': True,
+        }
+        self.dic_has_0 = {
+            'property': self.compute_dic_value( c1_np, c2_np, 0 ),
+            'priority_idiom': 0,
+            'priority_other': 0,
+            'priority': 0,
+            'matching': 'boolean',
+            'necessary': False,
+        }
+        self.dic_has_1 = {
+            'property': self.compute_dic_value( c1_np, c2_np, 1 ),
+            'priority_idiom': 0,
+            'priority_other': 0,
+            'priority': 0,
+            'matching': 'boolean',
+            'necessary': False,
+        }
+        self.dic_has_N1 = {
+            'property': self.compute_dic_value( c1_np, c2_np, -1 ),
+            'priority_idiom': 0,
+            'priority_other': 0,
+            'priority': 0,
+            'matching': 'boolean',
+            'necessary': False,
+        }
+        self.asc_semitone_to_root = {
+            'property': (11 in c1_np) and (0 in c2_np),
+            'priority_idiom': 0,
+            'priority_other': 0,
+            'priority': 0,
+            'matching': 'boolean',
+            'necessary': False,
+        }
+        self.desc_semitone_to_root = {
+            'property': (1 in c1_np) and (0 in c2_np),
+            'priority_idiom': 0,
+            'priority_other': 0,
+            'priority': 0,
+            'matching': 'boolean',
+            'necessary': False,
+        }
+        self.semitone_to_root = {
+            'property': ( (1 in c1_np) and (0 in c2_np) ) or ( (11 in c1_np) and (0 in c2_np) ),
+            'priority_idiom': 0,
+            'priority_other': 0,
+            'priority': 0,
+            'matching': 'boolean',
+            'necessary': False,
+        }
+        self.blending_score = 0
 # end ChordTransition
 
 class Section(ChameleonContext):
