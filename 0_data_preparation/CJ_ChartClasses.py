@@ -107,10 +107,13 @@ class ChameleonContext:
     
     def get_all_chord_states(self):
         all_chord_states = []
+        all_states_np = []
         for i in range(12):
             for v in self.type2pc.values():
-                all_chord_states.append( self.chord2state(numeric_root=i, numeric_type=v['extended_type'], tonality= "piece_tonality" ))
-        return all_chord_states
+                tmp_chord_state = self.chord2state(numeric_root=i, numeric_type=v['extended_type'], tonality= "piece_tonality" )
+                all_chord_states.append( tmp_chord_state )
+                all_states_np.append( np.fromstring( tmp_chord_state.replace(' ', '').replace('[', '').replace(']', '') , dtype=int, sep=',' ) )
+        return all_chord_states, all_states_np
     # end get_all_chord_states
 
     def compute_dic_value(self, c1, c2, d):
@@ -433,7 +436,7 @@ class Section(ChameleonContext):
     
     def make_stats(self):
         # print('Sections - make_stats')
-        self.all_chord_states = self.get_all_chord_states()
+        self.all_chord_states, self.all_states_np = self.get_all_chord_states()
         self.chords_distribution = np.zeros( len(self.all_chord_states) ).astype(np.float32)
         self.chord_transition_matrix = np.zeros( (len(self.all_chord_states), len(self.all_chord_states) ) ).astype(np.float32)
         # makes both chord distribution and transition matrix
@@ -498,7 +501,7 @@ class Chart(ChameleonContext):
     # end make_sections
     
     def make_stats(self):
-        self.all_chord_states = self.get_all_chord_states()
+        self.all_chord_states, self.all_states_np = self.get_all_chord_states()
         #gather chord_distribution info
         chord_distr_sum = 0
         testnormalization = 0     
@@ -571,7 +574,7 @@ class Chart(ChameleonContext):
                 else:
                     self.chord_transitions[tmp_trans.label].occurrences += 1
         # sorted
-        self.chord_transitions = sorted(self.chord_transitions.items(), key=lambda x: x[1].occurrences, reverse=True)
+        self.chord_transitions = {k:v for k,v in sorted(self.chord_transitions.items(), key=lambda x: x[1].occurrences, reverse=True)}
     # end make_chords
 
     def get_features(self, chords_distribution_all=True, chords_transition_matrix_all=True):

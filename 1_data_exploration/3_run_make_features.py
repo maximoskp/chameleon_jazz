@@ -11,7 +11,7 @@ import os
 import json
 import pickle
 import sys
-sys.path.insert(1, '../0_data_preparation')
+sys.path.append('..' + os.sep +'0_data_preparation')
 import CJ_ChartClasses as ccc
 
 # %% load pickle
