@@ -258,6 +258,8 @@ class ChordTransition(ChameleonContext):
     def __init__(self, first_chord=None, second_chord=None):
         self.first_chord = first_chord
         self.second_chord = second_chord
+        self.occurrences = 1
+        self.label = self.first_chord.chord_state + '_' + self.second_chord.chord_state
         # TODO:
         # keep information from chord transitions that are relevant to blending
         # Blending information is available after tonality is made known
@@ -559,11 +561,17 @@ class Chart(ChameleonContext):
     
     def make_transitions(self):
         # gather all transitions in one array
-        self.chord_transitions = []
+        self.chord_transitions = {}
         for s in range(0, len(self.sections), 1):    
             # print(s)
-            for i in range(0, len(self.sections[s].chord_transitions), 1):  
-                self.chord_transitions.append(self.sections[s].chord_transitions[i])
+            for i in range(0, len(self.sections[s].chord_transitions), 1):
+                tmp_trans = self.sections[s].chord_transitions[i]
+                if tmp_trans.label not in self.chord_transitions.keys():
+                    self.chord_transitions[tmp_trans.label] = tmp_trans
+                else:
+                    self.chord_transitions[tmp_trans.label].occurrences += 1
+        # sorted
+        self.chord_transitions = sorted(self.chord_transitions.items(), key=lambda x: x[1].occurrences, reverse=True)
     # end make_chords
 
     def get_features(self, chords_distribution_all=True, chords_transition_matrix_all=True):
