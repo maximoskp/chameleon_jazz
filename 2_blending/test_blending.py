@@ -24,3 +24,8 @@ c0 = all_structs[0]
 c1 = all_structs[1]
 
 blendsess = bs.BlendingSession(c0, c1)
+
+# %% save pickle
+
+with open('..' + os.sep + 'data' + os.sep + 'test_blending_session.pickle', 'wb') as handle:
+    pickle.dump(blendsess, handle, protocol=pickle.HIGHEST_PROTOCOL)
