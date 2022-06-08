@@ -158,9 +158,9 @@ class Chord(ChameleonContext):
         # get pcp
         self.pcp = np.zeros(12).astype(np.float32)
         self.pcp[ np.mod(self.numeric_root + self.numeric_type , 12) ] = 1
-        ## self.gct = ng.GCT_sum_all_from_root(numeric_type)[0]
-        # TODO: __GIANNOS__ set default underlying melody distribution (rPCPs grounded on piece tonality)
-        self.melody_information = None # TODO: assign default or Chord class here          
+        self.pitch_collection = np.mod(np.array(self.pc_set['extended_type']) + self.numeric_root, 12)
+        self.gct = ng.GCT_sum_all_from_root( self.pitch_collection )
+        
         s = list(combinations(self.numeric_type, 2))
         # __@GIANNOS__ OLD only ascending intervals are generated, is it correct?
         # e.g. only (0,4)->4-0=4 is generated, not (4,0)->0-4=8
@@ -205,16 +205,22 @@ class Chord(ChameleonContext):
                 self.relative_root['estimated_tonality'] = (self.numeric_root -self.estimated_tonality['root'])%12
         self.chord_state = self.chord2state(tonality=states_tonality)
         self.state_np = np.fromstring( self.chord_state.replace(' ', '').replace('[', '').replace(']', '') , dtype=int, sep=',' )
-        # get PIECE tonality-relative pitch class set
-        # get ESTIMATED tonality-relative pitch class set
+        # get piece and estimated tonality-relative pitch class set
+        self.rpcp = {
+            'piece_tonality': np.zeros(12).astype(np.float32),
+            'estimated_tonality': np.zeros(12).astype(np.float32)
+        }
+        self.rpcp['piece_tonality'][ np.mod(self.relative_root['piece_tonality'] + self.numeric_type, 12) ] = 1
+        self.rpcp['estimated_tonality'][ np.mod(self.relative_root['estimated_tonality'] + self.numeric_type, 12) ] = 1
         # get GCT
         # __@GIANNOS__ the following two lines don't work:
         '''
         UFuncTypeError: ufunc 'subtract' did not contain a loop with signature 
         matching types (dtype('int64'), dtype('<U1')) -> None
         '''
-        # self.gct_piece_tonality = ng.GCT_in_key(self.numeric_type, piece_tonality)
-        # self.gct_estimated_tonality = ng.GCT_in_key(self.numeric_type, estimated_tonality)
+        self.gct_piece_tonality = ng.GCT_in_key(self.pitch_collection, self.piece_tonality['root'])
+        self.gct_estimated_tonality = ng.GCT_in_key(self.pitch_collection, self.estimated_tonality['root'])
+        self.melody_information = self.rpcp # TODO: assign default or Chord class here          
         # if bass
         # get bass PIECE tonality-relative pitch class
         # get bass ESTIMATED tonality-relative pitch class
