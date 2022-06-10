@@ -14,7 +14,7 @@ else:
 
 api = Flask(__name__)
 
-@api.route('/sending_kern', methods=['GET'])
+@api.route('/sending_kern', methods=['GET','POST'])
 def get_sending_kern():
     # example run: http://155.207.188.7:6001/sending_kern?row=17&column=8&chord=Cm&kern=lalala
     print(request.args)
