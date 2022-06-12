@@ -213,11 +213,6 @@ class Chord(ChameleonContext):
         self.rpcp['piece_tonality'][ np.mod(self.relative_root['piece_tonality'] + self.numeric_type, 12) ] = 1
         self.rpcp['estimated_tonality'][ np.mod(self.relative_root['estimated_tonality'] + self.numeric_type, 12) ] = 1
         # get GCT
-        # __@GIANNOS__ the following two lines don't work:
-        '''
-        UFuncTypeError: ufunc 'subtract' did not contain a loop with signature 
-        matching types (dtype('int64'), dtype('<U1')) -> None
-        '''
         self.gct_piece_tonality = ng.GCT_in_key(self.pitch_collection, self.piece_tonality['root'])
         self.gct_estimated_tonality = ng.GCT_in_key(self.pitch_collection, self.estimated_tonality['root'])
         self.melody_information = self.rpcp # TODO: assign default or Chord class here          
