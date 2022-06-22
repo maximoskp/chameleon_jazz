@@ -8,6 +8,7 @@ Created on Fri Jun 10 15:30:30 2022
 import kern_converters as kc
 import os
 
-file_name = 'kern_files' + os.sep + 'test_full.krn'
+file_name = 'kern_files' + os.sep + 'kern_reconstructed.krn'
 
 p = kc.kern2py(file_name)
+print(p)
