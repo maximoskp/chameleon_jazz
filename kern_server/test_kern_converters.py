@@ -11,4 +11,6 @@ import os
 file_name = 'kern_files' + os.sep + 'kern_reconstructed.krn'
 
 p = kc.kern2py(file_name)
+s = kc.kern2string(file_name)
 print(p)
+print(s)

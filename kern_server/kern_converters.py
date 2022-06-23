@@ -112,7 +112,6 @@ def kern2py(file_name):
         dfcumsum.append(measures_copy[i].iloc[1:,:].cumsum().min(axis=1));
         dfcumsum[i] = dfcumsum[i].iloc[:].shift(1)
         measures_chart_ready.append(pd.concat([dfcumsum[i], measures_copy_last_column[i]], axis=1).reindex(dfcumsum[i].index))
-        chart["bars"].append(measures_chart_ready[i])
         for y in range(len(measures_chart_ready[i])):      
             
             for x in range(len(measures_chart_ready[i].columns)):
@@ -132,9 +131,24 @@ def kern2py(file_name):
                 if isinstance(measures_chart_ready[i].iloc[y, x], str):
                     if len(measures_chart_ready[i].iloc[y, x]) < 3:
                         measures_chart_ready[i] = measures_chart_ready[i].iloc[0:0]
-         
+        chart["bars"].append(measures_chart_ready[i])
     chart["title"] = title
     chart["style"] = style
     chart["tempo"] = tempo
     return chart
 # end kern2py
+
+def kern2string(file_name):
+    p = kern2py(file_name)
+    string = 'section~A'
+    string += ',style~' + p['style']
+    string += ',tempo~' + p['tempo']
+    string += ',tonality~' + 'C' # TODO: tonality
+    for b in p['bars']:
+        string += ',bar~' + '4/4' # TODO: time sig
+        for i in range(b.shape[0]):
+            t = str( b.iloc[i][0] )
+            c = b.iloc[i]['g'] # TODO: translate to GJT chord
+            string += ',chord~' + c + '@' + t
+    string += ',end'
+    return string
