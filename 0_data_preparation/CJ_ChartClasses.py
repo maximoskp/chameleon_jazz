@@ -174,6 +174,7 @@ class Chord(ChameleonContext):
             # get bass pitch class
             self.bass_pitch_class = self.root2int[ self.bass_symbol ]
             self.pcp[ self.bass_pitch_class ] = 1
+        self.melody_information = None
         if piece_tonality is not None:
             self.piece_tonality = piece_tonality
             self.relative_root = {
@@ -215,7 +216,8 @@ class Chord(ChameleonContext):
         # get GCT
         self.gct_piece_tonality = ng.GCT_in_key(self.pitch_collection, self.piece_tonality['root'])
         self.gct_estimated_tonality = ng.GCT_in_key(self.pitch_collection, self.estimated_tonality['root'])
-        self.melody_information = self.rpcp # TODO: assign default or Chord class here          
+        if (self.melody_information is None):
+            self.melody_information = self.rpcp # assign default or Chord class here          
         # if bass
         # get bass PIECE tonality-relative pitch class
         # get bass ESTIMATED tonality-relative pitch class
@@ -232,6 +234,9 @@ class Measure:
     def __init__(self, measure_in):
         self.time_signature = measure_in.split(',')[0]
         self.make_chords( measure_in )
+        self.make_melody_information( measure_in )
+        if len(self.melody_onsets) > 0:
+            self.assign_melody_to_chord( measure_in )
         # TODO:
         # get position in section
         # get position in chart
@@ -251,8 +256,51 @@ class Measure:
         for c in chords_split[1:]:
             #print(c)
             self.chords.append( Chord( c ) )
-    # end make_chords        
-    
+    # end make_chords
+
+    def make_melody_information(self, measure_in):
+        melody_split = measure_in.split('melody~[')
+        self.melody_information = []
+        self.melody_onsets = []
+        for mel in melody_split[1:]:
+            pitches = mel.split(',end]')[0]
+            pitches_split = pitches.split('pitch~')
+            for p in pitches_split[1:]:
+                comma_split = p.split(',')[0]
+                at_split = comma_split.split('@')
+                self.melody_information.append( int(at_split[0]) ) # pitch information per measure
+                if '/' in at_split[1]: # case for fractional values in melody like in tuplets, e.g. 2/3
+                    a, b = at_split[1].split('/')
+                    self.melody_onsets.append( float(int(a) / int(b)) )
+                else:
+                    self.melody_onsets.append( float(at_split[1]) )
+            # MIDI pitches into pcp distribution
+            self.melody_pcp = np.zeros(12).astype(np.float32) 
+            pitch_class, counts = np.unique(np.mod(self.melody_information,12), return_counts = True)
+            for i in range(len(pitch_class)):
+                self.melody_pcp[pitch_class[i]] = counts[i]
+    # end make_melody_information
+            
+    def assign_melody_to_chord(self):  # Doesn't account for held durations
+        self.melody_per_chord = []
+        self.melody_pcp_per_chord = []
+        onsets = np.array(self.melody_onsets)
+        for ch in reversed(self.chords): # start from last chord
+            chord_melody_information = []
+            onset_location = np.where( ch.onset_in_measure <= onsets)[0] # maybe >= AND !reversed
+            for o in onset_location:
+                chord_melody_information.append( self.melody_information[o] )
+            self.melody_per_chord.append( chord_melody_information )
+            chord_melody_pcp = np.zeros(12).astype(np.float32) 
+            pitch_class, counts = np.unique(np.mod(chord_melody_information,12), return_counts = True)
+            for i in range(len(pitch_class)):
+                chord_melody_pcp[pitch_class[i]] = counts[i]
+            self.melody_pcp_per_chord.append( chord_melody_pcp )
+            onsets = np.delete(onsets, onset_location) # remove the assigned onsets
+        self.melody_per_chord.reverse()
+        self.melody_pcp_per_chord.reverse()
+        for i,chord in enumerate(self.chords):
+            chord.melody_information = self.melody_pcp_per_chord[i]
     # def update_chord_positions(self):
     #     # print('TODO: update position_in_piece for chords')
     # # end update_chord_positions

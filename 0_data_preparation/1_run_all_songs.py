@@ -18,6 +18,7 @@ chord_names = list( type2pcs_dictionary.keys() )
 
 mysongs = {}
 songslibrary = {}
+songsmelodieslibrary = {}
 # keep a catalogue of chords not found in each piece
 pieces_undefined_chords = {}
 # keep a catalogue of pieces that don't have tonality annotation
@@ -125,11 +126,57 @@ for s in os.listdir('..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'Librar
         if song_tonality == -1:
             pieces_undefied_tonality[ appearing_name ] = tmp_json
 
+# library with melodies third
+for s in os.listdir('..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'Library_melodies'):
+    if s.endswith('.mxl'):
+        file_name = '..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'Library_melodies' + os.sep + s
+        song_string, song_tonality, chords_not_found = xmlChart2String.chart2string( file_name, print_interim=False , chord_names=chord_names )
+        # TODO: take piece name from function - score
+        piece_name = file_name.split( os.sep )[-1]
+        # fix name - remove underscore and extension
+        filename, file_extension = os.path.splitext(s)
+        final_filename = filename.replace('_', ' ')
+        appearing_name = final_filename
+        for tmp_key in names_dict_keys:
+            if tmp_key in appearing_name:
+                print('before: ' + appearing_name)
+                appearing_name = appearing_name.replace( tmp_key, names_dict[tmp_key] )
+                print('after: ' + appearing_name)
+        tmp_song_key = appearing_name
+        while not tmp_song_key[0].isalnum():
+            tmp_song_key = tmp_song_key[1:]
+        tmp_song_key = tmp_song_key.upper()
+        tmp_json = {
+            'string': song_string,
+            'original_string': song_string,
+            'unfolded_string': xmlChart2String.unfold_chart(song_string),
+            'tonality': song_tonality,
+            'original_key': tmp_song_key,
+            'appearing_name': appearing_name,
+            'is_favourite': False,
+            'composer': 'X',
+            'composition_date': 1964,
+            'performed_by': 'Y'
+        }
+        songsmelodieslibrary[ tmp_song_key ] = tmp_json
+        # songs.append( tmp_json )
+        actual_chords_not_found = []
+        for cnf in chords_not_found:
+            if '/' not in cnf:
+                actual_chords_not_found.append( cnf )
+        if len(actual_chords_not_found) > 0:
+            pieces_undefined_chords[ piece_name ] = actual_chords_not_found
+        if song_tonality == -1:
+            pieces_undefied_tonality[ appearing_name ] = tmp_json
+
 with open( '..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'mysongs.json', 'w') as f:
     json.dump(mysongs, f)
 
 with open( '..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'songslibrary.json', 'w') as f:
     json.dump(songslibrary, f)
+
+with open( '..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'songsmelodieslibrary.json', 'w') as f:
+    json.dump(songsmelodieslibrary, f)
 
 with open( '..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'missing_chords.json', 'w') as f:
     json.dump(pieces_undefined_chords, f)
