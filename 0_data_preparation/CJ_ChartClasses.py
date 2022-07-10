@@ -13,11 +13,7 @@ import json
 import music21 as m21
 import newGCT as ng
 from scipy import sparse
-from scipy.sparse import hstack
-from scipy.sparse import *
 import computeDIC as dic
-
-
 
 class ChameleonContext:
     # static scope for chord dictionary and initiall (0s) transition matrix
@@ -59,6 +55,11 @@ class ChameleonContext:
         'Cb': 11,
         'C-': 11
     }
+    chord2idx = {}
+    idx2chord = {}
+    idx2chordnp = {}
+    all_chord_states = []
+    all_states_np = []
     # translation between numeric root/types and chord state (string)
     def chord2state(self, numeric_root=None, numeric_type=None, tonality='estimated_tonality'):
         if numeric_root is None:
@@ -104,17 +105,20 @@ class ChameleonContext:
     def make_empty_chords_distribution(self):
         chords_distribution = np.zeros( 12*len(list(self.type2pc.keys())) )
     # end make_empty_chords_distribution
-    
-    def get_all_chord_states(self):
-        all_chord_states = []
-        all_states_np = []
+
+    def initialize_chord_states(self):
+        # self.all_chord_states = []
+        # self.all_states_np = []
         for i in range(12):
             for v in self.type2pc.values():
                 tmp_chord_state = self.chord2state(numeric_root=i, numeric_type=v['extended_type'], tonality= "piece_tonality" )
-                all_chord_states.append( tmp_chord_state )
-                all_states_np.append( np.fromstring( tmp_chord_state.replace(' ', '').replace('[', '').replace(']', '') , dtype=int, sep=',' ) )
-        return all_chord_states, all_states_np
-    # end get_all_chord_states
+                self.all_chord_states.append( tmp_chord_state )
+                self.all_states_np.append( np.fromstring( tmp_chord_state.replace(' ', '').replace('[', '').replace(']', '') , dtype=int, sep=',' ) )
+        for i in range( len(self.all_chord_states) ):
+            self.chord2idx[self.all_chord_states[i]] = i
+            self.idx2chord[i] = self.all_chord_states[i]
+            self.idx2chordnp[i] = self.all_states_np[i]
+    # end initialize_chord_states
 
     def compute_dic_value(self, c1, c2, d):
         b = False
@@ -126,6 +130,35 @@ class ChameleonContext:
         return b
     # end compute_dic_value
 # end ChameleonContext
+
+class ChameleonHMM(ChameleonContext):
+    def __init__(self):
+        # rows: 840, columns: 12
+        self.melody_per_chord = sparse.csr_matrix( np.zeros( (len(self.all_chord_states), 12) ) )
+        # 840x840
+        self.transition_matrix = sparse.csr_matrix( np.zeros( (len(self.all_chord_states), len(self.all_chord_states)) ) )
+    # end init
+
+    def add_melody_per_chord_information(self, chords):
+        self.melody_per_chord = self.melody_per_chord.toarray()
+        for chord in chords:
+            idx = self.chord2idx[ chord.chord_state ]
+            self.melody_per_chord[idx,:] += chord.melody_information['piece_tonality']
+        for i in range( self.melody_per_chord.shape[0] ):
+            if np.sum( self.melody_per_chord[i,:] ) != 0:
+                self.melody_per_chord[i,:] /= np.sum( self.melody_per_chord[i,:] )
+        self.melody_per_chord = sparse.csr_matrix( self.melody_per_chord )
+    # end add_melody_per_chord_information
+
+    def add_transition_information(self, t):
+        self.transition_matrix = self.transition_matrix.toarray()
+        self.transition_matrix += t
+        for i in range(self.transition_matrix.shape[0]):
+            if np.sum( self.transition_matrix[i,:] ) != 0:
+                self.transition_matrix[i,:] /= np.sum( self.transition_matrix[i,:] )
+        self.transition_matrix = sparse.csr_matrix( self.transition_matrix )
+    # end add_transition_information
+# end ChameleonHMM
 
 class Chord(ChameleonContext):
     def __init__(self, chord_in, piece_tonality=None):
@@ -485,7 +518,6 @@ class Section(ChameleonContext):
     
     def make_stats(self):
         # print('Sections - make_stats')
-        self.all_chord_states, self.all_states_np = self.get_all_chord_states()
         self.chords_distribution = np.zeros( len(self.all_chord_states) ).astype(np.float32)
         self.chord_transition_matrix = np.zeros( (len(self.all_chord_states), len(self.all_chord_states) ) ).astype(np.float32)
         # makes both chord distribution and transition matrix
@@ -525,6 +557,8 @@ class Section(ChameleonContext):
 
 class Chart(ChameleonContext):
     def __init__(self, struct_in):
+        if len( self.all_chord_states ) == 0:
+            self.initialize_chord_states()
         # meta data
         self.unfolded_string = struct_in['unfolded_string']
         self.piece_name = struct_in['appearing_name']
@@ -536,6 +570,12 @@ class Chart(ChameleonContext):
         # chords with their time in chart (if we happen to need harmonic rhythm)
         self.make_chords()
         self.make_transitions()
+        self.hmm = ChameleonHMM()
+        self.hmm.add_melody_per_chord_information( self.chords )
+        self.hmm.add_transition_information( self.chords_transition_matrix_all.toarray() )
+        print( '----------------------------------------------' )
+        print(self.hmm.melody_per_chord)
+        print( '----------------------------------------------' )
     # end __init__
     
     def make_sections(self):
@@ -550,14 +590,13 @@ class Chart(ChameleonContext):
     # end make_sections
     
     def make_stats(self):
-        self.all_chord_states, self.all_states_np = self.get_all_chord_states()
-        #gather chord_distribution info
+        # gather chord_distribution info
         chord_distr_sum = 0
         testnormalization = 0     
         for s in self.sections:
             chord_distr_sum += len(s.chords)
         for s in self.sections:
-            s.cx = coo_matrix(s.chords_distribution)
+            s.cx = sparse.coo_matrix(s.chords_distribution)
             s.s0 = s.cx.tocsr()
             for i,j,v in zip(s.cx.row, s.cx.col, s.cx.data): 
                 s.s0[i,j] = (v * len(s.chords))  
@@ -565,7 +604,7 @@ class Chart(ChameleonContext):
         for i in range(1, len(self.sections), 1):    
             sumarr += self.sections[i].s0         
         self.chords_distribution_all = sumarr
-        k = coo_matrix(self.chords_distribution_all)
+        k = sparse.coo_matrix(self.chords_distribution_all)
         k.k0 = k.tocsr()
         rowsum = np.zeros(np.shape(k.k0)[0])
         for i,j,v in zip(k.row, k.col, k.data):      
@@ -577,7 +616,7 @@ class Chart(ChameleonContext):
         #gather chord_transition_matrix info
         chord_trans_sum = 0        
         for p in self.sections:
-            p.cx = coo_matrix(p.chord_transition_matrix)
+            p.cx = sparse.coo_matrix(p.chord_transition_matrix)
             p.p0 = p.cx.tocsr()
             chord_trans_sum += len(p.chord_transitions)
         for p in self.sections:   
@@ -587,7 +626,7 @@ class Chart(ChameleonContext):
         for i in range(1, len(self.sections), 1):    
             sumarrtr += self.sections[i].p0       
         self.chords_transition_matrix_all = sumarrtr
-        t = coo_matrix(self.chords_transition_matrix_all)
+        t = sparse.coo_matrix(self.chords_transition_matrix_all)
         t.t0 = t.tocsr()
         rowsum = np.zeros(np.shape(t.t0)[0])
         for i,j,v in zip(t.row, t.col, t.data):      
@@ -636,22 +675,3 @@ class Chart(ChameleonContext):
         return sparse.csr_matrix(f)  
     # end get_features
 # end Chart
-
-# TODO: __GIANNOS__ fill out the following class
-class GlobalHMM(ChameleonContext):
-    def __init__(self):
-        # dictionary with keys: chord symbol, values: melody rPCP
-        self.melody_per_chord = {}
-        # make matrix from melody_per_chord dictionary
-        # rows: 840, columns: 12
-        # make sure rows are in the correct order, according to
-        # self.get_all_chord_states() , inhereted from ChameleonContext
-        self.observation_matrix = None
-        # weighted average for transitions matrices per chart - speak with Velenis
-        self.transition_matrix = None
-    # end init
-
-    def add_melody_per_chord_information(self, chord, melody):
-        # TODO: __GIANNOS__ 
-        pass
-# end GlobalHMM
