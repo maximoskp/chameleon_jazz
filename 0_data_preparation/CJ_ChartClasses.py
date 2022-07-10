@@ -137,9 +137,12 @@ class ChameleonHMM(ChameleonContext):
         self.melody_per_chord = sparse.csr_matrix( np.zeros( (len(self.all_chord_states), 12) ) )
         # 840x840
         self.transition_matrix = sparse.csr_matrix( np.zeros( (len(self.all_chord_states), len(self.all_chord_states)) ) )
+        # starting and ending probs
+        self.starting = sparse.csr_matrix( np.ones( len(self.all_chord_states) )/len(self.all_chord_states ) )
+        self.ending = sparse.csr_matrix( np.ones( len(self.all_chord_states) )/len(self.all_chord_states ) )
     # end init
 
-    def add_melody_per_chord_information(self, chords):
+    def add_melody_information_with_chords(self, chords):
         self.melody_per_chord = self.melody_per_chord.toarray()
         for chord in chords:
             idx = self.chord2idx[ chord.chord_state ]
@@ -148,7 +151,16 @@ class ChameleonHMM(ChameleonContext):
             if np.sum( self.melody_per_chord[i,:] ) != 0:
                 self.melody_per_chord[i,:] /= np.sum( self.melody_per_chord[i,:] )
         self.melody_per_chord = sparse.csr_matrix( self.melody_per_chord )
-    # end add_melody_per_chord_information
+    # end add_melody_information_with_chords
+
+    def add_melody_information_with_matrix(self, m):
+        self.melody_per_chord = self.melody_per_chord.toarray()
+        self.melody_per_chord += m
+        for i in range( self.melody_per_chord.shape[0] ):
+            if np.sum( self.melody_per_chord[i,:] ) != 0:
+                self.melody_per_chord[i,:] /= np.sum( self.melody_per_chord[i,:] )
+        self.melody_per_chord = sparse.csr_matrix( self.melody_per_chord )
+    # end add_melody_information_with_matrix
 
     def add_transition_information(self, t):
         self.transition_matrix = self.transition_matrix.toarray()
@@ -571,11 +583,8 @@ class Chart(ChameleonContext):
         self.make_chords()
         self.make_transitions()
         self.hmm = ChameleonHMM()
-        self.hmm.add_melody_per_chord_information( self.chords )
+        self.hmm.add_melody_information_with_chords( self.chords )
         self.hmm.add_transition_information( self.chords_transition_matrix_all.toarray() )
-        print( '----------------------------------------------' )
-        print(self.hmm.melody_per_chord)
-        print( '----------------------------------------------' )
     # end __init__
     
     def make_sections(self):

@@ -36,12 +36,24 @@ for i in range( len( songs_keys ) ):
     # print( 'size of object: ' + str(len(pickle.dumps(all_structs, -1))) )
 
 # %% save pickle
-
+print('saving all_structs')
 with open('../data/all_melody_structs.pickle', 'wb') as handle:
     pickle.dump(all_structs, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-# %% TODO: make melody-chord stats for all chords
-# Run through all items in all_structs and add/append in dictionary with
-# add_melody_per_chord_information 
-# keys: all chords (840)
-# values: distribution of piece_tonality-rPCPs of melodies in GlobalHMM melody_per_chord
+# %% global HMM
+print('constructing global HMM')
+globalHMM = ccc.ChameleonHMM()
+
+for s in all_structs:
+    globalHMM.add_melody_information_with_matrix( s.hmm.melody_per_chord )
+    globalHMM.add_transition_information( s.hmm.transition_matrix )
+
+print('saving globalHMM')
+with open('../data/globalHMM.pickle', 'wb') as handle:
+    pickle.dump(globalHMM, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+# %% test plot
+os.makedirs('../figs', exist_ok=True)
+import matplotlib.pyplot as plt
+plt.imshow(np.reshape(globalHMM.melody_per_chord.toarray(), (70,12*12)), cmap='gray_r')
+plt.savefig('../figs/test_melperchord.png', dpi=500)
