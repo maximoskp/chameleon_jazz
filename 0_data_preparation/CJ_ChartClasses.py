@@ -229,6 +229,10 @@ class Chord(ChameleonContext):
             self.chord_state = self.chord2state(tonality='piece_tonality')
             self.state_np = np.fromstring( self.chord_state[1:-1].replace(' ', '') , dtype=int, sep=',' )
         # discuss polychords...
+        # constraint information
+        self.isSectionLast = False
+        self.isSectionFirst = False
+        self.isSectionPenultimate = False
     # end __init__
 
     def set_tonalities(self, piece_tonality=None, estimated_tonality=None, states_tonality='piece_tonality'):
@@ -499,6 +503,11 @@ class Section(ChameleonContext):
         for m in self.measures:
             for c in m.chords:
                 self.chords.append( c )
+        if len( self.chords ) > 0:
+            self.chords[0].isSectionFirst = True
+            self.chords[-1].isSectionLast = True
+        if len( self.chords ) > 1:
+            self.chords[0].isSectionPenultimate = True
     # end make_chords
     
     def make_pcp(self):
@@ -581,6 +590,7 @@ class Chart(ChameleonContext):
         # do we need to keep:
         # chords with their time in chart (if we happen to need harmonic rhythm)
         self.make_chords()
+        self.make_constraints()
         self.make_transitions()
         self.hmm = ChameleonHMM()
         self.hmm.add_melody_information_with_chords( self.chords )
@@ -658,6 +668,13 @@ class Chart(ChameleonContext):
                 # add melody_information here (since chart tonality information is required)
                 # self.chords[-1].set_default_melody_info_with_tonality( self.tonality )
     # end make_chords
+    
+    def make_constraints(self):
+        self.constraints = []
+        for i, c in enumerate(self.chords):
+            if c.isSectionLast:
+                self.constraints.append( [i, c.chord2idx[c.chord_state]] )
+    # end make_constraints
     
     def make_transitions(self):
         # gather all transitions in one array
