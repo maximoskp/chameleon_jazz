@@ -14,6 +14,7 @@ import music21 as m21
 import newGCT as ng
 from scipy import sparse
 import computeDIC as dic
+import copy
 
 class ChameleonContext:
     # static scope for chord dictionary and initiall (0s) transition matrix
@@ -170,6 +171,79 @@ class ChameleonHMM(ChameleonContext):
                 self.transition_matrix[i,:] /= np.sum( self.transition_matrix[i,:] )
         self.transition_matrix = sparse.csr_matrix( self.transition_matrix )
     # end add_transition_information
+    
+    def apply_cHMM_with_constraints(self, trans_probs, chord_per_mel_probs, emissions, constraints):
+        # adventure exponent
+        adv_exp = 0.5
+        markov = copy.deepcopy( trans_probs )
+        obs = np.matmul( chord_per_mel_probs , emissions )
+        # smooth markov
+        markov[ markov == 0 ] = 0.00000001
+        # neutralise diagonal
+        for i in range(markov.shape[0]):
+            markov[i,i] = 0.000000001*markov[i,i]
+        # apply adventure
+        markov = np.power(markov, adv_exp)
+        # re-normalise
+        for i in range(markov.shape[0]):
+            if np.sum( markov[i,:] ) > 0:
+                markov[i,:] = markov[i,:]/np.sum( markov[i,:] )
+        # beginning chord probabilities
+        pr = self.starting.toarray()
+        delta = np.zeros( ( markov.shape[0] , obs.shape[1]) )
+        psi = np.zeros( ( markov.shape[0] , obs.shape[1]) )
+        pathIDXs = np.zeros( obs.shape[1] )
+        t = 0
+        delta[:,t] = np.multiply( pr , obs[:,t] )
+        if constraints[0] != -1:
+            delta[:,t] = np.zeros( markov.shape[0] )
+            delta[ constraints[0][1] ] = 1
+        else:
+            if np.sum(delta[:,t]) != 0:
+                delta[:,t] = delta[:,t]/np.sum(delta[:,t])
+        
+        psi[:,t] = 0 # arbitrary value, since there is no predecessor to t=0
+        
+        for t in range(1, obs.shape[1], 1):
+            if constraints[t] == -1 :
+                for j in range(0, markov.shape[0]):
+                    tmp_trans_prob = markov[:,j]
+                    # if np.sum( tmp_trans_prob ) != 0:
+                    #     tmp_trans_prob = tmp_trans_prob/np.sum( tmp_trans_prob )
+                    delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                    psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                if np.sum(delta[:,t]) != 0:
+                    delta[:,t] = delta[:,t]/np.sum(delta[:,t])
+            else:
+                j = int(constraints[t])
+                print(j)
+                tmp_trans_prob = markov[:,j]
+                # if np.sum( tmp_trans_prob ) != 0:
+                #     tmp_trans_prob = tmp_trans_prob/np.sum( tmp_trans_prob )
+                delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                if np.sum(delta[:,t]) != 0:
+                    delta[:,t] = delta[:,t]/np.sum(delta[:,t])
+        # end for t
+        # print('delta: ', delta)
+        if constraints[-1] == -1:
+            pathIDXs[obs.shape[1]-1] = int(np.argmax(delta[:,obs.shape[1]-1]))
+        else:
+            pathIDXs[obs.shape[1]-1] = int(constraints[-1])
+        
+        for t in range(obs.shape[1]-2, -1, -1):
+            pathIDXs[t] = int(psi[ int(pathIDXs[t+1]) , t+1 ])
+        print('pathIDXs: ', pathIDXs)
+        '''
+        gcts_out = []
+        gct_labels_out = []
+        for i in range( len(pathIDXs) ):
+            gcts_out.append( maf.str2np(c.gcts_labels[ int(pathIDXs[i]) ]) )
+            gct_labels_out.append( c.gcts_labels[ int(pathIDXs[i]) ] )
+        '''
+        return pathIDXs, delta, psi
+    # end apply_cHMM_with_constraints
+    
 # end ChameleonHMM
 
 class Chord(ChameleonContext):
@@ -591,6 +665,7 @@ class Chart(ChameleonContext):
         # chords with their time in chart (if we happen to need harmonic rhythm)
         self.make_chords()
         self.make_constraints()
+        self.make_melody_information()
         self.make_transitions()
         self.hmm = ChameleonHMM()
         self.hmm.add_melody_information_with_chords( self.chords )
@@ -670,11 +745,18 @@ class Chart(ChameleonContext):
     # end make_chords
     
     def make_constraints(self):
-        self.constraints = []
+        self.constraints = -1*np.ones(len(self.chords))
         for i, c in enumerate(self.chords):
             if c.isSectionLast:
-                self.constraints.append( [i, c.chord2idx[c.chord_state]] )
+                self.constraints[i] = self.chord2idx[c.chord_state]
     # end make_constraints
+    
+    def make_melody_information(self, tonality='piece_tonality'):
+        self.melody_information = np.zeros( ( 12 , len(self.chords) ) )
+        for i, c in enumerate(self.chords):
+            if c.isSectionLast:
+                self.melody_information[:,i] = c.melody_information[tonality]
+    # end make_melody_information
     
     def make_transitions(self):
         # gather all transitions in one array

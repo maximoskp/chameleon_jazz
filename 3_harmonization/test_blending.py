@@ -32,6 +32,15 @@ t1 = s1.hmm.transition_matrix.toarray()
 t2 = s2.hmm.transition_matrix.toarray()
 tGlobal = globalHMM.transition_matrix.toarray()
 
-bt = w1*t1 + w2*t2 + wGlobal*tGlobal
+trans_probs = w1*t1 + w2*t2 + wGlobal*tGlobal
 
-m1 = s1.hmm.melody_per_chord.toarray()
+chord_per_mel_probs = s1.hmm.melody_per_chord.toarray()
+
+emissions = s1.melody_information
+
+constraints = s1.constraints
+
+
+# %% apply HMM
+
+pathIDXs = s1.hmm.apply_cHMM_with_constraints(trans_probs, chord_per_mel_probs, emissions, constraints)
