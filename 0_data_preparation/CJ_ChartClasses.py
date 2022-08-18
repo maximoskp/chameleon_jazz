@@ -130,6 +130,24 @@ class ChameleonContext:
             b = True
         return b
     # end compute_dic_value
+    
+    def idxs2chords(self, idxs):
+        if len(self.idx2chord) == 0:
+            self.initialize_chord_states()
+        c = []
+        for i in idxs:
+            c.append( self.idx2chord[int(i)] )
+        return c
+    # end idxs2chords
+    
+    def idxs2chordsnp(self, idxs):
+        if len(self.idx2chord) == 0:
+            self.initialize_chord_states()
+        c = []
+        for i in idxs:
+            c.append( self.idx2chordnp[int(i)] )
+        return c
+    # end idxs2chordsnp
 # end ChameleonContext
 
 class ChameleonHMM(ChameleonContext):
@@ -172,11 +190,11 @@ class ChameleonHMM(ChameleonContext):
         self.transition_matrix = sparse.csr_matrix( self.transition_matrix )
     # end add_transition_information
     
-    def apply_cHMM_with_constraints(self, trans_probs, chord_per_mel_probs, emissions, constraints):
+    def apply_cHMM_with_constraints(self, trans_probs, mel_per_chord_probs, emissions, constraints):
         # adventure exponent
-        adv_exp = 0.5
+        adv_exp = 1.0 #0.5
         markov = copy.deepcopy( trans_probs )
-        obs = np.matmul( chord_per_mel_probs , emissions )
+        obs = np.matmul( mel_per_chord_probs , emissions )
         # smooth markov
         markov[ markov == 0 ] = 0.00000001
         # neutralise diagonal
@@ -190,14 +208,14 @@ class ChameleonHMM(ChameleonContext):
                 markov[i,:] = markov[i,:]/np.sum( markov[i,:] )
         # beginning chord probabilities
         pr = self.starting.toarray()
-        delta = np.zeros( ( markov.shape[0] , obs.shape[1]) )
-        psi = np.zeros( ( markov.shape[0] , obs.shape[1]) )
+        delta = np.zeros( ( markov.shape[0] , obs.shape[1] ) )
+        psi = np.zeros( ( markov.shape[0] , obs.shape[1] ) )
         pathIDXs = np.zeros( obs.shape[1] )
         t = 0
         delta[:,t] = np.multiply( pr , obs[:,t] )
         if constraints[0] != -1:
             delta[:,t] = np.zeros( markov.shape[0] )
-            delta[ constraints[0][1] ] = 1
+            delta[ constraints[0], t ] = 1
         else:
             if np.sum(delta[:,t]) != 0:
                 delta[:,t] = delta[:,t]/np.sum(delta[:,t])
@@ -667,6 +685,7 @@ class Chart(ChameleonContext):
         self.make_constraints()
         self.make_melody_information()
         self.make_transitions()
+        # TODO: self.make_starting_ending_information()
         self.hmm = ChameleonHMM()
         self.hmm.add_melody_information_with_chords( self.chords )
         self.hmm.add_transition_information( self.chords_transition_matrix_all.toarray() )
@@ -754,8 +773,7 @@ class Chart(ChameleonContext):
     def make_melody_information(self, tonality='piece_tonality'):
         self.melody_information = np.zeros( ( 12 , len(self.chords) ) )
         for i, c in enumerate(self.chords):
-            if c.isSectionLast:
-                self.melody_information[:,i] = c.melody_information[tonality]
+            self.melody_information[:,i] = c.melody_information[tonality]
     # end make_melody_information
     
     def make_transitions(self):

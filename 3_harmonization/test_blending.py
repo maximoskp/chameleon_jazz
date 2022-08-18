@@ -34,7 +34,7 @@ tGlobal = globalHMM.transition_matrix.toarray()
 
 trans_probs = w1*t1 + w2*t2 + wGlobal*tGlobal
 
-chord_per_mel_probs = s1.hmm.melody_per_chord.toarray()
+mel_per_chord_probs = s1.hmm.melody_per_chord.toarray()
 
 emissions = s1.melody_information
 
@@ -43,4 +43,27 @@ constraints = s1.constraints
 
 # %% apply HMM
 
-pathIDXs = s1.hmm.apply_cHMM_with_constraints(trans_probs, chord_per_mel_probs, emissions, constraints)
+pathIDXs, delta, psi = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints)
+
+# debug_constraints = np.array([pathIDXs,constraints])
+
+generated_chords = s1.idxs2chords(pathIDXs)
+
+generated_vs_initial = []
+for i in range(len(generated_chords)):
+    generated_vs_initial.append( [constraints[i], generated_chords[i], s1.chords[i].chord_state] )
+
+# %% plot - debug
+
+import matplotlib.pyplot as plt
+
+os.makedirs('../figs', exist_ok=True)
+os.makedirs('../figs/hmm_debug', exist_ok=True)
+
+plt.clf()
+plt.imshow(trans_probs, cmap='gray_r')
+plt.savefig('../figs/hmm_debug/trans_probs.png', dpi=500)
+
+plt.clf()
+plt.imshow(delta, cmap='gray_r')
+plt.savefig('../figs/hmm_debug/delta.png', dpi=500)
