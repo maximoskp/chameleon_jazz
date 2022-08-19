@@ -45,13 +45,17 @@ constraints = s1.constraints
 
 pathIDXs, delta, psi = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints)
 
-# debug_constraints = np.array([pathIDXs,constraints])
+transp_idxs = s1.transpose_idxs(pathIDXs, s1.tonality['root'])
 
-generated_chords = s1.idxs2chords(pathIDXs)
+debug_constraints = np.array([transp_idxs,constraints])
+
+generated_chords = s1.idxs2chordSymbols(transp_idxs)
 
 generated_vs_initial = []
 for i in range(len(generated_chords)):
-    generated_vs_initial.append( [constraints[i], generated_chords[i], s1.chords[i].chord_state] )
+    generated_vs_initial.append( [constraints[i], generated_chords[i], s1.chords[i].chord_symbol] )
+
+new_unfolded = s1.substitute_chordSymbols_in_string( s1.unfolded_string, generated_chords )
 
 # %% plot - debug
 

@@ -56,11 +56,27 @@ class ChameleonContext:
         'Cb': 11,
         'C-': 11
     }
+    int2root = {
+        0: 'C',
+        1: 'Db',
+        2: 'D',
+        3: 'Eb',
+        4: 'E',
+        5: 'F',
+        6: 'Gb',
+        7: 'G',
+        8: 'Ab',
+        9: 'A',
+        10: 'Bb',
+        11: 'B'
+    }
     chord2idx = {}
     idx2chord = {}
+    idx2chordSymbol = {}
     idx2chordnp = {}
     all_chord_states = []
     all_states_np = []
+    all_chord_symbols = []
     # translation between numeric root/types and chord state (string)
     def chord2state(self, numeric_root=None, numeric_type=None, tonality='estimated_tonality'):
         if numeric_root is None:
@@ -111,14 +127,17 @@ class ChameleonContext:
         # self.all_chord_states = []
         # self.all_states_np = []
         for i in range(12):
-            for v in self.type2pc.values():
+            for k in self.type2pc.keys():
+                v = self.type2pc[k]
                 tmp_chord_state = self.chord2state(numeric_root=i, numeric_type=v['extended_type'], tonality= "piece_tonality" )
                 self.all_chord_states.append( tmp_chord_state )
                 self.all_states_np.append( np.fromstring( tmp_chord_state.replace(' ', '').replace('[', '').replace(']', '') , dtype=int, sep=',' ) )
+                self.all_chord_symbols.append( str(self.int2root[i]) + k )
         for i in range( len(self.all_chord_states) ):
             self.chord2idx[self.all_chord_states[i]] = i
             self.idx2chord[i] = self.all_chord_states[i]
             self.idx2chordnp[i] = self.all_states_np[i]
+            self.idx2chordSymbol[i] = self.all_chord_symbols[i]
     # end initialize_chord_states
 
     def compute_dic_value(self, c1, c2, d):
@@ -140,6 +159,15 @@ class ChameleonContext:
         return c
     # end idxs2chords
     
+    def idxs2chordSymbols(self, idxs):
+        if len(self.idx2chord) == 0:
+            self.initialize_chord_states()
+        c = []
+        for i in idxs:
+            c.append( self.idx2chordSymbol[int(i)] )
+        return c
+    # end idxs2chordSymbols
+    
     def idxs2chordsnp(self, idxs):
         if len(self.idx2chord) == 0:
             self.initialize_chord_states()
@@ -148,6 +176,26 @@ class ChameleonContext:
             c.append( self.idx2chordnp[int(i)] )
         return c
     # end idxs2chordsnp
+    
+    def transpose_idxs(self, idxs_in, root_number):
+        if len(self.all_chord_states) == 0:
+            self.initialize_chord_states()
+        print(np.array(idxs_in))
+        print(root_number)
+        print(len(self.type2pc.keys()))
+        print(len(self.all_chord_states))
+        return ( np.array(idxs_in) + root_number*len(self.type2pc.keys()) )%len(self.all_chord_states)
+    # end transpose_idxs
+    
+    def substitute_chordSymbols_in_string(self, unfolded_string, chordSymbols):
+        chordsplit = unfolded_string.split('chord~')
+        newsplit = [chordsplit[0]]
+        for i in range(len(chordsplit) - 1):
+            c = chordsplit[i+1]
+            atsplit = c.split('@')
+            newsplit.append( '@'.join([ chordSymbols[i] , atsplit[1] ]) )
+        return 'chord~'.join( newsplit )
+    # end substitute_chordSymbols_in_string
 # end ChameleonContext
 
 class ChameleonHMM(ChameleonContext):
