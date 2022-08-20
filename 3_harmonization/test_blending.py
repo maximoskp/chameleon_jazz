@@ -57,6 +57,21 @@ for i in range(len(generated_chords)):
 
 new_unfolded = s1.substitute_chordSymbols_in_string( s1.unfolded_string, generated_chords )
 
+# %% costruct GJT-ready structure
+
+new_key = 'BL_' + s1.key + '-' + s2.key
+
+blended_piece = {
+    new_key: {}
+}
+
+blended_piece[new_key]['string'] = new_unfolded
+blended_piece[new_key]['original_string'] = new_unfolded
+blended_piece[new_key]['unfolded_string'] = new_unfolded
+blended_piece[new_key]['original_string'] = new_key
+blended_piece[new_key]['appearing_name'] = 'BL_' + s1.piece_name + '-' + s2.piece_name
+blended_piece[new_key]['tonality'] = s1.tonality
+
 # %% plot - debug
 
 import matplotlib.pyplot as plt

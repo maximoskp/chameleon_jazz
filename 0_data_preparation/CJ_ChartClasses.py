@@ -238,9 +238,7 @@ class ChameleonHMM(ChameleonContext):
         self.transition_matrix = sparse.csr_matrix( self.transition_matrix )
     # end add_transition_information
     
-    def apply_cHMM_with_constraints(self, trans_probs, mel_per_chord_probs, emissions, constraints):
-        # adventure exponent
-        adv_exp = 1.0 #0.5
+    def apply_cHMM_with_constraints(self, trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp = 1.0):
         markov = copy.deepcopy( trans_probs )
         obs = np.matmul( mel_per_chord_probs , emissions )
         # smooth markov
@@ -299,7 +297,7 @@ class ChameleonHMM(ChameleonContext):
         
         for t in range(obs.shape[1]-2, -1, -1):
             pathIDXs[t] = int(psi[ int(pathIDXs[t+1]) , t+1 ])
-        print('pathIDXs: ', pathIDXs)
+        # print('pathIDXs: ', pathIDXs)
         '''
         gcts_out = []
         gct_labels_out = []
@@ -817,6 +815,15 @@ class Chart(ChameleonContext):
             if c.isSectionLast:
                 self.constraints[i] = self.chord2idx[c.chord_state]
     # end make_constraints
+    
+    def get_all_chords_idxs(self):
+        if len( self.all_chord_states ) == 0:
+            self.initialize_chord_states()
+        idxs = np.zeros(len(self.chords))
+        for i, c in enumerate(self.chords):
+            idxs[i] = self.chord2idx[c.chord_state]
+        return idxs
+    # end get_all_chords_idxs
     
     def make_melody_information(self, tonality='piece_tonality'):
         self.melody_information = np.zeros( ( 12 , len(self.chords) ) )
