@@ -48,7 +48,7 @@ emissions = s1.melody_information
 
 # %% modify chord
 
-constraints = s1.get_all_chords_idxs().astype(np.int)
+constraints = s1.get_all_chords_idxs()
 # remember which chord to substitute
 chord2sub = constraints[chord2replace_idx] # we can keep a list of chords to allow multiple new runs
 constraints[chord2replace_idx] = -1
@@ -60,12 +60,12 @@ adv_exp = 1.0
 
 while pathIDXs[chord2replace_idx] == chord2sub:
     print('adv_exp: ', adv_exp)
-    pathIDXs, delta, psi = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=adv_exp)
+    pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=adv_exp)
     adv_exp /= 1.5
 
 transp_idxs = s1.transpose_idxs(pathIDXs, s1.tonality['root'])
 
-debug_constraints = np.array([transp_idxs,constraints])
+debug_constraints = np.array([pathIDXs,constraints])
 
 generated_chords = s1.idxs2chordSymbols(transp_idxs)
 

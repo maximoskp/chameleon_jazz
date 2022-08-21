@@ -180,10 +180,6 @@ class ChameleonContext:
     def transpose_idxs(self, idxs_in, root_number):
         if len(self.all_chord_states) == 0:
             self.initialize_chord_states()
-        print(np.array(idxs_in))
-        print(root_number)
-        print(len(self.type2pc.keys()))
-        print(len(self.all_chord_states))
         return ( np.array(idxs_in) + root_number*len(self.type2pc.keys()) )%len(self.all_chord_states)
     # end transpose_idxs
     
@@ -241,13 +237,16 @@ class ChameleonHMM(ChameleonContext):
     def apply_cHMM_with_constraints(self, trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp = 1.0):
         markov = copy.deepcopy( trans_probs )
         obs = np.matmul( mel_per_chord_probs , emissions )
+        # apply adventure
+        markov = adv_exp*np.power(markov, adv_exp) + (1-adv_exp)*np.power(np.random.rand( markov.shape[0], markov.shape[1] ), 1-adv_exp)
+        obs = adv_exp*np.power(obs, adv_exp) + (1-adv_exp)*np.power(np.random.rand( obs.shape[0], obs.shape[1] ), 1-adv_exp)
+        # smooth obs
+        obs[ obs == 0 ] = 0.00000001
         # smooth markov
         markov[ markov == 0 ] = 0.00000001
         # neutralise diagonal
         for i in range(markov.shape[0]):
             markov[i,i] = 0.000000001*markov[i,i]
-        # apply adventure
-        markov = np.power(markov, adv_exp)
         # re-normalise
         for i in range(markov.shape[0]):
             if np.sum( markov[i,:] ) > 0:
@@ -280,16 +279,15 @@ class ChameleonHMM(ChameleonContext):
                     delta[:,t] = delta[:,t]/np.sum(delta[:,t])
             else:
                 j = int(constraints[t])
-                print(j)
-                tmp_trans_prob = markov[:,j]
-                # if np.sum( tmp_trans_prob ) != 0:
-                #     tmp_trans_prob = tmp_trans_prob/np.sum( tmp_trans_prob )
+                # tmp_trans_prob = markov[:,j]
+                tmp_trans_prob = np.ones( markov[:,j].size )*0.000000001
+                tmp_trans_prob[j] = 1
+                tmp_trans_prob = tmp_trans_prob/np.sum(tmp_trans_prob)
                 delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
                 psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
                 if np.sum(delta[:,t]) != 0:
                     delta[:,t] = delta[:,t]/np.sum(delta[:,t])
         # end for t
-        # print('delta: ', delta)
         if constraints[-1] == -1:
             pathIDXs[obs.shape[1]-1] = int(np.argmax(delta[:,obs.shape[1]-1]))
         else:
@@ -305,7 +303,7 @@ class ChameleonHMM(ChameleonContext):
             gcts_out.append( maf.str2np(c.gcts_labels[ int(pathIDXs[i]) ]) )
             gct_labels_out.append( c.gcts_labels[ int(pathIDXs[i]) ] )
         '''
-        return pathIDXs, delta, psi
+        return pathIDXs, delta, psi, markov, obs
     # end apply_cHMM_with_constraints
     
 # end ChameleonHMM
@@ -822,7 +820,7 @@ class Chart(ChameleonContext):
         idxs = np.zeros(len(self.chords))
         for i, c in enumerate(self.chords):
             idxs[i] = self.chord2idx[c.chord_state]
-        return idxs
+        return idxs.astype(int)
     # end get_all_chords_idxs
     
     def make_melody_information(self, tonality='piece_tonality'):

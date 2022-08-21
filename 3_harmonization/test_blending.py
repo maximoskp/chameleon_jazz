@@ -26,13 +26,13 @@ print(s2.piece_name)
 
 # %% construct weighted "blended" transition matrix and get observations
 
-w1, w2, wGlobal = 0.1, 0.8, 0.1
+w1, w2, wGlobal = 0.1, 0.1, 0.8
 
 t1 = s1.hmm.transition_matrix.toarray()
 t2 = s2.hmm.transition_matrix.toarray()
 tGlobal = globalHMM.transition_matrix.toarray()
 
-trans_probs = w1*t1 + w2*t2 + wGlobal*tGlobal
+trans_probs = (w1*t1 + w2*t2 + wGlobal*tGlobal)/(w1+w2+wGlobal)
 
 mel_per_chord_probs = s1.hmm.melody_per_chord.toarray()
 
@@ -43,11 +43,11 @@ constraints = s1.constraints
 
 # %% apply HMM
 
-pathIDXs, delta, psi = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints)
+pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=0.5)
 
 transp_idxs = s1.transpose_idxs(pathIDXs, s1.tonality['root'])
 
-debug_constraints = np.array([transp_idxs,constraints])
+debug_constraints = np.array([pathIDXs,constraints])
 
 generated_chords = s1.idxs2chordSymbols(transp_idxs)
 
@@ -86,3 +86,11 @@ plt.savefig('../figs/hmm_debug/trans_probs.png', dpi=500)
 plt.clf()
 plt.imshow(delta, cmap='gray_r')
 plt.savefig('../figs/hmm_debug/delta.png', dpi=500)
+
+plt.clf()
+plt.imshow(markov, cmap='gray_r')
+plt.savefig('../figs/hmm_debug/markov.png', dpi=500)
+
+plt.clf()
+plt.imshow(obs, cmap='gray_r')
+plt.savefig('../figs/hmm_debug/obs.png', dpi=500)
