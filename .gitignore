@@ -2,4 +2,6 @@ data/
 models/
 figs/
 
+generated_csvs/
+
 .DS_Store
