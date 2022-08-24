@@ -11,6 +11,8 @@ import json
 import CJ_ChartClasses as ccc
 import pickle
 
+
+
 # load all piece
 with open('..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'songsmelodieslibrary.json') as json_file:
     songs = json.load(json_file)
