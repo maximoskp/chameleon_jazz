@@ -164,6 +164,8 @@ def get_song():
 @api.route('/generatecsv', methods=['GET'])
 def get_songcsvcomplex():
     # example run: http://localhost:5000/generatecsv?name="NAME_WITH_UNDERSCORES"&r=3&h=3
+    # no double quotes
+    # http://127.0.0.1:5000/generatecsv?name=ALL_OF_ME&r=3&h=3
     # keywords should be:
     # 'index': NUMBER
     # 'name': NAME
