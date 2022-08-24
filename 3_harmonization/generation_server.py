@@ -194,13 +194,59 @@ def get_songcsvcomplex():
         if k != 'r' and k != 'name' and k != 'h':
             print('ERROR: arguments named \'index\' and \'name\' are only available')
     propername += '.csv'
-    print('propername: ', propername)
-    print('songkey: -' + songkey + '-' )
-    print('keys: ', keys)
     if songkey not in keys:
         print('ERROR: ' + songkey + ' not in song names')
     else:
-        generateFromString(all_structs[keys.index(songkey)].string, harmonic_complexity=harmonic_complexity, rhythm_complexity=rhythm_complexity, song_name=propername)
+        generateFromString(all_structs[keys.index(songkey)].unfolded_string, harmonic_complexity=harmonic_complexity, rhythm_complexity=rhythm_complexity, song_name=propername)
+        resp[songkey] = getSongFromCSVFile( propername )
+    # print(resp)
+    return json.dumps(resp)
+# end get_songcsv
+
+@api.route('/generatecsvsubstitute', methods=['GET'])
+def get_songcsvsubstitute():
+    # example run: http://localhost:5000/generatecsvsubstitute?name=NAME_WITH_UNDERSCORES&r=3&h=3&chord_idx=2
+    # no double quotes
+    # http://127.0.0.1:5000/generatecsvsubstitute?name=ALL_OF_ME&r=3&h=3&chord_idx=2
+    # keywords should be:
+    # 'index': NUMBER
+    # 'name': NAME
+    args = request.args
+    argkeys = args.keys()
+    resp = {}
+    print('args: ', args)
+    propername = ''
+    rhythm_complexity = str(3)
+    harmonic_complexity = str(3)
+    chord_idx = 0
+    songkey = ''
+    for k in argkeys:
+        if k == 'name':
+            propername = args[k] + propername
+            songkey = args[k].replace('_', ' ')
+        if k == 'r':
+            if '_h~' in propername:
+                tmp_split = propername.split('_h~')
+                rhythm_complexity = str(args[k])
+                propername = '_h~'.join( [tmp_split[0] + '_r~' + args[k] , tmp_split[1]] )
+            else:
+                propername = propername + '_r~' + args[k]
+        if k == 'h':
+            harmonic_complexity = str(args[k])
+            propername = propername + '_h~' + args[k]
+        if k == 'chord_idx':
+            chord_idx = str(args[k])
+            propername = propername + '_idx~' + args[k]
+        if k != 'r' and k != 'name' and k != 'h' and k != 'chord_idx':
+            print('ERROR: arguments named \'index\' and \'name\' are only available')
+    propername += '.csv'
+    if songkey not in keys:
+        print('ERROR: ' + songkey + ' not in song names')
+    else:
+        before_str = all_structs[keys.index(songkey)].unfolded_string
+        print('before: ' + before_str)
+        mod_piece = rhf.substitute_chord_by_string( before_str, int(chord_idx) )
+        generateFromString(mod_piece['unfolded_string'], harmonic_complexity=harmonic_complexity, rhythm_complexity=rhythm_complexity, song_name=propername)
         resp[songkey] = getSongFromCSVFile( propername )
     # print(resp)
     return json.dumps(resp)
