@@ -250,7 +250,61 @@ def get_songcsvsubstitute():
         resp[songkey] = getSongFromCSVFile( propername )
     # print(resp)
     return json.dumps(resp)
-# end get_songcsv
+# end get_songcsvsubstitute
+
+@api.route('/generatecsvblend', methods=['GET'])
+def get_songcsvblend():
+    # example run: http://localhost:5000/generatecsvblend?name1=NAME1_WITH_UNDERSCORES&name2=NAME2_WITH_UNDERSCORES&r=3&h=3
+    # no double quotes
+    # http://127.0.0.1:5000/generatecsvblend?name1=ALL_OF_ME&name2=SO_WHAT&r=3&h=3
+    # keywords should be:
+    # 'index': NUMBER
+    # 'name': NAME
+    args = request.args
+    argkeys = args.keys()
+    resp = {}
+    print('args: ', args)
+    propername = ''
+    rhythm_complexity = str(3)
+    harmonic_complexity = str(3)
+    songkey1 = ''
+    songkey2 = ''
+    for k in argkeys:
+        if k == 'name1':
+            propername = args[k] + propername
+            songkey1 = args[k].replace('_', ' ')
+        if k == 'name2':
+            propername = propername + '_' + args[k]
+            songkey2 = args[k].replace('_', ' ')
+        if k == 'r':
+            if '_h~' in propername:
+                tmp_split = propername.split('_h~')
+                rhythm_complexity = str(args[k])
+                propername = '_h~'.join( [tmp_split[0] + '_r~' + args[k] , tmp_split[1]] )
+            else:
+                propername = propername + '_r~' + args[k]
+        if k == 'h':
+            harmonic_complexity = str(args[k])
+            propername = propername + '_h~' + args[k]
+        if k != 'r' and k != 'name' and k != 'h' and k != 'chord_idx':
+            print('ERROR: arguments named \'index\' and \'name\' are only available')
+    propername += '.csv'
+    propername = 'BL_' + propername
+    if songkey1 not in keys:
+        print('ERROR: ' + songkey1 + ' not in song names')
+    elif songkey2 not in keys:
+        print('ERROR: ' + songkey2 + ' not in song names')
+    else:
+        before_str1 = all_structs[keys.index(songkey1)].unfolded_string
+        print('before1: ' + before_str1)
+        before_str2 = all_structs[keys.index(songkey2)].unfolded_string
+        print('before2: ' + before_str2)
+        mod_piece = rhf.blend_by_strings( before_str1,  before_str2 )
+        generateFromString(mod_piece['unfolded_string'], harmonic_complexity=harmonic_complexity, rhythm_complexity=rhythm_complexity, song_name=propername)
+        resp[propername.split('.')[0]] = getSongFromCSVFile( propername )
+    # print(resp)
+    return json.dumps(resp)
+# end generatecsvblend
 
 if __name__ == '__main__':
     api.run() 

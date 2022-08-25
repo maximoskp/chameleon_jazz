@@ -68,6 +68,72 @@ def blend_by_idx(i1, i2, debug_output=False):
         return blended_piece
 # end blend_by_idx
 
+def blend_by_strings(str1, str2, debug_output=False, piece1_name='TMP1', piece2_name='TMP2'):
+    # keep tonality
+    tonality_split = str1.split('tonality~')
+    comma_split = tonality_split[1].split(',')
+    tonality1 = comma_split[0]
+    in_struct1 = {
+        'unfolded_string': str1,
+        'string': str1,
+        'appearing_name': piece1_name,
+        'original_key': piece1_name,
+        'tonality': tonality1
+    }
+    s1 = ccc.Chart(in_struct1)
+
+    # keep tonality
+    tonality_split = str2.split('tonality~')
+    comma_split = tonality_split[1].split(',')
+    tonality2 = comma_split[0]
+    in_struct2 = {
+        'unfolded_string': str2,
+        'string': str2,
+        'appearing_name': piece2_name,
+        'original_key': piece2_name,
+        'tonality': tonality2
+    }
+    s2 = ccc.Chart(in_struct2)
+    
+    w1, w2, wGlobal = 0.1, 0.1, 0.8
+
+    t1 = s1.hmm.transition_matrix.toarray()
+    t2 = s2.hmm.transition_matrix.toarray()
+    tGlobal = globalHMM.transition_matrix.toarray()
+
+    trans_probs = (w1*t1 + w2*t2 + wGlobal*tGlobal)/(w1+w2+wGlobal)
+    mel_per_chord_probs = s1.hmm.melody_per_chord.toarray()
+    emissions = s1.melody_information
+    constraints = s1.constraints
+    
+    pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=0.5)
+    transp_idxs = s1.transpose_idxs(pathIDXs, s1.tonality['root'])
+
+    debug_constraints = np.array([pathIDXs,constraints])
+    generated_chords = s1.idxs2chordSymbols(transp_idxs)
+    generated_vs_initial = []
+    for i in range(len(generated_chords)):
+        generated_vs_initial.append( [constraints[i], generated_chords[i], s1.chords[i].chord_symbol] )
+
+    new_unfolded = s1.substitute_chordSymbols_in_string( s1.unfolded_string, generated_chords )
+    
+    new_key = 'BL_' + s1.key + '-' + s2.key
+    
+    mod_piece = {
+        new_key: {}
+    }
+    mod_piece['string'] = new_unfolded
+    mod_piece['original_string'] = new_unfolded
+    mod_piece['unfolded_string'] = new_unfolded
+    mod_piece['original_string'] = new_key
+    mod_piece['appearing_name'] = 'BL_' + s1.piece_name + s2.piece_name
+    mod_piece['tonality'] = s1.tonality
+    if debug_output:
+        return mod_piece, debug_constraints, generated_vs_initial
+    else:
+        return mod_piece
+# end blend_by_strings
+
 def blend_by_name(n1, n2, debug_output=False):
     ks = [all_structs[i].key for i in range(len(all_structs))]
     i1 = ks.index(n1)
@@ -107,11 +173,6 @@ def substitute_chord_by_string(s, chord2replace_idx, debug_output=False, piece_n
 
     while pathIDXs[chord2replace_idx] == chord2sub:
         print('adv_exp: ', adv_exp)
-        print('pathIDXs: ', pathIDXs)
-        print('constraints: ', constraints)
-        # print('mel_per_chord_probs: ', mel_per_chord_probs)
-        # print('emissions: ', np.sum(emissions))
-        print('trans_probs: ', np.sum(trans_probs-s1.hmm.transition_matrix.toarray()))
         pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=adv_exp)
         adv_exp /= 1.5
     
@@ -137,7 +198,7 @@ def substitute_chord_by_string(s, chord2replace_idx, debug_output=False, piece_n
         return mod_piece, debug_constraints, generated_vs_initial
     else:
         return mod_piece
-# end substitute_chord_by_idx
+# end substitute_chord_by_string
 
 def substitute_chord_by_name(n1, chord2replace_idx, debug_output=False):
     ks = [all_structs[i].key for i in range(len(all_structs))]

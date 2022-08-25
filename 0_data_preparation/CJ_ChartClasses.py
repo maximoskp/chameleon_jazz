@@ -244,9 +244,11 @@ class ChameleonHMM(ChameleonContext):
         obs[ obs == 0 ] = 0.00000001
         # smooth markov
         markov[ markov == 0 ] = 0.00000001
+        '''
         # neutralise diagonal
         for i in range(markov.shape[0]):
             markov[i,i] = 0.000000001*markov[i,i]
+        '''
         # re-normalise
         for i in range(markov.shape[0]):
             if np.sum( markov[i,:] ) > 0:
