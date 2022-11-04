@@ -43,7 +43,7 @@ constraints = s1.constraints
 
 # %% apply HMM
 
-pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=0.5)
+pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=0.9)
 
 transp_idxs = s1.transpose_idxs(pathIDXs, s1.tonality['root'])
 

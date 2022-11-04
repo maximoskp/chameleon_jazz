@@ -116,7 +116,7 @@ class ChameleonContext:
         mode = 'major'
         if s[root_idx-1:] == 'm':
             mode = 'minor'
-        return {'root': self.root2int[s[:root_idx]], 'mode':mode}
+        return {'root': self.root2int[s[:root_idx]], 'mode':mode, 'symbol': s}
     # end tonality_from_symbol
     
     def make_empty_chords_distribution(self):

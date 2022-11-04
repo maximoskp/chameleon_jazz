@@ -60,7 +60,7 @@ def blend_by_idx(i1, i2, debug_output=False):
     blended_piece[new_key]['unfolded_string'] = new_unfolded
     blended_piece[new_key]['original_string'] = new_key
     blended_piece[new_key]['appearing_name'] = 'BL_' + s1.piece_name + '-' + s2.piece_name
-    blended_piece[new_key]['tonality'] = s1.tonality
+    blended_piece[new_key]['tonality'] = s1.tonality['symbol']
     
     if debug_output:
         return blended_piece, debug_constraints, generated_vs_initial
@@ -127,7 +127,7 @@ def blend_by_strings(str1, str2, debug_output=False, piece1_name='TMP1', piece2_
     mod_piece['unfolded_string'] = new_unfolded
     mod_piece['original_string'] = new_key
     mod_piece['appearing_name'] = 'BL_' + s1.piece_name + s2.piece_name
-    mod_piece['tonality'] = s1.tonality
+    mod_piece['tonality'] = s1.tonality['symbol']
     if debug_output:
         return mod_piece, debug_constraints, generated_vs_initial
     else:
@@ -193,7 +193,7 @@ def substitute_chord_by_string(s, chord2replace_idx, debug_output=False, piece_n
     mod_piece['unfolded_string'] = new_unfolded
     mod_piece['original_string'] = new_key
     mod_piece['appearing_name'] = 'MOD_' + s1.piece_name
-    mod_piece['tonality'] = s1.tonality
+    mod_piece['tonality'] = s1.tonality['symbol']
     if debug_output:
         return mod_piece, debug_constraints, generated_vs_initial
     else:
@@ -245,7 +245,7 @@ def substitute_chord_by_idx(i1, chord2replace_idx, debug_output=False):
     mod_piece[new_key]['unfolded_string'] = new_unfolded
     mod_piece[new_key]['original_string'] = new_key
     mod_piece[new_key]['appearing_name'] = 'MOD_' + s1.piece_name
-    mod_piece[new_key]['tonality'] = s1.tonality
+    mod_piece[new_key]['tonality'] = s1.tonality['symbol']
     if debug_output:
         return mod_piece, debug_constraints, generated_vs_initial
     else:
