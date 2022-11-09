@@ -203,6 +203,8 @@ class ChameleonHMM(ChameleonContext):
         # starting and ending probs
         self.starting = sparse.csr_matrix( np.ones( len(self.all_chord_states) )/len(self.all_chord_states ) )
         self.ending = sparse.csr_matrix( np.ones( len(self.all_chord_states) )/len(self.all_chord_states ) )
+        # chords distribution
+        self.chords_distribution = sparse.csr_matrix( np.zeros( len(self.all_chord_states) ) )
     # end init
 
     def add_melody_information_with_chords(self, chords):
@@ -307,6 +309,36 @@ class ChameleonHMM(ChameleonContext):
         '''
         return pathIDXs, delta, psi, markov, obs
     # end apply_cHMM_with_constraints
+    
+    def add_starting_chord_distribution(self, c):
+        self.starting = self.starting.toarray()
+        self.starting += c
+        self.starting = sparse.csr_matrix( self.starting )
+    # end add_starting_chord
+    
+    def add_ending_chord_distribution(self, c):
+        self.ending = self.ending.toarray()
+        self.ending += c
+        self.ending = sparse.csr_matrix( self.ending )
+    # end add_ending_chord
+    
+    def add_chord_distribution(self, c):
+        self.chords_distribution = self.chords_distribution.toarray()
+        self.chords_distribution += c
+        self.chords_distribution = sparse.csr_matrix( self.chords_distribution )
+    # end add_chord_distribution
+    
+    def debug_print(self, filename='hmm_debug.txt'):
+        file_object = open(filename, 'w')
+        tmp_distr = self.chords_distribution.toarray().squeeze()
+        idxs = np.argsort( tmp_distr )[::-1]
+        i = 0
+        while tmp_distr[idxs[i]] > 0:
+            file_object.write( repr(self.all_states_np[idxs[i]]) + ': ' + str(tmp_distr[idxs[i]]) + '\n')
+            i += 1
+        file_object.close()
+        # TODO: print non-zero transitions
+    # end debug_print
     
 # end ChameleonHMM
 
@@ -646,6 +678,7 @@ class Section(ChameleonContext):
             self.chords[-1].isSectionLast = True
         if len( self.chords ) > 1:
             self.chords[0].isSectionPenultimate = True
+        self.number_of_chords = len(self.chords)
     # end make_chords
     
     def make_pcp(self):
@@ -735,7 +768,9 @@ class Chart(ChameleonContext):
         # TODO: self.make_starting_ending_information()
         self.hmm = ChameleonHMM()
         self.hmm.add_melody_information_with_chords( self.chords )
-        self.hmm.add_transition_information( self.chords_transition_matrix_all.toarray() )
+        self.hmm.add_transition_information( self.chord_transition_matrix.toarray() )
+        self.hmm.add_chord_distribution( self.chords_distribution.toarray() )
+        # TODO: add chord distribution
     # end __init__
     
     def make_sections(self):
@@ -750,19 +785,40 @@ class Chart(ChameleonContext):
     # end make_sections
     
     def make_stats(self):
+        # make transitions matrix from all sections and get total number of chords
+        self.number_of_chords = 0
+        self.chords_distribution = np.zeros( len(self.all_chord_states) ).astype(np.float32)
+        self.chord_transition_matrix = np.zeros( (len(self.all_chord_states), len(self.all_chord_states) ) ).astype(np.float32)
+        for s in self.sections:
+            self.number_of_chords += s.number_of_chords
+            self.chords_distribution += s.number_of_chords*s.chords_distribution.toarray().squeeze()
+            self.chord_transition_matrix += s.number_of_chords*s.chord_transition_matrix.toarray().squeeze()
+        # normalize
+        if np.sum( self.chords_distribution ) != 0:
+            self.chords_distribution /= np.sum( self.chords_distribution )
+        for i in range(self.chord_transition_matrix.shape[0]):
+            if np.sum( self.chord_transition_matrix[i,:] ) != 0:
+                self.chord_transition_matrix[i,:] /= np.sum( self.chord_transition_matrix[i,:] )
+        self.chords_distribution = sparse.csr_matrix( self.chords_distribution )
+        self.chord_transition_matrix = sparse.csr_matrix( self.chord_transition_matrix )
+    # end make_stats
+    
+    def make_stats_old(self):
+        self.number_of_chords = 0
         # gather chord_distribution info
         chord_distr_sum = 0
         testnormalization = 0     
         for s in self.sections:
-            chord_distr_sum += len(s.chords)
+            chord_distr_sum += s.number_of_chords
+            self.number_of_chords += s.number_of_chords
         for s in self.sections:
             s.cx = sparse.coo_matrix(s.chords_distribution)
             s.s0 = s.cx.tocsr()
             for i,j,v in zip(s.cx.row, s.cx.col, s.cx.data): 
                 s.s0[i,j] = (v * len(s.chords))  
         sumarr = self.sections[0].s0           
-        for i in range(1, len(self.sections), 1):    
-            sumarr += self.sections[i].s0         
+        for i in range(1, len(self.sections), 1):
+            sumarr += self.sections[i].s0
         self.chords_distribution_all = sumarr
         k = sparse.coo_matrix(self.chords_distribution_all)
         k.k0 = k.tocsr()

@@ -37,7 +37,7 @@ for i in range(len(i1_pieces)):
 
     # construct weighted "blended" transition matrix and get observations
 
-    w1, w2, wGlobal = 0.1, 0.4, 0.5
+    w1, w2, wGlobal = 0.1, 0.7, 0.2
 
     t1 = s1.hmm.transition_matrix.toarray()
     t2 = s2.hmm.transition_matrix.toarray()

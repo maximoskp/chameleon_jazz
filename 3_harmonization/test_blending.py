@@ -17,7 +17,7 @@ with open('../data/globalHMM.pickle', 'rb') as handle:
 # %% load pieces to blend
 
 # i1 will provide the melody and i2 the heaviest transition probabilities
-i1, i2 = 0, 10
+i1, i2 = 4, 17
 
 s1, s2 = all_structs[i1], all_structs[i2]
 
@@ -84,6 +84,18 @@ plt.imshow(trans_probs, cmap='gray_r')
 plt.savefig('../figs/hmm_debug/trans_probs.png', dpi=500)
 
 plt.clf()
+plt.imshow(tGlobal, cmap='gray_r')
+plt.savefig('../figs/hmm_debug/tGlobal.png', dpi=500)
+
+plt.clf()
+plt.imshow(t1, cmap='gray_r')
+plt.savefig('../figs/hmm_debug/t1.png', dpi=500)
+
+plt.clf()
+plt.imshow(t2, cmap='gray_r')
+plt.savefig('../figs/hmm_debug/t2.png', dpi=500)
+
+plt.clf()
 plt.imshow(delta, cmap='gray_r')
 plt.savefig('../figs/hmm_debug/delta.png', dpi=500)
 
@@ -94,3 +106,14 @@ plt.savefig('../figs/hmm_debug/markov.png', dpi=500)
 plt.clf()
 plt.imshow(obs, cmap='gray_r')
 plt.savefig('../figs/hmm_debug/obs.png', dpi=500)
+
+# %% debug-print top chords and transition
+
+# global
+max_idxs = np.unravel_index(np.argmax(tGlobal), tGlobal.shape)
+row_global = max_idxs[0]
+column_global = max_idxs[1]
+print('tGlobal top chords: ')
+
+print('tGlobal top transition: ')
+print( globalHMM.idx2chord[row_global] + '->' + globalHMM.idx2chord[column_global] )
