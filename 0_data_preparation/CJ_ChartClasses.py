@@ -211,7 +211,8 @@ class ChameleonHMM(ChameleonContext):
         self.melody_per_chord = self.melody_per_chord.toarray()
         for chord in chords:
             idx = self.chord2idx[ chord.chord_state ]
-            self.melody_per_chord[idx,:] += chord.melody_information['piece_tonality']
+            self.melody_per_chord[idx,:] += chord.melody_information
+            # self.melody_per_chord[idx,:] += chord.melody_information['piece_tonality']
         for i in range( self.melody_per_chord.shape[0] ):
             if np.sum( self.melody_per_chord[i,:] ) != 0:
                 self.melody_per_chord[i,:] /= np.sum( self.melody_per_chord[i,:] )
@@ -436,7 +437,10 @@ class Chord(ChameleonContext):
         self.gct_piece_tonality = ng.GCT_in_key(self.pitch_collection, self.piece_tonality['root'])
         self.gct_estimated_tonality = ng.GCT_in_key(self.pitch_collection, self.estimated_tonality['root'])
         if (self.melody_information is None):
-            self.melody_information = self.rpcp # assign default or Chord class here          
+            self.melody_information = self.rpcp[states_tonality] # assign default or Chord class here      
+        else:
+            # tune melody to tonality
+            self.melody_information  = np.roll( self.melody_information, -self.piece_tonality['root'] )
         # if bass
         # get bass PIECE tonality-relative pitch class
         # get bass ESTIMATED tonality-relative pitch class
@@ -455,7 +459,8 @@ class Measure:
         self.make_chords( measure_in )
         self.make_melody_information( measure_in )
         if len(self.melody_onsets) > 0:
-            self.assign_melody_to_chord( measure_in )
+            self.assign_melody_to_chord()
+            # self.assign_melody_to_chord( measure_in )
         # TODO:
         # get position in section
         # get position in chart
@@ -885,7 +890,10 @@ class Chart(ChameleonContext):
     def make_melody_information(self, tonality='piece_tonality'):
         self.melody_information = np.zeros( ( 12 , len(self.chords) ) )
         for i, c in enumerate(self.chords):
-            self.melody_information[:,i] = c.melody_information[tonality]
+            # print('c.melody_information: ', c.melody_information)
+            # print('c.melody_information[tonality]: ', c.melody_information[tonality])
+            # self.melody_information[:,i] = c.melody_information[tonality]
+            self.melody_information[:,i] = c.melody_information
     # end make_melody_information
     
     def make_transitions(self):

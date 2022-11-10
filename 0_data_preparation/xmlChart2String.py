@@ -331,6 +331,16 @@ def chart2string( file_name, print_interim=False, chord_names=[] ):
         if print_interim:
             print('bar~' + running_ts + ',')
         s += 'bar~' + running_ts + ','
+        # print notes of melody
+        nms = m.getElementsByClass('Note')
+        if print_interim:
+            t = ''
+            for i in range(len(nms)):
+                t += 'pitch~' + str(nms[i].pitch.midi) + '@' + str(nms[i].offset) + ','
+        t = ''
+        for i in range(len(nms)):
+            t += 'pitch~' + str(nms[i].pitch.midi) + '@' + str(nms[i].offset) + ','
+        s += 'melody~[' + t + 'end],'
         # iterate through chord symbols and print them with their offset
         cs = m.getElementsByClass('ChordSymbol')
         # first check for polychords - chords with same onset
