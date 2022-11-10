@@ -60,3 +60,11 @@ os.makedirs('../figs', exist_ok=True)
 import matplotlib.pyplot as plt
 plt.imshow(np.reshape(globalHMM.melody_per_chord.toarray(), (70,12*12)), cmap='gray_r')
 plt.savefig('../figs/test_melperchord.png', dpi=500)
+
+# %% print debug markov
+
+for s in all_structs:
+    s.hmm.debug_print(filename='debug_hmm/' + s.piece_name.replace(' ','_') + '.txt')
+
+globalHMM.debug_print(filename='debug_hmm/global.txt')
+

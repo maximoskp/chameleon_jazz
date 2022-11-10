@@ -37,16 +37,25 @@ for i in range(len(i1_pieces)):
 
     # construct weighted "blended" transition matrix and get observations
 
-    w1, w2, wGlobal = 0.1, 0.7, 0.2
+    w1, w2, wGlobal = 0.0, 0.99, 0.01
 
     t1 = s1.hmm.transition_matrix.toarray()
     t2 = s2.hmm.transition_matrix.toarray()
     tGlobal = globalHMM.transition_matrix.toarray()
-
     trans_probs = (w1*t1 + w2*t2 + wGlobal*tGlobal)/(w1+w2+wGlobal)
-
-    mel_per_chord_probs = s1.hmm.melody_per_chord.toarray()
-
+    for i in range(trans_probs.shape[0]):
+        if np.sum( trans_probs[i,:] ) > 0:
+            trans_probs[i,:] = trans_probs[i,:]/np.sum( trans_probs[i,:] )
+    
+    # m1 = s1.hmm.melody_per_chord.toarray()
+    # m2 = s2.hmm.melody_per_chord.toarray()
+    mGlobal = globalHMM.melody_per_chord.toarray()
+    # mel_per_chord_probs = w1*m1 + w2*m2 + wGlobal*mGlobal
+    mel_per_chord_probs = mGlobal
+    for i in range(mel_per_chord_probs.shape[0]):
+        if np.sum( mel_per_chord_probs[i,:] ) > 0:
+            mel_per_chord_probs[i,:] = mel_per_chord_probs[i,:]/np.sum( mel_per_chord_probs[i,:] )
+    
     emissions = s1.melody_information
 
     constraints = s1.constraints

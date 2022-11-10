@@ -184,13 +184,35 @@ class ChameleonContext:
     # end transpose_idxs
     
     def substitute_chordSymbols_in_string(self, unfolded_string, chordSymbols):
-        chordsplit = unfolded_string.split('chord~')
+        # first, remove melody
+        unfolded_split = unfolded_string.split('melody~[')
+        unfolded_no_melody = [ unfolded_split[0] ]
+        for i in range(1, len(unfolded_split), 1):
+            end_split = unfolded_split[i].split('end],')
+            unfolded_no_melody.append( end_split[1] )
+        unfolded_string_no_melody = ''.join( unfolded_no_melody )
+        chordsplit = unfolded_string_no_melody.split('chord~')
         newsplit = [chordsplit[0]]
         for i in range(len(chordsplit) - 1):
             c = chordsplit[i+1]
             atsplit = c.split('@')
             newsplit.append( '@'.join([ chordSymbols[i] , atsplit[1] ]) )
-        return 'chord~'.join( newsplit )
+        out_string = 'chord~'.join( newsplit )
+        # we don't need the first bar if it only inlcludes melody before the
+        # chords begin
+        if out_string.startswith('bar~'):
+            # check if section starts the string
+            if 'section~' in out_string:
+                if out_string.index('section~') < out_string.index('style~'):
+                    out_split = out_string.split('section~')
+                    out_string = 'section~'.join( out_split[1:] )
+                else:
+                    out_split = out_string.split('style~')
+                    out_string = 'style~'.join( out_split[1:] )
+            else:
+                out_split = out_string.split('style~')
+                out_string = 'style~'.join( out_split[1:] )
+        return out_string
     # end substitute_chordSymbols_in_string
 # end ChameleonContext
 
@@ -247,6 +269,7 @@ class ChameleonHMM(ChameleonContext):
         obs[ obs == 0 ] = 0.00000001
         # smooth markov
         markov[ markov == 0 ] = 0.00000001
+        constraints = constraints.astype(int)
         '''
         # neutralise diagonal
         for i in range(markov.shape[0]):
@@ -331,14 +354,41 @@ class ChameleonHMM(ChameleonContext):
     
     def debug_print(self, filename='hmm_debug.txt'):
         file_object = open(filename, 'w')
+        file_object.write( '=========================================== \n')
+        file_object.write( '=================DISTRIBUTIONS============= \n')
+        file_object.write( '=========================================== \n')
         tmp_distr = self.chords_distribution.toarray().squeeze()
         idxs = np.argsort( tmp_distr )[::-1]
         i = 0
         while tmp_distr[idxs[i]] > 0:
-            file_object.write( repr(self.all_states_np[idxs[i]]) + ': ' + str(tmp_distr[idxs[i]]) + '\n')
+            file_object.write( repr(self.all_states_np[idxs[i]]) + ': ' + '{:.4f}'.format(tmp_distr[idxs[i]]) + '\n')
             i += 1
+        file_object.write( '=========================================== \n')
+        file_object.write( '=================TRANSITIONS=============== \n')
+        file_object.write( '=========================================== \n')
+        # print non-zero transitions
+        tmp_trans = self.transition_matrix.toarray()
+        '''
+        sort_idxs = np.unravel_index(np.argsort(tmp_trans), tmp_trans.shape)
+        row = sort_idxs[0][::-1]
+        col = sort_idxs[1][::-1]
+        i = 0
+        while self.transition_matrix[ row[i], col[i] ] > 0:
+            file_object.write( repr(self.all_states_np[row[i]]) + ' -> ' + repr(self.all_states_np[col[i]]) + ': ' + str(self.transition_matrix[row[i], col[i]]) + '\n')
+            i += 1
+        '''
+        for i in range(tmp_trans.shape[0]):
+            for j in range(tmp_trans.shape[1]):
+                if tmp_trans[i,j] > 0:
+                    file_object.write( repr(self.all_states_np[i]) + ' -> ' + repr(self.all_states_np[j]) + ': ' + '{:.4f}'.format(tmp_trans[i, j]) + '\n')
+        file_object.write( '=========================================== \n')
+        file_object.write( '==================MELODIES================= \n')
+        file_object.write( '=========================================== \n')
+        tmp_mel = self.melody_per_chord.toarray()
+        for i in range(tmp_mel.shape[0]):
+            if np.sum(tmp_mel[i,:]) > 0:
+                file_object.write( repr(self.all_states_np[i]) + ': ' + repr( ['{:.2f}'.format(tmp_mel[i, j]) for j in range(12)] ) + '\n')
         file_object.close()
-        # TODO: print non-zero transitions
     # end debug_print
     
 # end ChameleonHMM
@@ -874,7 +924,7 @@ class Chart(ChameleonContext):
     def make_constraints(self):
         self.constraints = -1*np.ones(len(self.chords))
         for i, c in enumerate(self.chords):
-            if c.isSectionLast:
+            if c.isSectionLast or c.isSectionFirst:
                 self.constraints[i] = self.chord2idx[c.chord_state]
     # end make_constraints
     
