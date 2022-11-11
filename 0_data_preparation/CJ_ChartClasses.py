@@ -228,6 +228,18 @@ class ChameleonHMM(ChameleonContext):
         # chords distribution
         self.chords_distribution = sparse.csr_matrix( np.zeros( len(self.all_chord_states) ) )
     # end init
+    
+    def make_empty_matrices(self):
+        # rows: 840, columns: 12
+        self.melody_per_chord = sparse.csr_matrix( np.zeros( (len(self.all_chord_states), 12) ) )
+        # 840x840
+        self.transition_matrix = sparse.csr_matrix( np.zeros( (len(self.all_chord_states), len(self.all_chord_states)) ) )
+        # starting and ending probs
+        self.starting = sparse.csr_matrix( np.ones( len(self.all_chord_states) )/len(self.all_chord_states ) )
+        self.ending = sparse.csr_matrix( np.ones( len(self.all_chord_states) )/len(self.all_chord_states ) )
+        # chords distribution
+        self.chords_distribution = sparse.csr_matrix( np.zeros( len(self.all_chord_states) ) )
+    # end make_empty_matrices
 
     def add_melody_information_with_chords(self, chords):
         self.melody_per_chord = self.melody_per_chord.toarray()
@@ -368,19 +380,20 @@ class ChameleonHMM(ChameleonContext):
         file_object.write( '=========================================== \n')
         # print non-zero transitions
         tmp_trans = self.transition_matrix.toarray()
-        '''
-        sort_idxs = np.unravel_index(np.argsort(tmp_trans), tmp_trans.shape)
-        row = sort_idxs[0][::-1]
-        col = sort_idxs[1][::-1]
+        # sort_idxs = np.unravel_index(np.argsort(tmp_trans), tmp_trans.shape)
+        sort_idxs = np.dstack(np.unravel_index(np.argsort(tmp_trans.ravel())[::-1], tmp_trans.shape))
+        row = sort_idxs[0][:,0]
+        col = sort_idxs[0][:,1]
         i = 0
-        while self.transition_matrix[ row[i], col[i] ] > 0:
-            file_object.write( repr(self.all_states_np[row[i]]) + ' -> ' + repr(self.all_states_np[col[i]]) + ': ' + str(self.transition_matrix[row[i], col[i]]) + '\n')
+        while tmp_trans[ row[i], col[i] ] > 0:
+            file_object.write( repr(self.all_states_np[row[i]]) + ' -> ' + repr(self.all_states_np[col[i]]) + ': ' + '{:.4f}'.format(tmp_trans[row[i], col[i]]) + '\n')
             i += 1
         '''
         for i in range(tmp_trans.shape[0]):
             for j in range(tmp_trans.shape[1]):
                 if tmp_trans[i,j] > 0:
                     file_object.write( repr(self.all_states_np[i]) + ' -> ' + repr(self.all_states_np[j]) + ': ' + '{:.4f}'.format(tmp_trans[i, j]) + '\n')
+        '''
         file_object.write( '=========================================== \n')
         file_object.write( '==================MELODIES================= \n')
         file_object.write( '=========================================== \n')
@@ -391,6 +404,14 @@ class ChameleonHMM(ChameleonContext):
         file_object.close()
     # end debug_print
     
+    def build_from_features(self, f, dshape=(840,1), tshape=(840,840), mshape=(840,12)):
+        dsize = np.prod(dshape)
+        tsize = np.prod(tshape)
+        # msize = np.prod(mshape)
+        self.chords_distribution = sparse.csr_matrix( f[:dsize] )
+        self.transition_matrix = sparse.csr_matrix( np.reshape( f[dsize:(dsize+tsize)], tshape ) )
+        self.melody_per_chord = sparse.csr_matrix( np.reshape( f[(dsize+tsize):], mshape ) )
+    # end build_from_features
 # end ChameleonHMM
 
 class Chord(ChameleonContext):
@@ -961,7 +982,21 @@ class Chart(ChameleonContext):
         self.chord_transitions = {k:v for k,v in sorted(self.chord_transitions.items(), key=lambda x: x[1].occurrences, reverse=True)}
     # end make_chords
 
-    def get_features(self, chords_distribution_all=True, chords_transition_matrix_all=True):
+    def get_features(self, separated=True):
+        d = self.hmm.chords_distribution.toarray().astype(np.float32)
+        t = self.hmm.transition_matrix.toarray().astype(np.float32)
+        m = self.hmm.melody_per_chord.toarray().astype(np.float32)
+        if separated:
+            f = {}
+            f['chords_distribution'] = d
+            f['transition_matrix'] = t
+            f['melody_per_chord'] = m
+            return f
+        else:
+            return np.c_[ d.reshape((1,d.size)) , t.reshape((1,t.size)), m.reshape((1,m.size)) ]
+    # end get_features
+    
+    def get_features_old(self, chords_distribution_all=True, chords_transition_matrix_all=True):
         f = np.array([])
         if chords_distribution_all:
             f = np.r_[ f , self.chords_distribution_all.toarray().astype(np.float32).reshape(len(self.all_chord_states)) ]

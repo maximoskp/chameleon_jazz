@@ -126,6 +126,8 @@ for s in os.listdir('..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'Librar
         if song_tonality == -1:
             pieces_undefied_tonality[ appearing_name ] = tmp_json
 
+# %%
+
 # library with melodies third
 for s in os.listdir('..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'Library_melodies'):
     if s.endswith('.mxl'):
