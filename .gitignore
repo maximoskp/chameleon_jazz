@@ -2,6 +2,8 @@ data/
 models/
 figs/
 
+__pycache__/
+
 generated_csvs/
 
 .DS_Store
