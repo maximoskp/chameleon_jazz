@@ -62,7 +62,8 @@ for s in os.listdir( '..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'My_So
         tmp_json = {
             'string': song_string,
             'original_string': song_string,
-            'unfolded_string': xmlChart2String.unfold_chart(song_string),
+            # 'unfolded_string': xmlChart2String.unfold_chart(song_string),
+            'unfolded_string': song_string,
             'tonality': song_tonality,
             'original_key': tmp_song_key,
             'appearing_name': appearing_name,
@@ -106,7 +107,8 @@ for s in os.listdir('..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'Librar
         tmp_json = {
             'string': song_string,
             'original_string': song_string,
-            'unfolded_string': xmlChart2String.unfold_chart(song_string),
+            # 'unfolded_string': xmlChart2String.unfold_chart(song_string),
+            'unfolded_string': song_string,
             'tonality': song_tonality,
             'original_key': tmp_song_key,
             'appearing_name': appearing_name,
@@ -151,7 +153,8 @@ for s in os.listdir('..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'Librar
         tmp_json = {
             'string': song_string,
             'original_string': song_string,
-            'unfolded_string': xmlChart2String.unfold_chart(song_string),
+            # 'unfolded_string': xmlChart2String.unfold_chart(song_string),
+            'unfolded_string': song_string,
             'tonality': song_tonality,
             'original_key': tmp_song_key,
             'appearing_name': appearing_name,

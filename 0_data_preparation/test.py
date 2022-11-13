@@ -13,14 +13,14 @@ import CJ_ChartClasses as ccc
 import pickle
 
 # load all piece
-with open('..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'songslibrary.json') as json_file:
+with open('..' + os.sep + 'data' + os.sep + 'Songs' + os.sep + 'songsmelodieslibrary.json') as json_file:
     songs = json.load(json_file)
 
 songs_keys = list( songs.keys() )
 
 # %% run example
 
-i = 56
+i = 77
 s = ccc.Chart( songs[songs_keys[i]] )
 
 print( 'size of object: ' + str(len(pickle.dumps(s, -1))) )

@@ -428,12 +428,15 @@ class Chord(ChameleonContext):
             root_idx = 2
         self.symbolic_root = self.chord_symbol[:root_idx]
         # get bass
-        nine_idx = root_idx
+        has_nine = False
         if '/9' in self.chord_symbol:
-            nine_idx = self.chord_symbol.find('/9') + 2
-        bass_split = self.chord_symbol[nine_idx:].split('/')
+            has_nine = True
+        bass_split = self.chord_symbol[root_idx:].split('/')
         # TODO: fix polychords
-        self.symbolic_type = bass_split[0]
+        if has_nine:
+            self.symbolic_type = ('/').join(bass_split[:2])
+        else:    
+            self.symbolic_type = bass_split[0]
         if self.symbolic_type == '':
             self.symbolic_type = ' '
         self.pc_set = self.type2pc[ self.symbolic_type ]
@@ -456,8 +459,11 @@ class Chord(ChameleonContext):
             interval = (i[1]-i[0])%12
             self.interval_vector[interval] += 1
         self.bass_symbol = ''
-        if len( bass_split ) > 1:
-            self.bass_symbol = bass_split[1]
+        if (len( bass_split ) > 1 and not has_nine) or (len( bass_split ) > 2 and has_nine):
+            if has_nine:
+                self.bass_symbol = bass_split[2]
+            else:
+                self.bass_symbol = bass_split[1]
             # get bass pitch class
             self.bass_pitch_class = self.root2int[ self.bass_symbol ]
             self.pcp[ self.bass_pitch_class ] = 1

@@ -38,8 +38,10 @@ for i,s in enumerate(all_structs):
     chart_names.append(s.piece_name)
     chart_info_structs[ s.key.replace(' ', '_') ] = {
         'title': s.piece_name,
+        'key': s.key,
         'tonality': roots[s.tonality['root']] + ' ' + s.tonality['mode'],
-        'style': s.sections[0].style
+        'style': s.sections[0].style,
+        'features': s.get_features(separated=False)
     }
 
 # %% save
@@ -64,9 +66,23 @@ with open(path2save + '/chart_features.pickle', 'wb') as handle:
 print('running NMF')
 from sklearn.decomposition import NMF
 
-model = NMF(n_components=3, init='random', random_state=0)
-W = model.fit_transform(chart_features.T)
-H = model.components_
+nmf_models = []
+    
+for n_components in range(3,10,1):
+    print('n_components: ', n_components)
+    model = NMF(n_components=n_components, init='random', random_state=0)
+    W = model.fit_transform(chart_features.T)
+    H = model.components_
+    nmf_model = {
+        'W': W,
+        'H': H,
+        'n_components': n_components
+    }
+    nmf_models.append( nmf_model )
+# end for
+
+with open(path2save + '/nmf_models.pickle', 'wb') as handle:
+    pickle.dump(nmf_models, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 # %% check markov
 
