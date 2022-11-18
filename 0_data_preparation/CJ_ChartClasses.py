@@ -271,16 +271,21 @@ class ChameleonHMM(ChameleonContext):
         self.transition_matrix = sparse.csr_matrix( self.transition_matrix )
     # end add_transition_information
     
-    def apply_cHMM_with_constraints(self, trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp = 1.0):
+    def apply_cHMM_with_constraints(self, trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp = 0.0):
         markov = copy.deepcopy( trans_probs )
         obs = np.matmul( mel_per_chord_probs , emissions )
         # apply adventure
-        markov = adv_exp*np.power(markov, adv_exp) + (1-adv_exp)*np.power(np.random.rand( markov.shape[0], markov.shape[1] ), 1-adv_exp)
-        obs = adv_exp*np.power(obs, adv_exp) + (1-adv_exp)*np.power(np.random.rand( obs.shape[0], obs.shape[1] ), 1-adv_exp)
+        # markov = adv_exp*np.power(markov, adv_exp) + (1-adv_exp)*np.power(np.random.rand( markov.shape[0], markov.shape[1] ), 1-adv_exp)
+        # obs = adv_exp*np.power(obs, adv_exp) + (1-adv_exp)*np.power(np.random.rand( obs.shape[0], obs.shape[1] ), 1-adv_exp)
+        markov = (1-adv_exp)*markov + adv_exp*(np.random.rand( markov.shape[0], markov.shape[1] )+1)/2.
+        obs = (1-adv_exp)*obs + adv_exp*(np.random.rand( obs.shape[0], obs.shape[1] )+1)/2.
+        '''
+        Do not smooth, to check where dead-ends occur
         # smooth obs
         obs[ obs == 0 ] = 0.00000001
         # smooth markov
         markov[ markov == 0 ] = 0.00000001
+        '''
         constraints = constraints.astype(int)
         '''
         # neutralise diagonal
@@ -291,6 +296,9 @@ class ChameleonHMM(ChameleonContext):
         for i in range(markov.shape[0]):
             if np.sum( markov[i,:] ) > 0:
                 markov[i,:] = markov[i,:]/np.sum( markov[i,:] )
+        for i in range(obs.shape[0]):
+            if np.sum( obs[i,:] ) > 0:
+                obs[i,:] = obs[i,:]/np.sum( obs[i,:] )
         # beginning chord probabilities
         pr = self.starting.toarray()
         delta = np.zeros( ( markov.shape[0] , obs.shape[1] ) )
@@ -320,13 +328,22 @@ class ChameleonHMM(ChameleonContext):
             else:
                 j = int(constraints[t])
                 # tmp_trans_prob = markov[:,j]
-                tmp_trans_prob = np.ones( markov[:,j].size )*0.000000001
+                # straight zero
+                # tmp_trans_prob = np.ones( markov[:,j].size )*0.000000001
+                tmp_trans_prob = np.zeros( markov[:,j].size )
                 tmp_trans_prob[j] = 1
+                # check if previous is constrained and leave a corridor
+                if t > 0:
+                    if constraints[t-1] != -1:
+                        delta[ j ,t-1 ] = 1
                 tmp_trans_prob = tmp_trans_prob/np.sum(tmp_trans_prob)
                 delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
                 psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
                 if np.sum(delta[:,t]) != 0:
                     delta[:,t] = delta[:,t]/np.sum(delta[:,t])
+            # report zeros
+            if np.sum(delta[:,t]) == 0:
+                print('HMM zero probability encoundered for t = ', t)
         # end for t
         if constraints[-1] == -1:
             pathIDXs[obs.shape[1]-1] = int(np.argmax(delta[:,obs.shape[1]-1]))
@@ -345,6 +362,135 @@ class ChameleonHMM(ChameleonContext):
         '''
         return pathIDXs, delta, psi, markov, obs
     # end apply_cHMM_with_constraints
+    
+    def apply_cHMM_with_support(self, trans_probs, mel_per_chord_probs, emissions, constraints, support, adv_exp = 0.0):
+        markov = copy.deepcopy( trans_probs )
+        obs = np.matmul( mel_per_chord_probs , emissions )
+        # apply adventure
+        # markov = adv_exp*np.power(markov, adv_exp) + (1-adv_exp)*np.power(np.random.rand( markov.shape[0], markov.shape[1] ), 1-adv_exp)
+        # obs = adv_exp*np.power(obs, adv_exp) + (1-adv_exp)*np.power(np.random.rand( obs.shape[0], obs.shape[1] ), 1-adv_exp)
+        markov = (1-adv_exp)*markov + adv_exp*(np.random.rand( markov.shape[0], markov.shape[1] )+1)/2.
+        obs = (1-adv_exp)*obs + adv_exp*(np.random.rand( obs.shape[0], obs.shape[1] )+1)/2.
+        '''
+        Do not smooth, to check where dead-ends occur
+        # smooth obs
+        obs[ obs == 0 ] = 0.00000001
+        # smooth markov
+        markov[ markov == 0 ] = 0.00000001
+        '''
+        constraints = constraints.astype(int)
+        '''
+        # neutralise diagonal
+        for i in range(markov.shape[0]):
+            markov[i,i] = 0.000000001*markov[i,i]
+        '''
+        # re-normalise
+        for i in range(markov.shape[0]):
+            if np.sum( markov[i,:] ) > 0:
+                markov[i,:] = markov[i,:]/np.sum( markov[i,:] )
+        for i in range(obs.shape[0]):
+            if np.sum( obs[i,:] ) > 0:
+                obs[i,:] = obs[i,:]/np.sum( obs[i,:] )
+        # beginning chord probabilities
+        pr = self.starting.toarray()
+        delta = np.zeros( ( markov.shape[0] , obs.shape[1] ) )
+        psi = np.zeros( ( markov.shape[0] , obs.shape[1] ) )
+        pathIDXs = np.zeros( obs.shape[1] )
+        t = 0
+        delta[:,t] = np.multiply( pr , obs[:,t] )
+        if constraints[0] != -1:
+            delta[:,t] = np.zeros( markov.shape[0] )
+            delta[ constraints[0], t ] = 1
+        else:
+            if np.sum(delta[:,t]) != 0:
+                delta[:,t] = delta[:,t]/np.sum(delta[:,t])
+        
+        psi[:,t] = 0 # arbitrary value, since there is no predecessor to t=0
+        
+        for t in range(1, obs.shape[1], 1):
+            print('---------- t: ', t)
+            if constraints[t] == -1 :
+                for j in range(0, markov.shape[0]):
+                    tmp_trans_prob = markov[:,j]
+                    # if np.sum( tmp_trans_prob ) != 0:
+                    #     tmp_trans_prob = tmp_trans_prob/np.sum( tmp_trans_prob )
+                    delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                    psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                if np.sum(delta[:,t]) != 0:
+                    delta[:,t] = delta[:,t]/np.sum(delta[:,t])
+                else:
+                    print('HMM zero probability encoundered for t = ', t)
+                    print('Employing support')
+                    for j in range(0, markov.shape[0]):
+                        tmp_trans_prob = support[:,j]
+                        delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                        psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                    if np.sum(delta[:,t]) != 0:
+                        delta[:,t] = delta[:,t]/np.sum(delta[:,t])
+                        print('FIXED with support - 1')
+                    else:
+                        print('STILL ZERO AFTER SUPPORT - smoothing')
+                        print( 'np.max(delta[:,t-1]): ', np.max(delta[:,t-1]) )
+                        print( 'np.argmax(delta[:,t-1]): ', np.argmax(delta[:,t-1]) )
+                        print( 'np.sum(delta[:,t-1]): ', np.sum(delta[:,t-1]) )
+                        tmp_trans_prob = np.ones( support[:,j].size )/support[:,j].size
+                        for j in range(0, markov.shape[0]):
+                            delta[j,t] = np.max( np.multiply(delta[:,t-1] + 0.0000001, tmp_trans_prob)*obs[j,t] )
+                            psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                        if np.sum(delta[:,t]) != 0:
+                            delta[:,t] = delta[:,t]/np.sum(delta[:,t])
+                        else:
+                            print('----------- now it shouldnt be zero ------------- somethings wrong')
+            else:
+                j = int(constraints[t])
+                # tmp_trans_prob = markov[:,j]
+                # straight zero
+                # tmp_trans_prob = np.ones( markov[:,j].size )*0.000000001
+                # tmp_trans_prob = np.zeros( markov[:,j].size )
+                # tmp_trans_prob[j] = 1
+                # check if previous is constrained - if so no need to compute
+                if constraints[t-1] != -1:
+                    print('constraint after constraint')
+                    delta[ j ,t ] = 1
+                    psi[j,t] = int(constraints[t-1])
+                    if np.sum(delta[:,t]) != 0: # couldn't be otherwise
+                        delta[:,t] = delta[:,t]/np.sum(delta[:,t])
+                else:
+                    tmp_trans_prob = markov[:,j]
+                    delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                    psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                    if np.sum(delta[:,t]) != 0:
+                        delta[:,t] = delta[:,t]/np.sum(delta[:,t])
+                    else:
+                        print('support with constraint')
+                        tmp_trans_prob = support[:,j]
+                        delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                        psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                        if np.sum(delta[:,t]) == 0:
+                            print('FAILED - smoothening support')
+                            tmp_trans_prob = np.ones(support[:,j].size)/support[:,j].size
+                            tmp_trans_prob = tmp_trans_prob/np.sum(tmp_trans_prob)
+                            delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                            psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+        # code at the end was here
+        # end for t
+        if constraints[-1] == -1:
+            pathIDXs[obs.shape[1]-1] = int(np.argmax(delta[:,obs.shape[1]-1]))
+        else:
+            pathIDXs[obs.shape[1]-1] = int(constraints[-1])
+        
+        for t in range(obs.shape[1]-2, -1, -1):
+            pathIDXs[t] = int(psi[ int(pathIDXs[t+1]) , t+1 ])
+        # print('pathIDXs: ', pathIDXs)
+        '''
+        gcts_out = []
+        gct_labels_out = []
+        for i in range( len(pathIDXs) ):
+            gcts_out.append( maf.str2np(c.gcts_labels[ int(pathIDXs[i]) ]) )
+            gct_labels_out.append( c.gcts_labels[ int(pathIDXs[i]) ] )
+        '''
+        return pathIDXs, delta, psi, markov, obs
+    # end apply_cHMM_with_support
     
     def add_starting_chord_distribution(self, c):
         self.starting = self.starting.toarray()
@@ -480,6 +626,8 @@ class Chord(ChameleonContext):
         # constraint information
         self.isSectionLast = False
         self.isSectionFirst = False
+        self.isBarQuadrupleLast = False
+        self.isBarOctupleLast = False
         self.isSectionPenultimate = False
     # end __init__
 
@@ -752,8 +900,12 @@ class Section(ChameleonContext):
     def make_chords(self):
         # print( 'Section - make chords' )
         self.chords = []
-        for m in self.measures:
-            for c in m.chords:
+        for i,m in enumerate(self.measures):
+            for j,c in enumerate(m.chords):
+                if i%4 == 0 and j==len(m.chords)-1:
+                    c.isBarQuadrupleLast = True
+                if i%8 == 0 and j==len(m.chords)-1:
+                    c.isBarOctupleLast = True
                 self.chords.append( c )
         if len( self.chords ) > 0:
             self.chords[0].isSectionFirst = True
@@ -1012,3 +1164,59 @@ class Chart(ChameleonContext):
         return sparse.csr_matrix(f)  
     # end get_features
 # end Chart
+
+
+# this code was in support cHMM
+'''
+                else:
+                    print('HMM zero probability in constraint encoundered for t = ', t)
+                    print('applying support to previous step...')
+                    for j in range(0, markov.shape[0]):
+                        tmp_trans_prob = support[:,j]
+                        # it needs to reach the constraint
+                        constraint_prob = support[ j, constraints[t] ]
+                        delta[j,t-1] = np.max( np.multiply(delta[:,t-2], tmp_trans_prob)*obs[j,t-1]*constraint_prob )
+                        psi[j,t-1] = np.argmax( np.multiply(delta[:,t-2], tmp_trans_prob)*obs[j,t-1]*constraint_prob )
+                    if np.sum(delta[:,t-1]) != 0:
+                        delta[:,t-1] = delta[:,t-1]/np.sum(delta[:,t-1])
+                        print('support worked OK, as expected')
+                    else:
+                        print('support DIDNT work, smoothing')
+                        tmp_trans_prob = np.ones( support[:,j].size )/support[:,j].size
+                        # it needs to reach the constraint
+                        constraint_prob = support[ j, constraints[t] ] + 0.0000001
+                        for j in range(0, markov.shape[0]):
+                            delta[j,t-1] = np.max( np.multiply(delta[:,t-2] + 0.0000001, tmp_trans_prob)*obs[j,t-1]*constraint_prob )
+                            psi[j,t-1] = np.argmax( np.multiply(delta[:,t-2], tmp_trans_prob)*obs[j,t-1]*constraint_prob )
+                        if np.sum(delta[:,t-1]) != 0:
+                            delta[:,t-1] = delta[:,t-1]/np.sum(delta[:,t-1])
+                    # no need to check if previous was a constraint, there would be all one-hot
+                    j = int(constraints[t])
+                    # tmp_trans_prob = np.zeros( markov[:,j].size )
+                    # tmp_trans_prob[j] = 1
+                    tmp_trans_prob = markov[:,j]
+                    if np.sum(tmp_trans_prob) == 0:
+                        print('instant support for constraint')
+                        tmp_trans_prob = support[:,j]
+                        if np.sum(tmp_trans_prob) == 0:
+                            print('smoothening instant support for constraint')
+                            tmp_trans_prob = np.ones(support[:,j].size)/support[:,j].size
+                    tmp_trans_prob = tmp_trans_prob/np.sum(tmp_trans_prob)
+                    delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t]+0.00000001 )
+                    psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t]+0.00000001 )
+                    if np.sum(delta[:,t]) != 0:
+                        delta[:,t] = delta[:,t]/np.sum(delta[:,t])
+                    else:
+                        print('SUPPORT BEFORE CONSTRAINT NOT WORKING - smoothing')
+                        print( 'np.max(delta[:,t-1]): ', np.max(delta[:,t-1]) )
+                        print( 'np.argmax(delta[:,t-1]): ', np.argmax(delta[:,t-1]) )
+                        print( 'np.sum(delta[:,t-1]): ', np.sum(delta[:,t-1]) )
+                        tmp_trans_prob = np.ones( support[:,j].size )/support[:,j].size
+                        for j in range(0, markov.shape[0]):
+                            delta[j,t] = np.max( np.multiply(delta[:,t-1] + 0.0000001, tmp_trans_prob)*obs[j,t] )
+                            psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                        if np.sum(delta[:,t]) != 0:
+                            delta[:,t] = delta[:,t]/np.sum(delta[:,t])
+                        else:
+                            print('----------- now it shouldnt be zero ------------- somethings wrong')
+'''

@@ -10,43 +10,23 @@ import numpy as np
 import os
 import json
 import pickle
+import sys
+from scipy import sparse
+sys.path.append('..' + os.sep +'0_data_preparation')
+import CJ_ChartClasses as ccc
 import matplotlib.pyplot as plt
 
-# %% load 
-print('loading data')
-with open('../data/section_names.pickle', 'rb') as handle:
-    section_names = pickle.load(handle)
+# %% load pickle
 
-with open('../data/section_features.pickle', 'rb') as handle:
-    section_features = pickle.load(handle)
+with open('../data/charts_with_melodies/nmf_models.pickle', 'rb') as handle:
+    nmf_models = pickle.load(handle)
 
-print('making dense array')
-f = np.zeros( ( len(section_features) , section_features[0].toarray().size ) )
-print('f.shape: ', f.shape)
-for i,s in enumerate(section_features):
-    print( str(i) + '/' + str(len(section_features)) )
-    f[i,:] = s.toarray().astype(np.float32)
+# %%
 
-# remove zero columns
-discarded_idx = np.argwhere(np.all(f[..., :] == 0, axis=0))
-f_dense = np.delete(f, discarded_idx, axis=1)
-print('f.shape: ', f_dense.shape)
-# %% plot sections
+x = nmf_models[0]['H'][0,:]
+y = nmf_models[0]['H'][1,:]
+z = nmf_models[0]['H'][2,:]
 
-from sklearn.manifold import TSNE
-print('running t-SNE')
-X_embedded = TSNE(n_components=2, learning_rate='auto', init='pca', verbose=2, n_iter=3000).fit_transform(f_dense)
+ax = plt.figure().add_subplot(projection='3d')
 
-plt.clf()
-plt.scatter( X_embedded[:,0], X_embedded[:,1], alpha=0.5, s=3 )
-plt.savefig( '../data/tsne0.png', dpi=500 )
-
-# %% save
-with open('../data/f_dense.pickle', 'wb') as handle:
-    pickle.dump(f_dense, handle, protocol=pickle.HIGHEST_PROTOCOL)
-
-with open('../data/X_embedded.pickle', 'wb') as handle:
-    pickle.dump(X_embedded, handle, protocol=pickle.HIGHEST_PROTOCOL)
-
-with open('../data/discarded_idx.pickle', 'wb') as handle:
-    pickle.dump(discarded_idx, handle, protocol=pickle.HIGHEST_PROTOCOL)
+ax.scatter3D(x,y,z,'.')

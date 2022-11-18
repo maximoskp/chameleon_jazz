@@ -52,31 +52,40 @@ for i in range(len(all_structs)):
 i1_pieces = [ 44,44,44,      60,60,60,     211,211,211,    116,116,116,    77,77,77,    204,204,204 ]
 i2_pieces = [34,166,160,    77,166,160,    166,134,130,    204,173,160,   116,34,160,   157,116,160 ]
 
+# i1_pieces = [ 204 ]
+# i2_pieces = [ 116 ]
+
 for i in range(len(i1_pieces)):
     # i1 will provide the melody and i2 the heaviest transition probabilities
     i1, i2 = i1_pieces[i], i2_pieces[i]
 
     s1, s2 = all_structs[i1], all_structs[i2]
-
+    
+    print(30*'-')
     print(s1.piece_name)
     print(s2.piece_name)
 
     # construct weighted "blended" transition matrix and get observations
 
-    w1, w2, wGlobal = 0.0, 0.7, 0.3
+    w1, w2, wGlobal = 0.0, 1.0, 0.0
 
     t1 = s1.hmm.transition_matrix.toarray()
     t2 = s2.hmm.transition_matrix.toarray()
     tGlobal = globalHMM.transition_matrix.toarray()
     trans_probs = (w1*t1 + w2*t2 + wGlobal*tGlobal)/(w1+w2+wGlobal)
+    # zero-out t1
+    # trans_probs[ t1 > 0 ] = 0
+    # normalize
     for i in range(trans_probs.shape[0]):
         if np.sum( trans_probs[i,:] ) > 0:
             trans_probs[i,:] = trans_probs[i,:]/np.sum( trans_probs[i,:] )
     
     # m1 = s1.hmm.melody_per_chord.toarray()
-    # m2 = s2.hmm.melody_per_chord.toarray()
+    m2 = s2.hmm.melody_per_chord.toarray()
     mGlobal = globalHMM.melody_per_chord.toarray()
     # mel_per_chord_probs = w1*m1 + w2*m2 + wGlobal*mGlobal
+    # mel_per_chord_probs = (w1+w2)*m2 + wGlobal*mGlobal
+    # mel_per_chord_probs = m2
     mel_per_chord_probs = mGlobal
     for i in range(mel_per_chord_probs.shape[0]):
         if np.sum( mel_per_chord_probs[i,:] ) > 0:
@@ -89,7 +98,8 @@ for i in range(len(i1_pieces)):
 
     # apply HMM
 
-    pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=0.9)
+    # pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=0.0)
+    pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_support(trans_probs, mel_per_chord_probs, emissions, constraints, tGlobal, adv_exp=0.0)
 
     transp_idxs = s1.transpose_idxs(pathIDXs, s1.tonality['root'])
 
