@@ -52,8 +52,8 @@ for i in range(len(all_structs)):
 i1_pieces = [ 44,44,44,      60,60,60,     211,211,211,    116,116,116,    77,77,77,    204,204,204 ]
 i2_pieces = [34,166,160,    77,166,160,    166,134,130,    204,173,160,   116,34,160,   157,116,160 ]
 
-# i1_pieces = [ 204 ]
-# i2_pieces = [ 116 ]
+# i1_pieces = [ 211 ]
+# i2_pieces = [ 134 ]
 
 for i in range(len(i1_pieces)):
     # i1 will provide the melody and i2 the heaviest transition probabilities
