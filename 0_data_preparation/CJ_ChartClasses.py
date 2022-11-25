@@ -15,6 +15,7 @@ import newGCT as ng
 from scipy import sparse
 import computeDIC as dic
 import copy
+import pandas as pd
 
 class ChameleonContext:
     # static scope for chord dictionary and initiall (0s) transition matrix
@@ -322,7 +323,7 @@ class ChameleonHMM(ChameleonContext):
                     # if np.sum( tmp_trans_prob ) != 0:
                     #     tmp_trans_prob = tmp_trans_prob/np.sum( tmp_trans_prob )
                     delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
-                    psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                    psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
                 if np.sum(delta[:,t]) != 0:
                     delta[:,t] = delta[:,t]/np.sum(delta[:,t])
             else:
@@ -338,7 +339,7 @@ class ChameleonHMM(ChameleonContext):
                         delta[ j ,t-1 ] = 1
                 tmp_trans_prob = tmp_trans_prob/np.sum(tmp_trans_prob)
                 delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
-                psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
                 if np.sum(delta[:,t]) != 0:
                     delta[:,t] = delta[:,t]/np.sum(delta[:,t])
             # report zeros
@@ -363,7 +364,7 @@ class ChameleonHMM(ChameleonContext):
         return pathIDXs, delta, psi, markov, obs
     # end apply_cHMM_with_constraints
     
-    def apply_cHMM_with_support(self, trans_probs, mel_per_chord_probs, emissions, constraints, support, adv_exp = 0.0):
+    def apply_cHMM_with_support(self, trans_probs, mel_per_chord_probs, emissions, constraints, support, adv_exp = 0.0, make_excel=True, excel_name='test_explain.xlsx'):
         markov = copy.deepcopy( trans_probs )
         obs = np.matmul( mel_per_chord_probs , emissions )
         # apply adventure
@@ -371,6 +372,24 @@ class ChameleonHMM(ChameleonContext):
         # obs = adv_exp*np.power(obs, adv_exp) + (1-adv_exp)*np.power(np.random.rand( obs.shape[0], obs.shape[1] ), 1-adv_exp)
         markov = (1-adv_exp)*markov + adv_exp*(np.random.rand( markov.shape[0], markov.shape[1] )+1)/2.
         obs = (1-adv_exp)*obs + adv_exp*(np.random.rand( obs.shape[0], obs.shape[1] )+1)/2.
+        if make_excel:
+            self.explain = {
+                'constraint': [],
+                'support': [],
+                'normalize': [],
+                'sel_chord': [],
+                'trans_prob': [],
+                'mel_corr': [],
+                'song_mel': [],
+                'chord_mel': [],
+                'mel_match': []
+            }
+            explain_trans_probs = np.zeros( ( markov.shape[0] , obs.shape[1] ) )
+            explain_mel_corrs = np.zeros( ( markov.shape[0] , obs.shape[1] ) )
+            explain_constraints = np.zeros( obs.shape[1], dtype=bool )
+            explain_support = np.zeros( obs.shape[1], dtype=bool )
+            explain_normalize = np.zeros( obs.shape[1], dtype=bool )
+        # end if make_excel
         '''
         Do not smooth, to check where dead-ends occur
         # smooth obs
@@ -398,9 +417,20 @@ class ChameleonHMM(ChameleonContext):
         pathIDXs = np.zeros( obs.shape[1] )
         t = 0
         delta[:,t] = np.multiply( pr , obs[:,t] )
+        # ============== EXPLAIN ================
+        if make_excel:
+            explain_trans_probs[:,t] = pr
+            explain_mel_corrs[:,t] = obs[:,t]
+        # end if make_excel
+        # ============== EXPLAIN ================
         if constraints[0] != -1:
             delta[:,t] = np.zeros( markov.shape[0] )
             delta[ constraints[0], t ] = 1
+            # ============== EXPLAIN ================
+            if make_excel:
+                explain_constraints[t] = 1
+            # end if make_excel
+            # ============== EXPLAIN ================
         else:
             if np.sum(delta[:,t]) != 0:
                 delta[:,t] = delta[:,t]/np.sum(delta[:,t])
@@ -415,16 +445,33 @@ class ChameleonHMM(ChameleonContext):
                     # if np.sum( tmp_trans_prob ) != 0:
                     #     tmp_trans_prob = tmp_trans_prob/np.sum( tmp_trans_prob )
                     delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
-                    psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                    psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
+                    # ============== EXPLAIN ================
+                    if make_excel:
+                        explain_trans_probs[j,t] = tmp_trans_prob[ int(psi[j,t]) ]
+                        explain_mel_corrs[j,t] = obs[j,t]
+                    # end if make_excel
+                    # ============== EXPLAIN ================
                 if np.sum(delta[:,t]) != 0:
                     delta[:,t] = delta[:,t]/np.sum(delta[:,t])
                 else:
                     print('HMM zero probability encoundered for t = ', t)
                     print('Employing support')
+                    # ============== EXPLAIN ================
+                    if make_excel:
+                        explain_support[t] = True
+                    # end if make_excel
+                    # ============== EXPLAIN ================
                     for j in range(0, markov.shape[0]):
                         tmp_trans_prob = support[:,j]
                         delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
-                        psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                        psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
+                        # ============== EXPLAIN ================
+                        if make_excel:
+                            explain_trans_probs[j,t] = tmp_trans_prob[ int(psi[j,t]) ]
+                            explain_mel_corrs[j,t] = obs[j,t]
+                        # end if make_excel
+                        # ============== EXPLAIN ================
                     if np.sum(delta[:,t]) != 0:
                         delta[:,t] = delta[:,t]/np.sum(delta[:,t])
                         print('FIXED with support - 1')
@@ -433,16 +480,32 @@ class ChameleonHMM(ChameleonContext):
                         print( 'np.max(delta[:,t-1]): ', np.max(delta[:,t-1]) )
                         print( 'np.argmax(delta[:,t-1]): ', np.argmax(delta[:,t-1]) )
                         print( 'np.sum(delta[:,t-1]): ', np.sum(delta[:,t-1]) )
+                        # ============== EXPLAIN ================
+                        if make_excel:
+                            explain_normalize[t] = True
+                        # end if make_excel
+                        # ============== EXPLAIN ================
                         tmp_trans_prob = np.ones( support[:,j].size )/support[:,j].size
                         for j in range(0, markov.shape[0]):
                             delta[j,t] = np.max( np.multiply(delta[:,t-1] + 0.0000001, tmp_trans_prob)*obs[j,t] )
-                            psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                            psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
+                            # ============== EXPLAIN ================
+                            if make_excel:
+                                explain_trans_probs[j,t] = tmp_trans_prob[ int(psi[j,t]) ]
+                                explain_mel_corrs[j,t] = obs[j,t]
+                            # end if make_excel
+                            # ============== EXPLAIN ================
                         if np.sum(delta[:,t]) != 0:
                             delta[:,t] = delta[:,t]/np.sum(delta[:,t])
                         else:
                             print('----------- now it shouldnt be zero ------------- somethings wrong')
             else:
                 j = int(constraints[t])
+                # ============== EXPLAIN ================
+                if make_excel:
+                    explain_constraints[t] = 1
+                # end if make_excel
+                # ============== EXPLAIN ================
                 # tmp_trans_prob = markov[:,j]
                 # straight zero
                 # tmp_trans_prob = np.ones( markov[:,j].size )*0.000000001
@@ -453,25 +516,59 @@ class ChameleonHMM(ChameleonContext):
                     print('constraint after constraint')
                     delta[ j ,t ] = 1
                     psi[j,t] = int(constraints[t-1])
+                    # ============== EXPLAIN ================
+                    if make_excel:
+                        explain_trans_probs[j,t] = 1
+                        explain_mel_corrs[j,t] = obs[j,t]
+                    # end if make_excel
+                    # ============== EXPLAIN ================
                     if np.sum(delta[:,t]) != 0: # couldn't be otherwise
                         delta[:,t] = delta[:,t]/np.sum(delta[:,t])
                 else:
                     tmp_trans_prob = markov[:,j]
                     delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
-                    psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                    psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
+                    # ============== EXPLAIN ================
+                    if make_excel:
+                        explain_trans_probs[j,t] = tmp_trans_prob[ int(psi[j,t]) ]
+                        explain_mel_corrs[j,t] = obs[j,t]
+                    # end if make_excel
+                    # ============== EXPLAIN ================
                     if np.sum(delta[:,t]) != 0:
                         delta[:,t] = delta[:,t]/np.sum(delta[:,t])
                     else:
                         print('support with constraint')
+                        # ============== EXPLAIN ================
+                        if make_excel:
+                            explain_support[t] = True
+                        # end if make_excel
+                        # ============== EXPLAIN ================
                         tmp_trans_prob = support[:,j]
                         delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
-                        psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                        psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
+                        # ============== EXPLAIN ================
+                        if make_excel:
+                            explain_trans_probs[j,t] = tmp_trans_prob[ int(psi[j,t]) ]
+                            explain_mel_corrs[j,t] = obs[j,t]
+                        # end if make_excel
+                        # ============== EXPLAIN ================
                         if np.sum(delta[:,t]) == 0:
                             print('FAILED - smoothening support')
+                            # ============== EXPLAIN ================
+                            if make_excel:
+                                explain_normalize[t] = True
+                            # end if make_excel
+                            # ============== EXPLAIN ================
                             tmp_trans_prob = np.ones(support[:,j].size)/support[:,j].size
                             tmp_trans_prob = tmp_trans_prob/np.sum(tmp_trans_prob)
                             delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
-                            psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                            psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
+                            # ============== EXPLAIN ================
+                            if make_excel:
+                                explain_trans_probs[j,t] = tmp_trans_prob[ int(psi[j,t]) ]
+                                explain_mel_corrs[j,t] = obs[j,t]
+                            # end if make_excel
+                            # ============== EXPLAIN ================
         # code at the end was here
         # end for t
         if constraints[-1] == -1:
@@ -482,6 +579,27 @@ class ChameleonHMM(ChameleonContext):
         for t in range(obs.shape[1]-2, -1, -1):
             pathIDXs[t] = int(psi[ int(pathIDXs[t+1]) , t+1 ])
         # print('pathIDXs: ', pathIDXs)
+        # ============== EXPLAIN ================
+        if make_excel:
+            np.set_printoptions(precision=2)
+            if len(self.all_chord_symbols) == 0:
+                self.initialize_chord_states()
+            for t in range( len(pathIDXs) ):
+                pIDX = int(pathIDXs[t])
+                self.explain['constraint'].append(explain_constraints[t])
+                self.explain['support'].append(explain_support[t])
+                self.explain['normalize'].append(explain_normalize[t])
+                self.explain['sel_chord'].append(self.all_chord_states[ pIDX ])
+                self.explain['trans_prob'].append(explain_trans_probs[ pIDX , t ])
+                self.explain['mel_corr'].append(explain_mel_corrs[ pIDX , t ])
+                self.explain['song_mel'].append(repr( emissions[:,t] ).replace('array(','').replace(')',''))
+                self.explain['chord_mel'].append(repr( mel_per_chord_probs[ pIDX ,:] ).replace('array(','').replace(')',''))
+                self.explain['mel_match'].append(repr( emissions[:,t]*mel_per_chord_probs[ pIDX ,:] ).replace('array(','').replace(')',''))
+            df = pd.DataFrame( self.explain )
+            os.makedirs('explain_hmm', exist_ok=True)
+            df.to_excel('explain_hmm/' + excel_name, sheet_name='test_explain')
+        # end if make_excel
+        # ============== EXPLAIN ================
         '''
         gcts_out = []
         gct_labels_out = []

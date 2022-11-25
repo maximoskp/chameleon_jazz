@@ -5,5 +5,7 @@ figs/
 __pycache__/
 
 generated_csvs/
+debug_hmm/
+explain_hmm/
 
 .DS_Store

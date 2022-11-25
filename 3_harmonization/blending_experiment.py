@@ -97,9 +97,10 @@ for i in range(len(i1_pieces)):
 
 
     # apply HMM
+    new_key = 'BL_' + s1.key + '-' + s2.key
 
     # pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=0.0)
-    pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_support(trans_probs, mel_per_chord_probs, emissions, constraints, tGlobal, adv_exp=0.0)
+    pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_support(trans_probs, mel_per_chord_probs, emissions, constraints, tGlobal, adv_exp=0.0, make_excel=True, excel_name=new_key + '.xlsx')
 
     transp_idxs = s1.transpose_idxs(pathIDXs, s1.tonality['root'])
 
@@ -115,7 +116,7 @@ for i in range(len(i1_pieces)):
 
     # costruct GJT-ready structure
 
-    new_key = 'BL_' + s1.key + '-' + s2.key
+    # new_key = 'BL_' + s1.key + '-' + s2.key
 
     blended_piece = {
         new_key: {}

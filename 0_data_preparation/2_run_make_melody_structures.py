@@ -10,7 +10,7 @@ import os
 import json
 import CJ_ChartClasses as ccc
 import pickle
-
+import pandas as pd
 
 
 # load all piece
@@ -61,10 +61,23 @@ import matplotlib.pyplot as plt
 plt.imshow(np.reshape(globalHMM.melody_per_chord.toarray(), (70,12*12)), cmap='gray_r')
 plt.savefig('../figs/test_melperchord.png', dpi=500)
 
-# %% print debug markov
+# %% print debug markov - collect all songs per chord
+songs_per_chord = {}
 
 for s in all_structs:
     s.hmm.debug_print(filename='debug_hmm/' + s.piece_name.replace(' ','_') + '.txt')
+    for c in s.chords:
+        if c.chord_state not in songs_per_chord.keys():
+            songs_per_chord[ c.chord_state ] = []
+        if s.piece_name not in songs_per_chord[ c.chord_state ]:
+            songs_per_chord[ c.chord_state ].append( s.piece_name )
+# songs_per_chord for excel
+spc_excel = {
+    'chords': list( songs_per_chord.keys() ),
+    'songs': list( songs_per_chord.values() )
+}
+df = pd.DataFrame( spc_excel )
+df.to_excel('../data/songs_per_chord.xlsx')
 
 globalHMM.debug_print(filename='debug_hmm/global.txt')
 
