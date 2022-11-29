@@ -16,11 +16,16 @@ from scipy import sparse
 import computeDIC as dic
 import copy
 import pandas as pd
+import pickle
 
 class ChameleonContext:
     # static scope for chord dictionary and initiall (0s) transition matrix
     with open('..' + os.sep + 'data' + os.sep + 'Lexikon' + os.sep + 'type2pcs_dictionary.json') as json_file:
         type2pc = json.load(json_file)
+    with open('../data/type_groups.pickle', 'rb') as handle:
+        type_groups = pickle.load(handle)
+    with open('../data/type2group.pickle', 'rb') as handle:
+        type2group = pickle.load(handle)
     type_names = list(type2pc.keys())
     type_names.sort()
     type2index = { k : i for i,k in enumerate(type_names) }
@@ -215,6 +220,13 @@ class ChameleonContext:
                 out_string = 'style~'.join( out_split[1:] )
         return out_string
     # end substitute_chordSymbols_in_string
+    
+    def chord_state2root_type_group(self, s):
+        r = int( s.split(', ')[0] )
+        t = ', '.join( s.split(', ')[1:] )
+        g = self.type2group[t]['group_idx']
+        return r, g
+    # end chord_state2root_type_group
 # end ChameleonContext
 
 class ChameleonHMM(ChameleonContext):
@@ -676,6 +688,25 @@ class ChameleonHMM(ChameleonContext):
         self.transition_matrix = sparse.csr_matrix( np.reshape( f[dsize:(dsize+tsize)], tshape ) )
         self.melody_per_chord = sparse.csr_matrix( np.reshape( f[(dsize+tsize):], mshape ) )
     # end build_from_features
+    
+    def make_group_support(self):
+        self.group_support = np.zeros( self.transition_matrix.shape )
+        if len(self.all_chord_states) == 0:
+            self.initialize_chord_states()
+        self.group_idx_per_state = np.zeros( ( len(self.all_chord_states) , 2 ) )
+        for i in range( len(self.all_chord_states) ):
+            s = self.all_chord_states[i]
+            r, t = self.chord_state2root_type_group(s)
+            self.group_idx_per_state[i,0] = r
+            self.group_idx_per_state[i,1] = t
+        for i in range( self.transition_matrix.shape[0] ):
+            idxs = np.logical_and( self.group_idx_per_state[:,0] ==self.group_idx_per_state[i,0] , self.group_idx_per_state[:,1] ==self.group_idx_per_state[i,1] )
+            self.group_support[i,:] = np.sum( self.transition_matrix[idxs,:] , axis=0 )
+        # normalize
+        for i in range( self.group_support.shape[0] ):
+            if np.sum( self.group_support[i,:] ) != 0:
+                self.group_support[i,:] /= np.sum( self.group_support[i,:] )
+    # end make_group_support
 # end ChameleonHMM
 
 class Chord(ChameleonContext):

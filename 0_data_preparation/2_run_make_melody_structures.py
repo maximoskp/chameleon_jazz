@@ -51,6 +51,8 @@ for s in all_structs:
     globalHMM.add_transition_information( s.hmm.transition_matrix )
     globalHMM.add_chord_distribution( s.hmm.chords_distribution )
 
+# form groups in global HMM
+
 print('saving globalHMM')
 with open('../data/globalHMM.pickle', 'wb') as handle:
     pickle.dump(globalHMM, handle, protocol=pickle.HIGHEST_PROTOCOL)

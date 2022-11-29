@@ -55,6 +55,8 @@ i2_pieces = [34,166,160,    77,166,160,    166,134,130,    204,173,160,   116,34
 # i1_pieces = [ 211 ]
 # i2_pieces = [ 134 ]
 
+globalHMM.make_group_support()
+
 for i in range(len(i1_pieces)):
     # i1 will provide the melody and i2 the heaviest transition probabilities
     i1, i2 = i1_pieces[i], i2_pieces[i]
@@ -71,7 +73,8 @@ for i in range(len(i1_pieces)):
 
     t1 = s1.hmm.transition_matrix.toarray()
     t2 = s2.hmm.transition_matrix.toarray()
-    tGlobal = globalHMM.transition_matrix.toarray()
+    # tGlobal = globalHMM.transition_matrix.toarray()
+    tGlobal = globalHMM.group_support
     trans_probs = (w1*t1 + w2*t2 + wGlobal*tGlobal)/(w1+w2+wGlobal)
     # zero-out t1
     # trans_probs[ t1 > 0 ] = 0

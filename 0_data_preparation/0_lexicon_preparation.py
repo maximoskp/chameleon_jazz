@@ -10,6 +10,8 @@ import music21 as m21
 import os
 import numpy as np
 import json
+import pickle
+import pandas as pd
 
 cwd = os.getcwd()
 
@@ -61,3 +63,51 @@ with open( folder_name + os.sep + 'type2pcs_dictionary.json', 'w') as f:
     json.dump(type2pcs_dictionary, f)
 
 print('number of types: ', len( list(type2pcs_dictionary.keys()) ))
+
+# %% form type groups
+
+type_groups = {
+    'dominant': {},
+    'suspended': {},
+    'major': {},
+    'minor': {},
+    'diminished': {},
+    'other': {}
+}
+
+type2group = {}
+
+for k in type2pcs_dictionary.keys():
+    t = type2pcs_dictionary[k]['extended_type']
+    if (4 in t and 10 in t) or (4 in t and 8 in t and not 11 in t):
+        type_groups['dominant'][k] = t
+        type2group[ str(t) ] = {'group': 'dominant', 'group_idx': 0}
+    elif 3 not in t and 4 not in t and 5 in t:
+        type_groups['suspended'][k] = t
+        type2group[ str(t) ] = {'group': 'suspended', 'group_idx': 1}
+    elif 4 in t and 10 not in t:
+        type_groups['major'][k] = t
+        type2group[ str(t) ] = {'group': 'major', 'group_idx': 2}
+    elif 3 in t and 6 not in t:
+        type_groups['minor'][k] = t
+        type2group[ str(t) ] = {'group': 'minor', 'group_idx': 3}
+    elif 3 in t and 6 in t:
+        type_groups['diminished'][k] = t
+        type2group[ str(t) ] = {'group': 'diminished', 'group_idx': 4}
+    else:
+        type_groups['other'][k] = t
+        type2group[ str(t) ] = {'group': 'other', 'group_idx': 5}
+# end for
+
+# sanity check
+n = np.sum([len(g) for g in type_groups.values()])
+print('number of types in groups: ', n)
+
+with open('../data/type_groups.pickle', 'wb') as handle:
+    pickle.dump(type_groups, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+with open('../data/type2group.pickle', 'wb') as handle:
+    pickle.dump(type2group, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+df = pd.DataFrame( type_groups )
+df.to_excel('../data/type_groups.xlsx')
