@@ -32,7 +32,7 @@ all_structs = [s]*len( songs_keys )
 # all_structs = []
 
 for i in range( len( songs_keys ) ):
-    print('Processing (' + str(i) + '/' + str(len(songs_keys)) + '): ' + songs[songs_keys[i]]['appearing_name'])
+    print('Processing (' + str(i+1) + '/' + str(len(songs_keys)) + '): ' + songs[songs_keys[i]]['appearing_name'])
     # all_structs.append( ccc.Chart( songs[songs_keys[i]] ) )
     all_structs[i] = ccc.Chart( songs[songs_keys[i]] )
     # print( 'size of object: ' + str(len(pickle.dumps(all_structs, -1))) )

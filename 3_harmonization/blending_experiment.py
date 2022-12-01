@@ -22,15 +22,26 @@ with open('../data/globalHMM.pickle', 'rb') as handle:
 
 # %% print piece idxs
 
-'''
+lookfor = {
+    'anthropology': {},
+    'darn': {},
+    'solar': {},
+    'remembered': {}
+}
+keys2lookfor = list(lookfor.keys())
+
 # printed list at the end of the file
 for i in range(len(all_structs)):
     print(str(i) + ': ' + all_structs[i].piece_name)
-'''
+    for k in keys2lookfor:
+        if k in all_structs[i].piece_name.lower():
+            lookfor[k][all_structs[i].piece_name] = i
+            print('Found ' + k + ' in ' + all_structs[i].piece_name + ' with idx: ' + str(i))
+
 
 # %% load pieces to blend
 
-'''
+''' OLD LIST ==================
 34: Au Privave
 44: Billie's Bounce
 60: Blue Bossa
@@ -48,9 +59,19 @@ for i in range(len(all_structs)):
 233: Autumn Leaves
 '''
 
+'''
+285: Anthropology
+287: Darn That Dream
+189: Time Remembered
+296: Solar
+'''
+
 # i1_pieces and i2_pieces should be of the same length
-i1_pieces = [ 44,44,44,      60,60,60,     211,211,211,    116,116,116,    77,77,77,    204,204,204 ]
-i2_pieces = [34,166,160,    77,166,160,    166,134,130,    204,173,160,   116,34,160,   157,116,160 ]
+# i1_pieces = [ 44,44,44,      60,60,60,     211,211,211,    116,116,116,    77,77,77,    204,204,204 ]
+# i2_pieces = [34,166,160,    77,166,160,    166,134,130,    204,173,160,   116,34,160,   157,116,160 ]
+
+i1_pieces = [ 285 , 296 ]
+i2_pieces = [ 287 , 189 ]
 
 # i1_pieces = [ 211 ]
 # i2_pieces = [ 134 ]
