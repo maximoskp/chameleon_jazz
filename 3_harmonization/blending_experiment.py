@@ -26,7 +26,11 @@ lookfor = {
     'anthropology': {},
     'darn': {},
     'solar': {},
-    'remembered': {}
+    'remembered': {},
+    'jam blues': {},
+    'beautiful love': {},
+    'camarillo':{},
+    'all the things you are': {}
 }
 keys2lookfor = list(lookfor.keys())
 
@@ -64,14 +68,18 @@ for i in range(len(all_structs)):
 287: Darn That Dream
 189: Time Remembered
 296: Solar
+286: All The Things You Are
+292: Beautiful Love
+2: Relaxin at Camarillo
+87: C-Jam Blues
 '''
 
 # i1_pieces and i2_pieces should be of the same length
 # i1_pieces = [ 44,44,44,      60,60,60,     211,211,211,    116,116,116,    77,77,77,    204,204,204 ]
 # i2_pieces = [34,166,160,    77,166,160,    166,134,130,    204,173,160,   116,34,160,   157,116,160 ]
 
-i1_pieces = [ 285 , 296 ]
-i2_pieces = [ 287 , 189 ]
+i1_pieces = [ 87 , 286, 296, 292, 2,   285 ]
+i2_pieces = [ 189, 287, 189, 287, 189, 287 ]
 
 # i1_pieces = [ 211 ]
 # i2_pieces = [ 134 ]
