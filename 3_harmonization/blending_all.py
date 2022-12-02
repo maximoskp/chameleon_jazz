@@ -8,8 +8,9 @@ import CJ_ChartClasses as ccc
 import matplotlib.pyplot as plt
 import pandas as pd
 
-file_name = 'experiment_blends.json'
+file_name = 'experiment_all.json'
 blends = []
+blends_dict = {}
 # # Open a file with access mode 'a' or 'w'
 # file_object = open(file_name, 'w')
 
@@ -31,17 +32,18 @@ tmp_stats = {
     'transitions': 0,
     'constraints': 0,
     'support': 0,
+    'suppConstraint': 0,
     'normalize': 0,
+    'normConstraint': 0,
     'melody_mean': 0,
     'melody_std': 0
 }
 explain_stats['all'] = tmp_stats
 
-for i in range(len(all_structs)):
-    for j in range(len(all_structs)):
-        if i != j:
+for i1 in range(len(all_structs)):
+    for i2 in range(len(all_structs)):
+        if i1 != i2:
             # i1 will provide the melody and i2 the heaviest transition probabilities
-            i1, i2 = i, j
             s1, s2 = all_structs[i1], all_structs[i2]
             
             print('total: ' + str(len(all_structs)) + ' ' + 30*'-')
@@ -91,18 +93,22 @@ for i in range(len(all_structs)):
                     'transitions': 0,
                     'constraints': 0,
                     'support': 0,
+                    'suppConstraint': 0,
                     'normalize': 0,
+                    'normConstraint': 0,
                     'melody_mean': 0,
                     'melody_std': 0
                 }
                 explain_stats[s1.piece_name] = tmp_stats
             for tmp_label in ['all', s1.piece_name]:
-                explain_stats[tmp_label]['transitions'] += len(explain['constraint'])/len(all_structs)
-                explain_stats[tmp_label]['constraints'] += (np.sum(explain['constraint'])/len(explain['constraint']))//len(all_structs)
-                explain_stats[tmp_label]['support'] += (np.sum(explain['support'])/len(explain['constraint']))//len(all_structs)
-                explain_stats[tmp_label]['normalize'] += (np.sum(explain['normalize'])/len(explain['constraint']))//len(all_structs)
-                explain_stats[tmp_label]['melody_mean'] += (np.mean(explain['mel_corr']))/len(all_structs)
-                explain_stats[tmp_label]['melody_std'] += (np.std(explain['mel_corr']))/len(all_structs)
+                explain_stats[tmp_label]['transitions'] += len(explain['constraint'])/(len(all_structs)-1)
+                explain_stats[tmp_label]['constraints'] += (np.sum(explain['constraint'])/len(explain['constraint']))/(len(all_structs)-1)
+                explain_stats[tmp_label]['support'] += (np.sum(explain['support'])/len(explain['constraint']))/(len(all_structs)-1)
+                explain_stats[tmp_label]['suppConstraint'] += (np.sum( np.logical_and( explain['support'], explain['constraint'] ) )/len(explain['constraint']))/(len(all_structs)-1)
+                explain_stats[tmp_label]['normalize'] += (np.sum(explain['normalize'])/len(explain['constraint']))/(len(all_structs)-1)
+                explain_stats[tmp_label]['normConstraint'] += (np.sum( np.logical_and( explain['normalize'], explain['constraint'] ) )/len(explain['constraint']))/(len(all_structs)-1)
+                explain_stats[tmp_label]['melody_mean'] += (np.mean(explain['mel_corr']))/(len(all_structs)-1)
+                explain_stats[tmp_label]['melody_std'] += (np.std(explain['mel_corr']))/(len(all_structs)-1)
             # explain structures
             
             transp_idxs = s1.transpose_idxs(pathIDXs, s1.tonality['root'])
@@ -135,6 +141,11 @@ for i in range(len(all_structs)):
             # # Append string at the end of file
             # file_object.write(repr(blended_piece) + '\n')
             blends.append( blended_piece )
+            df = pd.DataFrame(explain_stats)
+            df.to_excel('explain_hmm/_explain_stats.xlsx')
+            blends_dict[ list(blended_piece.keys())[0] ] = list(blended_piece.values())[0]
+            with open(file_name, 'w') as outfile:
+                json.dump(blends_dict, outfile)
         # end if
     # end for
 # end for
@@ -143,7 +154,7 @@ for i in range(len(all_structs)):
 # file_object.close()
 
 df = pd.DataFrame(explain_stats)
-df.to_excel('../data/explain_stats.xlsx')
+df.to_excel('explain_hmm/_explain_stats.xlsx')
 
 # %%
 blends_dict = {}
