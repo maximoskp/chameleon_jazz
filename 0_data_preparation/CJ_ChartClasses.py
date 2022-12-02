@@ -421,9 +421,11 @@ class ChameleonHMM(ChameleonContext):
         for i in range(markov.shape[0]):
             if np.sum( markov[i,:] ) > 0:
                 markov[i,:] = markov[i,:]/np.sum( markov[i,:] )
+        '''
         for i in range(obs.shape[0]):
             if np.sum( obs[i,:] ) > 0:
                 obs[i,:] = obs[i,:]/np.sum( obs[i,:] )
+        '''
         # beginning chord probabilities
         pr = self.starting.toarray()
         delta = np.zeros( ( markov.shape[0] , obs.shape[1] ) )
@@ -695,6 +697,7 @@ class ChameleonHMM(ChameleonContext):
     
     def make_group_support(self):
         self.group_support = np.zeros( self.transition_matrix.shape )
+        tmp_support = np.zeros( self.transition_matrix.shape )
         if len(self.all_chord_states) == 0:
             self.initialize_chord_states()
         self.group_idx_per_state = np.zeros( ( len(self.all_chord_states) , 2 ) )
@@ -705,7 +708,10 @@ class ChameleonHMM(ChameleonContext):
             self.group_idx_per_state[i,1] = t
         for i in range( self.transition_matrix.shape[0] ):
             idxs = np.logical_and( self.group_idx_per_state[:,0] ==self.group_idx_per_state[i,0] , self.group_idx_per_state[:,1] ==self.group_idx_per_state[i,1] )
-            self.group_support[i,:] = np.sum( self.transition_matrix[idxs,:] , axis=0 )
+            tmp_support[:,i] = np.reshape(np.sum( self.transition_matrix[:,idxs] , axis=1 ), self.group_support[:,i].shape)
+        for i in range( self.transition_matrix.shape[0] ):
+            idxs = np.logical_and( self.group_idx_per_state[:,0] ==self.group_idx_per_state[i,0] , self.group_idx_per_state[:,1] ==self.group_idx_per_state[i,1] )
+            self.group_support[i,:] = np.reshape(np.sum( tmp_support[idxs,:] , axis=0 ), self.group_support[i,:].shape)
         # normalize
         for i in range( self.group_support.shape[0] ):
             if np.sum( self.group_support[i,:] ) != 0:

@@ -82,8 +82,8 @@ for i in range(len(all_structs)):
 i1_pieces = [ 87 , 286, 296, 292, 2,   285 ]
 i2_pieces = [ 189, 287, 189, 287, 189, 287 ]
 
-# i1_pieces = [ 211 ]
-# i2_pieces = [ 134 ]
+# i1_pieces = [ 296 ]
+# i2_pieces = [ 189 ]
 
 globalHMM.make_group_support()
 
@@ -115,7 +115,9 @@ for i in range(len(i1_pieces)):
     w1, w2, wGlobal = 0.0, 1.0, 0.0
 
     t1 = s1.hmm.transition_matrix.toarray()
-    t2 = s2.hmm.transition_matrix.toarray()
+    s2.hmm.make_group_support()
+    t2 = s2.hmm.group_support
+    # t2 = s2.hmm.transition_matrix.toarray()
     # tGlobal = globalHMM.transition_matrix.toarray()
     tGlobal = globalHMM.group_support
     trans_probs = (w1*t1 + w2*t2 + wGlobal*tGlobal)/(w1+w2+wGlobal)

@@ -88,12 +88,12 @@ for k in type2pcs_dictionary.keys():
     elif 4 in t and 10 not in t:
         type_groups['major'][k] = t
         type2group[ str(t) ] = {'group': 'major', 'group_idx': 2}
-    elif 3 in t and 6 not in t:
-        type_groups['minor'][k] = t
-        type2group[ str(t) ] = {'group': 'minor', 'group_idx': 3}
-    elif 3 in t and 6 in t:
+    elif 3 in t and 6 in t and 10 not in t:
         type_groups['diminished'][k] = t
         type2group[ str(t) ] = {'group': 'diminished', 'group_idx': 4}
+    elif 3 in t:
+        type_groups['minor'][k] = t
+        type2group[ str(t) ] = {'group': 'minor', 'group_idx': 3}
     else:
         type_groups['other'][k] = t
         type2group[ str(t) ] = {'group': 'other', 'group_idx': 5}
