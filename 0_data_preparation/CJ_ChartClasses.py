@@ -401,6 +401,8 @@ class ChameleonHMM(ChameleonContext):
             explain_constraints = np.zeros( obs.shape[1], dtype=bool )
             explain_support = np.zeros( obs.shape[1], dtype=bool )
             explain_normalize = np.zeros( obs.shape[1], dtype=bool )
+        else:
+            self.explain = None
         # end if make_excel
         '''
         Do not smooth, to check where dead-ends occur
@@ -450,7 +452,7 @@ class ChameleonHMM(ChameleonContext):
         psi[:,t] = 0 # arbitrary value, since there is no predecessor to t=0
         
         for t in range(1, obs.shape[1], 1):
-            print('---------- t: ', t)
+            # print('---------- t: ', t)
             if constraints[t] == -1 :
                 for j in range(0, markov.shape[0]):
                     tmp_trans_prob = markov[:,j]
@@ -467,8 +469,8 @@ class ChameleonHMM(ChameleonContext):
                 if np.sum(delta[:,t]) != 0:
                     delta[:,t] = delta[:,t]/np.sum(delta[:,t])
                 else:
-                    print('HMM zero probability encoundered for t = ', t)
-                    print('Employing support')
+                    # print('HMM zero probability encoundered for t = ', t)
+                    # print('Employing support')
                     # ============== EXPLAIN ================
                     if make_excel:
                         explain_support[t] = True
@@ -486,12 +488,12 @@ class ChameleonHMM(ChameleonContext):
                         # ============== EXPLAIN ================
                     if np.sum(delta[:,t]) != 0:
                         delta[:,t] = delta[:,t]/np.sum(delta[:,t])
-                        print('FIXED with support - 1')
+                        # print('FIXED with support - 1')
                     else:
-                        print('STILL ZERO AFTER SUPPORT - smoothing')
-                        print( 'np.max(delta[:,t-1]): ', np.max(delta[:,t-1]) )
-                        print( 'np.argmax(delta[:,t-1]): ', np.argmax(delta[:,t-1]) )
-                        print( 'np.sum(delta[:,t-1]): ', np.sum(delta[:,t-1]) )
+                        # print('STILL ZERO AFTER SUPPORT - smoothing')
+                        # print( 'np.max(delta[:,t-1]): ', np.max(delta[:,t-1]) )
+                        # print( 'np.argmax(delta[:,t-1]): ', np.argmax(delta[:,t-1]) )
+                        # print( 'np.sum(delta[:,t-1]): ', np.sum(delta[:,t-1]) )
                         # ============== EXPLAIN ================
                         if make_excel:
                             explain_normalize[t] = True
@@ -510,7 +512,8 @@ class ChameleonHMM(ChameleonContext):
                         if np.sum(delta[:,t]) != 0:
                             delta[:,t] = delta[:,t]/np.sum(delta[:,t])
                         else:
-                            print('----------- now it shouldnt be zero ------------- somethings wrong')
+                            pass
+                            # print('----------- now it shouldnt be zero ------------- somethings wrong')
             else:
                 j = int(constraints[t])
                 # ============== EXPLAIN ================
@@ -525,7 +528,7 @@ class ChameleonHMM(ChameleonContext):
                 # tmp_trans_prob[j] = 1
                 # check if previous is constrained - if so no need to compute
                 if constraints[t-1] != -1:
-                    print('constraint after constraint')
+                    # print('constraint after constraint')
                     delta[ j ,t ] = 1
                     psi[j,t] = int(constraints[t-1])
                     # ============== EXPLAIN ================
@@ -549,7 +552,7 @@ class ChameleonHMM(ChameleonContext):
                     if np.sum(delta[:,t]) != 0:
                         delta[:,t] = delta[:,t]/np.sum(delta[:,t])
                     else:
-                        print('support with constraint')
+                        # print('support with constraint')
                         # ============== EXPLAIN ================
                         if make_excel:
                             explain_support[t] = True
@@ -565,7 +568,7 @@ class ChameleonHMM(ChameleonContext):
                         # end if make_excel
                         # ============== EXPLAIN ================
                         if np.sum(delta[:,t]) == 0:
-                            print('FAILED - smoothening support')
+                            # print('FAILED - smoothening support')
                             # ============== EXPLAIN ================
                             if make_excel:
                                 explain_normalize[t] = True
@@ -609,7 +612,8 @@ class ChameleonHMM(ChameleonContext):
                 self.explain['mel_match'].append(repr( emissions[:,t]*mel_per_chord_probs[ pIDX ,:] ).replace('array(','').replace(')',''))
             df = pd.DataFrame( self.explain )
             os.makedirs('explain_hmm', exist_ok=True)
-            df.to_excel('explain_hmm/' + excel_name, sheet_name='test_explain')
+            if excel_name is not None:
+                df.to_excel('explain_hmm/' + excel_name, sheet_name='test_explain')
         # end if make_excel
         # ============== EXPLAIN ================
         '''
@@ -619,7 +623,7 @@ class ChameleonHMM(ChameleonContext):
             gcts_out.append( maf.str2np(c.gcts_labels[ int(pathIDXs[i]) ]) )
             gct_labels_out.append( c.gcts_labels[ int(pathIDXs[i]) ] )
         '''
-        return pathIDXs, delta, psi, markov, obs
+        return pathIDXs, delta, psi, markov, obs, self.explain
     # end apply_cHMM_with_support
     
     def add_starting_chord_distribution(self, c):

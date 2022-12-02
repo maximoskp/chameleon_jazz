@@ -21,69 +21,6 @@ with open('../data/all_melody_structs.pickle', 'rb') as handle:
 with open('../data/globalHMM.pickle', 'rb') as handle:
     globalHMM = pickle.load(handle)
 
-# %% print piece idxs
-
-lookfor = {
-    'anthropology': {},
-    'darn': {},
-    'solar': {},
-    'remembered': {},
-    'jam blues': {},
-    'beautiful love': {},
-    'camarillo':{},
-    'all the things you are': {}
-}
-keys2lookfor = list(lookfor.keys())
-
-# printed list at the end of the file
-for i in range(len(all_structs)):
-    print(str(i) + ': ' + all_structs[i].piece_name)
-    for k in keys2lookfor:
-        if k in all_structs[i].piece_name.lower():
-            lookfor[k][all_structs[i].piece_name] = i
-            print('Found ' + k + ' in ' + all_structs[i].piece_name + ' with idx: ' + str(i))
-
-
-# %% load pieces to blend
-
-''' OLD LIST ==================
-34: Au Privave
-44: Billie's Bounce
-60: Blue Bossa
-77: Cheese Cake
-116: So What
-130: Freddie Freeloader
-133: Yesterdays
-134: Cantaloupe island
-157: All The Things You Are
-160: Giant Steps
-166: All of Me
-173: Black Orpheus
-204: Caravan
-211: Afro Blue
-233: Autumn Leaves
-'''
-
-'''
-285: Anthropology
-287: Darn That Dream
-189: Time Remembered
-296: Solar
-286: All The Things You Are
-292: Beautiful Love
-2: Relaxin at Camarillo
-87: C-Jam Blues
-'''
-
-# i1_pieces and i2_pieces should be of the same length
-# i1_pieces = [ 44,44,44,      60,60,60,     211,211,211,    116,116,116,    77,77,77,    204,204,204 ]
-# i2_pieces = [34,166,160,    77,166,160,    166,134,130,    204,173,160,   116,34,160,   157,116,160 ]
-
-i1_pieces = [ 87 , 286, 296, 292, 2,   285 ]
-i2_pieces = [ 189, 287, 189, 287, 189, 287 ]
-
-# i1_pieces = [ 211 ]
-# i2_pieces = [ 134 ]
 
 globalHMM.make_group_support()
 
@@ -100,125 +37,106 @@ tmp_stats = {
 }
 explain_stats['all'] = tmp_stats
 
-for i in range(len(i1_pieces)):
-    # i1 will provide the melody and i2 the heaviest transition probabilities
-    i1, i2 = i1_pieces[i], i2_pieces[i]
-
-    s1, s2 = all_structs[i1], all_structs[i2]
-    
-    print(30*'-')
-    print(s1.piece_name)
-    print(s2.piece_name)
-
-    # construct weighted "blended" transition matrix and get observations
-
-    w1, w2, wGlobal = 0.0, 1.0, 0.0
-
-    t1 = s1.hmm.transition_matrix.toarray()
-    t2 = s2.hmm.transition_matrix.toarray()
-    # tGlobal = globalHMM.transition_matrix.toarray()
-    tGlobal = globalHMM.group_support
-    trans_probs = (w1*t1 + w2*t2 + wGlobal*tGlobal)/(w1+w2+wGlobal)
-    # zero-out t1
-    # trans_probs[ t1 > 0 ] = 0
-    # normalize
-    for i in range(trans_probs.shape[0]):
-        if np.sum( trans_probs[i,:] ) > 0:
-            trans_probs[i,:] = trans_probs[i,:]/np.sum( trans_probs[i,:] )
-    
-    # m1 = s1.hmm.melody_per_chord.toarray()
-    m2 = s2.hmm.melody_per_chord.toarray()
-    mGlobal = globalHMM.melody_per_chord.toarray()
-    # mel_per_chord_probs = w1*m1 + w2*m2 + wGlobal*mGlobal
-    # mel_per_chord_probs = (w1+w2)*m2 + wGlobal*mGlobal
-    # mel_per_chord_probs = m2
-    mel_per_chord_probs = mGlobal
-    for i in range(mel_per_chord_probs.shape[0]):
-        if np.sum( mel_per_chord_probs[i,:] ) > 0:
-            mel_per_chord_probs[i,:] = mel_per_chord_probs[i,:]/np.sum( mel_per_chord_probs[i,:] )
-    
-    emissions = s1.melody_information
-
-    constraints = s1.constraints
-
-
-    # apply HMM
-    new_key = 'BL_' + s1.key + '-' + s2.key
-
-    # pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=0.0)
-    pathIDXs, delta, psi, markov, obs, explain = s1.hmm.apply_cHMM_with_support(trans_probs, mel_per_chord_probs, emissions, constraints, tGlobal, adv_exp=0.0, make_excel=True, excel_name=new_key + '.xlsx')
-    
-    # explain structures
-    if s1.piece_name not in explain_stats.keys():
-        tmp_stats = {
-            'transitions': 0,
-            'constraints': 0,
-            'support': 0,
-            'normalize': 0,
-            'melody_mean': 0,
-            'melody_std': 0
-        }
-        explain_stats[s1.piece_name] = tmp_stats
-    for tmp_label in ['all', s1.piece_name]:
-        explain_stats[tmp_label]['transitions'] += len(explain['constraint'])
-        explain_stats[tmp_label]['constraints'] += np.sum(explain['constraint'])
-        explain_stats[tmp_label]['support'] += np.sum(explain['support'])
-        explain_stats[tmp_label]['normalize'] += np.sum(explain['normalize'])
-        explain_stats[tmp_label]['melody_mean'] += np.mean(explain['mel_corr'])
-        explain_stats[tmp_label]['melody_std'] += np.std(explain['mel_corr'])
-    # explain structures
-
-    transp_idxs = s1.transpose_idxs(pathIDXs, s1.tonality['root'])
-
-    debug_constraints = np.array([pathIDXs,constraints])
-
-    generated_chords = s1.idxs2chordSymbols(transp_idxs)
-
-    generated_vs_initial = []
-    for i in range(len(generated_chords)):
-        generated_vs_initial.append( [constraints[i], generated_chords[i], s1.chords[i].chord_symbol] )
-
-    new_unfolded = s1.substitute_chordSymbols_in_string( s1.unfolded_string, generated_chords )
-
-    # costruct GJT-ready structure
-
-    # new_key = 'BL_' + s1.key + '-' + s2.key
-
-    blended_piece = {
-        new_key: {}
-    }
-
-    blended_piece[new_key]['string'] = new_unfolded
-    blended_piece[new_key]['original_string'] = new_unfolded
-    blended_piece[new_key]['unfolded_string'] = new_unfolded
-    blended_piece[new_key]['original_string'] = new_key
-    blended_piece[new_key]['appearing_name'] = 'BL_' + s1.piece_name + '-' + s2.piece_name
-    blended_piece[new_key]['tonality'] = s1.tonality['symbol']
-
-    # # Append string at the end of file
-    # file_object.write(repr(blended_piece) + '\n')
-    blends.append( blended_piece )
-
-    # plot - debug
-
-    os.makedirs('../figs', exist_ok=True)
-    os.makedirs('../figs/experiment_hmm_debug', exist_ok=True)
-
-    plt.clf()
-    plt.imshow(trans_probs, cmap='gray_r')
-    plt.savefig('../figs/experiment_hmm_debug/trans_probs' + s1.key.replace(' ', '_') + '-' + s2.key.replace(' ', '_') + '.png', dpi=500)
-
-    plt.clf()
-    plt.imshow(delta, cmap='gray_r')
-    plt.savefig('../figs/experiment_hmm_debug/delta' + s1.key.replace(' ', '_') + '-' + s2.key.replace(' ', '_') + '.png', dpi=500)
-
-    plt.clf()
-    plt.imshow(markov, cmap='gray_r')
-    plt.savefig('../figs/experiment_hmm_debug/markov' + s1.key.replace(' ', '_') + '-' + s2.key.replace(' ', '_') + '.png', dpi=500)
-
-    plt.clf()
-    plt.imshow(obs, cmap='gray_r')
-    plt.savefig('../figs/experiment_hmm_debug/obs' + s1.key.replace(' ', '_') + '-' + s2.key.replace(' ', '_') + '.png', dpi=500)
+for i in range(len(all_structs)):
+    for j in range(len(all_structs)):
+        if i != j:
+            # i1 will provide the melody and i2 the heaviest transition probabilities
+            i1, i2 = i, j
+            s1, s2 = all_structs[i1], all_structs[i2]
+            
+            print('total: ' + str(len(all_structs)) + ' ' + 30*'-')
+            print(str(i1) + ': ' + s1.piece_name)
+            print(str(i2) + ': ' + s2.piece_name)
+            # construct weighted "blended" transition matrix and get observations
+            
+            w1, w2, wGlobal = 0.0, 1.0, 0.0
+            
+            t1 = s1.hmm.transition_matrix.toarray()
+            t2 = s2.hmm.transition_matrix.toarray()
+            # tGlobal = globalHMM.transition_matrix.toarray()
+            tGlobal = globalHMM.group_support
+            trans_probs = (w1*t1 + w2*t2 + wGlobal*tGlobal)/(w1+w2+wGlobal)
+            # zero-out t1
+            # trans_probs[ t1 > 0 ] = 0
+            # normalize
+            for i in range(trans_probs.shape[0]):
+                if np.sum( trans_probs[i,:] ) > 0:
+                    trans_probs[i,:] = trans_probs[i,:]/np.sum( trans_probs[i,:] )
+            
+            # m1 = s1.hmm.melody_per_chord.toarray()
+            m2 = s2.hmm.melody_per_chord.toarray()
+            mGlobal = globalHMM.melody_per_chord.toarray()
+            # mel_per_chord_probs = w1*m1 + w2*m2 + wGlobal*mGlobal
+            # mel_per_chord_probs = (w1+w2)*m2 + wGlobal*mGlobal
+            # mel_per_chord_probs = m2
+            mel_per_chord_probs = mGlobal
+            for i in range(mel_per_chord_probs.shape[0]):
+                if np.sum( mel_per_chord_probs[i,:] ) > 0:
+                    mel_per_chord_probs[i,:] = mel_per_chord_probs[i,:]/np.sum( mel_per_chord_probs[i,:] )
+            
+            emissions = s1.melody_information
+            
+            constraints = s1.constraints
+            
+            
+            # apply HMM
+            new_key = 'BL_' + s1.key + '-' + s2.key
+            
+            # pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=0.0)
+            pathIDXs, delta, psi, markov, obs, explain = s1.hmm.apply_cHMM_with_support(trans_probs, mel_per_chord_probs, emissions, constraints, tGlobal, adv_exp=0.0, make_excel=True, excel_name=new_key + '.xlsx')
+            
+            # explain structures
+            if s1.piece_name not in explain_stats.keys():
+                tmp_stats = {
+                    'transitions': 0,
+                    'constraints': 0,
+                    'support': 0,
+                    'normalize': 0,
+                    'melody_mean': 0,
+                    'melody_std': 0
+                }
+                explain_stats[s1.piece_name] = tmp_stats
+            for tmp_label in ['all', s1.piece_name]:
+                explain_stats[tmp_label]['transitions'] += len(explain['constraint'])/len(all_structs)
+                explain_stats[tmp_label]['constraints'] += (np.sum(explain['constraint'])/len(explain['constraint']))//len(all_structs)
+                explain_stats[tmp_label]['support'] += (np.sum(explain['support'])/len(explain['constraint']))//len(all_structs)
+                explain_stats[tmp_label]['normalize'] += (np.sum(explain['normalize'])/len(explain['constraint']))//len(all_structs)
+                explain_stats[tmp_label]['melody_mean'] += (np.mean(explain['mel_corr']))/len(all_structs)
+                explain_stats[tmp_label]['melody_std'] += (np.std(explain['mel_corr']))/len(all_structs)
+            # explain structures
+            
+            transp_idxs = s1.transpose_idxs(pathIDXs, s1.tonality['root'])
+            
+            debug_constraints = np.array([pathIDXs,constraints])
+            
+            generated_chords = s1.idxs2chordSymbols(transp_idxs)
+            
+            generated_vs_initial = []
+            for i in range(len(generated_chords)):
+                generated_vs_initial.append( [constraints[i], generated_chords[i], s1.chords[i].chord_symbol] )
+                
+            new_unfolded = s1.substitute_chordSymbols_in_string( s1.unfolded_string, generated_chords )
+            
+            # costruct GJT-ready structure
+            
+            # new_key = 'BL_' + s1.key + '-' + s2.key
+            
+            blended_piece = {
+                new_key: {}
+            }
+            
+            blended_piece[new_key]['string'] = new_unfolded
+            blended_piece[new_key]['original_string'] = new_unfolded
+            blended_piece[new_key]['unfolded_string'] = new_unfolded
+            blended_piece[new_key]['original_string'] = new_key
+            blended_piece[new_key]['appearing_name'] = 'BL_' + s1.piece_name + '-' + s2.piece_name
+            blended_piece[new_key]['tonality'] = s1.tonality['symbol']
+            
+            # # Append string at the end of file
+            # file_object.write(repr(blended_piece) + '\n')
+            blends.append( blended_piece )
+        # end if
+    # end for
 # end for
 
 # # Close the file
