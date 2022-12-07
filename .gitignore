@@ -7,5 +7,8 @@ __pycache__/
 generated_csvs/
 debug_hmm/
 explain_hmm/
+explain_hmm_server/
+
+3_harmonization/experiment_all.json
 
 .DS_Store

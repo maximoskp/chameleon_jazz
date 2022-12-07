@@ -7,8 +7,9 @@ sys.path.append('..' + os.sep +'0_data_preparation')
 import CJ_ChartClasses as ccc
 import matplotlib.pyplot as plt
 import pandas as pd
+from copy import deepcopy
 
-file_name = 'experiment_all.json'
+file_name = 'explain_hmm_server/experiment_all.json'
 blends = []
 blends_dict = {}
 # # Open a file with access mode 'a' or 'w'
@@ -27,8 +28,9 @@ globalHMM.make_group_support()
 
 # the explanation excels are gathered for each piece and overall
 # as keys in this dictionary
-explain_stats = {}
-tmp_stats = {
+explain_stats_s1 = {}
+explain_stats_s2 = {}
+zero_stats = {
     'transitions': 0,
     'constraints': 0,
     'support': 0,
@@ -38,7 +40,7 @@ tmp_stats = {
     'melody_mean': 0,
     'melody_std': 0
 }
-explain_stats['all'] = tmp_stats
+explain_stats_s1['all'] = deepcopy(zero_stats)
 
 for i1 in range(len(all_structs)):
     for i2 in range(len(all_structs)):
@@ -87,29 +89,31 @@ for i1 in range(len(all_structs)):
             # pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=0.0)
             pathIDXs, delta, psi, markov, obs, explain = s1.hmm.apply_cHMM_with_support(trans_probs, mel_per_chord_probs, emissions, constraints, tGlobal, adv_exp=0.0, make_excel=True, excel_name=new_key + '.xlsx')
             
-            # explain structures
-            if s1.piece_name not in explain_stats.keys():
-                tmp_stats = {
-                    'transitions': 0,
-                    'constraints': 0,
-                    'support': 0,
-                    'suppConstraint': 0,
-                    'normalize': 0,
-                    'normConstraint': 0,
-                    'melody_mean': 0,
-                    'melody_std': 0
-                }
-                explain_stats[s1.piece_name] = tmp_stats
-            for tmp_label in ['all', s1.piece_name]:
-                explain_stats[tmp_label]['transitions'] += len(explain['constraint'])/(len(all_structs)-1)
-                explain_stats[tmp_label]['constraints'] += (np.sum(explain['constraint'])/len(explain['constraint']))/(len(all_structs)-1)
-                explain_stats[tmp_label]['support'] += (np.sum(explain['support'])/len(explain['constraint']))/(len(all_structs)-1)
-                explain_stats[tmp_label]['suppConstraint'] += (np.sum( np.logical_and( explain['support'], explain['constraint'] ) )/len(explain['constraint']))/(len(all_structs)-1)
-                explain_stats[tmp_label]['normalize'] += (np.sum(explain['normalize'])/len(explain['constraint']))/(len(all_structs)-1)
-                explain_stats[tmp_label]['normConstraint'] += (np.sum( np.logical_and( explain['normalize'], explain['constraint'] ) )/len(explain['constraint']))/(len(all_structs)-1)
-                explain_stats[tmp_label]['melody_mean'] += (np.mean(explain['mel_corr']))/(len(all_structs)-1)
-                explain_stats[tmp_label]['melody_std'] += (np.std(explain['mel_corr']))/(len(all_structs)-1)
-            # explain structures
+            # explain structures for s1
+            if s1.piece_name not in explain_stats_s1.keys():
+                explain_stats_s1[s1.piece_name] = deepcopy(zero_stats)
+            tmp_label = s1.piece_name
+            explain_stats_s1[tmp_label]['transitions'] += len(explain['constraint'])/(len(all_structs)-1)
+            explain_stats_s1[tmp_label]['constraints'] += np.sum(explain['constraint'])/(len(all_structs)-1)
+            explain_stats_s1[tmp_label]['support'] += np.sum(explain['support'])/(len(all_structs)-1)
+            explain_stats_s1[tmp_label]['suppConstraint'] += np.sum( np.logical_and( explain['support'], explain['constraint'] ) )/(len(all_structs)-1)
+            explain_stats_s1[tmp_label]['normalize'] += np.sum(explain['normalize'])/(len(all_structs)-1)
+            explain_stats_s1[tmp_label]['normConstraint'] += np.sum( np.logical_and( explain['normalize'], explain['constraint'] ) )/(len(all_structs)-1)
+            explain_stats_s1[tmp_label]['melody_mean'] += np.mean(explain['mel_corr'])/(len(all_structs)-1)
+            explain_stats_s1[tmp_label]['melody_std'] += np.std(explain['mel_corr'])/(len(all_structs)-1)
+
+            # explain structures for s2
+            if s2.piece_name not in explain_stats_s2.keys():
+                explain_stats_s2[s2.piece_name] = deepcopy(zero_stats)
+            tmp_label = s2.piece_name
+            explain_stats_s2[tmp_label]['transitions'] += len(explain['constraint'])/(len(all_structs)-1)
+            explain_stats_s2[tmp_label]['constraints'] += np.sum(explain['constraint'])/(len(all_structs)-1)
+            explain_stats_s2[tmp_label]['support'] += np.sum(explain['support'])/(len(all_structs)-1)
+            explain_stats_s2[tmp_label]['suppConstraint'] += np.sum( np.logical_and( explain['support'], explain['constraint'] ) )/(len(all_structs)-1)
+            explain_stats_s2[tmp_label]['normalize'] += np.sum(explain['normalize'])/(len(all_structs)-1)
+            explain_stats_s2[tmp_label]['normConstraint'] += np.sum( np.logical_and( explain['normalize'], explain['constraint'] ) )/(len(all_structs)-1)
+            explain_stats_s2[tmp_label]['melody_mean'] += np.mean(explain['mel_corr'])/(len(all_structs)-1)
+            explain_stats_s2[tmp_label]['melody_std'] += np.std(explain['mel_corr'])/(len(all_structs)-1)
             
             transp_idxs = s1.transpose_idxs(pathIDXs, s1.tonality['root'])
             
@@ -141,20 +145,34 @@ for i1 in range(len(all_structs)):
             # # Append string at the end of file
             # file_object.write(repr(blended_piece) + '\n')
             blends.append( blended_piece )
-            df = pd.DataFrame(explain_stats)
-            df.to_excel('explain_hmm/_explain_stats.xlsx')
             blends_dict[ list(blended_piece.keys())[0] ] = list(blended_piece.values())[0]
-            with open(file_name, 'w') as outfile:
-                json.dump(blends_dict, outfile)
         # end if
     # end for
+    explain_stats_s1['all'] = deepcopy(zero_stats)
+    piece_keys = list(explain_stats_s1.keys())
+    for piece_key in piece_keys:
+        for stat_key in explain_stats_s1[piece_key].keys():
+            explain_stats_s1['all'][stat_key] += explain_stats_s1[piece_key][stat_key]/len(piece_keys)
+    # explain structures
+    df1 = pd.DataFrame(explain_stats_s1)
+    df1.to_excel('explain_hmm_server/_explain_stats_s1.xlsx')
+    df2 = pd.DataFrame(explain_stats_s2)
+    df2.to_excel('explain_hmm_server/_explain_stats_s2.xlsx')
+    with open(file_name, 'w') as outfile:
+        json.dump(blends_dict, outfile)
+    with open('explain_hmm_server/explain_stats_s1.pickle', 'wb') as handle:
+        pickle.dump(explain_stats_s1, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    with open('explain_hmm_server/explain_stats_s2.pickle', 'wb') as handle:
+        pickle.dump(explain_stats_s2, handle, protocol=pickle.HIGHEST_PROTOCOL)
 # end for
 
 # # Close the file
 # file_object.close()
 
-df = pd.DataFrame(explain_stats)
-df.to_excel('explain_hmm/_explain_stats.xlsx')
+df1 = pd.DataFrame(explain_stats_s1)
+df1.to_excel('explain_hmm_server/_explain_stats_s1.xlsx')
+df2 = pd.DataFrame(explain_stats_s2)
+df2.to_excel('explain_hmm_server/_explain_stats_s2.xlsx')
 
 # %%
 blends_dict = {}
