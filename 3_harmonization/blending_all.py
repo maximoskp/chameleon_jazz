@@ -34,9 +34,9 @@ zero_stats = {
     'transitions': 0,
     'constraints': 0,
     'support': 0,
-    'suppConstraint': 0,
+    'suppNotConstraint': 0,
     'normalize': 0,
-    'normConstraint': 0,
+    'normNotConstraint': 0,
     'melody_mean': 0,
     'melody_std': 0
 }
@@ -96,9 +96,11 @@ for i1 in range(len(all_structs)):
             explain_stats_s1[tmp_label]['transitions'] += len(explain['constraint'])/(len(all_structs)-1)
             explain_stats_s1[tmp_label]['constraints'] += np.sum(explain['constraint'])/(len(all_structs)-1)
             explain_stats_s1[tmp_label]['support'] += np.sum(explain['support'])/(len(all_structs)-1)
-            explain_stats_s1[tmp_label]['suppConstraint'] += np.sum( np.logical_and( explain['support'], explain['constraint'] ) )/(len(all_structs)-1)
+            snc = np.logical_and( explain['support'], np.logical_not( np.logical_or( explain['constraint'] , np.roll(explain['constraint'],1) ) ) )
+            explain_stats_s1[tmp_label]['suppNotConstraint'] += np.sum( snc )/(len(all_structs)-1)
             explain_stats_s1[tmp_label]['normalize'] += np.sum(explain['normalize'])/(len(all_structs)-1)
-            explain_stats_s1[tmp_label]['normConstraint'] += np.sum( np.logical_and( explain['normalize'], explain['constraint'] ) )/(len(all_structs)-1)
+            nnc = np.logical_and( explain['normalize'], np.logical_not( np.logical_or( explain['constraint'] , np.roll(explain['constraint'],1) ) ) )
+            explain_stats_s1[tmp_label]['normNotConstraint'] += np.sum( nnc )/(len(all_structs)-1)
             explain_stats_s1[tmp_label]['melody_mean'] += np.mean(explain['mel_corr'])/(len(all_structs)-1)
             explain_stats_s1[tmp_label]['melody_std'] += np.std(explain['mel_corr'])/(len(all_structs)-1)
 
@@ -109,9 +111,9 @@ for i1 in range(len(all_structs)):
             explain_stats_s2[tmp_label]['transitions'] += len(explain['constraint'])/(len(all_structs)-1)
             explain_stats_s2[tmp_label]['constraints'] += np.sum(explain['constraint'])/(len(all_structs)-1)
             explain_stats_s2[tmp_label]['support'] += np.sum(explain['support'])/(len(all_structs)-1)
-            explain_stats_s2[tmp_label]['suppConstraint'] += np.sum( np.logical_and( explain['support'], explain['constraint'] ) )/(len(all_structs)-1)
+            explain_stats_s2[tmp_label]['suppNotConstraint'] += np.sum( np.logical_and( explain['support'], np.logical_not(explain['constraint']) ) )/(len(all_structs)-1)
             explain_stats_s2[tmp_label]['normalize'] += np.sum(explain['normalize'])/(len(all_structs)-1)
-            explain_stats_s2[tmp_label]['normConstraint'] += np.sum( np.logical_and( explain['normalize'], explain['constraint'] ) )/(len(all_structs)-1)
+            explain_stats_s2[tmp_label]['normNotConstraint'] += np.sum( np.logical_and( explain['normalize'], np.logical_not(explain['constraint']) ) )/(len(all_structs)-1)
             explain_stats_s2[tmp_label]['melody_mean'] += np.mean(explain['mel_corr'])/(len(all_structs)-1)
             explain_stats_s2[tmp_label]['melody_std'] += np.std(explain['mel_corr'])/(len(all_structs)-1)
             
