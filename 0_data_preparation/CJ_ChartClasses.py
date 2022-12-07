@@ -821,10 +821,15 @@ class Chord(ChameleonContext):
         self.gct_piece_tonality = ng.GCT_in_key(self.pitch_collection, self.piece_tonality['root'])
         self.gct_estimated_tonality = ng.GCT_in_key(self.pitch_collection, self.estimated_tonality['root'])
         if (self.melody_information is None):
-            self.melody_information = self.rpcp[states_tonality] # assign default or Chord class here      
+            self.melody_information = self.rpcp[states_tonality] # assign default or Chord class here
         else:
             # tune melody to tonality
             self.melody_information  = np.roll( self.melody_information, -self.piece_tonality['root'] )
+            # if no melody exist under the chord, fill it with chord info
+            if np.sum(self.melody_information) == 0:
+                self.melody_information = self.rpcp[states_tonality]
+            else:
+                self.melody_information = .5*self.melody_information/np.sum(self.melody_information) + .5*self.rpcp[states_tonality]
         # if bass
         # get bass PIECE tonality-relative pitch class
         # get bass ESTIMATED tonality-relative pitch class

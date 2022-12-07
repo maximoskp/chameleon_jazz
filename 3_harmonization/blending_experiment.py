@@ -31,7 +31,12 @@ lookfor = {
     'jam blues': {},
     'beautiful love': {},
     'camarillo':{},
-    'all the things you are': {}
+    'all the things you are': {},
+    'giant steps': {},
+    'blue bossa': {},
+    'so what': {},
+    'afro blue': {},
+    'all of me':{}
 }
 keys2lookfor = list(lookfor.keys())
 
@@ -46,25 +51,13 @@ for i in range(len(all_structs)):
 
 # %% load pieces to blend
 
-''' OLD LIST ==================
-34: Au Privave
-44: Billie's Bounce
-60: Blue Bossa
-77: Cheese Cake
-116: So What
-130: Freddie Freeloader
-133: Yesterdays
-134: Cantaloupe island
-157: All The Things You Are
-160: Giant Steps
-166: All of Me
-173: Black Orpheus
-204: Caravan
-211: Afro Blue
-233: Autumn Leaves
 '''
+109: Blue Bossa
+207: So What
+290: Giant Steps
+301: All of Me
+376: Afro Blue
 
-'''
 285: Anthropology
 287: Darn That Dream
 189: Time Remembered
@@ -79,10 +72,10 @@ for i in range(len(all_structs)):
 # i1_pieces = [ 44,44,44,      60,60,60,     211,211,211,    116,116,116,    77,77,77,    204,204,204 ]
 # i2_pieces = [34,166,160,    77,166,160,    166,134,130,    204,173,160,   116,34,160,   157,116,160 ]
 
-i1_pieces = [ 87 , 286, 296, 292, 2,   285 ]
-i2_pieces = [ 189, 287, 189, 287, 189, 287 ]
+i1_pieces = [ 87 , 286, 296, 292, 2,   285, 109, 301, 207, 376, 296 ]
+i2_pieces = [ 189, 287, 189, 287, 189, 287, 290, 290, 290, 290, 290 ]
 
-# i1_pieces = [ 296 ]
+# i1_pieces = [ 2 ]
 # i2_pieces = [ 189 ]
 
 globalHMM.make_group_support()
