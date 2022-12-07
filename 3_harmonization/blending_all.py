@@ -152,7 +152,7 @@ for i1 in range(len(all_structs)):
     piece_keys = list(explain_stats_s1.keys())
     for piece_key in piece_keys:
         for stat_key in explain_stats_s1[piece_key].keys():
-            explain_stats_s1['all'][stat_key] += explain_stats_s1[piece_key][stat_key]/len(piece_keys)
+            explain_stats_s1['all'][stat_key] += explain_stats_s1[piece_key][stat_key]/(len(piece_keys)-1)
     # explain structures
     df1 = pd.DataFrame(explain_stats_s1)
     df1.to_excel('explain_hmm_server/_explain_stats_s1.xlsx')
