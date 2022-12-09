@@ -378,7 +378,10 @@ class ChameleonHMM(ChameleonContext):
     
     def apply_cHMM_with_support(self, trans_probs, mel_per_chord_probs, emissions, constraints, support, hmm, adv_exp = 0.0, make_excel=True, excel_name='test_explain.xlsx'):
         markov = copy.deepcopy( trans_probs )
+        # penalize non-existent melodic notes
+        mel_per_chord_probs[ mel_per_chord_probs == 0 ] = -1
         obs = np.matmul( mel_per_chord_probs , emissions )
+        obs[obs < 0] = 0
         # apply adventure
         # markov = adv_exp*np.power(markov, adv_exp) + (1-adv_exp)*np.power(np.random.rand( markov.shape[0], markov.shape[1] ), 1-adv_exp)
         # obs = adv_exp*np.power(obs, adv_exp) + (1-adv_exp)*np.power(np.random.rand( obs.shape[0], obs.shape[1] ), 1-adv_exp)
@@ -540,12 +543,12 @@ class ChameleonHMM(ChameleonContext):
                     for j in gc:
                         delta[j,t] = obs[j,t]
                         psi[j,t] = previous_for_all
-                    # ============== EXPLAIN ================
-                    if make_excel:
-                        explain_trans_probs[j,t] = 1
-                        explain_mel_corrs[j,t] = obs[j,t]
-                    # end if make_excel
-                    # ============== EXPLAIN ================
+                        # ============== EXPLAIN ================
+                        if make_excel:
+                            explain_trans_probs[j,t] = 1
+                            explain_mel_corrs[j,t] = obs[j,t]
+                        # end if make_excel
+                        # ============== EXPLAIN ================
                     if np.sum(delta[:,t]) != 0: # couldn't be otherwise
                         delta[:,t] = delta[:,t]/np.sum(delta[:,t])
                 else:
@@ -553,11 +556,11 @@ class ChameleonHMM(ChameleonContext):
                     for j in gc:
                         delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
                         psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
-                    # ============== EXPLAIN ================
-                    if make_excel:
-                        explain_trans_probs[j,t] = tmp_trans_prob[ int(psi[j,t]) ]
-                        explain_mel_corrs[j,t] = obs[j,t]
-                    # end if make_excel
+                        # ============== EXPLAIN ================
+                        if make_excel:
+                            explain_trans_probs[j,t] = tmp_trans_prob[ int(psi[j,t]) ]
+                            explain_mel_corrs[j,t] = obs[j,t]
+                        # end if make_excel
                     # ============== EXPLAIN ================
                     if np.sum(delta[:,t]) != 0:
                         delta[:,t] = delta[:,t]/np.sum(delta[:,t])
@@ -572,12 +575,12 @@ class ChameleonHMM(ChameleonContext):
                         for j in gc:
                             delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
                             psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
-                        # ============== EXPLAIN ================
-                        if make_excel:
-                            explain_trans_probs[j,t] = tmp_trans_prob[ int(psi[j,t]) ]
-                            explain_mel_corrs[j,t] = obs[j,t]
-                        # end if make_excel
-                        # ============== EXPLAIN ================
+                            # ============== EXPLAIN ================
+                            if make_excel:
+                                explain_trans_probs[j,t] = tmp_trans_prob[ int(psi[j,t]) ]
+                                explain_mel_corrs[j,t] = obs[j,t]
+                            # end if make_excel
+                            # ============== EXPLAIN ================
                         if np.sum(delta[:,t]) == 0:
                             # print('FAILED - smoothening support')
                             # ============== EXPLAIN ================
@@ -590,12 +593,12 @@ class ChameleonHMM(ChameleonContext):
                             for j in gc:
                                 delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
                                 psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
-                            # ============== EXPLAIN ================
-                            if make_excel:
-                                explain_trans_probs[j,t] = tmp_trans_prob[ int(psi[j,t]) ]
-                                explain_mel_corrs[j,t] = obs[j,t]
-                            # end if make_excel
-                            # ============== EXPLAIN ================
+                                # ============== EXPLAIN ================
+                                if make_excel:
+                                    explain_trans_probs[j,t] = tmp_trans_prob[ int(psi[j,t]) ]
+                                    explain_mel_corrs[j,t] = obs[j,t]
+                                # end if make_excel
+                                # ============== EXPLAIN ================
         # code at the end was here
         # end for t
         if constraints[-1] == -1:
