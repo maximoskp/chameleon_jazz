@@ -56,7 +56,9 @@ for i1 in range(len(all_structs)):
             w1, w2, wGlobal = 0.0, 1.0, 0.0
             
             t1 = s1.hmm.transition_matrix.toarray()
+            s2.hmm.make_group_support()
             t2 = s2.hmm.transition_matrix.toarray()
+            h2 = s2.hmm
             # tGlobal = globalHMM.transition_matrix.toarray()
             tGlobal = globalHMM.group_support
             trans_probs = (w1*t1 + w2*t2 + wGlobal*tGlobal)/(w1+w2+wGlobal)
@@ -87,7 +89,7 @@ for i1 in range(len(all_structs)):
             new_key = 'BL_' + s1.key + '-' + s2.key
             
             # pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=0.0)
-            pathIDXs, delta, psi, markov, obs, explain = s1.hmm.apply_cHMM_with_support(trans_probs, mel_per_chord_probs, emissions, constraints, tGlobal, adv_exp=0.0, make_excel=True, excel_name=new_key + '.xlsx')
+            pathIDXs, delta, psi, markov, obs, explain = s1.hmm.apply_cHMM_with_support(trans_probs, mel_per_chord_probs, emissions, constraints, tGlobal, h2, adv_exp=0.0, make_excel=True, excel_name=new_key + '.xlsx')
             
             # explain structures for s1
             if s1.piece_name not in explain_stats_s1.keys():
