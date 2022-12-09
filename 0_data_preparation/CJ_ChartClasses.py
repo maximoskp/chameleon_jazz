@@ -376,7 +376,7 @@ class ChameleonHMM(ChameleonContext):
         return pathIDXs, delta, psi, markov, obs
     # end apply_cHMM_with_constraints
     
-    def apply_cHMM_with_support(self, trans_probs, mel_per_chord_probs, emissions, constraints, support, adv_exp = 0.0, make_excel=True, excel_name='test_explain.xlsx'):
+    def apply_cHMM_with_support(self, trans_probs, mel_per_chord_probs, emissions, constraints, support, hmm, adv_exp = 0.0, make_excel=True, excel_name='test_explain.xlsx'):
         markov = copy.deepcopy( trans_probs )
         obs = np.matmul( mel_per_chord_probs , emissions )
         # apply adventure
@@ -441,7 +441,12 @@ class ChameleonHMM(ChameleonContext):
         # ============== EXPLAIN ================
         if constraints[0] != -1:
             delta[:,t] = np.zeros( markov.shape[0] )
-            delta[ constraints[0], t ] = 1
+            # delta[ constraints[0], t ] = 1
+            # get group of constraint
+            gc = hmm.groups_dictionary[ repr( self.chord_state2root_type_group( self.idx2chord[constraints[0]] ) ) ]
+            for j in gc:
+                delta[j,t] = 1
+            delta[:,t] = np.multiply( delta[:,t] , obs[:,t] )
             # ============== EXPLAIN ================
             if make_excel:
                 explain_constraints[t] = 1
@@ -517,22 +522,24 @@ class ChameleonHMM(ChameleonContext):
                             pass
                             # print('----------- now it shouldnt be zero ------------- somethings wrong')
             else:
-                j = int(constraints[t])
+                # j = int(constraints[t])
+                # get group of constraint
+                gc = hmm.groups_dictionary[ repr( self.chord_state2root_type_group( self.idx2chord[constraints[t]] ) ) ]
                 # ============== EXPLAIN ================
                 if make_excel:
                     explain_constraints[t] = 1
                 # end if make_excel
                 # ============== EXPLAIN ================
-                # tmp_trans_prob = markov[:,j]
-                # straight zero
-                # tmp_trans_prob = np.ones( markov[:,j].size )*0.000000001
-                # tmp_trans_prob = np.zeros( markov[:,j].size )
-                # tmp_trans_prob[j] = 1
                 # check if previous is constrained - if so no need to compute
                 if constraints[t-1] != -1:
+                    # delta[ j ,t ] = 1
+                    # psi[j,t] = int(constraints[t-1])
                     # print('constraint after constraint')
-                    delta[ j ,t ] = 1
-                    psi[j,t] = int(constraints[t-1])
+                    # since previous is constraint, transitions don't matter
+                    previous_for_all = np.argmax(delta[:,t-1])
+                    for j in gc:
+                        delta[j,t] = obs[j,t]
+                        psi[j,t] = previous_for_all
                     # ============== EXPLAIN ================
                     if make_excel:
                         explain_trans_probs[j,t] = 1
@@ -543,8 +550,9 @@ class ChameleonHMM(ChameleonContext):
                         delta[:,t] = delta[:,t]/np.sum(delta[:,t])
                 else:
                     tmp_trans_prob = markov[:,j]
-                    delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
-                    psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
+                    for j in gc:
+                        delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                        psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
                     # ============== EXPLAIN ================
                     if make_excel:
                         explain_trans_probs[j,t] = tmp_trans_prob[ int(psi[j,t]) ]
@@ -561,8 +569,9 @@ class ChameleonHMM(ChameleonContext):
                         # end if make_excel
                         # ============== EXPLAIN ================
                         tmp_trans_prob = support[:,j]
-                        delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
-                        psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
+                        for j in gc:
+                            delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                            psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
                         # ============== EXPLAIN ================
                         if make_excel:
                             explain_trans_probs[j,t] = tmp_trans_prob[ int(psi[j,t]) ]
@@ -578,8 +587,9 @@ class ChameleonHMM(ChameleonContext):
                             # ============== EXPLAIN ================
                             tmp_trans_prob = np.ones(support[:,j].size)/support[:,j].size
                             tmp_trans_prob = tmp_trans_prob/np.sum(tmp_trans_prob)
-                            delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
-                            psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
+                            for j in gc:
+                                delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                                psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
                             # ============== EXPLAIN ================
                             if make_excel:
                                 explain_trans_probs[j,t] = tmp_trans_prob[ int(psi[j,t]) ]
@@ -696,19 +706,35 @@ class ChameleonHMM(ChameleonContext):
     # end build_from_features
     
     def make_group_support(self):
+        # matrix for group transitions
         self.group_support = np.zeros( self.transition_matrix.shape )
+        # dictionary with key repr( (root_value , group_id ) )
+        # and value a list with the indexes of all chords within the group
+        self.groups_dictionary = {}
+        # temporary matrix for making group support
         tmp_support = np.zeros( self.transition_matrix.shape )
         if len(self.all_chord_states) == 0:
             self.initialize_chord_states()
+        # matrix for facilitating (root_value , group_id ) chord group identification
         self.group_idx_per_state = np.zeros( ( len(self.all_chord_states) , 2 ) )
         for i in range( len(self.all_chord_states) ):
             s = self.all_chord_states[i]
-            r, t = self.chord_state2root_type_group(s)
+            # get (root_value , group_id ) representation
+            rt = self.chord_state2root_type_group(s)
+            r = rt[0]
+            t = rt[1]
             self.group_idx_per_state[i,0] = r
             self.group_idx_per_state[i,1] = t
+            # append to dictionary
+            if repr(rt) not in self.groups_dictionary.keys():
+                self.groups_dictionary[repr(rt)] = [i]
+            else:
+                self.groups_dictionary[repr(rt)].append(i)
+        # make rows of group transitions matrix
         for i in range( self.transition_matrix.shape[0] ):
             idxs = np.logical_and( self.group_idx_per_state[:,0] ==self.group_idx_per_state[i,0] , self.group_idx_per_state[:,1] ==self.group_idx_per_state[i,1] )
             tmp_support[:,i] = np.reshape(np.sum( self.transition_matrix[:,idxs] , axis=1 ), self.group_support[:,i].shape)
+        # make columns of group transitions matrix
         for i in range( self.transition_matrix.shape[0] ):
              idxs = np.logical_and( self.group_idx_per_state[:,0] ==self.group_idx_per_state[i,0] , self.group_idx_per_state[:,1] ==self.group_idx_per_state[i,1] )
              self.group_support[i,:] = np.reshape(np.sum( tmp_support[idxs,:] , axis=0 ), self.group_support[i,:].shape)

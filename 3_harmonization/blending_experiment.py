@@ -110,6 +110,7 @@ for i in range(len(i1_pieces)):
     t1 = s1.hmm.transition_matrix.toarray()
     s2.hmm.make_group_support()
     t2 = s2.hmm.group_support
+    h2 = s2.hmm
     # t2 = s2.hmm.transition_matrix.toarray()
     # tGlobal = globalHMM.transition_matrix.toarray()
     tGlobal = globalHMM.group_support
@@ -141,7 +142,7 @@ for i in range(len(i1_pieces)):
     new_key = 'BL_' + s1.key + '-' + s2.key
 
     # pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=0.0)
-    pathIDXs, delta, psi, markov, obs, explain = s1.hmm.apply_cHMM_with_support(trans_probs, mel_per_chord_probs, emissions, constraints, tGlobal, adv_exp=0.0, make_excel=True, excel_name=new_key + '.xlsx')
+    pathIDXs, delta, psi, markov, obs, explain = s1.hmm.apply_cHMM_with_support(trans_probs, mel_per_chord_probs, emissions, constraints, tGlobal, h2, adv_exp=0.0, make_excel=True, excel_name=new_key + '.xlsx')
     
     # explain structures
     if s1.piece_name not in explain_stats.keys():
