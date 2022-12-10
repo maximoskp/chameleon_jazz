@@ -464,7 +464,7 @@ class ChameleonHMM(ChameleonContext):
             for j in gc:
                 delta[j,t] = 1
             # this needs to be non-zero
-            delta[:,t] = np.multiply( delta[:,t]+0.0000001 , obs[:,t]+0.0000001 )
+            delta[:,t] = np.multiply( delta[:,t] , obs[:,t]+0.0000001 )
             # ============== EXPLAIN ================
             if make_excel:
                 explain_constraints[t] = 1
