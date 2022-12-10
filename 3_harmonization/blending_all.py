@@ -28,6 +28,8 @@ globalHMM.make_group_support()
 # keep chord distributions for counting new chords
 chord_distributions = globalHMM.chords_distribution.toarray()[0]
 
+# %%
+
 # the explanation excels are gathered for each piece and overall
 # as keys in this dictionary
 explain_stats_s1 = {}
@@ -96,7 +98,7 @@ for i1 in range(len(all_structs)):
             
             new_chords = 0
             for pidx in pathIDXs:
-                new_chords += int(chord_distributions[ int(pathIDXs) ] == 0)
+                new_chords += int(chord_distributions[ int(pidx) ] == 0)
             
             # explain structures for s1
             if s1.piece_name not in explain_stats_s1.keys():
