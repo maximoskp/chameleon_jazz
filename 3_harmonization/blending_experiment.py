@@ -75,8 +75,8 @@ for i in range(len(all_structs)):
 i1_pieces = [ 87 , 286, 296, 292, 2,   285, 109, 301, 207, 376, 296 ]
 i2_pieces = [ 189, 287, 189, 287, 189, 287, 290, 290, 290, 290, 290 ]
 
-# i1_pieces = [ 2 ]
-# i2_pieces = [ 189 ]
+# i1_pieces = [ 286 ]
+# i2_pieces = [ 287 ]
 
 globalHMM.make_group_support()
 

@@ -379,7 +379,7 @@ class ChameleonHMM(ChameleonContext):
     def apply_cHMM_with_support(self, trans_probs, mel_per_chord_probs, emissions, constraints, support, hmm, adv_exp = 0.0, make_excel=True, excel_name='test_explain.xlsx'):
         markov = copy.deepcopy( trans_probs )
         # penalize non-existent melodic notes
-        mel_per_chord_probs[ mel_per_chord_probs == 0 ] = -1
+        mel_per_chord_probs[ mel_per_chord_probs <= .01 ] = -100
         obs = np.matmul( mel_per_chord_probs , emissions )
         obs[obs < 0] = 0
         # apply adventure
@@ -511,8 +511,8 @@ class ChameleonHMM(ChameleonContext):
                         # ============== EXPLAIN ================
                         tmp_trans_prob = np.ones( support[:,j].size )/support[:,j].size
                         for j in range(0, markov.shape[0]):
-                            delta[j,t] = np.max( np.multiply(delta[:,t-1] + 0.0000001, tmp_trans_prob)*obs[j,t] )
-                            psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
+                            delta[j,t] = np.max( np.multiply(delta[:,t-1] + 0.0000001, tmp_trans_prob)*(obs[j,t] + 0.0000001) )
+                            psi[j,t] = np.argmax( np.multiply(delta[:,t-1] + 0.0000001, tmp_trans_prob)*(obs[j,t] + 0.0000001) ).astype(int)
                             # ============== EXPLAIN ================
                             if make_excel:
                                 explain_trans_probs[j,t] = tmp_trans_prob[ int(psi[j,t]) ]
@@ -601,10 +601,13 @@ class ChameleonHMM(ChameleonContext):
                                 # ============== EXPLAIN ================
         # code at the end was here
         # end for t
+        '''
         if constraints[-1] == -1:
             pathIDXs[obs.shape[1]-1] = int(np.argmax(delta[:,obs.shape[1]-1]))
         else:
             pathIDXs[obs.shape[1]-1] = int(constraints[-1])
+        '''
+        pathIDXs[obs.shape[1]-1] = int(np.argmax(delta[:,obs.shape[1]-1]))
         
         for t in range(obs.shape[1]-2, -1, -1):
             pathIDXs[t] = int(psi[ int(pathIDXs[t+1]) , t+1 ])
@@ -858,7 +861,9 @@ class Chord(ChameleonContext):
             if np.sum(self.melody_information) == 0:
                 self.melody_information = self.rpcp[states_tonality]
             else:
-                self.melody_information = .5*self.melody_information/np.sum(self.melody_information) + .5*self.rpcp[states_tonality]
+                self.melody_information = self.melody_information/np.sum(self.melody_information)
+                # the strategy below is very narrowing
+                # self.melody_information = .5*self.melody_information/np.sum(self.melody_information) + .5*self.rpcp[states_tonality]
         # if bass
         # get bass PIECE tonality-relative pitch class
         # get bass ESTIMATED tonality-relative pitch class
@@ -901,6 +906,8 @@ class Measure:
     # end make_chords
 
     def make_melody_information(self, measure_in):
+        # get numerator for ignoring "four-and"
+        ts_num = int(self.time_signature.split('/')[0])
         melody_split = measure_in.split('melody~[')
         self.melody_information = []
         self.melody_onsets = []
@@ -910,12 +917,18 @@ class Measure:
             for p in pitches_split[1:]:
                 comma_split = p.split(',')[0]
                 at_split = comma_split.split('@')
-                self.melody_information.append( int(at_split[0]) ) # pitch information per measure
+                # get tmp pitch and onset, and decide whether it's going to be
+                # included, based on the "four-and" exclusion principle
+                tmp_pitch = int(at_split[0])
                 if '/' in at_split[1]: # case for fractional values in melody like in tuplets, e.g. 2/3
                     a, b = at_split[1].split('/')
-                    self.melody_onsets.append( float(int(a) / int(b)) )
+                    tmp_onset = float(int(a) / int(b))
                 else:
-                    self.melody_onsets.append( float(at_split[1]) )
+                    tmp_onset = float(at_split[1])
+                # four-and exception
+                if tmp_onset < ts_num - 0.5:
+                    self.melody_information.append( tmp_pitch ) # pitch information per measure
+                    self.melody_onsets.append( tmp_onset )
             # MIDI pitches into pcp distribution
             self.melody_pcp = np.zeros(12).astype(np.float32) 
             pitch_class, counts = np.unique(np.mod(self.melody_information,12), return_counts = True)
