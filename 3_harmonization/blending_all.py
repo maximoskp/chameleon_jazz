@@ -26,7 +26,7 @@ with open('../data/globalHMM.pickle', 'rb') as handle:
 
 globalHMM.make_group_support()
 # keep chord distributions for counting new chords
-chord_distributions = globalHMM.chord_distributions.toarray()[0]
+chord_distributions = globalHMM.chord_distribution.toarray()[0]
 
 # the explanation excels are gathered for each piece and overall
 # as keys in this dictionary
