@@ -94,7 +94,7 @@ for i1 in range(len(all_structs)):
             new_key = 'BL_' + s1.key + '-' + s2.key
             
             # pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=0.0)
-            pathIDXs, delta, psi, markov, obs, explain = s1.hmm.apply_cHMM_with_support(trans_probs, mel_per_chord_probs, emissions, constraints, tGlobal, h2, adv_exp=0.0, make_excel=True, excel_name=new_key + '.xlsx')
+            pathIDXs, delta, psi, markov, obs, explain = s1.hmm.apply_cHMM_with_support(trans_probs, mel_per_chord_probs, emissions, constraints, tGlobal, h2, chord_distributions, adv_exp=0.0, make_excel=True, excel_name=new_key + '.xlsx')
             
             new_chords = 0
             for pidx in pathIDXs:
