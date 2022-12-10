@@ -258,7 +258,8 @@ class ChameleonHMM(ChameleonContext):
         self.melody_per_chord = self.melody_per_chord.toarray()
         for chord in chords:
             idx = self.chord2idx[ chord.chord_state ]
-            self.melody_per_chord[idx,:] += chord.melody_information
+            # also enable chord rpcp information
+            self.melody_per_chord[idx,:] += chord.melody_information + 0.1*chord.rpcp['piece_tonality']
             # self.melody_per_chord[idx,:] += chord.melody_information['piece_tonality']
         for i in range( self.melody_per_chord.shape[0] ):
             if np.sum( self.melody_per_chord[i,:] ) != 0:
