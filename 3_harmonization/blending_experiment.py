@@ -79,8 +79,8 @@ for i in range(len(all_structs)):
 i1_pieces = [ 87 , 286, 296, 292, 2,   285, 109, 301, 207, 376, 296, 325, 109 ]
 i2_pieces = [ 189, 287, 189, 287, 189, 287, 290, 290, 290, 290, 290, 109, 325 ]
 
-# i1_pieces = [ 376 ]
-# i2_pieces = [ 290 ]
+# i1_pieces = [ 285 ]
+# i2_pieces = [ 287 ]
 
 globalHMM.make_group_support()
 # keep chord distributions for counting new chords

@@ -463,7 +463,8 @@ class ChameleonHMM(ChameleonContext):
             gc = hmm.groups_dictionary[ repr( self.chord_state2root_type_group( self.idx2chord[constraints[0]] ) ) ]
             for j in gc:
                 delta[j,t] = 1
-            delta[:,t] = np.multiply( delta[:,t] , obs[:,t] )
+            # this needs to be non-zero
+            delta[:,t] = np.multiply( delta[:,t]+0.0000001 , obs[:,t]+0.0000001 )
             # ============== EXPLAIN ================
             if make_excel:
                 explain_constraints[t] = 1
@@ -555,7 +556,8 @@ class ChameleonHMM(ChameleonContext):
                     # since previous is constraint, transitions don't matter
                     previous_for_all = np.argmax(delta[:,t-1])
                     for j in gc:
-                        delta[j,t] = obs[j,t]
+                        # this needs to be non-zero
+                        delta[j,t] = obs[j,t]+0.0000001
                         psi[j,t] = previous_for_all
                         # ============== EXPLAIN ================
                         if make_excel:
@@ -605,8 +607,8 @@ class ChameleonHMM(ChameleonContext):
                             tmp_trans_prob = np.ones(support[:,j].size)/support[:,j].size
                             tmp_trans_prob = tmp_trans_prob/np.sum(tmp_trans_prob)
                             for j in gc:
-                                delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
-                                psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
+                                delta[j,t] = np.max( np.multiply(delta[:,t-1] + 0.0000001, tmp_trans_prob)*(obs[j,t] + 0.0000001) )
+                                psi[j,t] = np.argmax( np.multiply(delta[:,t-1] + 0.0000001, tmp_trans_prob)*(obs[j,t] + 0.0000001) ).astype(int)
                                 # ============== EXPLAIN ================
                                 if make_excel:
                                     explain_trans_probs[j,t] = tmp_trans_prob[ int(psi[j,t]) ]
