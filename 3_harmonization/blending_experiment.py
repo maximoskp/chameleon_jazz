@@ -36,7 +36,9 @@ lookfor = {
     'blue bossa': {},
     'so what': {},
     'afro blue': {},
-    'all of me':{}
+    'all of me':{},
+    'thomas':{},
+    'israel': {}
 }
 keys2lookfor = list(lookfor.keys())
 
@@ -66,19 +68,23 @@ for i in range(len(all_structs)):
 292: Beautiful Love
 2: Relaxin at Camarillo
 87: C-Jam Blues
+
+242: Israel
 '''
 
 # i1_pieces and i2_pieces should be of the same length
 # i1_pieces = [ 44,44,44,      60,60,60,     211,211,211,    116,116,116,    77,77,77,    204,204,204 ]
 # i2_pieces = [34,166,160,    77,166,160,    166,134,130,    204,173,160,   116,34,160,   157,116,160 ]
 
-i1_pieces = [ 87 , 286, 296, 292, 2,   285, 109, 301, 207, 376, 296 ]
-i2_pieces = [ 189, 287, 189, 287, 189, 287, 290, 290, 290, 290, 290 ]
+i1_pieces = [ 87 , 286, 296, 292, 2,   285, 109, 301, 207, 376, 296, 325, 109 ]
+i2_pieces = [ 189, 287, 189, 287, 189, 287, 290, 290, 290, 290, 290, 109, 325 ]
 
-# i1_pieces = [ 286 ]
-# i2_pieces = [ 287 ]
+# i1_pieces = [ 376 ]
+# i2_pieces = [ 290 ]
 
 globalHMM.make_group_support()
+# keep chord distributions for counting new chords
+chord_distributions = globalHMM.chords_distribution.toarray()[0]
 
 # the explanation excels are gathered for each piece and overall
 # as keys in this dictionary
@@ -142,7 +148,7 @@ for i in range(len(i1_pieces)):
     new_key = 'BL_' + s1.key + '-' + s2.key
 
     # pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=0.0)
-    pathIDXs, delta, psi, markov, obs, explain = s1.hmm.apply_cHMM_with_support(trans_probs, mel_per_chord_probs, emissions, constraints, tGlobal, h2, adv_exp=0.0, make_excel=True, excel_name=new_key + '.xlsx')
+    pathIDXs, delta, psi, markov, obs, explain = s1.hmm.apply_cHMM_with_support(trans_probs, mel_per_chord_probs, emissions, constraints, tGlobal, h2, chord_distributions, adv_exp=0.0, make_excel=True, excel_name=new_key + '.xlsx')
     
     # explain structures
     if s1.piece_name not in explain_stats.keys():

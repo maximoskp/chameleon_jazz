@@ -11,6 +11,7 @@ import json
 import CJ_ChartClasses as ccc
 import pickle
 import pandas as pd
+from scipy import sparse
 
 
 # load all piece
@@ -51,18 +52,27 @@ for s in all_structs:
     globalHMM.add_transition_information( s.hmm.transition_matrix )
     globalHMM.add_chord_distribution( s.hmm.chords_distribution )
 
-# form groups in global HMM
+
+# fill-in new chords with their rpcp
+if len(globalHMM.all_chord_states) == 0:
+    globalHMM.initialize_chord_states()
+mGlobal = globalHMM.melody_per_chord.toarray()
+for i in range( mGlobal.shape[0] ):
+    if np.sum( mGlobal[i,:] ) == 0:
+        mGlobal[i,:] = globalHMM.chord_state2rpcp( globalHMM.all_chord_states[i] )
+globalHMM.melody_per_chord = sparse.csr_matrix(mGlobal)
 
 print('saving globalHMM')
 with open('../data/globalHMM.pickle', 'wb') as handle:
     pickle.dump(globalHMM, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 # %% test plot
+'''
 os.makedirs('../figs', exist_ok=True)
 import matplotlib.pyplot as plt
 plt.imshow(np.reshape(globalHMM.melody_per_chord.toarray(), (70,12*12)), cmap='gray_r')
 plt.savefig('../figs/test_melperchord.png', dpi=500)
-
+'''
 # %% print debug markov - collect all songs per chord
 songs_per_chord = {}
 

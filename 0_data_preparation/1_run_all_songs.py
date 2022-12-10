@@ -11,7 +11,12 @@ import xmlChart2String
 import json
 
 # load dictionary to check for m21 chord type incompatibility
-with open('..' + os.sep + 'data' + os.sep + 'Lexikon' + os.sep + 'type2pcs_dictionary.json') as json_file:
+# with open('..' + os.sep + 'data' + os.sep + 'Lexikon' + os.sep + 'type2pcs_dictionary.json') as json_file:
+#     type2pcs_dictionary = json.load(json_file)
+# type2pcs_dictionary was initially taken from the "Lexicon" folder, as constructed by the xml.
+# In the xml, however, may types had the same PCs, which created ambiguities for states.
+# the "json_files" version is hand-crafted to avoid dublications in vital chords
+with open('..' + os.sep + 'data' + os.sep + 'json_files' + os.sep + 'type2pcs_dictionary.json') as json_file:
     type2pcs_dictionary = json.load(json_file)
 # get chord names - keys
 chord_names = list( type2pcs_dictionary.keys() )

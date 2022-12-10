@@ -20,7 +20,10 @@ import pickle
 
 class ChameleonContext:
     # static scope for chord dictionary and initiall (0s) transition matrix
-    with open('..' + os.sep + 'data' + os.sep + 'Lexikon' + os.sep + 'type2pcs_dictionary.json') as json_file:
+    # type2pcs_dictionary was initially taken from the "Lexicon" folder, as constructed by the xml.
+    # In the xml, however, may types had the same PCs, which created ambiguities for states.
+    # the "json_files" version is hand-crafted to avoid dublications in vital chords
+    with open('..' + os.sep + 'data' + os.sep + 'json_files' + os.sep + 'type2pcs_dictionary.json') as json_file:
         type2pc = json.load(json_file)
     with open('../data/type_groups.pickle', 'rb') as handle:
         type_groups = pickle.load(handle)
@@ -227,6 +230,15 @@ class ChameleonContext:
         g = self.type2group[t]['group_idx']
         return r, g
     # end chord_state2root_type_group
+    
+    def chord_state2rpcp(self, s):
+        r = int( s.split(', ')[0] )
+        t = ', '.join( s.split(', ')[1:] )
+        num_type = np.fromstring(t[1:-1], dtype=int, sep=', ' )
+        rpcp = np.zeros(12)
+        rpcp[np.mod(r + num_type , 12) ] = 1/len(num_type)
+        return rpcp
+    # end chord_state2rpcp
 # end ChameleonContext
 
 class ChameleonHMM(ChameleonContext):
@@ -377,7 +389,7 @@ class ChameleonHMM(ChameleonContext):
         return pathIDXs, delta, psi, markov, obs
     # end apply_cHMM_with_constraints
     
-    def apply_cHMM_with_support(self, trans_probs, mel_per_chord_probs, emissions, constraints, support, hmm, adv_exp = 0.0, make_excel=True, excel_name='test_explain.xlsx'):
+    def apply_cHMM_with_support(self, trans_probs, mel_per_chord_probs, emissions, constraints, support, hmm, gDistr, adv_exp = 0.0, make_excel=True, excel_name='test_explain.xlsx'):
         markov = copy.deepcopy( trans_probs )
         # penalize non-existent melodic notes
         mel_per_chord_probs[ mel_per_chord_probs <= .01 ] = -100
@@ -393,6 +405,7 @@ class ChameleonHMM(ChameleonContext):
                 'constraint': [],
                 'support': [],
                 'normalize': [],
+                'new_chord': [],
                 'sel_chord': [],
                 'trans_prob': [],
                 'mel_corr': [],
@@ -629,6 +642,7 @@ class ChameleonHMM(ChameleonContext):
                 self.explain['song_mel'].append(repr( emissions[:,t] ).replace('array(','').replace(')',''))
                 self.explain['chord_mel'].append(repr( mel_per_chord_probs[ pIDX ,:] ).replace('array(','').replace(')',''))
                 self.explain['mel_match'].append(repr( emissions[:,t]*mel_per_chord_probs[ pIDX ,:] ).replace('array(','').replace(')',''))
+                self.explain['new_chord'].append(gDistr[pIDX] == 0)
             df = pd.DataFrame( self.explain )
             os.makedirs('explain_hmm', exist_ok=True)
             if excel_name is not None:
