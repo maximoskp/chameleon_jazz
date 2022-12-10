@@ -25,6 +25,8 @@ with open('../data/globalHMM.pickle', 'rb') as handle:
 
 
 globalHMM.make_group_support()
+# keep chord distributions for counting new chords
+chord_distributions = globalHMM.chord_distributions.toarray()[0]
 
 # the explanation excels are gathered for each piece and overall
 # as keys in this dictionary
@@ -38,7 +40,8 @@ zero_stats = {
     'normalize': 0,
     'normNotConstraint': 0,
     'melody_mean': 0,
-    'melody_std': 0
+    'melody_std': 0,
+    'new_chords': 0
 }
 explain_stats_s1['all'] = deepcopy(zero_stats)
 
@@ -91,6 +94,10 @@ for i1 in range(len(all_structs)):
             # pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=0.0)
             pathIDXs, delta, psi, markov, obs, explain = s1.hmm.apply_cHMM_with_support(trans_probs, mel_per_chord_probs, emissions, constraints, tGlobal, h2, adv_exp=0.0, make_excel=True, excel_name=new_key + '.xlsx')
             
+            new_chords = 0
+            for pidx in pathIDXs:
+                new_chords += int(chord_distributions[ int(pathIDXs) ] == 0)
+            
             # explain structures for s1
             if s1.piece_name not in explain_stats_s1.keys():
                 explain_stats_s1[s1.piece_name] = deepcopy(zero_stats)
@@ -105,6 +112,7 @@ for i1 in range(len(all_structs)):
             explain_stats_s1[tmp_label]['normNotConstraint'] += np.sum( nnc )/(len(all_structs)-1)
             explain_stats_s1[tmp_label]['melody_mean'] += np.mean(explain['mel_corr'])/(len(all_structs)-1)
             explain_stats_s1[tmp_label]['melody_std'] += np.std(explain['mel_corr'])/(len(all_structs)-1)
+            explain_stats_s1[tmp_label]['new_chords'] += new_chords/(len(all_structs)-1)
 
             # explain structures for s2
             if s2.piece_name not in explain_stats_s2.keys():
@@ -113,11 +121,12 @@ for i1 in range(len(all_structs)):
             explain_stats_s2[tmp_label]['transitions'] += len(explain['constraint'])/(len(all_structs)-1)
             explain_stats_s2[tmp_label]['constraints'] += np.sum(explain['constraint'])/(len(all_structs)-1)
             explain_stats_s2[tmp_label]['support'] += np.sum(explain['support'])/(len(all_structs)-1)
-            explain_stats_s2[tmp_label]['suppNotConstraint'] += np.sum( np.logical_and( explain['support'], np.logical_not(explain['constraint']) ) )/(len(all_structs)-1)
+            explain_stats_s2[tmp_label]['suppNotConstraint'] += np.sum( snc )/(len(all_structs)-1)
             explain_stats_s2[tmp_label]['normalize'] += np.sum(explain['normalize'])/(len(all_structs)-1)
-            explain_stats_s2[tmp_label]['normNotConstraint'] += np.sum( np.logical_and( explain['normalize'], np.logical_not(explain['constraint']) ) )/(len(all_structs)-1)
+            explain_stats_s2[tmp_label]['normNotConstraint'] += np.sum( nnc )/(len(all_structs)-1)
             explain_stats_s2[tmp_label]['melody_mean'] += np.mean(explain['mel_corr'])/(len(all_structs)-1)
             explain_stats_s2[tmp_label]['melody_std'] += np.std(explain['mel_corr'])/(len(all_structs)-1)
+            explain_stats_s2[tmp_label]['new_chords'] += new_chords/(len(all_structs)-1)
             
             transp_idxs = s1.transpose_idxs(pathIDXs, s1.tonality['root'])
             
