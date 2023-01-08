@@ -38,7 +38,8 @@ lookfor = {
     'afro blue': {},
     'all of me':{},
     'thomas':{},
-    'israel': {}
+    'israel': {},
+    'straight no': {}
 }
 keys2lookfor = list(lookfor.keys())
 
@@ -76,11 +77,11 @@ for i in range(len(all_structs)):
 # i1_pieces = [ 44,44,44,      60,60,60,     211,211,211,    116,116,116,    77,77,77,    204,204,204 ]
 # i2_pieces = [34,166,160,    77,166,160,    166,134,130,    204,173,160,   116,34,160,   157,116,160 ]
 
-i1_pieces = [ 87 , 286, 296, 292, 2,   285, 109, 301, 207, 376, 296, 325, 109 ]
-i2_pieces = [ 189, 287, 189, 287, 189, 287, 290, 290, 290, 290, 290, 109, 325 ]
+# i1_pieces = [ 87 , 286, 296, 292, 2,   285, 109, 301, 207, 376, 296, 325, 109 ]
+# i2_pieces = [ 189, 287, 189, 287, 189, 287, 290, 290, 290, 290, 290, 109, 325 ]
 
-# i1_pieces = [ 285 ]
-# i2_pieces = [ 287 ]
+i1_pieces = [ 206 ]
+i2_pieces = [ 296 ]
 
 globalHMM.make_group_support()
 # keep chord distributions for counting new chords
