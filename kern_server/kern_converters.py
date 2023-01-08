@@ -22,7 +22,8 @@ def kern2py(file_name):
     df_measure_start = df.loc[df['a'].str.contains("=")]
     
     # find title
-    titledf = df[df['a'].str.contains("!!!OTL: Jazz Standard Title")]
+    # titledf = df[df['a'].str.contains("!!!OTL: Jazz Standard Title")]
+    titledf = df[df['a'].str.contains("!!!OTL: ")]
     title = titledf.iloc[0,0].replace('!!!OTL: ', '');
     
     #create chart variable

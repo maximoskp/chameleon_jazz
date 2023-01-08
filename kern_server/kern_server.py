@@ -3,6 +3,7 @@ import json
 import os
 import csv
 import sys
+import kern_converters as kcv
 
 FRONTEND_HOST = None
 
@@ -21,6 +22,32 @@ def get_sending_kern():
     resp = {'new': 'kern'}
     return json.dumps(resp)
 # end get_check_get
+
+# TESTS ==================================
+@api.route('/test_static_kern', methods=['GET','POST'])
+def test_static_kern():
+    # example run: http://155.207.188.7:6001/test_static_kern?filename=A_BEAUTIFUL_FRIENDSHIP.krn
+    print(request.args)
+    filepath = 'data/krn/' + request.args['filename']
+    print('filepath: ' + filepath)
+    f = open( filepath )
+    data = f.read()
+    f.close()
+    resp = {'new': data}
+    return json.dumps(resp)
+# end get_check_get
+
+@api.route('/test_static_kern2string', methods=['GET','POST'])
+def test_static_kern2string():
+    # example run: http://155.207.188.7:6001/test_static_kern2string?filename=A_BEAUTIFUL_FRIENDSHIP.krn
+    print(request.args)
+    filepath = 'data/krn/' + request.args['filename']
+    s = kcv.kern2string( filepath )
+    resp = {'string': s}
+    return json.dumps(resp)
+# end get_check_get
+
+# TESTS ==================================
 
 # for tackling CORS etc
 if FRONTEND_HOST is not None:
