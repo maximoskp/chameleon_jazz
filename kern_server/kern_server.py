@@ -19,7 +19,7 @@ api = Flask(__name__)
 def get_sending_kern():
     # example run: http://155.207.188.7:6001/sending_kern?row=17&column=8&chord=Cm&kern=lalala
     print(request.args)
-    resp = {'new': 'kern'}
+    resp = {'new': request.args['kern']}
     return json.dumps(resp)
 # end get_check_get
 
