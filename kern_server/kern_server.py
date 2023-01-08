@@ -4,13 +4,14 @@ import os
 import csv
 import sys
 import kern_converters as kcv
+from urllib.parse import urlparse
 
-FRONTEND_HOST = None
+# FRONTEND_HOST = None
 
-if len(sys.argv) > 1:
-    datapath = sys.argv[1]
-else:
-    sys.exit('WARNING: no acceptable FRONTEND_HOST is given as arguement')
+# if len(sys.argv) > 1:
+#     FRONTEND_HOST = sys.argv[1]
+# else:
+#     sys.exit('WARNING: no acceptable FRONTEND_HOST is given as argument')
 
 
 api = Flask(__name__)
@@ -49,6 +50,7 @@ def test_static_kern2string():
 
 # TESTS ==================================
 
+'''
 # for tackling CORS etc
 if FRONTEND_HOST is not None:
     @api.after_request
@@ -64,13 +66,15 @@ if FRONTEND_HOST is not None:
     # end after_request
 
 '''
+
 HOSTNAME_WHITELIST = [
-    "http://localhost:3000",
-    "https://test.com",
-    "https://www.test.com",
+    # "http://localhost:3000",
+    # "https://test.com",
+    # "https://www.test.com",
+    "https://musicolab.hmu.gr/"
 ]
-app = create_app()
-@app.after_request
+# api = create_app()
+@api.after_request
 def after_request(response):
     """!
     @brief Add necessary info to headers. Useful for preventing CORS permission errors.
@@ -87,7 +91,6 @@ def after_request(response):
             "Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS"
         )
     return response
-'''
 
 if __name__ == '__main__':
     # api.run()
