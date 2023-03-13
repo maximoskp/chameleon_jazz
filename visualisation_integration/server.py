@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template, jsonify
+from flask_cors import CORS
 import pickle
 import json
 import os
@@ -22,6 +23,9 @@ with open('data/chart_info_structs.pickle', 'rb') as handle:
     chart_info_structs = pickle.load(handle)
 
 api = Flask(__name__)
+CORS(api)
+
+cors = CORS(api, resources={r"/api/*": {"origins": "*"}})
 
 #datapath = '/Users/konstantinosvelenis/Documents/repos/visualization_server/chameleon_jazz-dev/visualisation_server/generated_csvs'
 
@@ -403,4 +407,5 @@ def after_request(response):
 
 if __name__ == '__main__':
     # api.run()
-    api.run(host='0.0.0.0', port=5000, debug=True)
+    # api.run(host='0.0.0.0', port=5000, debug=True)
+    api.run(ssl_context=('/home/maximos/Documents/SSL_certificates/server.crt', '/home/maximos/Documents/SSL_certificates/server.key'), host='0.0.0.0', port=5000, debug=True)

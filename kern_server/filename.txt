@@ -1,0 +1,548 @@
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:         0 Chords
+120  0.0    E a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:         0 Chords
+172  0.0    E a
+b:         0 Chords
+198  0.0    D a
+b:         0 Chords
+224  0.0    A a
+b:         0 Chords
+250  0.0    A a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:         0 Chords
+328  0.0    E a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:         0 Chords
+380  0.0    E a
+b:         0 Chords
+406  0.0    D a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:         0 Chords
+484  0.0    B >
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:         0 Chords
+536  0.0    A a
+b:         0 Chords
+562  0.0    A a
+b:         0 Chords
+588  0.0    G a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:         0 Chords
+666  0.0    D a
+b:         0 Chords
+692  0.0    A a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:         0 Chords
+744  0.0    A a
+b:         0 Chords
+770  0.0    B >
+b:         0 Chords
+796  0.0    A a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:         0 Chords
+952  0.0    G a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+1056  0.0    D a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+1160  0.0   F+ >
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+1212  0.0    E a
+b:          0 Chords
+1238  0.0    D a
+b:          0 Chords
+1264  0.0    A a
+b:          0 Chords
+1290  0.0    A a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+1342  0.0    D a
+b:          0 Chords
+1368  0.0    A a
+b:          0 Chords
+1394  0.0    B >
+b:          0 Chords
+1420  0.0    A a
+b:          0 Chords
+1446  0.0    A a
+b:          0 Chords
+1472  0.0    A a
+b:          0 Chords
+1498  0.0    A a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+1576  0.0    E a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+1628  0.0    E a
+b:          0 Chords
+1654  0.0    D a
+b:          0 Chords
+1680  0.0    A a
+b:          0 Chords
+1706  0.0    A a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+1784  0.0    E a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+1836  0.0    E a
+b:          0 Chords
+1862  0.0    D a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+1940  0.0    B >
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+1992  0.0    A a
+b:          0 Chords
+2018  0.0    A a
+b:          0 Chords
+2044  0.0    G a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+2122  0.0    D a
+b:          0 Chords
+2148  0.0    A a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+2200  0.0    A a
+b:          0 Chords
+2226  0.0    B >
+b:          0 Chords
+2252  0.0    A a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+2408  0.0    G a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+2512  0.0    D a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+2616  0.0   F+ >
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+2668  0.0    E a
+b:          0 Chords
+2694  0.0    D a
+b:          0 Chords
+2720  0.0    A a
+b:          0 Chords
+2746  0.0    A a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+2798  0.0    D a
+b:          0 Chords
+2824  0.0    A a
+b:          0 Chords
+2850  0.0    B >
+b:          0 Chords
+2876  0.0    A a
+b:          0 Chords
+2902  0.0    A a
+b:          0 Chords
+2928  0.0    A a
+b:          0 Chords
+2954  0.0    A a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+3032  0.0    E a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+3084  0.0    E a
+b:          0 Chords
+3110  0.0    D a
+b:          0 Chords
+3136  0.0    A a
+b:          0 Chords
+3162  0.0    A a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+3240  0.0    E a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+3292  0.0    E a
+b:          0 Chords
+3318  0.0    D a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+3396  0.0    B >
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+3448  0.0    A a
+b:          0 Chords
+3474  0.0    A a
+b:          0 Chords
+3500  0.0    G a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+3578  0.0    D a
+b:          0 Chords
+3604  0.0    A a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+3656  0.0    A a
+b:          0 Chords
+3682  0.0    B >
+b:          0 Chords
+3708  0.0    A a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+3864  0.0    G a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+3968  0.0    D a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+4072  0.0   F+ >
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+4124  0.0    E a
+b:          0 Chords
+4150  0.0    D a
+b:          0 Chords
+4176  0.0    A a
+b:          0 Chords
+4202  0.0    A a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+4254  0.0    D a
+b:          0 Chords
+4280  0.0    A a
+b:          0 Chords
+4306  0.0    B >
+b:          0 Chords
+4332  0.0    A a
+b:          0 Chords
+4358  0.0    A a
+b:          0 Chords
+4384  0.0    A a
+b:          0 Chords
+4410  0.0    A a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+4488  0.0    E a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+4540  0.0    E a
+b:          0 Chords
+4566  0.0    D a
+b:          0 Chords
+4592  0.0    A a
+b:          0 Chords
+4618  0.0    A a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+4696  0.0    E a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+4748  0.0    E a
+b:          0 Chords
+4774  0.0    D a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+4852  0.0    B >
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+4904  0.0    A a
+b:          0 Chords
+4930  0.0    A a
+b:          0 Chords
+4956  0.0    G a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+5034  0.0    D a
+b:          0 Chords
+5060  0.0    A a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+5112  0.0    A a
+b:          0 Chords
+5138  0.0    B >
+b:          0 Chords
+5164  0.0    A a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+5320  0.0    G a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+5424  0.0    D a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+5528  0.0   F+ >
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+5580  0.0    E a
+b:          0 Chords
+5606  0.0    D a
+b:          0 Chords
+5632  0.0    A a
+b:          0 Chords
+5658  0.0    A a
+b:  Empty DataFrame
+Columns: [0, Chords]
+Index: []
+b:          0 Chords
+5710  0.0    D a
+b:          0 Chords
+5736  0.0    A a
+b:          0 Chords
+5762  0.0    B >
+b:          0 Chords
+5788  0.0    A a
