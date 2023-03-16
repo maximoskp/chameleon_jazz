@@ -9,6 +9,7 @@ from io import StringIO
 import kern_converters as kcv
 import reharmonization_functions as rhf
 from urllib.parse import urlparse, quote
+import kern_to_csv_for_player_converter as k2csv
 
 # FRONTEND_HOST = None
 
@@ -99,6 +100,18 @@ def get_sending_kern():
     print('resp:', resp)
     # return json.dumps(resp)
     return jsonify(resp)
+# end get_check_get
+
+
+@api.route('/kern_for_player', methods=['GET','POST'])
+def kern_for_player():
+    # example run: https://maxim.mus.auth.gr:6001/kern_for_player?kernfile=lalala
+    # print('request:', request.args)
+    print('kernfile:', request.args['kernfile'])
+    kernfile = request.args['kernfile']
+    csv_string, csv_array = k2csv.kern2csv4player_converter( StringIO( kernfile ) , kernfile )
+    resp = {'csv_string': csv_string, 'csv_array': csv_array}
+    return json.dumps(resp)
 # end get_check_get
 
 # TESTS ==================================

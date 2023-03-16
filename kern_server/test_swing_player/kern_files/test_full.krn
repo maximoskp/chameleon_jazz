@@ -1,0 +1,91 @@
+!!!system-decoration: {(s1,s2)}s3,s4
+!!!OTL: Jazz Standard
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I"Contrabass	*I"Drumset	*I"Piano	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*Trd0c0	*	*	*	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*^	*
+!LO:TX:a:t=pizz	!	!	!	!	!LO:TX:a:t=Swing	!	!
+*MM80	*MM80	*MM80	*MM80	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=80	!	!
+*	*head:regular	*head:x	*	*	*	*	*
+4C	4Rf\	4Rff/	1C 1G	2r	2e-	4dd	C minor
+4E-	4Rcc/	8.Rff/L	.	.	.	[2cc	.
+.	.	16Rff/Jk	.	.	.	.	.
+4G	4Rf\	4Rff/	.	2r	2c	.	.
+4E-	4Rcc/	8.Rff/L	.	.	.	8.ccL]	.
+.	.	16Rff/Jk	.	.	.	16anJk	.
+=2	=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*	*
+4C	4Rf\	4Rff/	1C 1G	2r	1e-	[4b-	C minor-seventh
+4E-	4Rcc/	8.Rff/L	.	.	.	8.b-L]	.
+.	.	16Rff/Jk	.	.	.	16anJk	.
+4G	4Rf\	4Rff/	.	2r	.	[4b-	.
+4E-	4Rcc/	8.Rff/L	.	.	.	8.b-L]	.
+.	.	16Rff/Jk	.	.	.	16aJk	.
+=3	=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*	*
+4AA-	4Rf\	4Rff/	1AA- 1A-	2r	1d	[2a-	F minor-sixth
+4C	4Rcc/	8.Rff/L	.	.	.	.	.
+.	.	16Rff/Jk	.	.	.	.	.
+4F	4Rf\	4Rff/	.	2r	.	8.a-L]	.
+.	.	.	.	.	.	16ccJk	.
+4C	4Rcc/	8.Rff/L	.	.	.	12ee-L	.
+.	.	.	.	.	.	12cc	.
+.	.	.	.	.	.	12a-J	.
+.	.	16Rff/Jk	.	.	.	.	.
+!!linebreak:original
+=4	=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*	*
+*	*	*	*	*	*^	*^	*
+4C	4Rf\	4Rff/	1C 1G	2r	2.r	2.cc	2.r	2.r	C minor
+4E-	4Rcc/	8.Rff/L	.	.	.	.	.	.	.
+.	.	16Rff/Jk	.	.	.	.	.	.	.
+4G	4Rf\	4Rff/	.	2r	.	.	.	.	.
+4E-	4Rcc/	8.Rff/L	.	.	4r	4g	4r	4r	.
+.	.	16Rff/Jk	.	.	.	.	.	.	.
+*	*	*	*	*	*	*v	*v	*v	*
+=5	=5	=5	=5	=5	=5	=5	=5
+*	*head:regular	*head:x	*	*	*	*	*
+4AA-	4Rf\	4Rff/	1AA- 1A-	2r	1r	4a-	F minor
+4C	4Rcc/	8.Rff/L	.	.	.	2cc	.
+.	.	16Rff/Jk	.	.	.	.	.
+4F	4Rf\	4Rff/	.	2r	.	.	.
+4C	4Rcc/	8.Rff/L	.	.	.	4ff	.
+.	.	16Rff/Jk	.	.	.	.	.
+=6	=6	=6	=6	=6	=6	=6	=6
+*	*head:regular	*head:x	*	*	*	*	*
+4GG	4Rf\	4Rff/	1BB- 1G	2r	4r	6cc#X	.
+.	.	.	.	.	.	6dd	.
+4BBn	4Rcc/	8.Rff/L	.	.	4r	.	.
+.	.	.	.	.	.	6cc#	.
+.	.	16Rff/Jk	.	.	.	.	.
+4D	4Rf\	4Rff/	.	2r	2r	6dd	.
+.	.	.	.	.	.	6b-	.
+4F	4Rcc/	8.Rff/L	.	.	.	.	.
+.	.	.	.	.	.	6bn	.
+.	.	16Rff/Jk	.	.	.	.	.
+=7	=7	=7	=7	=7	=7	=7	=7
+*	*head:regular	*head:x	*	*	*	*	*
+4G	4Rf\	4Rff/	1C 1G	2r	1r	2cc	C minor
+8.E-L	4Rcc/	8.Rff/L	.	.	.	.	.
+16DJk	.	16Rff/Jk	.	.	.	.	.
+4C	4Rf\	4Rff/	.	2r	.	2r	.
+8.BB-L	4Rcc/	8.Rff/L	.	.	.	.	.
+16GGJk	.	16Rff/Jk	.	.	.	.	.
+*	*	*	*	*	*v	*v	*
+=8	=8	=8	=8	=8	=8	=8
+*	*head:regular	*head:x	*	*	*	*
+1C	1Rf	1Raa	1C 1G	2r	1e- 1cc	*	C minor-sixth
+.	.	.	.	2r	.	.
+*	*v	*v	*	*	*	*
+*	*	*v	*v	*	*
+==	==	==	==	==
+*-	*-	*-	*-	*-
+!!!system-decoration: {(s1,s2)}s3,s4
