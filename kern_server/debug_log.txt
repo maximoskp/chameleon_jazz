@@ -1,0 +1,558 @@
+kernfile: !!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: A_WEAVER_OF_DREAMS
+**kern	**kern	**kern	**kern	**mxhm
+*MM200	*MM200	*MM200	*MM200	*MM200
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+6C	4re	16Ree/	4G	1ryy	4c e cc gg ccc	C 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8.GG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+4CC	4re	16Ree/	4G	.	4c e cc gg ccc	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+8CC	4re	16Ree/	4C E G	1ryy	4c	C 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	16Ree/	4D B	1ryy	4f b ff	B >
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4D B	.	4f b ff	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FFF	4re	16Ree/	4D B	.	4f b ff	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4EEE	16Rf\	16Ree/	6BB E G#	1ryy	6e b ee	E 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4BBB	16Rf\	16Ree/	4r	.	4r	.
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+==	==	==	==	==	==	==
+*-	*-	*-	*-	*-	*-	*-
+!!!system-decoration: {(s1,s2)}s3,s4e
+reharmonize: true
+reharmonize: true
+before_str: section~A,style~Swing,tempo~140,tonality~C,bar~4/4,chord~C@0.0,bar~4/4,chord~C@0.0,bar~4/4,chord~Bo@0.0,bar~4/4,chord~E@0.0,end
+mod_piece: {'MOD_TMP': {}, 'string': 'section~A,style~Swing,tempo~140,tonality~C,bar~4/4,chord~C@0.0,bar~4/4,chord~F9#11@0.0,bar~4/4,chord~E@0.0,bar~4/4,chord~E@0.0,end', 'original_string': 'MOD_TMP', 'unfolded_string': 'section~A,style~Swing,tempo~140,tonality~C,bar~4/4,chord~C@0.0,bar~4/4,chord~F9#11@0.0,bar~4/4,chord~E@0.0,bar~4/4,chord~E@0.0,end', 'appearing_name': 'MOD_TMP', 'tonality': 'C'}
+newchord - suggest: xF9#11x
+replacing for idx4space:  1
+newchord: F r
+newkern: !!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: A_WEAVER_OF_DREAMS
+**kern	**kern	**kern	**kern	**mxhm
+*MM200	*MM200	*MM200	*MM200	*MM200
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+6C	4re	16Ree/	4G	1ryy	4c e cc gg ccc	C 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8.GG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+4CC	4re	16Ree/	4G	.	4c e cc gg ccc	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+8CC	4re	16Ree/	4C E G	1ryy	4c	F r
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	16Ree/	4D B	1ryy	4f b ff	B >
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4D B	.	4f b ff	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FFF	4re	16Ree/	4D B	.	4f b ff	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4EEE	16Rf\	16Ree/	6BB E G#	1ryy	6e b ee	E 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4BBB	16Rf\	16Ree/	4r	.	4r	.
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+==	==	==	==	==	==	==
+*-	*-	*-	*-	*-	*-	*-
+!!!system-decoration: {(s1,s2)}s3,s4e
+new_gjt_string: section~A,style~Swing,tempo~140,tonality~C,bar~4/4,chord~C@0.0,bar~4/4,chord~F9#11@0.0,bar~4/4,chord~Bo@0.0,bar~4/4,chord~E@0.0,end
+csv:  C, Swing, 4/4, 8.000000, 140.000000 
+Precount, 42, -8.000000, 0.333333, 81
+Precount, 42, -6.000000, 0.333333, 71
+Precount, 42, -4.000000, 0.333333, 51
+Precount, 42, -3.000000, 0.333333, 32
+Precount, 44, -3.000000, 0.333333, 59
+Precount, 42, -2.333333, 0.333333, 21
+Precount, 42, -2.000000, 0.333333, 44
+Precount, 38, -1.000000, 0.166667, 100
+Precount, 42, -1.000000, 0.166667, 73
+Precount, 44, -1.000000, 0.333333, 67
+Precount, 42, -0.666667, 0.208333, 89
+Precount, 43, -0.333333, 0.208333, 55
+Bar~0@0.00, Swing, 4/4, A, 140.000000
+Chord, C, C[0_4_7], 0.000000, 0.000000
+Piano, 55, 0.000000, 0.333333, 69
+Piano, 60, 0.000000, 0.333333, 69
+Piano, 64, 0.000000, 0.333333, 69
+Piano, 72, 0.000000, 0.333333, 69
+Piano, 79, 0.000000, 0.333333, 69
+Piano, 84, 0.000000, 0.333333, 69
+Bass, 36, 0.000000, 0.925000, 99
+Drums, 36, 0.000000, 0.333333, 57
+Metro, 61, 0.000000, 0.333333, 89
+Drums, 59, 0.000000, 0.333333, 83
+Metro, 60, 1.000000, 0.333333, 65
+Bass, 36, 1.000000, 0.875000, 97
+Drums, 44, 1.000000, 0.264583, 54
+Drums, 59, 1.000000, 0.333333, 111
+Drums, 36, 1.666667, 0.333333, 78
+Drums, 59, 1.666667, 0.333333, 103
+Metro, 60, 2.000000, 0.333333, 80
+Bass, 36, 2.000000, 0.593750, 106
+Drums, 59, 2.000000, 0.333333, 65
+Bass, 32, 2.639583, 0.360417, 111
+Drums, 36, 2.666667, 0.333333, 74
+Piano, 55, 2.666667, 1.000000, 91
+Piano, 60, 2.666667, 1.000000, 91
+Piano, 64, 2.666667, 1.000000, 91
+Piano, 67, 2.666667, 1.000000, 91
+Bass, 31, 3.000000, 0.943750, 113
+Drums, 36, 3.000000, 0.333333, 61
+Metro, 60, 3.000000, 0.333333, 71
+Drums, 59, 3.000000, 0.333333, 103
+Drums, 44, 3.000000, 0.266667, 69
+Drums, 38, 3.666667, 0.333333, 42
+Drums, 59, 3.666667, 0.333333, 98
+Metro, 61, 4.000000, 0.333333, 89
+Bar~1@4.00, Swing, 4/4, A, 140.000000
+Chord, F9#11, F[0_4_7_10_14_18], 4.000000, 4.000000
+Piano, 51, 4.000000, 0.606250, 60
+Piano, 57, 4.000000, 0.606250, 60
+Piano, 60, 4.000000, 0.606250, 60
+Piano, 67, 4.000000, 0.606250, 60
+Piano, 71, 4.000000, 0.606250, 60
+Piano, 79, 4.000000, 0.606250, 60
+Bass, 45, 4.000000, 0.943750, 102
+Drums, 59, 4.000000, 0.333333, 68
+Piano, 51, 4.666667, 0.333333, 98
+Piano, 57, 4.666667, 0.333333, 98
+Piano, 60, 4.666667, 0.333333, 98
+Piano, 67, 4.666667, 0.333333, 98
+Piano, 71, 4.666667, 0.333333, 98
+Piano, 79, 4.666667, 0.333333, 98
+Drums, 38, 4.666667, 0.333333, 85
+Metro, 60, 5.000000, 0.333333, 65
+Bass, 47, 5.000000, 0.943750, 114
+Drums, 44, 5.000000, 0.264583, 65
+Drums, 59, 5.000000, 0.333333, 109
+Drums, 38, 5.333333, 0.333333, 47
+Piano, 51, 5.666667, 0.333333, 75
+Piano, 57, 5.666667, 0.333333, 75
+Piano, 60, 5.666667, 0.333333, 75
+Piano, 67, 5.666667, 0.333333, 75
+Piano, 71, 5.666667, 0.333333, 75
+Piano, 79, 5.666667, 0.333333, 75
+Drums, 38, 5.666667, 0.333333, 57
+Metro, 60, 6.000000, 0.333333, 80
+Bass, 48, 6.000000, 0.943750, 103
+Drums, 59, 6.000000, 0.333333, 93
+Drums, 38, 6.333333, 0.333333, 59
+Piano, 51, 6.666667, 0.333333, 87
+Piano, 57, 6.666667, 0.333333, 87
+Piano, 60, 6.666667, 0.333333, 87
+Piano, 67, 6.666667, 0.333333, 87
+Piano, 71, 6.666667, 0.333333, 87
+Piano, 79, 6.666667, 0.333333, 87
+Drums, 36, 6.666667, 0.333333, 77
+Metro, 60, 7.000000, 0.333333, 71
+Bass, 53, 7.000000, 0.858333, 117
+Drums, 44, 7.000000, 0.264583, 65
+Drums, 59, 7.000000, 0.333333, 125
+Drums, 38, 7.333333, 0.333333, 54
+Piano, 50, 7.666667, 1.333333, 102
+Piano, 59, 7.666667, 1.333333, 102
+Piano, 65, 7.666667, 1.333333, 102
+Piano, 71, 7.666667, 1.333333, 102
+Piano, 77, 7.666667, 1.333333, 102
+Drums, 36, 7.666667, 0.333333, 82
+Metro, 61, 8.000000, 0.333333, 89
+Bar~2@8.00, Swing, 4/4, A, 140.000000
+Chord, Bo, B[0_3_6], 8.000000, 8.000000
+Bass, 41, 8.000000, 0.572917, 99
+Drums, 38, 8.000000, 0.333333, 100
+Drums, 59, 8.000000, 0.333333, 100
+Bass, 40, 8.666667, 0.270833, 111
+Drums, 38, 8.666667, 0.333333, 58
+Metro, 60, 9.000000, 0.333333, 65
+Bass, 39, 9.000000, 0.943750, 115
+Drums, 44, 9.000000, 0.264583, 54
+Drums, 59, 9.000000, 0.333333, 98
+Drums, 38, 9.333333, 0.333333, 60
+Piano, 50, 9.666667, 0.333333, 91
+Piano, 59, 9.666667, 0.333333, 91
+Piano, 65, 9.666667, 0.333333, 91
+Piano, 71, 9.666667, 0.333333, 91
+Piano, 77, 9.666667, 0.333333, 91
+Drums, 36, 9.666667, 0.333333, 74
+Drums, 59, 9.666667, 0.333333, 119
+Metro, 60, 10.000000, 0.333333, 80
+Bass, 38, 10.000000, 0.943750, 106
+Drums, 59, 10.000000, 0.333333, 52
+Drums, 38, 10.333333, 0.333333, 64
+Drums, 36, 10.666667, 0.333333, 75
+Metro, 60, 11.000000, 0.333333, 71
+Bass, 35, 11.000000, 0.943750, 113
+Drums, 36, 11.000000, 0.333333, 84
+Drums, 59, 11.000000, 0.333333, 125
+Drums, 44, 11.000000, 0.266667, 69
+Piano, 50, 11.666667, 0.272917, 81
+Piano, 59, 11.666667, 0.272917, 81
+Piano, 65, 11.666667, 0.272917, 81
+Piano, 71, 11.666667, 0.272917, 81
+Piano, 77, 11.666667, 0.272917, 81
+Drums, 38, 11.666667, 0.333333, 30
+Drums, 59, 11.666667, 0.333333, 103
+Metro, 61, 12.000000, 0.333333, 89
+Bar~3@12.00, Swing, 4/4, A, 140.000000
+Chord, E, E[0_4_7], 12.000000, 12.000000
+Piano, 47, 12.000000, 0.608333, 56
+Piano, 52, 12.000000, 0.608333, 56
+Piano, 56, 12.000000, 0.608333, 56
+Piano, 64, 12.000000, 0.608333, 56
+Piano, 71, 12.000000, 0.608333, 56
+Piano, 76, 12.000000, 0.608333, 56
+Bass, 28, 12.000000, 0.943750, 102
+Drums, 59, 12.000000, 0.333333, 76
+Piano, 47, 12.666667, 0.333333, 95
+Piano, 52, 12.666667, 0.333333, 95
+Piano, 56, 12.666667, 0.333333, 95
+Piano, 64, 12.666667, 0.333333, 95
+Piano, 71, 12.666667, 0.333333, 95
+Piano, 76, 12.666667, 0.333333, 95
+Drums, 38, 12.666667, 0.333333, 67
+Metro, 60, 13.000000, 0.333333, 65
+Bass, 34, 13.000000, 0.943750, 114
+Drums, 44, 13.000000, 0.264583, 65
+Drums, 59, 13.000000, 0.333333, 98
+Drums, 38, 13.666667, 0.333333, 45
+Drums, 59, 13.666667, 0.333333, 95
+Metro, 60, 14.000000, 0.333333, 80
+Piano, 52, 14.000000, 1.000000, 68
+Piano, 56, 14.000000, 1.000000, 68
+Piano, 59, 14.000000, 1.000000, 68
+Piano, 64, 14.000000, 1.000000, 68
+Bass, 35, 14.000000, 0.575000, 101
+Drums, 38, 14.000000, 0.208333, 98
+Drums, 36, 14.666667, 0.208333, 57
+Drums, 38, 14.666667, 0.208333, 71
+Metro, 60, 15.000000, 0.333333, 71
+Bass, 35, 15.000000, 0.516667, 120
+Drums, 44, 15.000000, 0.208333, 85
+Piano, 56, 15.666667, 0.314583, 102
+Piano, 59, 15.666667, 0.314583, 102
+Piano, 64, 15.666667, 0.314583, 102
+Piano, 71, 15.666667, 0.314583, 102
+Bass, 40, 15.666667, 0.308333, 117
+Drums, 36, 15.666667, 0.208333, 80
+Drums, 51, 15.666667, 0.333333, 126
+Metro, 61, 16.000000, 0.333333, 89
+
+
+test_kern: !!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+Bass	Kick-Snare	Hihat	Piano-F-Clef	empty	Piano-G-Clef	Chords
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4CC	12Rf\	12Ree/	12G	1ryy	12c e cc gg ccc	C 
+.	.	.	.	.	.	.
+.	12re	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	12re	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8.CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+6CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	12Rf\	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4AA	4re	12Ree/	6D# A	1ryy	6c g b gg	F r
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4BB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4C	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.F	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+8FF	4re	12Ree/	4r	1ryy	4r	B >
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	12Rf\	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4EEE	4re	12Ree/	6BB E G#	1ryy	6e b ee	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4AAA#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8BBB	4re	4ree	4E G# B	.	4e	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+
+==	==	==	==	==	==	==
+*-	*-	*-	*-	*-	*-	*-
+!!!system-decoration: {(s1,s2)}s3,s4e
+resp: {'new': "!!!system-decoration: \\{(s1,s2)\\}s3,s4\\\n!!!OTL: test\n**kern\t**kern\t**kern\t**kern\t**mxhm\n*part3\t*part2\t*part1\t*part1\t*part1\n*staff4\t*staff3\t*staff2\t*staff1\t*\n*I'Contrabass'\t*I'Drumset'\t*'IPiano'\t*\t*\n*I'Cb.\t*I'D. Set\t*I'Pno.\t*\t*\n*clefF4\t*clefX\t*clefF4\t*clefG2\t*\n*k[b-e-a-]\t*k[]\t*k[b-e-a-]\t*k[b-e-a-]\t*\n*C: \t*C:\t*C:\t*C:\t*C:\n*M4/4\t*M4/4\t*M4/4\t*M4/4\t*\n=1\t=1\t=1\t=1\t=1\n*\t*^\t*^\t*\t*\nBass\tKick-Snare\tHihat\tPiano-F-Clef\tempty\tPiano-G-Clef\tChords\n!\t!\t!\t!\t!\t!LO:TX:a:t=[quarter]=140.0\t!\n!\t!\t!\t!\t!\t!LO:TX:a:t=Swing\t!\n4CC\t12Rf\\\t12Ree/\t12G\t1ryy\t12c e cc gg ccc\tC \n.\t.\t.\t.\t.\t.\t.\n.\t12re\t12ree\t12r\t.\t12r\t.\n.\t.\t.\t.\t.\t.\t.\n.\t12re\t12ree\t12r\t.\t12r\t.\n.\t.\t.\t.\t.\t.\t.\n8.CC\t4re\t12Ree/\t4r\t.\t4r\t.\n.\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t.\t.\t.\t.\n16r\t.\t.\t.\t.\t.\t.\n6CC\t4re\t12Ree/\t4r\t.\t4r\t.\n.\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n12r\t.\t12ree\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n4GGG\t12Rf\\\t16Ree/\t4r\t.\t4r\t.\n.\t.\t16ree\t.\t.\t.\t.\n.\t12re\t.\t.\t.\t.\t.\n.\t.\t8ree\t.\t.\t.\t.\n.\t12re\t.\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n=2\t=2\t=2\t=2\t=2\t=2\t=2\n*\t*head:regular\t*head:x\t*\t*\t*\t*\n!\t!\t!\t!\t!\t!LO:TX:a:t=[quarter]=140.0\t!\n4AA\t4re\t12Ree/\t6D# A\t1ryy\t6c g b gg\tF r\n.\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t12r\t.\t12r\t.\n.\t.\t.\t.\t.\t.\t.\n4BB\t4re\t12Ree/\t4r\t.\t4r\t.\n.\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n4C\t4re\t12Ree/\t4r\t.\t4r\t.\n.\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n8.F\t4re\t12Ree/\t4r\t.\t4r\t.\n.\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t.\t.\t.\t.\n16r\t.\t.\t.\t.\t.\t.\n=3\t=3\t=3\t=3\t=3\t=3\t=3\n*\t*head:regular\t*head:x\t*\t*\t*\t*\n!\t!\t!\t!\t!\t!LO:TX:a:t=[quarter]=140.0\t!\n8FF\t4re\t12Ree/\t4r\t1ryy\t4r\tB >\n.\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t.\t.\t.\t.\n8r\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n4DD#\t4re\t12Ree/\t4r\t.\t4r\t.\n.\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n4DD\t4re\t12Ree/\t4r\t.\t4r\t.\n.\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n4BBB\t12Rf\\\t16Ree/\t4r\t.\t4r\t.\n.\t.\t16ree\t.\t.\t.\t.\n.\t12re\t.\t.\t.\t.\t.\n.\t.\t8ree\t.\t.\t.\t.\n.\t12re\t.\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n=4\t=4\t=4\t=4\t=4\t=4\t=4\n*\t*head:regular\t*head:x\t*\t*\t*\t*\n!\t!\t!\t!\t!\t!LO:TX:a:t=[quarter]=140.0\t!\n4EEE\t4re\t12Ree/\t6BB E G#\t1ryy\t6e b ee\tE \n.\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t12r\t.\t12r\t.\n.\t.\t.\t.\t.\t.\t.\n4AAA#\t4re\t12Ree/\t4r\t.\t4r\t.\n.\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n.\t.\t12ree\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n8BBB\t4re\t4ree\t4E G# B\t.\t4e\t.\n.\t.\t.\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n8r\t.\t.\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n8BBB\t4re\t16Ree/\t4r\t.\t4r\t.\n.\t.\t16ree\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n8r\t.\t8ree\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n.\t.\t.\t.\t.\t.\t.\n\n==\t==\t==\t==\t==\t==\t==\n*-\t*-\t*-\t*-\t*-\t*-\t*-\n!!!system-decoration: {(s1,s2)}s3,s4e", 'newchord': 'F r'}

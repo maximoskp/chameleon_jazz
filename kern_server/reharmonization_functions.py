@@ -174,7 +174,13 @@ def substitute_chord_by_string(s, chord2replace_idx, debug_output=False, piece_n
     while pathIDXs[chord2replace_idx] == chord2sub:
         print('adv_exp: ', adv_exp)
         pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=adv_exp)
+        print('pathIDXs: ', pathIDXs)
+        print('chord2replace_idx: ', chord2replace_idx)
         adv_exp /= 1.5
+        if adv_exp < 0.1:
+            pathIDXs[chord2replace_idx] = np.random.randint(trans_probs.shape[0])
+            print('pathIDXs: ', pathIDXs)
+            print('resolving to random')
     
     transp_idxs = s1.transpose_idxs(pathIDXs, s1.tonality['root'])
     debug_constraints = np.array([pathIDXs,constraints])

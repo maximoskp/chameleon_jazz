@@ -12,6 +12,8 @@ import json
 import math
 import chardet
 import sys
+import os
+from tabulate import tabulate
 
 original_stdout = sys.stdout
 
@@ -306,12 +308,13 @@ def kern2string(file_name):
             t = str( b.iloc[i][0] )
             c = b.iloc[i]['Chords'] # TODO: translate to GJT chord
             # it appears that there is always a space between root and type
-            # print(c)
+            print('c:', c)
             chord_split = c.split(' ')
             acc_chord = chord_split[0]
             if len(acc_chord) > 1:
                 # print('acc_chord:', acc_chord)
-                acc_chord = acc_chord.replace( acc_chord[1], fonts2acc[ acc_chord[1] ] )
+                if acc_chord[1] in list(fonts2acc.keys()):
+                    acc_chord = acc_chord.replace( acc_chord[1], fonts2acc[ acc_chord[1] ] )
             if len(chord_split) > 1:
                 # type other than "major", i.e. no type
                 string += ',chord~' + acc_chord + fonts2types[chord_split[1]] + '@' + t
@@ -337,30 +340,35 @@ def csv2kern(filename):
         for i in range(len(df.columns)-1):
             df.iloc[:, i] = df.iloc[:, i].str.replace(" ", "")
     else:
-        df = pd.read_csv(filename, sep='\n', encoding=result["encoding"])
+        df = pd.read_csv(filename, sep='\, ', encoding=result["encoding"])
+        # df = pd.read_csv(filename, sep='\n', encoding=result["encoding"])
     # print('df: ', df)
 
     df_measure_start = df.loc[df.iloc[:, 0].str.contains("Bar")]
 
     # TODO find measure rythm
-    # print('df.columns: ', df.columns)
+    # print('df.columns[2]: ', df.columns[2])
     # print('df.columns[0].split(, ): ', df.columns[0].split(', '))
-    column_split = df.columns[0].split(', ')
+    # column_split = df.columns[0].split(', ')
     # print('column_split:', column_split)
     # global_rhythm = re.findall(r'\d+', df.columns[0][2])
-    global_rhythm = column_split[2].split('/')
+    global_rhythm = re.findall(r'\d+', df.columns[2])
+    # global_rhythm = column_split[2].split('/')
     # print('global_rhythm: ', global_rhythm)
 
     # print('df_measure_start: ', df_measure_start)
     # global_style = df_measure_start.iloc[0, 1].replace(" ", "")
-    global_style = df.columns[0][1].replace(' ', '')
+    # global_style = df.columns[0][1].replace(' ', '')
+    global_style = df.columns[1].replace(' ', '')
 
     # global_tempo = df_measure_start.iloc[0, 4]
-    global_tempo = df.columns[0][4].replace(' ', '')
+    # global_tempo = df.columns[0][4].replace(' ', '')
+    global_tempo = df.columns[4].replace(' ', '')
 
     # song_title = file[:len(file) - 12]
     song_title = 'test'
-    global_tonality = df.columns[0][0]
+    # global_tonality = df.columns[0][0]
+    global_tonality = df.columns[0]
     kern_song_title_part_1 = "!!!system-decoration: \\{(s1,s2)\\}s3,s4\\" + "\n" + "!!!OTL: " + song_title + "\n" + \
         "**kern	**kern	**kern	**kern	**mxhm\n*part3	*part2	*part1	*part1	*part1\n*staff4	*staff3	*staff2	*staff1	*\n*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*\n*I'Cb.	*I'D. Set	*I'Pno.	*	*\n*clefF4	*clefX	*clefF4	*clefG2	*\n*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*"
     kern_song_top_altered = "*"+global_tonality+": 	*"+global_tonality+":	*"+global_tonality+":	*"+global_tonality+":	*" + \
@@ -581,16 +589,17 @@ def csv2kern(filename):
 
 
     measures = []
-    for i in range(len(df_measure_start.index)-1):
-        measures.append(
-            df.iloc[df_measure_start.iloc[i].name:df_measure_start.iloc[(i+1)].name])
-
-
+    # for i in range(len(df_measure_start.index)): # __max__
+    for i in range(len(df_measure_start.index)):
+        if i < len( df_measure_start.index )-1:
+            measures.append(df.iloc[df_measure_start.iloc[i].name:df_measure_start.iloc[(i+1)].name])
+        else:
+            measures.append(df.iloc[df_measure_start.iloc[i].name:-1])
+    
     def set_measure_rhythm(measure):
 
         if global_rhythm[0] == re.findall(r'\d+', measure.columns[2])[0]:
             return int(global_rhythm[0])
-
 
     def set_measure_style(measure):
         m = ["", True]
@@ -630,15 +639,15 @@ def csv2kern(filename):
             self.measure_raw = measure.iloc[:, :]
             measure_header_string = measure.iloc[0].to_string()
             # print('measure_header_string:', measure_header_string)
-            comma_split = measure_header_string.split(', ')
-            self.time_signature = comma_split[2]
-            # self.time_signature = set_measure_rhythm(measure)
-            self.style = comma_split[1]
-            # self.style = set_measure_style(measure)
-            self.tonality = comma_split[0]
-            # self.tonality = set_measure_tonality(measure)
-            self.tempo = comma_split[-1]
-            # self.tempo = set_measure_tempo(measure)
+            # comma_split = measure_header_string.split(', ')
+            # self.time_signature = comma_split[2]
+            self.time_signature = set_measure_rhythm(measure)
+            # self.style = comma_split[1]
+            self.style = set_measure_style(measure)
+            # self.tonality = comma_split[0]
+            self.tonality = set_measure_tonality(measure)
+            # self.tempo = comma_split[-1]
+            self.tempo = set_measure_tempo(measure)
 
             if self.style[1] == True or measure_count == 0:
                 self.style_change = pd.DataFrame(
@@ -652,6 +661,7 @@ def csv2kern(filename):
             # find all durations & notes
 
             for y in range(len(self.measure_raw)):
+                # print('self.measure_raw.iloc[y, 0]: ', self.measure_raw.iloc[y, 0])
                 if self.measure_raw.iloc[y, 0] == "Bass":
 
                     note_onset = float(
@@ -965,6 +975,8 @@ def csv2kern(filename):
     df_proto = pd.concat(df_list, ignore_index=True)
 
     # Write to txt file
+    if os.path.exists("demofile.txt"): 
+        os.remove('xgboost.txt')
     df_proto.to_csv('xgboost.txt', header=False, index=False,
                     sep='\t', mode='a', na_rep='')
 
@@ -979,4 +991,8 @@ def csv2kern(filename):
     # print('kern_song_title_part: \n', kern_song_title_part)
     # print('df_proto.to_string(): \n', df_proto.to_string())
     # return kern_song_title_part + '\n' + '\n' + trackending
-    return kern_song_title_part + '\n' + df_proto.to_string() + '\n' + trackending
+    # out_string = tabulate( df_proto, showindex=False )
+    # out_string = df_proto.to_string(index=False, justify='left')
+    out_string = df_proto.to_csv(index=False, header=True, sep='\t')
+    print('out_string: ', out_string)
+    return kern_song_title_part + '\n' + out_string + '\n' + trackending
