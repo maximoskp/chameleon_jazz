@@ -26,7 +26,6 @@ function dynamicallyLoadScript(url) {
 var drumsKeys;
 var allChordSymbols = [];
 var currentChordIdx = 0;
-var i = 1;
 
 // load all drums
 function load_all_drums(){
@@ -59,10 +58,10 @@ function send_GJT_request(url){
     var jsonObj = JSON.parse( Http.responseText );
     // var jsonObj = Http.responseText;
 
-    // console.log( 'jsonObj:', jsonObj );
-    // console.log( 'keys', Object.keys( jsonObj ) );
-    // console.log( 'name', name );
-    // console.log('jsonObj[name]:', jsonObj[name]);
+    console.log( 'jsonObj:', jsonObj );
+    console.log( 'keys', Object.keys( jsonObj ) );
+    console.log( 'name', name );
+    console.log('jsonObj[name]:', jsonObj[name]);
 
     // returning the array part
     play_array( jsonObj[name] );
@@ -70,32 +69,6 @@ function send_GJT_request(url){
 		metronome.toolSendsPlayStop(playstop);
     // return jsonObj[name]
   }
-}
-
-function stop_player(){
-  playstop = false;
-  metronome.toolSendsPlayStop(playstop);
-}
-
-function send_kern_request(url){
-
-  playstop = !playstop;
-
-  if (playstop){
-    console.log('url:', url);
-    Http.open("GET", url);
-    Http.onreadystatechange = (e) => {
-      if (Http.readyState == 4 && Http.status == 200){
-        var jsonObj = JSON.parse( Http.responseText );
-        play_array( jsonObj['csv_array'], has_precount=false, has_chords=false, has_header=false );
-        console.log('playstop 1:', playstop);
-        metronome.toolSendsPlayStop(playstop);
-      }
-    }
-    Http.send();
-  }
-  console.log('playstop 1:', playstop);
-  metronome.toolSendsPlayStop(playstop);
 }
 
 function play_note_for_instrument(a, tempo){
@@ -106,15 +79,15 @@ function play_note_for_instrument(a, tempo){
   // console.log('volume: ', a[4]/127.0);
   if (a[0] == 'Piano'){
     piano_player.queueWaveTable(audioContext, audioContext.destination
-      , _tone_0000_JCLive_sf2_file, 0, a[1], a[3]*(60.0/tempo), (0.1*a[4])/127.0);
+      , _tone_0000_JCLive_sf2_file, 0, a[1], a[3]*(60.0/tempo), 0.8*a[4]/127.0);
   }else if(a[0] == 'Bass'){
     bass_player.queueWaveTable(audioContext, audioContext.destination
-      , _tone_0320_Aspirin_sf2_file, 0, a[1], a[3]*(60.0/tempo), (0.1*a[4])/127.0);
+      , _tone_0320_Aspirin_sf2_file, 0, a[1], a[3]*(60.0/tempo), a[4]/127.0);
   }else{
     var drum_variable =  '_drum_' + drumsKeys[drums_player.loader.findDrum( a[1] )];
     // console.log('drum_variable:', drum_variable);
     drums_player.queueWaveTable(audioContext, audioContext.destination
-      , eval(drum_variable), 0, a[1], a[3]*(60.0/tempo), (0.1*a[4])/127.0);
+      , eval(drum_variable), 0, a[1], a[3]*(60.0/tempo), a[4]/127.0);
   }
 }
 function show_chord(a){
@@ -134,34 +107,35 @@ function show_chord(a){
   currentChordIdx++;
 }
 
-function play_array( a, has_precount=true, has_chords=true, has_header=true ){
-  if (has_chords){
-    get_chords_from_array( a );
-  }
+function play_array( a ){
+  get_chords_from_array( a );
   currentChordIdx = 0;
   var tempo = a[0][4];
-  var starting_onset = 0.0;
-  if (has_header){
-    starting_onset = a[0][3];
-  }
+  var starting_onset = a[0][3];
   metronome.setTempo(tempo);
-  i = 1;
-  if (has_precount){
-    while (a[i][0] != 'Precount'){
-      i++;
-    }
+  var i = 1;
+  while (a[i][0] != 'Precount'){
+    i++;
   }
   var t = a[i][2];
+  console.log('a[i]: ', a[i]);
   document.addEventListener('beatTimeEvent', function (e){
     if ( i < a.length ){
+      // console.log('t:', t);
+      // console.log('e.metroBeatTimeStamp - starting_onset:', e.metroBeatTimeStamp - starting_onset);
+      // console.log('i:', i);
       while ( t < e.metroBeatTimeStamp - starting_onset ){
+        // console.log('3');
         if ( a[i][0] == 'Piano' || a[i][0] == 'Bass' || a[i][0] == 'Drums' || a[i][0] == 'Precount' || a[i][0] == 'Metro' ){
+          // console.log('4');
           play_note_for_instrument(a[i], tempo);
           i++;
         }else if( a[i][0] == 'Chord' ){
+          // console.log('5');
           show_chord(a[i]);
           i++;
         }else{
+          // console.log('6');
           i++;
         }
         if ( i >= a.length ){

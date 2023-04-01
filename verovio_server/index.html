@@ -26,20 +26,43 @@
 			piano_player.loader.decodeAfterLoading(audioContext, '0000_JCLive_sf2_file');
             bass_player.loader.decodeAfterLoading(audioContext, '0320_Aspirin_sf2_file');
             // drums_player.loader.decodeAfterLoading(audioContext, '35_16_JCLive_sf2_file');
+			// get url parameter
+			const queryString = window.location.search;
+			const urlParams = new URLSearchParams(queryString);
+			const name = urlParams.get('name');
+			const r_complexity = urlParams.get('r');
+			const h_complexity = urlParams.get('h');
+			console.log('name', name);
+			console.log('r', r_complexity);
+			console.log('h', h_complexity);
+			// request to this server
+			// 127.0.0.1:3333/?name=A_BEAUTIFUL_FRIENDSHIP&r=1&h=5
+			console.log('127.0.0.1:3334/?name=' + name + '&r=' + r_complexity + '&h=' + h_complexity);
 			var playstop = false;
-			// __SWING_PLAYER__ For running the swing player, you need to assign to the
-			// kern file to be played as a string in the kern_string variable
-			var kern_string = null; // in this example, the string value is assigned with the following function:
-			readTextFile('kern_files/A_CHILD_IS_BORN.krn'); // in js/main.js
-			console.log('kern_string:', kern_string)
-			// __SWING_PLAYER__ When play is pressed, the following function needs to be called
-			// (the kern_string variable needs to has been assigned properly)
-			// The play() function acts as toggle, i.e., if you call it while playing, it will stop.
-			// There is also a stop function available: stop_player() - in js/gjt_player.js.
 			function play(){
-				console.log('play:')
-				send_kern_request( 'https://maxim.mus.auth.gr:6001/kern_for_player?kernfile=' + encodeURIComponent(kern_string) );
+				// request to server holding the CSVs
+				send_GJT_request( 'localhost:3334/songcsvcomplex?name=' + name + '&r=' + r_complexity + '&h=' + h_complexity + '.csv' );
+				// send_GJT_request( 'http://155.207.188.7:5000/songcsvcomplex?name=A_BEAUTIFUL_FRIENDSHIP&r=1&h=5' );
+				// send_GJT_request( 'http://155.207.188.7:5000/songcsvcomplex?name=CHEESE_CAKE&r=3&h=3' );
+				// playstop = !playstop;
+				// metronome.toolSendsPlayStop(playstop);
+				// piano_player.queueWaveTable(audioContext, audioContext.destination
+				// 	, _tone_0000_JCLive_sf2_file, 0, 12*4+0, 2, 0.7);
+                // piano_player.queueWaveTable(audioContext, audioContext.destination
+				// 	, _tone_0000_JCLive_sf2_file, 0, 12*4+4, 2, 0.7);
+                // piano_player.queueWaveTable(audioContext, audioContext.destination
+				// 	, _tone_0000_JCLive_sf2_file, 0, 12*4+7, 2, 0.7);
+                // bass_player.queueWaveTable(audioContext, audioContext.destination
+				// 	, _tone_0320_Aspirin_sf2_file, 0, 12*2+7, 2, 0.5); // 0.5 is volume
+                // var pitch = 35+Math.floor(Math.random() * 20);
+                // console.log('pitch: ', pitch);
+                // drums_player.queueWaveTable(audioContext, audioContext.destination
+				// 	, _drum_35_12_JCLive_sf2_file, 0, pitch, 1, Math.random()); // 0.5 is volume
+				// return false;
 			}
+			// send_GJT_request( 'http://155.207.188.7:5000/songcsvcomplex?name=ALL_THE_THINGS_YOU_ARE&r=3&h=3' );
+			// send_GJT_request( 'http://155.207.188.7:5000/songcsvcomplex?name=GIANT_STEPS&r=3&h=3' );
+			// send_GJT_request( 'http://155.207.188.7:5000/songcsvcomplex?name=CHEESE_CAKE&r=3&h=3' );
 		</script>
 	</head>
 	<body>
@@ -53,6 +76,9 @@
 			<span id='chord2'> -- </span>
 			<span id='chord3_span'>  |  </span>
 			<span id='chord3'> -- </span>
+		</div>
+		<div>
+			<span id='kern_display'></span>
 		</div>
 	</body>
 </html>

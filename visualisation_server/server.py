@@ -3,6 +3,7 @@ import json
 import os
 import csv
 import sys
+from urllib.parse import urlparse
 
 api = Flask(__name__)
 
@@ -19,7 +20,7 @@ if len(sys.argv) > 1:
 
 fileslist = os.listdir( datapath )
 
-# print('fileslist: ', fileslist)
+print('fileslist: ', fileslist)
 
 def is_number(string):
     try:
@@ -122,28 +123,30 @@ def get_songcsvcomplex():
     return json.dumps(resp)
 # end get_songcsv
 
-# for tackling CORS etc
-FRONTEND_HOST = "http://155.207.188.7:1234"
-@api.after_request
-def after_request(response):
-    """!
-    @brief Add necessary info to headers. Useful for preventing CORS permission errors.
-    """
-    response.headers.add("Access-Control-Allow-Origin", FRONTEND_HOST)
-    response.headers.add("Access-Control-Allow-Credentials", "true")
-    response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
-    response.headers.add("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS")
-    return response
-# end after_request
+# # for tackling CORS etc
+# FRONTEND_HOST = "http://155.207.188.7:1234"
+# @api.after_request
+# def after_request(response):
+#     """!
+#     @brief Add necessary info to headers. Useful for preventing CORS permission errors.
+#     """
+#     response.headers.add("Access-Control-Allow-Origin", FRONTEND_HOST)
+#     response.headers.add("Access-Control-Allow-Credentials", "true")
+#     response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
+#     response.headers.add("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS")
+#     return response
+# # end after_request
 
-'''
+
 HOSTNAME_WHITELIST = [
-    "http://localhost:3000",
-    "https://test.com",
-    "https://www.test.com",
+    # "http://localhost:3000",
+    # "https://test.com",
+    # "https://www.test.com",
+    "https://musicolab.hmu.gr/"
+    "http://localhost:3333"
 ]
-app = create_app()
-@app.after_request
+# api = create_app()
+@api.after_request
 def after_request(response):
     """!
     @brief Add necessary info to headers. Useful for preventing CORS permission errors.
@@ -160,8 +163,8 @@ def after_request(response):
             "Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS"
         )
     return response
-'''
+
 
 if __name__ == '__main__':
     # api.run()
-    api.run(host='0.0.0.0', port=5000, debug=True)
+    api.run(host='0.0.0.0', port=3334, debug=True)
