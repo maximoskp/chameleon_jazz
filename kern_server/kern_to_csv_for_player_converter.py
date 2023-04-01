@@ -132,33 +132,38 @@ def kern2csv4player_converter(file, data):
         
         
         # find global_tempo
-        first_occurrence = df["Piano_2"].str.contains("!LO:TX:a:t=\[quarter\]=")
-        print('first_occurrence: ', first_occurrence, file=f_pl_debug)
-        global_tempo = 120
-        for i in range(len(first_occurrence)):
-            if first_occurrence.iloc[i] == True:
-                global_tempo = df["Piano_2"].iloc[i].replace(
-                    '!LO:TX:a:t=[quarter]=', "")
+        pattern_for_tempo = re.escape('*MM')
+        # first_occurrence = df["Piano_2"].str.contains("!LO:TX:a:t=\[quarter\]=")
+        first_occurrence_tempo = starting_df.iloc[:, 0].str.contains(pattern_for_tempo)
+        print('first_occurrence_tempo: ', first_occurrence_tempo, file=f_pl_debug)
+        global_tempo = str(120)
+        for i in range(len(first_occurrence_tempo)):
+            if first_occurrence_tempo.iloc[i] == True:
+                global_tempo = starting_df.iloc[i, 0].replace('*MM', "")
         if global_tempo == '.0':
-            print('global_tempo is zero: ', global_tempo, file=f_pl_debug)
-            global_tempo = data.split('*MM')[1].split('\t')[0]
-            print('global_tempo is not zero', global_tempo, file=f_pl_debug)
+            global_tempo = str(120)
+            # print('global_tempo is zero: ', global_tempo, file=f_pl_debug)
+            # global_tempo = data.split('*MM')[1].split('\t')[0]
+            # print('global_tempo is not zero', global_tempo, file=f_pl_debug)
         print('global_tempo after all: ', global_tempo, file=f_pl_debug)
         # find global_style
-        first_occurrence = df["Piano_2"].str.contains("!LO:TX:a:t=")
-        for i in range(len(first_occurrence)):
-            if first_occurrence.iloc[i] == True:
+        # find global_style
+        pattern_for_style = re.escape('*SS')
+        first_occurrence_style = starting_df.iloc[:, 0].str.contains(pattern_for_style)
+        for i in range(len(first_occurrence_style)):
+            if first_occurrence_style.iloc[i] == True:
         
-                global_style = df["Piano_2"].iloc[i].replace(
-                    '!LO:TX:a:t=', "")
+                global_style = starting_df.iloc[i,0].replace(
+                    '*SS', "")
         
         # find global_time_signature
-        pattern = re.escape('*M')
-        first_occurrence_for_rhythm = starting_df["Contrabass"].str.contains(pattern)
-        for i in range(len(first_occurrence_for_rhythm)):
-            if first_occurrence_for_rhythm.iloc[i] == True:
+        pattern_for_time_signature = re.escape('*M')
+        pattern_for_time_signature2 = re.escape('/')
+        first_occurrence_time = starting_df.iloc[:, 0].str.contains(pattern_for_time_signature) & starting_df.iloc[:,0].str.contains(pattern_for_time_signature2) 
+        for i in range(len(first_occurrence_time)):
+            if first_occurrence_time.iloc[i] == True:
                 
-                global_time_signature = starting_df["Contrabass"].iloc[i].replace(
+                global_time_signature = starting_df.iloc[i, 0].replace(
                     '*M', "")
         
                 global_time_signature = global_time_signature.split('/')
@@ -242,10 +247,12 @@ def kern2csv4player_converter(file, data):
         
                 self.measure['Blank'] = self.df_measure_grid
                 self.measure_tempo = global_tempo # find_measure_tempo(self.measure)
-                self.measure_style = find_measure_style(self.measure)
+                self.measure_style = [global_style, False] # find_measure_style(self.measure)
         
+                # self.measure_start_line = ["Bar~" + str(measure_count) +
+                #                         "@" + str(measure_count * int(global_time_signature[0])), self.measure_style[0], str(global_time_signature[0]) + "/" +str(global_time_signature[1]), "A", self.measure_tempo[0]]
                 self.measure_start_line = ["Bar~" + str(measure_count) +
-                                        "@" + str(measure_count * int(global_time_signature[0])), self.measure_style[0], str(global_time_signature[0]) + "/" +str(global_time_signature[1]), "A", self.measure_tempo[0]]
+                                       "@" + str(measure_count * int(global_time_signature[0])), self.measure_style[0], str(global_time_signature[0]) + "/" +str(global_time_signature[1]), "A", self.measure_tempo]
             
                 self.measure_player_grid = []
                 self.measure_player_grid.append(self.measure_start_line)

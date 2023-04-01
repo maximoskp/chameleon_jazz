@@ -51,8 +51,10 @@ def get_sending_kern():
         # print('text position:', columnsplit[column-1])
         if reharmonize == 'true':
             # newchord = 'Dm'
-            before_str = kcv.kern2string( StringIO(kernfile) )
-            chord_idx = 1
+            before_str, chord_idx = kcv.kern2string( StringIO(kernfile), find_chord_in_line=line )
+            print('chord_idx: ', chord_idx)
+            if chord_idx == -1:
+                chord_idx = 0
             print('before_str:', before_str, file=f)
             mod_piece = rhf.substitute_chord_by_string( before_str, chord_idx )
             mod_string = mod_piece['string']
@@ -88,7 +90,7 @@ def get_sending_kern():
         linesplit[line-1] = newline
         newkern = '\n'.join(linesplit)
         print('newkern:', newkern, file=f)
-        new_gjt_string = kcv.kern2string( StringIO(newkern) )
+        new_gjt_string, _ = kcv.kern2string( StringIO(newkern) )
         print('new_gjt_string:', new_gjt_string, file=f)
         # http://helen.mus.auth.gr:5000/get_csv_from_string?string=new_gjt_string
         response = requests.get("http://helen.mus.auth.gr:5000/get_csv_from_string?string=" + quote(new_gjt_string))

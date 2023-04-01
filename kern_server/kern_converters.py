@@ -14,6 +14,7 @@ import chardet
 import sys
 import os
 from tabulate import tabulate
+import numpy as np
 
 original_stdout = sys.stdout
 
@@ -36,6 +37,14 @@ def kern2py(file_name):
             'Piano-F-Clef', 'empty', 'Piano-G-Clef', 'Chords']
     # df = pd.read_csv("kern/A_BEAUTIFUL_FRIENDSHIP_2.krn", sep='\t', names=names)
     df = pd.read_csv(file_name, sep='\t', names=names)
+
+    # find time signature TODO: find time signature by bar
+    initial_time_signature = '4/4'
+    starMdf = df[ np.logical_and( df.iloc[:,0].str.contains('\*M') , ~df.iloc[:,0].str.contains('\*MM') ) ]
+    if starMdf.size > 0:
+        starMdf = df[ np.logical_and( df.iloc[:,0].str.contains('\*M') , ~df.iloc[:,0].str.contains('\*MM') ) ]
+        initial_time_signature = starMdf.iloc[0,0].replace('*M', '')
+        print('initial_time_signature:', initial_time_signature )
 
     # find where each measure starts based on "=" symbol
     df_measure_start = df.loc[df['Bass'].str.contains("=")]
@@ -98,7 +107,6 @@ def kern2py(file_name):
         measures_copy_last_column.append(
             df.iloc[df_measure_start.iloc[i].name:df_measure_start.iloc[(i+1)].name, -1])
         measures_copy_last_column[i] = measures_copy_last_column[i].iloc[1:]
-
     # create deep copy
     measures_copy = []
     measures_copy = copy.deepcopy(measures)
@@ -136,7 +144,7 @@ def kern2py(file_name):
                         measures_copy[i] = measures_copy[i].replace(
                             measures_copy[i].iloc[y, x], 0)
 
-    # sum all column, find the lowest, assign it to a list, keep only the values that carries a chard an append it to chart variable
+    # sum all column, find the lowest, assign it to a list, keep only the values that carries a chord an append it to chart variable
     dfcumsum = []
     measures_chart_ready = []
     measures_chart_ready_for_gjt = []
@@ -149,7 +157,6 @@ def kern2py(file_name):
 
 
     measures_chart_ready[0].iloc[0, 1] = "*"
-
     measures_chart_ready_for_gjt = copy.deepcopy(measures_chart_ready)
     # print("measures_chart_ready:", measures_chart_ready)
     # print("measures_chart_ready_for_gjt:", measures_chart_ready_for_gjt)
@@ -164,7 +171,7 @@ def kern2py(file_name):
     #chart["title"] = title
     chart["style"] = style
     chart["tempo"] = tempo
-    return chart
+    return chart, initial_time_signature
 # end kern2py
 
 def kern2pyOld(file_name):
@@ -294,21 +301,31 @@ def kern2pyOld(file_name):
     return chart
 # end kern2py
 
-def kern2string(file_name):
-    p = kern2py(file_name)
+def kern2string(file_name, find_chord_in_line=None):
+    p, initial_time_signature = kern2py(file_name)
     # print('p: ', p)
     string = 'section~A'
     string += ',style~' + p['style']
     string += ',tempo~' + p['tempo']
     string += ',tonality~' + 'C' # TODO: tonality
+    # get the index of the chord to be substituted
+    chord_idx = -1
+    chord_found = False
     for b in p['bars']:
-        # print('b:', b)
-        string += ',bar~' + '4/4' # TODO: time sig
+        print('b:')
+        print(b)
+        string += ',bar~' + initial_time_signature # TODO: time sig
         for i in range(b.shape[0]):
             t = str( b.iloc[i][0] )
             c = b.iloc[i]['Chords'] # TODO: translate to GJT chord
             # it appears that there is always a space between root and type
-            print('c:', c)
+            print('b.iloc[i].name', b.iloc[i].name)
+            if (find_chord_in_line is not None) and (chord_found == False):
+                print('increasing chord_idx: ', chord_idx)
+                chord_idx += 1
+                if abs( find_chord_in_line - b.iloc[i].name ) < 2:
+                    print('FOUND chord_idx: ', chord_idx)
+                    chord_found = True
             chord_split = c.split(' ')
             acc_chord = chord_split[0]
             if len(acc_chord) > 1:
@@ -322,7 +339,7 @@ def kern2string(file_name):
                 string += ',chord~' + acc_chord + '@' + t
             # string += ',chord~' + c + '@' + t
     string += ',end'
-    return string
+    return string, chord_idx
 
 def csv2kern(filename):
     names = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
@@ -371,9 +388,12 @@ def csv2kern(filename):
     global_tonality = df.columns[0]
     kern_song_title_part_1 = "!!!system-decoration: \\{(s1,s2)\\}s3,s4\\" + "\n" + "!!!OTL: " + song_title + "\n" + \
         "**kern	**kern	**kern	**kern	**mxhm\n*part3	*part2	*part1	*part1	*part1\n*staff4	*staff3	*staff2	*staff1	*\n*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*\n*I'Cb.	*I'D. Set	*I'Pno.	*	*\n*clefF4	*clefX	*clefF4	*clefG2	*\n*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*"
-    kern_song_top_altered = "*"+global_tonality+": 	*"+global_tonality+":	*"+global_tonality+":	*"+global_tonality+":	*" + \
-        global_tonality+":\n*M"+global_rhythm[0]+"/4	*M"+global_rhythm[0] + \
-        "/4	*M"+global_rhythm[0]+"/4	*M"+global_rhythm[0]+"/4	*"
+    kern_song_top_altered = "*"+global_tonality+":\t"+"*"+global_tonality+":\t"+"*"+global_tonality+":\t"+"*"+global_tonality+":\t*" + \
+        global_tonality+":\n*M"+global_rhythm[0]+"/4\t*M"+global_rhythm[0] + \
+        "/4\t*M"+global_rhythm[0]+"/4\t*M"+global_rhythm[0]+"/4\t*"+ "\n*MM"+global_tempo.split('.')[0]+"\t*MM"+global_tempo.split('.')[0] + "\t*MM"+global_tempo.split('.')[0]+"\t*MM"+ global_tempo.split('.')[0]+"\t*" + "\n*SS"+global_style+"\t*SS"+global_style + "\t*SS"+global_style+"\t*SS"+ global_style +"\t*"
+    # kern_song_top_altered = "*"+global_tonality+": 	*"+global_tonality+":	*"+global_tonality+":	*"+global_tonality+":	*" + \
+    #     global_tonality+":\n*M"+global_rhythm[0]+"/4	*M"+global_rhythm[0] + \
+    #     "/4	*M"+global_rhythm[0]+"/4	*M"+global_rhythm[0]+"/4	*"
     kern_song_first_measure = "=1	=1	=1	=1	=1\n*	*^	*^	*	*"
 
     kern_song_title_part = kern_song_title_part_1 + "\n" + \
@@ -614,7 +634,7 @@ def csv2kern(filename):
     def set_measure_tempo(measure):
         m = ["", True]
         m[0] = measure.iloc[0, 4]
-        if m[0] != global_tempo:
+        if m[0] != float(global_tempo):
             m[1] = True
         else:
             m[1] = False
@@ -957,10 +977,17 @@ def csv2kern(filename):
                     df_measureending = pd.concat(
                         [df_measurebegining_part_one, df_measurebegining_part_two])
             if measure_count == 0:
+                df_measurebegining_part_two = pd.DataFrame(
+                    [["*", "*head:regular", "*head:x", "*", "*", "*", "*"]], columns=names_grid)
+                self.tempo_change = pd.concat([df_measurebegining_part_two,self.tempo_change])
                 self.kern_grid_merge = pd.concat(
                     [self.style_change, self.kern_grid_merge])
                 self.kern_grid_merge = pd.concat(
                     [self.tempo_change, self.kern_grid_merge])
+                # self.kern_grid_merge = pd.concat(
+                #     [self.style_change, self.kern_grid_merge])
+                # self.kern_grid_merge = pd.concat(
+                #     [self.tempo_change, self.kern_grid_merge])
             if not measure_count == 0:
                 self.kern_grid_merge = pd.concat(
                     [df_measureending, self.kern_grid_merge])
@@ -993,6 +1020,6 @@ def csv2kern(filename):
     # return kern_song_title_part + '\n' + '\n' + trackending
     # out_string = tabulate( df_proto, showindex=False )
     # out_string = df_proto.to_string(index=False, justify='left')
-    out_string = df_proto.to_csv(index=False, header=True, sep='\t')
+    out_string = df_proto.to_csv(index=False, header=False, sep='\t')
     print('out_string: ', out_string)
     return kern_song_title_part + '\n' + out_string + '\n' + trackending

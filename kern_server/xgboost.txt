@@ -7,6 +7,509 @@
 *I'Cb.	*I'D. Set	*I'Pno.	*	*
 *clefF4	*clefX	*clefF4	*clefG2	*
 *k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C:	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+*MM120	*MM120	*MM120	*MM120	*
+*SSSwing	*SSSwing	*SSSwing	*SSSwing	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C:	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+*MM170	*MM170	*MM170	*MM170	*
+*SSSwing	*SSSwing	*SSSwing	*SSSwing	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C:	*C:	*C:	*C:	*C:
+*M3/4	*M3/4	*M3/4	*M3/4	*
+*MM120	*MM120	*MM120	*MM120	*
+*SSSwing	*SSSwing	*SSSwing	*SSSwing	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C:	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+*MM140	*MM140	*MM140	*MM140	*
+*SSSwing	*SSSwing	*SSSwing	*SSSwing	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C:	*C:	*C:	*C:	*C:
+*M3/4	*M3/4	*M3/4	*M3/4	*
+*MM120	*MM120	*MM120	*MM120	*
+*SSSwing	*SSSwing	*SSSwing	*SSSwing	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C:	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+*MM140	*MM140	*MM140	*MM140	*
+*SSSwing	*SSSwing	*SSSwing	*SSSwing	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C:	*C:	*C:	*C:	*C:
+*M3/4	*M3/4	*M3/4	*M3/4	*
+*MM120	*MM120.000000	*MM120.000000	*MM120.000000	*
+*SSSwing	*SSSwing	*SSSwing	*SSSwing	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C:	*C:	*C:	*C:	*C:
+*M3/4	*M3/4	*M3/4	*M3/4	*
+*MM120.000000	*MM120.000000	*MM120.000000	*MM120.000000	*
+*SSSwing	*SSSwing	*SSSwing	*SSSwing	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	C:	C:	C:	C:
+*M3/4	*M3/4	*M3/4	*M3/4	
+*MM120.000000	*MM120.000000	*MM120.000000	*MM120.000000	
+*SSSwing	*SSSwing	*SSSwing	*SSSwing	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	C:	C:	C:	C:
+*M3/4	*M3/4	*M3/4*	M3/4	
+*MM120.000000	MM120.000000	MM120.000000	MM120.000000	
+*SSSwing	SSSwing	SSSwing	SSSwing	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	C:	C:	C:	C:
+*M3/4	*M3/4	M3/4	M3/4	
+*MM120.000000	MM120.000000	MM120.000000	MM120.000000	
+*SSSwing	SSSwing	SSSwing	SSSwing	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M3/4	*M3/4	*M3/4	*M3/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M3/4	*M3/4	*M3/4	*M3/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M3/4	*M3/4	*M3/4	*M3/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M3/4	*M3/4	*M3/4	*M3/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M3/4	*M3/4	*M3/4	*M3/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
+*C: 	*C:	*C:	*C:	*C:
+*M4/4	*M4/4	*M4/4	*M4/4	*
+=1	=1	=1	=1	=1
+*	*^	*^	*	*
+!!!system-decoration: \{(s1,s2)\}s3,s4\
+!!!OTL: test
+**kern	**kern	**kern	**kern	**mxhm
+*part3	*part2	*part1	*part1	*part1
+*staff4	*staff3	*staff2	*staff1	*
+*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*
+*I'Cb.	*I'D. Set	*I'Pno.	*	*
+*clefF4	*clefX	*clefF4	*clefG2	*
+*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*
 *C: 	*C:	*C:	*C:	*C:
 *M4/4	*M4/4	*M4/4	*M4/4	*
 =1	=1	=1	=1	=1
@@ -6628,5 +7131,9042 @@
 .	.	16ree	.	.	.	.
 .	.	.	.	.	.	.
 8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+6CC	4re	12Ree/	4r	1ryy	4r	C 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	12Rf\	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4EE	4re	12Ree/	4r	1ryy	4r	C 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4C	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	12Ree/	4G	.	4c e g	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4FF	12Rf\	12Ree/	4r	1ryy	4r	B& v
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6AAA#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	12G#	.	12d# f b	.
+.	.	16ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4FFF	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4EEE	4re	12Ree/	4r	1ryy	4r	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	12G# B	.	12e b	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8BBB	4re	16Ree/	4G# B	.	4e b	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4CC	4re	12Ree/	4r	1ryy	4r	C 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4r	4re	12Ree/	4r	1ryy	4r	C 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	12G	.	12c e g	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4EE	4re	12Ree/	4G	.	4c e cc gg ccc	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+8.CC	4re	12Ree/	4r	1ryy	4r	A& n
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4GGG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF	12Rf\	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4EEE	4re	12Ree/	4r	1ryy	4r	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	12Ree/	12G# B	.	12e b	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8BBB	4re	4ree	4G#	.	4e b ee bb	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8EEE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4CC	12Rf\	12Ree/	4C E G	1ryy	4c	C 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4EEE	12Rf\	12Ree/	4G	1ryy	4c e g	C 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	12Rf\	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4FF#	12Rf\	12Ree/	8.A#	1ryy	8.f g# dd#	G& e
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	16r	.	16r	.
+4CC#	4re	12Ree/	8.F A#	.	8.d# g#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	16r	.	16r	.
+4FFF#	4re	12Ree/	8.F A#	.	8.d# g#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	16r	.	16r	.
+4CC#	4re	12Ree/	8.A#	.	8.f g# dd#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	16r	.	16r	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4BBB	12Rf\	12Ree/	6E G# B	1ryy	6e	E 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4GGG#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8EEE	4re	16Ree/	4E G# B	.	4e	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+6C	4re	16Ree/	12G	1ryy	12c e cc gg ccc	C 
+.	.	16ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	8ree	.	.	.	.
+12r	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4GG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4CC	4re	16Ree/	4r	1ryy	4r	C 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4EEE	4re	16Ree/	6C E G	.	6c	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4DD	4re	16Ree/	4r	1ryy	4r	A& X
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6GGG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4BBB	4re	16Ree/	6E G# B	1ryy	6e	E 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4EE	4re	16Ree/	4E G# B	.	4e	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8EE	4re	16Ree/	4E G# B	.	4e	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8EE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4CC	4re	12Ree/	4r	1ryy	4r	C 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6GGG	4re	12Ree/	4G	.	4c e cc gg ccc	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4CC	4re	12Ree/	4r	1ryy	4r	C 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	12Ree/	6G	.	6c e cc gg ccc	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8.CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+8BBB	4re	12Ree/	4r	1ryy	4r	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.EE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4BBB	4re	12Ree/	4G# B	.	4e b	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4EEE	4re	12Ree/	4r	1ryy	4r	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	12Ree/	4G# B	.	4e b	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8BBB	4re	4ree	4E G# B	.	4e	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8EEE	16Rf\	16Ree/	4r	.	4r	.
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4CC	4re	16Ree/	4r	1ryy	4r	C 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	16Ree/	4G	.	4c e cc gg ccc	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4CC	4re	16Ree/	4r	1ryy	4r	C 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	6E G	.	6c g	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4EEE	4re	16Ree/	4r	1ryy	4r	E 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	16Rf\	16Ree/	4E G# B	.	4e	.
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4EE	4re	16Ree/	4r	1ryy	4r	E 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AA#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8BB	4re	16Ree/	4E G# B	.	4e	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8EE	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+6CC	4re	16Ree/	4G	1ryy	4c e g	C 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4G	.	4c e g	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4EE	4re	16Ree/	4C E G	1ryy	4c	C 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4c e g cc	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4BBB	4re	16Ree/	4G# B	1ryy	4e b	E 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6EE	16Rcc\	16Ree/	4r	.	4r	.
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	16Ree/	4G# B	.	4e b	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4BBB	4re	16Ree/	4G#	1ryy	4e b ee bb	E 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8EE	4re	16Ree/	4G#	.	4e b ee bb	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8BB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4CC	4re	12Ree/	6C E G	1ryy	6c	C 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	6C E G	.	6c	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+6EE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4EEE	4re	12Ree/	4r	1ryy	4r	C 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4C E G	.	4c	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+8.EE	4re	12Ree/	4G# B	1ryy	4e b	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4BBB	4re	12Ree/	4r	1ryy	4r	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EEE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8EEE	4re	16Ree/	4G# B	.	4e b	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8GGG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+6CC	12Rf\	12Ree/	4r	1ryy	4r	C 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4G	.	4c e cc gg ccc	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4EEE	4re	12Ree/	4r	1ryy	4r	C 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4E G	.	4c g	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4EE	4re	12Ree/	4r	1ryy	4r	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4G#	.	4e b ee bb	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4BBB	4re	12Ree/	4G#	1ryy	4e b ee bb	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8EEE	4re	4ree	4G#	.	4e b ee bb	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4CC	16Rf\	16Ree/	4C E G	1ryy	4c	C 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8.GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+6GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4CC	16Rf\	16Ree/	4r	1ryy	4r	C 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	16Ree/	4r	.	6c e g cc	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	12r	.
+.	.	.	.	.	.	.
+8.CC	16Rf\	16Ree/	4r	.	4r	.
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+8BBB	16Rf\	16Ree/	4r	1ryy	4r	E 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	6E G# B	.	6e	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4FFF	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+4EEE	4re	16Ree/	6G#	1ryy	6e b ee bb	E 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4AAA#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8BBB	4re	16Ree/	4G# B	.	4e b	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8EE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+6CC	4re	16Ree/	4G	1ryy	4c e cc gg ccc	C 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8.CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+8EEE	4re	16Ree/	6E G	1ryy	6c g	C 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	6E G	.	6c g	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+6GG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4EE	4re	16Ree/	4r	1ryy	4r	E 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	16Ree/	4E G# B	.	4e	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	16Ree/	4E G# B	1ryy	4e	E 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FFF	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8EEE	4re	4ree	4G#	.	4e b ee bb	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8BBB	16Rf\	16Ree/	4r	.	4r	.
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+6CC	4re	12Ree/	4r	1ryy	4r	C 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.GGG	4re	12Ree/	4E G	.	4c g	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+8CC	4re	12Ree/	4r	1ryy	4r	C 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	12Ree/	6C E G	.	6c	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+6CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4EEE	4re	12Ree/	4E G# B	1ryy	4e	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4EEE	4re	12Ree/	4r	1ryy	4r	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	12Ree/	6E G# B	.	6e	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8BBB	4re	4ree	4E G# B	.	4e	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8GGG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4CC	12Rf\	12Ree/	4r	1ryy	4r	C 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.EE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+6GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4C	4re	12Ree/	4r	1ryy	4r	C 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.CC	4re	12Ree/	4C E G	.	4c	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+8BBB	4re	12Ree/	4r	1ryy	4r	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	12Ree/	12G#	.	12e b ee bb	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	12Ree/	4r	1ryy	4r	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	12Ree/	12G#	.	12e b ee bb	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8EEE	4re	4ree	4G# B	.	4e b	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	16Rf\	16Ree/	4r	.	4r	.
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+6CC	12Rf\	12Ree/	4G	1ryy	4c e cc gg ccc	C 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.BB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4C	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4G	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+8EE	4re	12Ree/	4r	1ryy	4r	C 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4G	.	4c e cc gg ccc	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	6G	.	6c e cc gg ccc	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+6GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4EEE	4re	12Ree/	4E G# B	1ryy	4e	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EEE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4EEE	4re	12Ree/	4r	1ryy	4r	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	6E G# B	.	6e	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8BBB	4re	16Ree/	4E G# B	.	4e	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8GGG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+6CC	12Rf\	12Ree/	4C E G	1ryy	4c	C 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4C	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4C	4re	12Ree/	4r	1ryy	4r	C 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4G	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	12Ree/	6G	.	6c e g	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	12Ree/	4r	1ryy	4r	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6GGG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	12Ree/	6E G# B	.	6e	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	12Ree/	6E G# B	1ryy	6e	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4GGG#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8EEE	4re	16Ree/	4E G# B	.	4e	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8BBB	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4CC	4re	16Ree/	4r	1ryy	4r	C 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4EEE	4re	16Ree/	4r	1ryy	4r	C 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8GGG	4re	16Ree/	4G	.	4c e g	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+8.EE	4re	16Ree/	4r	1ryy	4r	E 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+4BB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BB	4re	16Ree/	12G# B	.	12e b	.
+.	.	16ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4FF	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4EE	4re	16Ree/	4r	1ryy	4r	E 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	12E G# B	.	12e	.
+.	.	16ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+8BBB	4re	4ree	4E G# B	.	4e	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8GGG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4CC	16Rf\	16Ree/	4r	1ryy	4r	C 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8.CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+6CC	4re	16Ree/	4G	.	4c e g	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4CC	16Rf\	16Ree/	4r	1ryy	4r	C 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4EEE	4re	16Ree/	6E G	.	6c g	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+8.AAA#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+8BBB	16Rcc\	4ree	4r	1ryy	4r	E 
+.	16re	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	8re	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GG#	4re	16Ree/	4E G# B	.	4e	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4BB	4re	16Ree/	4r	1ryy	4r	E 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4E	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8EE	4re	16Ree/	4G# B	.	4e b	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8GG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4C	16Rf\	16Ree/	4G	1ryy	4c e g	C 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4CC	4re	16Ree/	4r	1ryy	4r	C 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	16Ree/	4G	.	4c e g	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4EEE	4re	16Ree/	6C E G	.	6c	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4AAA#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	16Ree/	4G#	1ryy	4e b ee bb	E 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	16Ree/	4r	1ryy	4r	E 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	6G#	.	6e b ee bb	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+8EE	4re	16Ree/	4G#	.	4e b ee bb	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4CC	12Rf\	12Ree/	4r	1ryy	4r	C 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4EEE	12Rf\	12Ree/	4r	1ryy	4r	C 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	12G	.	12c e g	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4CC	12Rf\	12Ree/	4G	.	4c e g	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+8EEE	12Rf\	12Ree/	4r	1ryy	4r	E 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4EE	12Rf\	12Ree/	4r	1ryy	4r	E 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BB	4re	12Ree/	12G#	.	12e b ee bb	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8EEE	4re	16Ree/	4G#	.	4e b ee bb	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8GGG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=120.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4BBB	4re	12Ree/	4D# F# B	1ryy	4f#	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6BBB	12Rf\	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4GG	4re	12Ree/	4E G B	1ryy	4e	E a
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.EEE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+8BBB	4re	4ree	8.G B	1ryy	8.e b ee bb	E a
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	16r	.	16r	.
+8.GGG#	4re	12Ree/	8.G B	.	8.e b ee bb	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	16r	.	16r	.
+4GGG	4re	12Ree/	8.E G B	.	8.e	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	16r	.	16r	.
+4BBB	4re	16Ree/	8.E G B	.	8.e	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	16r	.	16r	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	12Ree/	6G B	1ryy	6e b	E a
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8EE	4re	4ree	4G B	.	4e b	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4CC	4re	12Ree/	4r	1ryy	4r	C 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4C E G	.	4c	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4r	4re	12Ree/	4r	1ryy	4r	C 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EEE	4re	12Ree/	6E G	.	6c g	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+8.BBB	4re	12Ree/	4r	1ryy	4r	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4EE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG#	4re	12Ree/	4E G# B	.	4e	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4EEE	4re	16Ree/	4r	1ryy	4r	E 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	12Rf\	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+8BBB	4re	16Ree/	4G#	.	4e b ee bb	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	16Rf\	16Ree/	4r	.	4r	.
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=120.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4BBB	16Rf\	16Ree/	4F# B	1ryy	4d# b ff# bb	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	16Ree/	4F# B	.	4d# b ff# bb	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4EE	16Rf\	16Ree/	4G B	1ryy	4e b ee bb	E a
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6BBB	4re	16Ree/	4G B	.	4e b ee bb	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	16Rf\	4ree	4r	.	4r	.
+.	16re	.	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4GGG	4re	16Ree/	4G B	1ryy	4e b ee bb	E a
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4E G B	.	4e	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4BBB	16Rf\	16Ree/	4G B	1ryy	4e b	E a
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8EEE	4re	4ree	4E G B	.	4e	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=120.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4BBB	16Rf\	16Ree/	4F# B	1ryy	4d# b ff# bb	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4F# B	.	4d# b ff# bb	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4EE	16Rf\	16Ree/	4G B	1ryy	4e b ee bb	E a
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6BBB	4re	16Ree/	4G B	.	4e b ee bb	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	16Rf\	4ree	4r	.	4r	.
+.	16re	.	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4BB	4re	16Ree/	4G B	1ryy	4e b ee bb	E a
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GG#	4re	16Ree/	4G B	.	4e b	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4GG	16Rf\	16Ree/	4E G B	1ryy	4e	E a
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8GG	4re	4ree	4G B	.	4e b	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8BB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=120.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4BB	16Rf\	16Ree/	4F# B	1ryy	4d# b ff# bb	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GG	16Rf\	4ree	4r	.	4r	.
+.	16re	.	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4r	4re	16Ree/	4r	1ryy	4r	C 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4C	4re	16Ree/	6C E G	.	6c	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4EE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4DD#	16Rf\	16Ree/	6B	1ryy	6d# f# b	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	16Rf\	4ree	4r	.	4r	.
+.	16re	.	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4r	4re	16Ree/	4r	1ryy	4r	E a
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8GGG	4re	16Ree/	4G B	.	4e b ee bb	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=120.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+6BBB	16Rf\	16Ree/	4F# B	1ryy	4d# b ff# bb	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4F# B	.	4d# f#	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4CC	16Rf\	16Ree/	4C E G	1ryy	4c	C 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6EE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	16Ree/	4G	.	4c e g	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4FFF#	16Rf\	16Ree/	4F# B	1ryy	4d# f#	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4F# B	.	4d# b ff# bb	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	16Ree/	4G B	1ryy	4e b ee bb	E a
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8BBB	4re	4ree	4G B	.	4e b	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+!	!	!	!	!	!LO:TX:a:t=[quarter]=120.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4BBB	16Rf\	16Ree/	4F# B	1ryy	4d# f#	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	16Rf\	4ree	4r	.	4r	.
+.	16re	.	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4r	4re	16Ree/	4r	1ryy	4r	C 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4DD#	16Rf\	16Ree/	6D# F# B	1ryy	6f#	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4GGG	4re	16Ree/	4G B	1ryy	4e b ee bb	E a
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8GGG	4re	4ree	4E G B	.	4e	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8GGG	16Rf\	16Ree/	4r	.	4r	.
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=120.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4BBB	16Rf\	16Ree/	4D# F# B	1ryy	4f#	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4EEE	16Rf\	4ree	4r	.	4r	.
+.	16re	.	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4r	4re	16Ree/	4r	1ryy	4r	E a
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4DD#	16Rf\	16Ree/	6F# B	1ryy	6d# f#	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4AA	16Rf\	16Ree/	4G	1ryy	4c d# a dd	A Y
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8C	4re	4ree	4G	.	4c d# a dd	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8DD#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=120.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+6BB	16Rf\	16Ree/	4F# B	1ryy	4d# b ff# bb	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4GG	16Rf\	16Ree/	4r	1ryy	4r	C 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6C	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4DD#	16Rf\	16Ree/	6B	1ryy	6d# f# b	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4GGG	16Rf\	16Ree/	4G B	1ryy	4e b	E a
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8GGG	4re	4ree	4G B	.	4e b ee bb	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=120.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4BBB	16Rf\	16Ree/	12F# B	1ryy	12d# b ff# bb	B 
+.	16re	16ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	8re	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+6FFF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4GGG	16Rf\	16Ree/	4r	1ryy	4r	C 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4DD#	16Rf\	16Ree/	6B	1ryy	6d# f# b	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GG	16Rf\	4ree	4r	.	4r	.
+.	16re	.	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4r	4re	16Ree/	4r	1ryy	4r	E a
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8BB	4re	4ree	4G B	.	4e b ee bb	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8GG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=120.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4BBB	16Rf\	16Ree/	6F# B	1ryy	6d# b ff# bb	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4GG	16Rf\	16Ree/	4r	1ryy	4r	C 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4FFF#	16Rf\	16Ree/	4r	1ryy	4r	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	16Ree/	6G B	1ryy	6e b ee bb	E a
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+8EEE	4re	16Ree/	4E G B	.	4e	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8EE	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=120.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4BBB	16Rf\	16Ree/	4D# F# B	1ryy	4f#	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4D# F# B	.	4f#	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4GGG	16Rf\	16Ree/	4C E G	1ryy	4c	C 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4G	.	4c e g	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4DD#	16Rf\	16Ree/	4D# F# B	1ryy	4f#	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4D# F# B	.	4f#	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4GG	16Rf\	16Ree/	4E G B	1ryy	4e	E a
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8BB	4re	16Ree/	4E G B	.	4e	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8EE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4CC	4re	16Ree/	4r	1ryy	4r	C 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	16Rf\	16Ree/	4G	.	4c e g	.
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4DD	4re	16Ree/	4r	1ryy	4r	D W
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF	4re	16Ree/	6C F G#	.	6d	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4GG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	16Ree/	4r	1ryy	4r	B >
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	16Ree/	4D B	.	4f b ff	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4EEE	4re	16Ree/	4r	1ryy	4r	E 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	16Rf\	16Ree/	4r	.	4r	.
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8BBB	4re	16Ree/	4G#	.	4e b ee bb	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=120.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4BBB	16Rf\	16Ree/	4F# B	1ryy	4d# b ff# bb	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4GGG	16Rf\	16Ree/	4r	1ryy	4r	C 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	6E G	.	6c g	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4DD#	16Rf\	16Ree/	6D# F# B	1ryy	6f#	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4GG	16Rf\	16Ree/	4r	1ryy	4r	E a
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8BB	4re	4ree	4G B	.	4e b	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8BB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=140.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+6CC	12Rf\	12Ree/	6C E G	1ryy	6c	C 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	12re	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	6C E G	.	6c	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4FF	4re	12Ree/	4r	1ryy	4r	C w
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	16Ree/	4A#	.	4f g# dd	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FFF	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	12Ree/	4D B	1ryy	4f b ff	B >
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6FFF	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	12Ree/	4r	1ryy	4r	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EEE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8EE	4re	4ree	4G# B	.	4e b	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=120.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4BBB	16Rf\	16Ree/	4F# B	1ryy	4d# f#	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4GGG	16Rf\	16Ree/	4C E G	1ryy	4c	C 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+4DD#	16Rf\	16Ree/	4B	1ryy	4d# f# b	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4GG	16Rf\	16Ree/	4r	1ryy	4r	E a
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8EE	4re	4ree	4G B	.	4e b ee bb	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8GG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=170.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4BBB	4re	12Ree/	4r	1ryy	4r	B k
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4CC	4re	12Ree/	4r	1ryy	4r	C i
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	12Ree/	6D# A#	.	6d f	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8FF	4re	12Ree/	4D# A#	.	4d f	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+8.CC	4re	12Ree/	4r	1ryy	4r	F U
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4CC#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	12Ree/	4D# A	.	4c# f	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4CC	4re	12Ree/	4r	1ryy	4r	B k
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	12D# B	.	12g# b gg#	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4CC	12Rf\	12Ree/	6D# B	.	6f# g# b	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+6EE	4re	16Ree/	4D# B	.	4f# g# b	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=5	=5	=5	=5	=5	=5	=5
+*	*head:regular	*head:x	*	*	*	*
+4EE	12Rf\	12Ree/	12C E G	1ryy	12c	C 
+.	.	.	.	.	.	.
+.	12re	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	12re	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8.BB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+6C	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4D	4re	16Ree/	4r	.	4r	D W
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=6	=6	=6	=6	=6	=6	=6
+*	*head:regular	*head:x	*	*	*	*
+4GG	4re	12Ree/	6D# A#	1ryy	6d f cc ff	C i
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+=7	=7	=7	=7	=7	=7	=7
+*	*head:regular	*head:x	*	*	*	*
+8FFF	4re	12Ree/	4r	1ryy	4r	A+ c
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	F U
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=8	=8	=8	=8	=8	=8	=8
+*	*head:regular	*head:x	*	*	*	*
+4CC	4re	12Ree/	6D# B	1ryy	6g# b gg#	B k
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	B >
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF	4re	16Ree/	6D# A	.	6c f	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+=9	=9	=9	=9	=9	=9	=9
+*	*head:regular	*head:x	*	*	*	*
+4CC	4re	12Ree/	4r	1ryy	4r	B k
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4D# B	.	4g# b gg#	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6FF	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=10	=10	=10	=10	=10	=10	=10
+*	*head:regular	*head:x	*	*	*	*
+4CC	4re	12Ree/	4r	1ryy	4r	C i
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4D# A#	.	4d f cc ff	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.AAA#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+=11	=11	=11	=11	=11	=11	=11
+*	*head:regular	*head:x	*	*	*	*
+8.DD#	4re	12Ree/	4r	1ryy	4r	C i
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8FF#	4re	12Ree/	4A	.	4d# f b	B t
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=12	=12	=12	=12	=12	=12	=12
+*	*head:regular	*head:x	*	*	*	*
+4CC	4re	12Ree/	4D A#	1ryy	4f g a#	A+ k
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	B q
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=13	=13	=13	=13	=13	=13	=13
+*	*head:regular	*head:x	*	*	*	*
+4GGG#	4re	12Ree/	12G#	1ryy	12d# f# cc#	E e
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8.EEE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+6BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=14	=14	=14	=14	=14	=14	=14
+*	*head:regular	*head:x	*	*	*	*
+4FF#	4re	16Ree/	4r	1ryy	4r	B e
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4D#	4re	12Ree/	6D# G#	.	6c# f# a# ff#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8.C#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+=15	=15	=15	=15	=15	=15	=15
+*	*head:regular	*head:x	*	*	*	*
+8GG	12Rf\	12Ree/	4r	1ryy	4r	C i
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=16	=16	=16	=16	=16	=16	=16
+*	*head:regular	*head:x	*	*	*	*
+4CC	4re	12Ree/	6D# B	1ryy	6f# g# b	B k
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4D# B	.	4f# g# b	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	B q
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=17	=17	=17	=17	=17	=17	=17
+*	*head:regular	*head:x	*	*	*	*
+6EEE	4re	12Ree/	4r	1ryy	4r	E e
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.BBB	4re	12Ree/	4D# G#	.	4c# f#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4CC	12Rf\	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=18	=18	=18	=18	=18	=18	=18
+*	*head:regular	*head:x	*	*	*	*
+8FF#	4re	12Ree/	4r	1ryy	4r	B e
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	12Ree/	6F B	.	6d g#	D 8
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+6BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=19	=19	=19	=19	=19	=19	=19
+*	*head:regular	*head:x	*	*	*	*
+4CC	12Rf\	12Ree/	4D# A#	1ryy	4d g	C h
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF	4re	16Ree/	4r	.	4r	F U
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=20	=20	=20	=20	=20	=20	=20
+*	*head:regular	*head:x	*	*	*	*
+4CC	4re	12Ree/	4r	1ryy	4r	B k
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	6D# B	.	6f# g# b	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	6D# B	.	6f# g# b	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=21	=21	=21	=21	=21	=21	=21
+*	*head:regular	*head:x	*	*	*	*
+4CC	12Rf\	12Ree/	4D# B	1ryy	4f# g# b	B k
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6FF	12Rf\	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+=22	=22	=22	=22	=22	=22	=22
+*	*head:regular	*head:x	*	*	*	*
+4FFF	4re	12Ree/	4r	1ryy	4r	A+ 6
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	6D# A	.	6c g cc gg	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8FFF	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=23	=23	=23	=23	=23	=23	=23
+*	*head:regular	*head:x	*	*	*	*
+8.FF	4re	12Ree/	4r	1ryy	4r	A+ 6
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4C#	4re	12Ree/	6D# A	.	6c# f cc ff	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4F	12Rf\	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+=24	=24	=24	=24	=24	=24	=24
+*	*head:regular	*head:x	*	*	*	*
+4GG	4re	12Ree/	6D# A#	1ryy	6d g cc gg	C h
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4C	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=25	=25	=25	=25	=25	=25	=25
+*	*head:regular	*head:x	*	*	*	*
+4FFF#	4re	16Ree/	4D# A	1ryy	4c# f#	B 9
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=26	=26	=26	=26	=26	=26	=26
+*	*head:regular	*head:x	*	*	*	*
+4FFF	4re	16Ree/	4r	1ryy	4r	A+ 6
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	16Ree/	4D A#	.	4g a# gg	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	6D# A	.	6f cc ff	F 7
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+8.FF	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+=27	=27	=27	=27	=27	=27	=27
+*	*head:regular	*head:x	*	*	*	*
+8GG	4re	16Ree/	4D# A#	1ryy	4d g cc gg	C h
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8.C	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+4FFF	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=28	=28	=28	=28	=28	=28	=28
+*	*head:regular	*head:x	*	*	*	*
+4DD#	4re	16Ree/	4r	1ryy	4r	B 6
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	6D B	.	6f b ff	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4FFF	4re	16Ree/	6D# A	.	6d g	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=29	=29	=29	=29	=29	=29	=29
+*	*head:regular	*head:x	*	*	*	*
+4DD#	12Rf\	12Ree/	12D# A#	1ryy	12d g	C h
+.	.	.	.	.	.	.
+.	12re	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	12re	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	B t
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=30	=30	=30	=30	=30	=30	=30
+*	*head:regular	*head:x	*	*	*	*
+4AAA#	4re	12Ree/	6D A#	1ryy	6f g a#	A+ 6
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4CC#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=31	=31	=31	=31	=31	=31	=31
+*	*head:regular	*head:x	*	*	*	*
+4AAA	4re	12Ree/	4r	1ryy	4r	F 9
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	12Ree/	4r	.	4r	F q
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=32	=32	=32	=32	=32	=32	=32
+*	*head:regular	*head:x	*	*	*	*
+4CC	4re	12Ree/	6D# B	1ryy	6f# g# b	B k
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF	4re	12Ree/	6A	.	6d# g b	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+=33	=33	=33	=33	=33	=33	=33
+*	*head:regular	*head:x	*	*	*	*
+6EE	4re	12Ree/	4r	1ryy	4r	E e
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.GG#	4re	12Ree/	4G#	.	4d# f# cc#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=34	=34	=34	=34	=34	=34	=34
+*	*head:regular	*head:x	*	*	*	*
+8FFF#	4re	12Ree/	4r	1ryy	4r	B d
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	6D# A#	.	6c# f#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+6AAA#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=35	=35	=35	=35	=35	=35	=35
+*	*head:regular	*head:x	*	*	*	*
+4GGG	4re	12Ree/	4D# A#	1ryy	4d f	C i
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=36	=36	=36	=36	=36	=36	=36
+*	*head:regular	*head:x	*	*	*	*
+4CC	12Rf\	12Ree/	4r	1ryy	4r	B k
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	12Ree/	6D# B	.	6g# b gg#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	6D# A B	.	6g	B q
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=37	=37	=37	=37	=37	=37	=37
+*	*head:regular	*head:x	*	*	*	*
+4BBB	12Rf\	12Ree/	4D# G# B	1ryy	4f#	E d
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.EE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+6CC	12Rf\	12Ree/	4r	.	4r	E Z
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=38	=38	=38	=38	=38	=38	=38
+*	*head:regular	*head:x	*	*	*	*
+4DD#	12Rf\	12Ree/	4D# A#	1ryy	4c# f#	B d
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GG#	4re	12Ree/	4r	.	4r	D 8
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.EE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+=39	=39	=39	=39	=39	=39	=39
+*	*head:regular	*head:x	*	*	*	*
+8DD#	4re	16Ree/	8.D# A#	1ryy	8.d g	C h
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	16r	.	16r	.
+4CC	4re	12Ree/	8.D# A#	.	8.d g	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	16r	.	16r	.
+4CC	4re	12Ree/	8.D# A	.	8.c g	F 9
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	16r	.	16r	.
+4CC	4re	12Ree/	8.D# A	.	8.c g	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	16r	.	16r	.
+=40	=40	=40	=40	=40	=40	=40
+*	*head:regular	*head:x	*	*	*	*
+4CC	4re	12Ree/	6D# B	1ryy	6f# g# b	B k
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=41	=41	=41	=41	=41	=41	=41
+*	*head:regular	*head:x	*	*	*	*
+6CC	12Rf\	12Ree/	6D# B	1ryy	6g# b gg#	B k
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	12re	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4GG#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4C	4re	12Ree/	6D# B	.	6f# g# b	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4GG#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=42	=42	=42	=42	=42	=42	=42
+*	*head:regular	*head:x	*	*	*	*
+4GG	12Rf\	12Ree/	4r	1ryy	4r	C i
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	12Ree/	4D# A#	.	4d f	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=43	=43	=43	=43	=43	=43	=43
+*	*head:regular	*head:x	*	*	*	*
+4FFF#	4re	12Ree/	4A	1ryy	4d# f# cc#	B 9
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=44	=44	=44	=44	=44	=44	=44
+*	*head:regular	*head:x	*	*	*	*
+4CC	4re	12Ree/	4r	1ryy	4r	B k
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF	4re	12Ree/	12D# B	.	12g# b gg#	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+=45	=45	=45	=45	=45	=45	=45
+*	*head:regular	*head:x	*	*	*	*
+4FF#	4re	12Ree/	4r	1ryy	4r	B e
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	4D# G#	.	4c# f# a# ff#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6AAA#	4re	12Ree/	4r	.	4r	A+ 6
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	F 7
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=46	=46	=46	=46	=46	=46	=46
+*	*head:regular	*head:x	*	*	*	*
+4AAA#	4re	12Ree/	4r	1ryy	4r	A+ c
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	6D# A	.	6c f	F 7
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=47	=47	=47	=47	=47	=47	=47
+*	*head:regular	*head:x	*	*	*	*
+8.CC	12Rf\	12Ree/	4r	1ryy	4r	C b
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AA	4re	12Ree/	4D# A	.	4f cc ff	F 7
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	12Rf\	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+=48	=48	=48	=48	=48	=48	=48
+*	*head:regular	*head:x	*	*	*	*
+4CC	4re	12Ree/	4r	1ryy	4r	B k
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	B W
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4D# A#	.	4d g	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=49	=49	=49	=49	=49	=49	=49
+*	*head:regular	*head:x	*	*	*	*
+4CC	4re	12Ree/	4D# B	1ryy	4g# b gg#	B k
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	12Rf\	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+6BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=50	=50	=50	=50	=50	=50	=50
+*	*head:regular	*head:x	*	*	*	*
+4GG	4re	12Ree/	4D# A#	1ryy	4d g	C h
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4D#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8G	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=51	=51	=51	=51	=51	=51	=51
+*	*head:regular	*head:x	*	*	*	*
+8.AA	12Rf\	12Ree/	8.D# A	1ryy	8.c g	F 9
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+16r	.	.	16r	.	16r	.
+4DD#	4re	12Ree/	8.D# A	.	8.c g	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	16r	.	16r	.
+4CC#	4re	16Ree/	8.D# A	.	8.c# f	F q
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	16r	.	16r	.
+4FF	4re	12Ree/	8.D# A	.	8.c# f cc ff	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	16r	.	16r	.
+=52	=52	=52	=52	=52	=52	=52
+*	*head:regular	*head:x	*	*	*	*
+4CC	4re	12Ree/	6D# B	1ryy	6f# g# b	B k
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	B q
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=53	=53	=53	=53	=53	=53	=53
+*	*head:regular	*head:x	*	*	*	*
+4GGG#	4re	12Ree/	4G#	1ryy	4d# f# b	E d
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6EE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=54	=54	=54	=54	=54	=54	=54
+*	*head:regular	*head:x	*	*	*	*
+4FF#	4re	12Ree/	4r	1ryy	4r	B d
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	6D# A#	.	6c# f#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=55	=55	=55	=55	=55	=55	=55
+*	*head:regular	*head:x	*	*	*	*
+8.DD#	12Rf\	12Ree/	4r	1ryy	4r	C i
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4AAA#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	6D# A#	.	6d f cc ff	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4DD#	12Rf\	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+=56	=56	=56	=56	=56	=56	=56
+*	*head:regular	*head:x	*	*	*	*
+4CC	4re	12Ree/	6D# B	1ryy	6f# g# b	B k
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=57	=57	=57	=57	=57	=57	=57
+*	*head:regular	*head:x	*	*	*	*
+4BBB	16Rf\	16Ree/	4r	1ryy	4r	E e
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4G	.	4c# e b ee	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=58	=58	=58	=58	=58	=58	=58
+*	*head:regular	*head:x	*	*	*	*
+4FFF#	16Rf\	16Ree/	4r	1ryy	4r	B d
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	16Ree/	6F B	.	6d g#	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+8GGG#	16Rf\	16Ree/	4r	.	4r	.
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=59	=59	=59	=59	=59	=59	=59
+*	*head:regular	*head:x	*	*	*	*
+8.GG	16Rf\	16Ree/	4r	1ryy	4r	C i
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+4DD#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4C	4re	16Ree/	4D# A	.	4d g	F U
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=60	=60	=60	=60	=60	=60	=60
+*	*head:regular	*head:x	*	*	*	*
+4CC	4re	16Ree/	4r	1ryy	4r	B k
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4D# B	.	4g# b gg#	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6BBB	4re	16Ree/	8.D# B	.	8.f# g# b	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	16r	.	16r	.
+=61	=61	=61	=61	=61	=61	=61
+*	*head:regular	*head:x	*	*	*	*
+6FFF	12Rf\	12Ree/	4r	1ryy	4r	A+ 6
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=62	=62	=62	=62	=62	=62	=62
+*	*head:regular	*head:x	*	*	*	*
+4GGG	4re	12Ree/	4r	1ryy	4r	C h
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	16Ree/	12D# A#	.	12d g	.
+.	.	16ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4D# A#	.	4d g	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=63	=63	=63	=63	=63	=63	=63
+*	*head:regular	*head:x	*	*	*	*
+4AA	4re	12Ree/	4r	1ryy	4r	F U
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6FF	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=64	=64	=64	=64	=64	=64	=64
+*	*head:regular	*head:x	*	*	*	*
+4CC	4re	12Ree/	4r	1ryy	4r	B k
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	12D# B	.	12g# b gg#	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=65	=65	=65	=65	=65	=65	=65
+*	*head:regular	*head:x	*	*	*	*
+6DD	4re	16Ree/	4r	1ryy	4r	A+ 6
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8.FF	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+4FF	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	16Ree/	4r	.	4r	D >
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=66	=66	=66	=66	=66	=66	=66
+*	*head:regular	*head:x	*	*	*	*
+8CC	4re	16Ree/	4r	1ryy	4r	C b
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	16Ree/	6D# A	.	6c f	F 7
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+6FFF	4re	16Ree/	4D# A	.	4c f	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=67	=67	=67	=67	=67	=67	=67
+*	*head:regular	*head:x	*	*	*	*
+4GGG	4re	16Ree/	4r	1ryy	4r	C h
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4D# A#	.	4d f	C i
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=68	=68	=68	=68	=68	=68	=68
+*	*head:regular	*head:x	*	*	*	*
+4FF#	4re	16Ree/	4r	1ryy	4r	B 7
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AA#	4re	16Ree/	12D A#	.	12f g a#	A+ k
+.	.	16ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4C	4re	16Ree/	6D# A	.	6d g	F U
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4CC#	4re	16Ree/	4D# A	.	4c f	F 7
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=69	=69	=69	=69	=69	=69	=69
+*	*head:regular	*head:x	*	*	*	*
+6CC	4re	12Ree/	4D# B	1ryy	4f# g# b	B k
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=70	=70	=70	=70	=70	=70	=70
+*	*head:regular	*head:x	*	*	*	*
+4GGG	4re	12Ree/	4r	1ryy	4r	C i
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4D# A#	.	4d f	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	6D# A#	.	6d f	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=71	=71	=71	=71	=71	=71	=71
+*	*head:regular	*head:x	*	*	*	*
+4AAA	4re	12Ree/	4D# A	1ryy	4c g cc gg	F 9
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6FFF	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=72	=72	=72	=72	=72	=72	=72
+*	*head:regular	*head:x	*	*	*	*
+4CC	4re	12Ree/	4r	1ryy	4r	B k
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	12Ree/	6D# B	.	6g# b gg#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	6A	.	6d# g b	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=73	=73	=73	=73	=73	=73	=73
+*	*head:regular	*head:x	*	*	*	*
+4BBB	12Rf\	12Ree/	4D# G# B	1ryy	4f#	E d
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4EEE	12Rf\	12Ree/	4G#	.	4d# f# b	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=74	=74	=74	=74	=74	=74	=74
+*	*head:regular	*head:x	*	*	*	*
+4DD#	12Rf\	12Ree/	4r	1ryy	4r	B d
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	12Rf\	12Ree/	6D# A#	.	6c# f#	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8CC#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=75	=75	=75	=75	=75	=75	=75
+*	*head:regular	*head:x	*	*	*	*
+8.CC	12Rf\	12Ree/	4r	1ryy	4r	C i
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	12Rf\	12Ree/	4D# A#	.	4d f cc ff	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=76	=76	=76	=76	=76	=76	=76
+*	*head:regular	*head:x	*	*	*	*
+4CC	12Rf\	12Ree/	4D# B	1ryy	4f# g# b	B k
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4D# A B	.	4g	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=77	=77	=77	=77	=77	=77	=77
+*	*head:regular	*head:x	*	*	*	*
+6GG#	4re	12Ree/	4D# G#	1ryy	4c# f#	E e
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4C	12Rf\	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=78	=78	=78	=78	=78	=78	=78
+*	*head:regular	*head:x	*	*	*	*
+4FF#	4re	12Ree/	6D# A#	1ryy	6c# f# b ff#	B d
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	6F B	.	6d g#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=79	=79	=79	=79	=79	=79	=79
+*	*head:regular	*head:x	*	*	*	*
+4GGG	4re	4ree	4r	1ryy	4r	C i
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6AAA#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8DD#	4re	4ree	4D# A B	.	4f	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4r	16Rf\	16Ree/	4r	.	4r	.
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+*	*head:regular	*head:x	*	*	*	*
+!	!	!	!	!	!LO:TX:a:t=[quarter]=120.0	!
+!	!	!	!	!	!LO:TX:a:t=Swing	!
+4BBB	12Rf\	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+6FFF#	4re	12Ree/	4D# B	.	4f# b ff#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD	12Rf\	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+=2	=2	=2	=2	=2	=2	=2
+*	*head:regular	*head:x	*	*	*	*
+4DD#	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	6D# B	.	6f# b ff#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8.BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+=3	=3	=3	=3	=3	=3	=3
+*	*head:regular	*head:x	*	*	*	*
+8BBB	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	12Ree/	4B	.	4d# f# b	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BB	12Rf\	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+=4	=4	=4	=4	=4	=4	=4
+*	*head:regular	*head:x	*	*	*	*
+4EEE	4re	12Ree/	4r	1ryy	4r	C 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=5	=5	=5	=5	=5	=5	=5
+*	*head:regular	*head:x	*	*	*	*
+4FFF#	4re	16Ree/	4r	1ryy	4r	B 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6BBB	16Rf\	16Ree/	4r	.	4r	.
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=6	=6	=6	=6	=6	=6	=6
+*	*head:regular	*head:x	*	*	*	*
+4EE	16Rf\	16Ree/	4r	1ryy	4r	A 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	16Ree/	12E A	.	12c# a ee aa	.
+.	.	16ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4DD	4re	16Ree/	4F#	.	4d a dd aa	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8.AAA	16Rf\	16Ree/	4r	.	4r	.
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+=7	=7	=7	=7	=7	=7	=7
+*	*head:regular	*head:x	*	*	*	*
+8DD	4re	16Ree/	4r	1ryy	4r	D 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8.FFF	16Rf\	16Ree/	4r	.	4r	.
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+4EEE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=8	=8	=8	=8	=8	=8	=8
+*	*head:regular	*head:x	*	*	*	*
+4DD	4re	16Ree/	4r	1ryy	4r	D 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	12F# A	.	12d a	.
+.	.	16ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4AA	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4D	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=9	=9	=9	=9	=9	=9	=9
+*	*head:regular	*head:x	*	*	*	*
+6D#	4re	12Ree/	6B	1ryy	6d# f# b	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4BB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	12Ree/	6B	.	6d# f# b	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4BB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=10	=10	=10	=10	=10	=10	=10
+*	*head:regular	*head:x	*	*	*	*
+4DD#	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	4B	.	4d# f# b	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=11	=11	=11	=11	=11	=11	=11
+*	*head:regular	*head:x	*	*	*	*
+4DD#	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=12	=12	=12	=12	=12	=12	=12
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	16Ree/	6F# B	1ryy	6d# b ff# bb	B 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4DD#	12Rf\	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	4ree	6B	.	6d# f# b	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=13	=13	=13	=13	=13	=13	=13
+*	*head:regular	*head:x	*	*	*	*
+4FFF#	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	12Rf\	16Ree/	4G# B	.	4e b	E 
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+6EE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=14	=14	=14	=14	=14	=14	=14
+*	*head:regular	*head:x	*	*	*	*
+4AAA	4re	12Ree/	4r	1ryy	4r	A 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	6F# A	.	6d a	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8.GG#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+=15	=15	=15	=15	=15	=15	=15
+*	*head:regular	*head:x	*	*	*	*
+8.AA	12Rf\	12Ree/	4r	1ryy	4r	D 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4D	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8BBB	4re	16Ree/	4E G# B	.	4e	E 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=16	=16	=16	=16	=16	=16	=16
+*	*head:regular	*head:x	*	*	*	*
+4DD	4re	12Ree/	4r	1ryy	4r	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4A	.	4d f# a	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	8.A	.	8.d f# a	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	16r	.	16r	.
+=17	=17	=17	=17	=17	=17	=17
+*	*head:regular	*head:x	*	*	*	*
+4BBB	12Rf\	12Ree/	4r	1ryy	4r	E a
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	12Ree/	4E G B	.	4e	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AA	4re	12Ree/	4r	.	4r	A @
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6FF	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=18	=18	=18	=18	=18	=18	=18
+*	*head:regular	*head:x	*	*	*	*
+4D	12Rf\	12Ree/	4r	1ryy	4r	D 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4A	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	12Ree/	6D F# A	.	6d	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8.DD	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+=19	=19	=19	=19	=19	=19	=19
+*	*head:regular	*head:x	*	*	*	*
+8.BBB	4re	12Ree/	4E G B	1ryy	4e	E a
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8EEE	4re	12Ree/	4r	.	4r	A 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=20	=20	=20	=20	=20	=20	=20
+*	*head:regular	*head:x	*	*	*	*
+4DD	4re	12Ree/	4r	1ryy	4r	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	6F# A	.	6d a	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	6D F# A	.	6d	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4CC#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=21	=21	=21	=21	=21	=21	=21
+*	*head:regular	*head:x	*	*	*	*
+4DD	4re	12Ree/	4G# B	1ryy	4d g#	G+ >
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.GG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+6AA	12Rf\	12Ree/	4r	.	4r	C+ @
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=22	=22	=22	=22	=22	=22	=22
+*	*head:regular	*head:x	*	*	*	*
+4AAA	4re	12Ree/	6D F# A	1ryy	6d	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4DD	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	6A	.	6d f# a	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8.FFF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+=23	=23	=23	=23	=23	=23	=23
+*	*head:regular	*head:x	*	*	*	*
+8EEE	4re	12Ree/	4r	1ryy	4r	A 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	4D G B	.	4d	G 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=24	=24	=24	=24	=24	=24	=24
+*	*head:regular	*head:x	*	*	*	*
+4GG	4re	12Ree/	4D G B	1ryy	4d	G 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	12Rf\	12Ree/	4r	.	4r	A 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=25	=25	=25	=25	=25	=25	=25
+*	*head:regular	*head:x	*	*	*	*
+4DD#	12Rf\	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6FFF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=26	=26	=26	=26	=26	=26	=26
+*	*head:regular	*head:x	*	*	*	*
+4BBB	12Rf\	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.BB	4re	12Ree/	4F# B	.	4d# f#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+=27	=27	=27	=27	=27	=27	=27
+*	*head:regular	*head:x	*	*	*	*
+8D#	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.BB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4FF#	4re	12Ree/	12B	.	12d# f# b	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=28	=28	=28	=28	=28	=28	=28
+*	*head:regular	*head:x	*	*	*	*
+4DD#	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	12F# B	.	12d# b ff# bb	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	6D# F# B	.	6f#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=29	=29	=29	=29	=29	=29	=29
+*	*head:regular	*head:x	*	*	*	*
+4BBB	12Rf\	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.FFF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+6EEE	4re	12Ree/	4E G# B	.	4e	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=30	=30	=30	=30	=30	=30	=30
+*	*head:regular	*head:x	*	*	*	*
+4CC#	12Rf\	12Ree/	4r	1ryy	4r	A 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AA	4re	12Ree/	6D F# A	.	6d	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8.DD	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+=31	=31	=31	=31	=31	=31	=31
+*	*head:regular	*head:x	*	*	*	*
+8AAA	4re	12Ree/	4r	1ryy	4r	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4G# B	.	4e b	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=32	=32	=32	=32	=32	=32	=32
+*	*head:regular	*head:x	*	*	*	*
+4AAA	4re	12Ree/	4r	1ryy	4r	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	4A	.	4d f# a	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=33	=33	=33	=33	=33	=33	=33
+*	*head:regular	*head:x	*	*	*	*
+4FF#	4re	12Ree/	4F# B	1ryy	4d# f#	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=34	=34	=34	=34	=34	=34	=34
+*	*head:regular	*head:x	*	*	*	*
+4DD#	4re	12Ree/	6D# F# B	1ryy	6f#	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	6F# B	.	6d# f#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8.BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+=35	=35	=35	=35	=35	=35	=35
+*	*head:regular	*head:x	*	*	*	*
+8.BBB	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4FFF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8FF#	4re	12Ree/	4B	.	4d# f# b	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=36	=36	=36	=36	=36	=36	=36
+*	*head:regular	*head:x	*	*	*	*
+4BB	4re	12Ree/	4D# F# B	1ryy	4f#	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	12Rf\	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=37	=37	=37	=37	=37	=37	=37
+*	*head:regular	*head:x	*	*	*	*
+4DD#	4re	12Ree/	4F# B	1ryy	4d# f#	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	12Ree/	4r	.	4r	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=38	=38	=38	=38	=38	=38	=38
+*	*head:regular	*head:x	*	*	*	*
+4CC#	4re	12Ree/	4r	1ryy	4r	A 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4C# E A	.	4e	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	6F# A	.	6d a	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4DD	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=39	=39	=39	=39	=39	=39	=39
+*	*head:regular	*head:x	*	*	*	*
+4DD	4re	12Ree/	4F# A	1ryy	4d a	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG#	4re	12Ree/	4r	.	4r	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=40	=40	=40	=40	=40	=40	=40
+*	*head:regular	*head:x	*	*	*	*
+4FFF#	4re	12Ree/	4r	1ryy	4r	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	12Ree/	4r	.	6d f# a dd	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	12r	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	6F#	.	6d a dd aa	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=41	=41	=41	=41	=41	=41	=41
+*	*head:regular	*head:x	*	*	*	*
+4FFF#	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4D# F# B	.	4f#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=42	=42	=42	=42	=42	=42	=42
+*	*head:regular	*head:x	*	*	*	*
+4FF#	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	6F# B	.	6d# b ff# bb	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=43	=43	=43	=43	=43	=43	=43
+*	*head:regular	*head:x	*	*	*	*
+8.DD#	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4FF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	4F# B	.	4d# b ff# bb	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=44	=44	=44	=44	=44	=44	=44
+*	*head:regular	*head:x	*	*	*	*
+4DD#	4re	16Ree/	4r	1ryy	4r	B 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF	12Rf\	16Ree/	4D# F# B	.	4f#	.
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6BB	4re	16Ree/	8.F# B	.	8.d# b ff# bb	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	16r	.	16r	.
+=45	=45	=45	=45	=45	=45	=45
+*	*head:regular	*head:x	*	*	*	*
+6BB	12Rf\	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EE	12Rf\	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=46	=46	=46	=46	=46	=46	=46
+*	*head:regular	*head:x	*	*	*	*
+4CC#	4re	12Ree/	4r	1ryy	4r	A 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	6F# A	.	6d a	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	4F# A	.	4d a	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=47	=47	=47	=47	=47	=47	=47
+*	*head:regular	*head:x	*	*	*	*
+4DD	4re	12Ree/	4r	1ryy	4r	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6AAA	12Rf\	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG#	4re	12Ree/	4E G# B	.	4e	E 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4r	.	4r	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=48	=48	=48	=48	=48	=48	=48
+*	*head:regular	*head:x	*	*	*	*
+4DD	4re	12Ree/	4r	1ryy	4r	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	12Rf\	16Ree/	12F# A	.	12d a	.
+.	.	16ree	.	.	.	.
+.	12re	.	12r	.	12r	.
+.	.	8ree	.	.	.	.
+.	12re	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4AA	4re	12Ree/	6D F# A	.	6d	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4D F# A	.	4d	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=49	=49	=49	=49	=49	=49	=49
+*	*head:regular	*head:x	*	*	*	*
+4GGG	4re	16Ree/	4r	1ryy	4r	E a
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4EEE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	16Ree/	4C# A	.	4c# f a ff	A @
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=50	=50	=50	=50	=50	=50	=50
+*	*head:regular	*head:x	*	*	*	*
+4AAA	4re	16Ree/	4r	1ryy	4r	D 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	16Ree/	4F# A	.	4d a	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=51	=51	=51	=51	=51	=51	=51
+*	*head:regular	*head:x	*	*	*	*
+4EE	4re	16Ree/	4r	1ryy	4r	E a
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	16Ree/	4E A	.	4c# a ee aa	A 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=52	=52	=52	=52	=52	=52	=52
+*	*head:regular	*head:x	*	*	*	*
+4DD	4re	16Ree/	4F#	1ryy	4d a dd aa	D 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=53	=53	=53	=53	=53	=53	=53
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	12Ree/	4r	1ryy	4r	G+ >
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF	4re	12Ree/	4C# F A	.	4c#	C+ @
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6AA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=54	=54	=54	=54	=54	=54	=54
+*	*head:regular	*head:x	*	*	*	*
+4D	12Rf\	12Ree/	4r	1ryy	4r	D 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	12Ree/	6A	.	6d f# a	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8.DD	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+=55	=55	=55	=55	=55	=55	=55
+*	*head:regular	*head:x	*	*	*	*
+8.CC#	4re	12Ree/	4r	1ryy	4r	A 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4EE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8GGG	4re	12Ree/	4G B	.	4d g	G 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=56	=56	=56	=56	=56	=56	=56
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	12Ree/	4r	1ryy	4r	G 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EEE	4re	12Ree/	4C# E A	.	4e	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=57	=57	=57	=57	=57	=57	=57
+*	*head:regular	*head:x	*	*	*	*
+4BBB	16Rf\	16Ree/	4D# F# B	1ryy	4f#	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=58	=58	=58	=58	=58	=58	=58
+*	*head:regular	*head:x	*	*	*	*
+4FFF#	4re	16Ree/	4B	1ryy	4d# f# b	B 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8.BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+=59	=59	=59	=59	=59	=59	=59
+*	*head:regular	*head:x	*	*	*	*
+8FFF#	4re	16Ree/	8.F# B	1ryy	8.d# b ff# bb	B 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	16r	.	16r	.
+8.BBB	4re	16Ree/	8.F# B	.	8.d# b ff# bb	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	16r	.	16r	.
+4BBB	4re	4ree	8.F# B	.	8.d# b ff# bb	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	16r	.	16r	.
+4FF	4re	16Ree/	8.F# B	.	8.d# b ff# bb	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	16r	.	16r	.
+=60	=60	=60	=60	=60	=60	=60
+*	*head:regular	*head:x	*	*	*	*
+4FF#	4re	16Ree/	6D# F# B	1ryy	6f#	B 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=61	=61	=61	=61	=61	=61	=61
+*	*head:regular	*head:x	*	*	*	*
+4DD#	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+6GGG#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=62	=62	=62	=62	=62	=62	=62
+*	*head:regular	*head:x	*	*	*	*
+4CC#	4re	12Ree/	4r	1ryy	4r	A 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	12Ree/	12E A	.	12c# a ee aa	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4AA	4re	12Ree/	4F#	.	4d a dd aa	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.DD	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+=63	=63	=63	=63	=63	=63	=63
+*	*head:regular	*head:x	*	*	*	*
+8D	4re	12Ree/	4r	1ryy	4r	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AA	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GG#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AA	12Rf\	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+=64	=64	=64	=64	=64	=64	=64
+*	*head:regular	*head:x	*	*	*	*
+4DD	4re	12Ree/	4r	1ryy	4r	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	12F#	.	12d a dd aa	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=65	=65	=65	=65	=65	=65	=65
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.FF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+6FFF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=66	=66	=66	=66	=66	=66	=66
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.GGG	4re	12Ree/	4F# B	.	4d# f#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+=67	=67	=67	=67	=67	=67	=67
+*	*head:regular	*head:x	*	*	*	*
+8FFF#	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	12F# B	.	12d# f#	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=68	=68	=68	=68	=68	=68	=68
+*	*head:regular	*head:x	*	*	*	*
+4FFF#	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	12B	.	12d# f# b	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4BBB	12Rf\	12Ree/	6D# F# B	.	6f#	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=69	=69	=69	=69	=69	=69	=69
+*	*head:regular	*head:x	*	*	*	*
+6FF#	4re	12Ree/	6D# F# B	1ryy	6f#	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8.BB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4BBB	4re	12Ree/	6G# B	.	6e b	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4CC#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=70	=70	=70	=70	=70	=70	=70
+*	*head:regular	*head:x	*	*	*	*
+8CC#	12Rf\	12Ree/	4r	1ryy	4r	A 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4F# A	.	4d a	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6DD	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=71	=71	=71	=71	=71	=71	=71
+*	*head:regular	*head:x	*	*	*	*
+4DD	4re	12Ree/	4r	1ryy	4r	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GG#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=72	=72	=72	=72	=72	=72	=72
+*	*head:regular	*head:x	*	*	*	*
+4D	4re	12Ree/	6D F# A	1ryy	6d	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4AA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	12Ree/	4r	.	6d f# a dd	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	12r	.
+.	.	.	.	.	.	.
+4CC	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=73	=73	=73	=73	=73	=73	=73
+*	*head:regular	*head:x	*	*	*	*
+4BBB	12Rf\	12Ree/	4F# B	1ryy	4d# f#	B 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=74	=74	=74	=74	=74	=74	=74
+*	*head:regular	*head:x	*	*	*	*
+4BBB	12Rf\	12Ree/	6F# B	1ryy	6d# f#	B 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.DD	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+=75	=75	=75	=75	=75	=75	=75
+*	*head:regular	*head:x	*	*	*	*
+8.DD#	4re	12Ree/	4F# B	1ryy	4d# f#	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8FF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=76	=76	=76	=76	=76	=76	=76
+*	*head:regular	*head:x	*	*	*	*
+4FFF#	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=77	=77	=77	=77	=77	=77	=77
+*	*head:regular	*head:x	*	*	*	*
+4FFF#	4re	16Ree/	4r	1ryy	4r	B 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4E G# B	.	4e	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6EE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=78	=78	=78	=78	=78	=78	=78
+*	*head:regular	*head:x	*	*	*	*
+4AA	4re	16Ree/	4r	1ryy	4r	A 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	16Ree/	6F#	.	6d a dd aa	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+8.CC#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+=79	=79	=79	=79	=79	=79	=79
+*	*head:regular	*head:x	*	*	*	*
+8.DD	4re	16Ree/	4r	1ryy	4r	D 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+4AAA	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8EEE	4re	16Ree/	4E G# B	.	4e	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=80	=80	=80	=80	=80	=80	=80
+*	*head:regular	*head:x	*	*	*	*
+4DD	4re	16Ree/	4r	1ryy	4r	D 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=81	=81	=81	=81	=81	=81	=81
+*	*head:regular	*head:x	*	*	*	*
+4BB	16Rf\	16Ree/	4r	1ryy	4r	E a
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AA	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6AA	4re	16Ree/	4C# A	.	4c# f a ff	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=82	=82	=82	=82	=82	=82	=82
+*	*head:regular	*head:x	*	*	*	*
+4DD	16Rf\	16Ree/	4r	1ryy	4r	D 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	16Ree/	4A	.	4d f# a	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8.BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+=83	=83	=83	=83	=83	=83	=83
+*	*head:regular	*head:x	*	*	*	*
+8BBB	16Rcc\	4ree	4r	1ryy	4r	E a
+.	16re	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	8re	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8.FFF	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+4EEE	4re	16Ree/	4E A	.	4c# e	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=84	=84	=84	=84	=84	=84	=84
+*	*head:regular	*head:x	*	*	*	*
+4DD	4re	16Ree/	4D F# A	1ryy	4d	D 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=85	=85	=85	=85	=85	=85	=85
+*	*head:regular	*head:x	*	*	*	*
+4GGG#	4re	12Ree/	4G# B	1ryy	4d g#	G+ >
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6AAA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=86	=86	=86	=86	=86	=86	=86
+*	*head:regular	*head:x	*	*	*	*
+4FFF#	4re	12Ree/	4F# A	1ryy	4d a	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8FF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=87	=87	=87	=87	=87	=87	=87
+*	*head:regular	*head:x	*	*	*	*
+8.AA	4re	12Ree/	8.E A	1ryy	8.c# a ee aa	A 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	16r	.	16r	.
+4DD#	4re	12Ree/	8.E A	.	8.c# e	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	16r	.	16r	.
+4DD	4re	12Ree/	8.D G B	.	8.d	G 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	16r	.	16r	.
+4DD	4re	12Ree/	8.D G B	.	8.g dd gg	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	16r	.	16r	.
+=88	=88	=88	=88	=88	=88	=88
+*	*head:regular	*head:x	*	*	*	*
+4DD	4re	12Ree/	6D G B	1ryy	6g dd gg	G 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EEE	4re	12Ree/	4r	.	4r	A 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6AAA	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=89	=89	=89	=89	=89	=89	=89
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	12Ree/	4B	1ryy	4d# f# b	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6FF#	12Rf\	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4D	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=90	=90	=90	=90	=90	=90	=90
+*	*head:regular	*head:x	*	*	*	*
+4D#	4re	12Ree/	6D# F# B	1ryy	6f#	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4BB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	12Ree/	6F# B	.	6d# f#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8.BB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+=91	=91	=91	=91	=91	=91	=91
+*	*head:regular	*head:x	*	*	*	*
+8BBB	4re	4ree	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8.FFF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4FFF#	4re	12Ree/	4F# B	.	4d# b ff# bb	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=92	=92	=92	=92	=92	=92	=92
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	12Ree/	4F# B	1ryy	4d# f#	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=93	=93	=93	=93	=93	=93	=93
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	12Ree/	6D# F# B	1ryy	6f#	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG#	4re	12Ree/	6E G# B	.	6e	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+6BB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=94	=94	=94	=94	=94	=94	=94
+*	*head:regular	*head:x	*	*	*	*
+4AAA	4re	12Ree/	4r	1ryy	4r	A 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4CC#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	4D F# A	.	4d	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8AAA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=95	=95	=95	=95	=95	=95	=95
+*	*head:regular	*head:x	*	*	*	*
+8.FFF#	4re	12Ree/	4r	1ryy	4r	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4AAA#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=96	=96	=96	=96	=96	=96	=96
+*	*head:regular	*head:x	*	*	*	*
+4AA	4re	12Ree/	6A	1ryy	6d f# a	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	6A	.	6d f# a	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+6AAA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=97	=97	=97	=97	=97	=97	=97
+*	*head:regular	*head:x	*	*	*	*
+4DD#	16Rf\	16Ree/	4D# F# B	1ryy	4f#	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=98	=98	=98	=98	=98	=98	=98
+*	*head:regular	*head:x	*	*	*	*
+4r	4re	16Ree/	4r	1ryy	4r	B 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4B	.	4d# f# b	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8.BB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+=99	=99	=99	=99	=99	=99	=99
+*	*head:regular	*head:x	*	*	*	*
+8.D#	4re	16Ree/	4r	1ryy	4r	B 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+4BB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8FF#	4re	4ree	4B	.	4d# f# b	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=100	=100	=100	=100	=100	=100	=100
+*	*head:regular	*head:x	*	*	*	*
+4DD#	4re	16Ree/	4r	1ryy	4r	B 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	16Ree/	4F# B	.	4d# b ff# bb	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=101	=101	=101	=101	=101	=101	=101
+*	*head:regular	*head:x	*	*	*	*
+6DD#	4re	12Ree/	12F# B	1ryy	12d# b ff# bb	B 
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+12r	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+8.AAA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4GGG#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=102	=102	=102	=102	=102	=102	=102
+*	*head:regular	*head:x	*	*	*	*
+8CC#	4re	12Ree/	4r	1ryy	4r	A 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AA	4re	12Ree/	6F# A	.	6d a	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+6AAA	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=103	=103	=103	=103	=103	=103	=103
+*	*head:regular	*head:x	*	*	*	*
+4FFF#	4re	12Ree/	4r	1ryy	4r	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=104	=104	=104	=104	=104	=104	=104
+*	*head:regular	*head:x	*	*	*	*
+4AAA	4re	16Ree/	6D F# A	1ryy	6d	D 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4DD	12Rf\	16Ree/	4F# A	.	4d a	.
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AA	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=105	=105	=105	=105	=105	=105	=105
+*	*head:regular	*head:x	*	*	*	*
+6FF#	16Rf\	16Ree/	4r	1ryy	4r	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4D# F# B	.	4f#	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=106	=106	=106	=106	=106	=106	=106
+*	*head:regular	*head:x	*	*	*	*
+4DD#	16Rf\	16Ree/	4r	1ryy	4r	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	16Ree/	6F# B	.	6d# f#	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+4BBB	16Rf\	16Ree/	4r	.	4r	.
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=107	=107	=107	=107	=107	=107	=107
+*	*head:regular	*head:x	*	*	*	*
+4DD#	16Rf\	16Ree/	4r	1ryy	4r	B 
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6BBB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4F# B	.	4d# b ff# bb	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=108	=108	=108	=108	=108	=108	=108
+*	*head:regular	*head:x	*	*	*	*
+4D#	4re	16Ree/	4r	1ryy	4r	B 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4BB	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=109	=109	=109	=109	=109	=109	=109
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	16Ree/	4F# B	1ryy	4d# f#	B 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4EEE	4re	16Ree/	4E G# B	.	4e	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6GGG#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=110	=110	=110	=110	=110	=110	=110
+*	*head:regular	*head:x	*	*	*	*
+4CC#	4re	16Ree/	4r	1ryy	4r	A 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4EE	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	16Ree/	6D F# A	.	6d	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	12r	.	12r	.
+.	.	.	.	.	.	.
+8AAA	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=111	=111	=111	=111	=111	=111	=111
+*	*head:regular	*head:x	*	*	*	*
+8.DD	4re	16Ree/	4r	1ryy	4r	D 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+4AA	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4EE	16Rf\	16Ree/	4E G# B	.	4e	.
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=112	=112	=112	=112	=112	=112	=112
+*	*head:regular	*head:x	*	*	*	*
+4AAA	4re	16Ree/	4D F# A	1ryy	4d	D 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD	16Rf\	16Ree/	4A	.	4d f# a	.
+.	16re	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	8re	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+6AAA	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=113	=113	=113	=113	=113	=113	=113
+*	*head:regular	*head:x	*	*	*	*
+6EEE	12Rf\	12Ree/	4r	1ryy	4r	E a
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.GGG	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+16r	.	.	.	.	.	.
+4CC#	12Rf\	12Ree/	4r	.	4r	A @
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=114	=114	=114	=114	=114	=114	=114
+*	*head:regular	*head:x	*	*	*	*
+8FF#	4re	12Ree/	4r	1ryy	4r	D 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD	12Rf\	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6AAA	4re	16Ree/	4D F# A	.	4d	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+12r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=115	=115	=115	=115	=115	=115	=115
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	12Ree/	4r	1ryy	4r	E a
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4EEE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	12A	.	12c# e a	A 
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4EE	12Rf\	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	12re	.	.	.	.	.
+.	.	.	.	.	.	.
+=116	=116	=116	=116	=116	=116	=116
+*	*head:regular	*head:x	*	*	*	*
+4DD	4re	16Ree/	4r	1ryy	4r	D 
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AA	4re	16Ree/	4r	.	12d f# a dd	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	12r	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	12r	.
+.	.	.	.	.	.	.
+4AA	4re	12Ree/	4r	.	6d f# a dd	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	12r	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=117	=117	=117	=117	=117	=117	=117
+*	*head:regular	*head:x	*	*	*	*
+4D	12Rf\	12Ree/	6G# B	1ryy	6d g#	G+ >
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4G#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6FF	4re	12Ree/	6F	.	6c# f a cc# aa	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4AA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=118	=118	=118	=118	=118	=118	=118
+*	*head:regular	*head:x	*	*	*	*
+4DD	12Rf\	12Ree/	4r	1ryy	4r	D 
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4F# A	.	4d a	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.CC#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+=119	=119	=119	=119	=119	=119	=119
+*	*head:regular	*head:x	*	*	*	*
+8CC#	4re	12Ree/	4r	1ryy	4r	A 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8.EE	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+16r	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=120	=120	=120	=120	=120	=120	=120
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	12Ree/	6D G B	1ryy	6d	G 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4GG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AA	4re	12Ree/	6E A	.	6c# e	A 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	12r	.	12r	.
+.	.	.	.	.	.	.
+4E	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=121	=121	=121	=121	=121	=121	=121
+*	*head:regular	*head:x	*	*	*	*
+6FFF#	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4B	.	4d# f# b	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=122	=122	=122	=122	=122	=122	=122
+*	*head:regular	*head:x	*	*	*	*
+4FFF#	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4D# B	.	4f# b ff#	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=123	=123	=123	=123	=123	=123	=123
+*	*head:regular	*head:x	*	*	*	*
+4FF#	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+6BBB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+12r	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BBB	4re	12Ree/	4F# B	.	4d# b ff# bb	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=124	=124	=124	=124	=124	=124	=124
+*	*head:regular	*head:x	*	*	*	*
+4DD#	4re	12Ree/	4B	1ryy	4d# f# b	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GGG	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FFF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AAA#	4re	16Ree/	4r	.	4r	.
+.	.	16ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	8ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+=125	=125	=125	=125	=125	=125	=125
+*	*head:regular	*head:x	*	*	*	*
+4BBB	4re	12Ree/	4r	1ryy	4r	B 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4FF#	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4GG#	12Rf\	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	12re	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4BB	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=126	=126	=126	=126	=126	=126	=126
+*	*head:regular	*head:x	*	*	*	*
+4C#	4re	12Ree/	4r	1ryy	4r	A 
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4E	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4AA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+4DD#	4re	12Ree/	4D F# A	.	4d	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+=127	=127	=127	=127	=127	=127	=127
+*	*head:regular	*head:x	*	*	*	*
+4DD	4re	4ree	4r	1ryy	4r	D 
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+4AAA	4re	12Ree/	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+.	.	12ree	.	.	.	.
+.	.	.	.	.	.	.
+8EEE	4re	4ree	4E G# B	.	4e	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8EEE	4re	4ree	4r	.	4r	.
+.	.	.	.	.	.	.
+.	.	.	.	.	.	.
+8r	.	.	.	.	.	.
 .	.	.	.	.	.	.
 .	.	.	.	.	.	.
