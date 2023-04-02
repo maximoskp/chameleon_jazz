@@ -156,50 +156,56 @@ def substitute_chord_by_string(s, chord2replace_idx, debug_output=False, piece_n
         'tonality': tonality
     }
     s1 = ccc.Chart(in_struct)
-    
-    tGlobal = globalHMM.transition_matrix.toarray()
-    trans_probs = tGlobal
-    mel_per_chord_probs = s1.hmm.melody_per_chord.toarray()
-    emissions = s1.melody_information
-    
-    constraints = s1.get_all_chords_idxs()
-    # remember which chord to substitute
-    chord2sub = constraints[chord2replace_idx] # we can keep a list of chords to allow multiple new runs
-    constraints[chord2replace_idx] = -1
-    pathIDXs = copy.deepcopy(constraints)
-    pathIDXs[chord2replace_idx] = chord2sub
+    np.set_printoptions(threshold=sys.maxsize)
+    with open('debug_hmm_log.txt', 'w') as f:
+        tGlobal = globalHMM.transition_matrix.toarray()
+        trans_probs = tGlobal
+        mel_per_chord_probs = s1.hmm.melody_per_chord.toarray()
+        print('mel_per_chord_probs: ', mel_per_chord_probs, file=f)
+        emissions = s1.melody_information
+        print('emissions: ', emissions, file=f)
 
-    adv_exp = 1.0
+        constraints = s1.get_all_chords_idxs()
+        print('constraints: ', constraints, file=f)
+        # remember which chord to substitute
+        chord2sub = constraints[chord2replace_idx] # we can keep a list of chords to allow multiple new runs
+        constraints[chord2replace_idx] = -1
+        pathIDXs = copy.deepcopy(constraints)
+        pathIDXs[chord2replace_idx] = chord2sub
+        print('before while - pathIDXs: ', pathIDXs, file=f)
 
-    while pathIDXs[chord2replace_idx] == chord2sub:
-        print('adv_exp: ', adv_exp)
-        pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=adv_exp)
-        print('pathIDXs: ', pathIDXs)
-        print('chord2replace_idx: ', chord2replace_idx)
-        adv_exp /= 1.5
-        if adv_exp < 0.1:
-            pathIDXs[chord2replace_idx] = np.random.randint(trans_probs.shape[0])
-            print('pathIDXs: ', pathIDXs)
-            print('resolving to random')
-    
-    transp_idxs = s1.transpose_idxs(pathIDXs, s1.tonality['root'])
-    debug_constraints = np.array([pathIDXs,constraints])
-    generated_chords = s1.idxs2chordSymbols(transp_idxs)
-    generated_vs_initial = []
-    for i in range(len(generated_chords)):
-        generated_vs_initial.append( [constraints[i], generated_chords[i], s1.chords[i].chord_symbol] )
-    new_unfolded = s1.substitute_chordSymbols_in_string( s1.unfolded_string, generated_chords ).replace(' ', '')
-    
-    new_key = 'MOD_' + s1.key
-    mod_piece = {
-        new_key: {}
-    }
-    mod_piece['string'] = new_unfolded
-    mod_piece['original_string'] = new_unfolded
-    mod_piece['unfolded_string'] = new_unfolded
-    mod_piece['original_string'] = new_key
-    mod_piece['appearing_name'] = 'MOD_' + s1.piece_name
-    mod_piece['tonality'] = s1.tonality['symbol']
+        adv_exp = 1.0
+
+        while pathIDXs[chord2replace_idx] == chord2sub:
+            print('adv_exp: ', adv_exp, file=f)
+            pathIDXs, delta, psi, markov, obs = s1.hmm.apply_cHMM_with_constraints(trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp=adv_exp)
+            print('in while - pathIDXs: ', pathIDXs, file=f)
+            print('chord2replace_idx: ', chord2replace_idx, file=f)
+            adv_exp /= 1.5
+            if adv_exp < 0.1:
+                pathIDXs[chord2replace_idx] = np.random.randint(trans_probs.shape[0])
+                print('pathIDXs: ', pathIDXs, file=f)
+                print('resolving to random', file=f)
+        
+        transp_idxs = s1.transpose_idxs(pathIDXs, s1.tonality['root'])
+        debug_constraints = np.array([pathIDXs,constraints])
+        generated_chords = s1.idxs2chordSymbols(transp_idxs)
+        generated_vs_initial = []
+        for i in range(len(generated_chords)):
+            generated_vs_initial.append( [constraints[i], generated_chords[i], s1.chords[i].chord_symbol] )
+        new_unfolded = s1.substitute_chordSymbols_in_string( s1.unfolded_string, generated_chords ).replace(' ', '')
+        
+        new_key = 'MOD_' + s1.key
+        mod_piece = {
+            new_key: {}
+        }
+        mod_piece['string'] = new_unfolded
+        mod_piece['original_string'] = new_unfolded
+        mod_piece['unfolded_string'] = new_unfolded
+        mod_piece['original_string'] = new_key
+        mod_piece['appearing_name'] = 'MOD_' + s1.piece_name
+        mod_piece['tonality'] = s1.tonality['symbol']
+    # end debug print
     if debug_output:
         return mod_piece, debug_constraints, generated_vs_initial
     else:

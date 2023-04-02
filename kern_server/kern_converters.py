@@ -657,6 +657,11 @@ def csv2kern(filename):
             self.kern_grid_notes = df_measure_grid_notes
             self.kern_grid_merge = copy.deepcopy(df_measure_grid)
             self.measure_raw = measure.iloc[:, :]
+            # __max__
+            # grid for swing and even
+            self.even_grid = np.array([0.0, 0.25, 0.333, 0.5, 0.666, 0.75, 1.0, 1.25, 1.333, 1.5, 1.666, 1.75, 2.0, 2.25, 2.333, 2.5, 2.666, 2.75, 3.0, 3.25, 3.333, 3.5, 3.666, 3.75])
+            # TODO: adjust off-beats for swing
+            self.swing_grid = np.array([0.0, 0.25, 0.333, 0.5, 0.666, 0.75, 1.0, 1.25, 1.333, 1.5, 1.666, 1.75, 2.0, 2.25, 2.333, 2.5, 2.666, 2.75, 3.0, 3.25, 3.333, 3.5, 3.666, 3.75])
             measure_header_string = measure.iloc[0].to_string()
             # print('measure_header_string:', measure_header_string)
             # comma_split = measure_header_string.split(', ')
@@ -681,7 +686,8 @@ def csv2kern(filename):
             # find all durations & notes
 
             for y in range(len(self.measure_raw)):
-                # print('self.measure_raw.iloc[y, 0]: ', self.measure_raw.iloc[y, 0])
+                with open('debug_log.txt', 'a') as f:
+                    print('self.measure_raw.iloc[y, 0]: ', self.measure_raw.iloc[y, 0], file=f)
                 if self.measure_raw.iloc[y, 0] == "Bass":
 
                     note_onset = float(
@@ -772,19 +778,21 @@ def csv2kern(filename):
                                 break
 
                 elif self.measure_raw.iloc[y, 0] == "Chord":
-
-                    note_onset = float(
-                        self.measure_raw.iloc[y, 3]) - measure_count * self.time_signature
-
-                    for i in range(len(self.kern_grid)):
-
-                        if note_onset == float(self.kern_grid.iloc[i, 4]):
-                            self.kern_grid.iloc[i, 6] = ""
-                            self.kern_grid_notes.iloc[i, 6] = find_chord_font_from_symbolic_type(str(
-                                self.measure_raw.iloc[y, 1]))
-
-                            break
-
+                    note_onset = float(self.measure_raw.iloc[y, 3]) - measure_count * self.time_signature
+                    i, quantized_onset = self.find_nearest( self.even_grid, note_onset )
+                    with open('debug_log.txt', 'a') as f:
+                        print('note_onset: ', note_onset, file=f)
+                        print('quantized_onset: ', quantized_onset, file=f)
+                    self.kern_grid.iloc[i, 6] = ""
+                    self.kern_grid_notes.iloc[i, 6] = find_chord_font_from_symbolic_type(str(self.measure_raw.iloc[y, 1]))
+                    # for i in range(len(self.kern_grid)):
+                    #     if note_onset == float(self.kern_grid.iloc[i, 4]):
+                    #         self.kern_grid.iloc[i, 6] = ""
+                    #         self.kern_grid_notes.iloc[i, 6] = find_chord_font_from_symbolic_type(str(
+                    #             self.measure_raw.iloc[y, 1]))
+                    #         with open('debug_log.txt', 'a') as f:
+                    #             print('inside if: ', note_onset, file=f)
+                    #         break
             self.kern_grid = self.kern_grid.replace(
                 to_replace=["."], value=float('nan'))
             self.kern_grid_notes = self.kern_grid_notes.replace(
@@ -991,6 +999,12 @@ def csv2kern(filename):
             if not measure_count == 0:
                 self.kern_grid_merge = pd.concat(
                     [df_measureending, self.kern_grid_merge])
+        # end __init__
+        def find_nearest(self, array, value):
+            array = np.asarray(array)
+            idx = (np.abs(array - value)).argmin()
+            return idx, array[idx]
+        # end __find_nearest__
 
 
     df_list = []

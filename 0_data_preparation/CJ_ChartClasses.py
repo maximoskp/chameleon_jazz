@@ -300,6 +300,9 @@ class ChameleonHMM(ChameleonContext):
     def apply_cHMM_with_constraints(self, trans_probs, mel_per_chord_probs, emissions, constraints, adv_exp = 0.0):
         markov = copy.deepcopy( trans_probs )
         obs = np.matmul( mel_per_chord_probs , emissions )
+        with open('debug_hmm_log.txt', 'a') as f:
+            print('obs,shape: ', obs.shape, file=f)
+            print('obs: ', obs, file=f)
         # apply adventure
         # markov = adv_exp*np.power(markov, adv_exp) + (1-adv_exp)*np.power(np.random.rand( markov.shape[0], markov.shape[1] ), 1-adv_exp)
         # obs = adv_exp*np.power(obs, adv_exp) + (1-adv_exp)*np.power(np.random.rand( obs.shape[0], obs.shape[1] ), 1-adv_exp)
@@ -322,9 +325,9 @@ class ChameleonHMM(ChameleonContext):
         for i in range(markov.shape[0]):
             if np.sum( markov[i,:] ) > 0:
                 markov[i,:] = markov[i,:]/np.sum( markov[i,:] )
-        for i in range(obs.shape[0]):
-            if np.sum( obs[i,:] ) > 0:
-                obs[i,:] = obs[i,:]/np.sum( obs[i,:] )
+        # for i in range(obs.shape[0]):
+        #     if np.sum( obs[i,:] ) > 0:
+        #         obs[i,:] = obs[i,:]/np.sum( obs[i,:] )
         # beginning chord probabilities
         pr = self.starting.toarray()
         delta = np.zeros( ( markov.shape[0] , obs.shape[1] ) )
@@ -335,6 +338,7 @@ class ChameleonHMM(ChameleonContext):
         if constraints[0] != -1:
             delta[:,t] = np.zeros( markov.shape[0] )
             delta[ constraints[0], t ] = 1
+            delta[:,t] = np.multiply( delta[:,t] , obs[:,t]+0.0000001 )
         else:
             if np.sum(delta[:,t]) != 0:
                 delta[:,t] = delta[:,t]/np.sum(delta[:,t])
@@ -345,36 +349,48 @@ class ChameleonHMM(ChameleonContext):
             if constraints[t] == -1 :
                 for j in range(0, markov.shape[0]):
                     tmp_trans_prob = markov[:,j]
-                    # if np.sum( tmp_trans_prob ) != 0:
-                    #     tmp_trans_prob = tmp_trans_prob/np.sum( tmp_trans_prob )
                     delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
                     psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
                 if np.sum(delta[:,t]) != 0:
                     delta[:,t] = delta[:,t]/np.sum(delta[:,t])
+                else:
+                    delta[j,t] = np.max( np.multiply(delta[:,t-1] + 0.0000001, tmp_trans_prob)*obs[j,t] + 0.0000001 )
+                    psi[j,t] = np.argmax( np.multiply(delta[:,t-1] + 0.0000001, tmp_trans_prob)*obs[j,t] + 0.0000001 ).astype(int)
             else:
                 j = int(constraints[t])
-                # tmp_trans_prob = markov[:,j]
-                # straight zero
-                # tmp_trans_prob = np.ones( markov[:,j].size )*0.000000001
-                tmp_trans_prob = np.zeros( markov[:,j].size )
-                tmp_trans_prob[j] = 1
-                # check if previous is constrained and leave a corridor
-                if t > 0:
-                    if constraints[t-1] != -1:
-                        delta[ j ,t-1 ] = 1
-                tmp_trans_prob = tmp_trans_prob/np.sum(tmp_trans_prob)
-                delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
-                psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
-                if np.sum(delta[:,t]) != 0:
-                    delta[:,t] = delta[:,t]/np.sum(delta[:,t])
+                if constraints[t-1] != -1:
+                    # since previous is constraint, transitions don't matter
+                    previous_for_all = np.argmax(delta[:,t-1])
+                    # this needs to be non-zero
+                    delta[j,t] = obs[j,t]+0.0000001
+                    psi[j,t] = previous_for_all
+                    if np.sum(delta[:,t]) != 0: # couldn't be otherwise
+                        delta[:,t] = delta[:,t]/np.sum(delta[:,t])
+                else:
+                    tmp_trans_prob = markov[:,j]
+                    # # tmp_trans_prob = np.zeros( markov[:,j].size )
+                    # # tmp_trans_prob[j] = 1
+                    # # check if previous is constrained and leave a corridor
+                    # if t > 0:
+                    #     if constraints[t-1] != -1:
+                    #         delta[ j ,t-1 ] = 1
+                    # tmp_trans_prob = tmp_trans_prob/np.sum(tmp_trans_prob)
+                    delta[j,t] = np.max( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] )
+                    psi[j,t] = np.argmax( np.multiply(delta[:,t-1], tmp_trans_prob)*obs[j,t] ).astype(int)
+                    if np.sum(delta[:,t]) != 0:
+                        delta[:,t] = delta[:,t]/np.sum(delta[:,t])
+                    else:
+                        delta[j,t] = np.max( np.multiply(delta[:,t-1] + 0.0000001, tmp_trans_prob)*obs[j,t] + 0.0000001 )
+                        psi[j,t] = np.argmax( np.multiply(delta[:,t-1] + 0.0000001, tmp_trans_prob)*obs[j,t] + 0.0000001 ).astype(int)
             # report zeros
             if np.sum(delta[:,t]) == 0:
                 print('HMM zero probability encoundered for t = ', t)
         # end for t
-        if constraints[-1] == -1:
-            pathIDXs[obs.shape[1]-1] = int(np.argmax(delta[:,obs.shape[1]-1]))
-        else:
-            pathIDXs[obs.shape[1]-1] = int(constraints[-1])
+        # if constraints[-1] == -1:
+        #     pathIDXs[obs.shape[1]-1] = int(np.argmax(delta[:,obs.shape[1]-1]))
+        # else:
+        #     pathIDXs[obs.shape[1]-1] = int(constraints[-1])
+        pathIDXs[obs.shape[1]-1] = int(np.argmax(delta[:,obs.shape[1]-1]))
         
         for t in range(obs.shape[1]-2, -1, -1):
             pathIDXs[t] = int(psi[ int(pathIDXs[t+1]) , t+1 ])
