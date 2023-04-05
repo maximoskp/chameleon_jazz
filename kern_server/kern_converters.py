@@ -938,6 +938,22 @@ def csv2kern(filename):
             self.kern_grid.fillna(".", inplace=True)
             self.kern_grid_notes.fillna(".", inplace=True)
 
+            #Beautify kern file extinguishing useless pauses:     
+            for y in range(len(self.kern_grid.columns)-1):
+                if y == 4:
+                    continue
+                for d in range(0, len(self.kern_grid), 6):
+                    contained_pause_df = self.kern_grid_notes.iloc[d:d+6, y].str.contains("r")
+                    contained_dots_df = self.kern_grid_notes.iloc[d:d+6, y].str.contains(re.escape("."))
+                    for i in range(d, d+6):
+                        if contained_pause_df.iloc[0] == False and not (contained_pause_df.iloc[:]).value_counts()[False] <= 1:
+                            if i == d:
+                                self.kern_grid.iloc[i, y] = "4"
+                            else:
+                                self.kern_grid.iloc[i, y] = "."
+                                self.kern_grid_notes.iloc[i, y] = "."
+                            print(self.kern_grid.iloc[i, y],self.kern_grid_notes.iloc[i, y])
+            
             for i in range(len(self.kern_grid)):
                 for y in range(len(self.kern_grid.columns)):
                     if self.kern_grid.iloc[i, y] != ".":
