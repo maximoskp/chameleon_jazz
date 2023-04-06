@@ -135,7 +135,7 @@ def kern2csv4player_converter(file, data):
         pattern_for_tempo = re.escape('*MM')
         # first_occurrence = df["Piano_2"].str.contains("!LO:TX:a:t=\[quarter\]=")
         first_occurrence_tempo = starting_df.iloc[:, 0].str.contains(pattern_for_tempo)
-        print('first_occurrence_tempo: ', first_occurrence_tempo, file=f_pl_debug)
+        # print('first_occurrence_tempo: ', first_occurrence_tempo, file=f_pl_debug)
         global_tempo = str(120)
         for i in range(len(first_occurrence_tempo)):
             if first_occurrence_tempo.iloc[i] == True:
@@ -145,11 +145,12 @@ def kern2csv4player_converter(file, data):
             # print('global_tempo is zero: ', global_tempo, file=f_pl_debug)
             # global_tempo = data.split('*MM')[1].split('\t')[0]
             # print('global_tempo is not zero', global_tempo, file=f_pl_debug)
-        print('global_tempo after all: ', global_tempo, file=f_pl_debug)
+        # print('global_tempo after all: ', global_tempo, file=f_pl_debug)
         # find global_style
         # find global_style
         pattern_for_style = re.escape('*SS')
         first_occurrence_style = starting_df.iloc[:, 0].str.contains(pattern_for_style)
+        global_style = 'Swing'
         for i in range(len(first_occurrence_style)):
             if first_occurrence_style.iloc[i] == True:
         
@@ -234,7 +235,7 @@ def kern2csv4player_converter(file, data):
         
                 # find the index where the '!' or '*' or '=' character stops occurring
                 stop_idx = mask.idxmax()
-        
+       
                 # define the number of blank rows to add
                 num_blank_rows = stop_idx + 1
         

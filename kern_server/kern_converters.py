@@ -44,7 +44,7 @@ def kern2py(file_name):
     if starMdf.size > 0:
         starMdf = df[ np.logical_and( df.iloc[:,0].str.contains('\*M') , ~df.iloc[:,0].str.contains('\*MM') ) ]
         initial_time_signature = starMdf.iloc[0,0].replace('*M', '')
-        print('initial_time_signature:', initial_time_signature )
+        # print('initial_time_signature:', initial_time_signature )
 
     # find where each measure starts based on "=" symbol
     df_measure_start = df.loc[df['Bass'].str.contains("=")]
@@ -312,19 +312,19 @@ def kern2string(file_name, find_chord_in_line=None):
     chord_idx = -1
     chord_found = False
     for b in p['bars']:
-        print('b:')
-        print(b)
+        # print('b:')
+        # print(b)
         string += ',bar~' + initial_time_signature # TODO: time sig
         for i in range(b.shape[0]):
             t = str( b.iloc[i][0] )
             c = b.iloc[i]['Chords'] # TODO: translate to GJT chord
             # it appears that there is always a space between root and type
-            print('b.iloc[i].name', b.iloc[i].name)
+            # print('b.iloc[i].name', b.iloc[i].name)
             if (find_chord_in_line is not None) and (chord_found == False):
-                print('increasing chord_idx: ', chord_idx)
+                # print('increasing chord_idx: ', chord_idx)
                 chord_idx += 1
                 if abs( find_chord_in_line - b.iloc[i].name ) < 2:
-                    print('FOUND chord_idx: ', chord_idx)
+                    # print('FOUND chord_idx: ', chord_idx)
                     chord_found = True
             chord_split = c.split(' ')
             acc_chord = chord_split[0]
@@ -956,7 +956,7 @@ def csv2kern(filename):
                             else:
                                 self.kern_grid.iloc[i, y] = "."
                                 self.kern_grid_notes.iloc[i, y] = "."
-                            print(self.kern_grid.iloc[i, y],self.kern_grid_notes.iloc[i, y])
+                            # print(self.kern_grid.iloc[i, y],self.kern_grid_notes.iloc[i, y])
             
             for i in range(len(self.kern_grid)):
                 for y in range(len(self.kern_grid.columns)):
@@ -1055,5 +1055,5 @@ def csv2kern(filename):
     # out_string = tabulate( df_proto, showindex=False )
     # out_string = df_proto.to_string(index=False, justify='left')
     out_string = df_proto.to_csv(index=False, header=False, sep='\t')
-    print('out_string: ', out_string)
+    # print('out_string: ', out_string)
     return kern_song_title_part + '\n' + out_string + '\n' + trackending
