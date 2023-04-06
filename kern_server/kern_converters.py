@@ -705,32 +705,36 @@ def csv2kern(filename):
                 elif self.measure_raw.iloc[y, 0] == "Drums":
                     # Load Kick-Snare
                     if int(self.measure_raw.iloc[y, 1]) == 36 or int(self.measure_raw.iloc[y, 1]) == 40:
-
-                        note_onset = float(
-                            self.measure_raw.iloc[y, 2]) - measure_count*self.time_signature
-
-                        for i in range(len(self.kern_grid)):
-
-                            if note_onset == float(self.kern_grid.iloc[i, 4]):
-                                self.kern_grid.iloc[i, 1] = quantizeNotes(
-                                    float(self.measure_raw.iloc[y, 3]))
-                                if int(self.measure_raw.iloc[y, 1]) == 36:
-                                    self.kern_grid_notes.iloc[i, 1] = "Rf"+'\\'
-                                elif int(self.measure_raw.iloc[y, 1]) == 40:
-                                    self.kern_grid_notes.iloc[i, 1] = "Rcc"+'\\'
-                                break
+                        # note_onset = float(
+                        #     self.measure_raw.iloc[y, 2]) - measure_count*self.time_signature
+                        note_onset = float(self.measure_raw.iloc[y, 2]) - measure_count * self.time_signature
+                        i, quantized_onset = self.find_nearest( self.even_grid, note_onset )
+                        if int(self.measure_raw.iloc[y, 1]) == 36:
+                            self.kern_grid_notes.iloc[i, 1] = "Rf"+'\\'
+                        elif int(self.measure_raw.iloc[y, 1]) == 40:
+                            self.kern_grid_notes.iloc[i, 1] = "Rcc"+'\\'
+                        # for i in range(len(self.kern_grid)):
+                        #     if note_onset == float(self.kern_grid.iloc[i, 4]):
+                        #         self.kern_grid.iloc[i, 1] = quantizeNotes(
+                        #             float(self.measure_raw.iloc[y, 3]))
+                        #         if int(self.measure_raw.iloc[y, 1]) == 36:
+                        #             self.kern_grid_notes.iloc[i, 1] = "Rf"+'\\'
+                        #         elif int(self.measure_raw.iloc[y, 1]) == 40:
+                        #             self.kern_grid_notes.iloc[i, 1] = "Rcc"+'\\'
+                        #         break
                     # Load Hi-Hats
                     elif int(self.measure_raw.iloc[y, 1]) == 59 or int(self.measure_raw.iloc[y, 1]) == 44:
-                        note_onset = float(
-                            self.measure_raw.iloc[y, 2]) - measure_count*self.time_signature
-
-                        for i in range(len(self.kern_grid)):
-
-                            if note_onset == float(self.kern_grid.iloc[i, 4]):
-                                self.kern_grid.iloc[i, 2] = quantizeNotes(
-                                    float(self.measure_raw.iloc[y, 3]))
-                                self.kern_grid_notes.iloc[i, 2] = "Ree/"
-                                break
+                        note_onset = float(self.measure_raw.iloc[y, 2]) - measure_count * self.time_signature
+                        i, quantized_onset = self.find_nearest( self.even_grid, note_onset )
+                        self.kern_grid_notes.iloc[i, 2] = "Ree/"
+                        # note_onset = float(
+                        #     self.measure_raw.iloc[y, 2]) - measure_count*self.time_signature
+                        # for i in range(len(self.kern_grid)):
+                        #     if note_onset == float(self.kern_grid.iloc[i, 4]):
+                        #         self.kern_grid.iloc[i, 2] = quantizeNotes(
+                        #             float(self.measure_raw.iloc[y, 3]))
+                        #         self.kern_grid_notes.iloc[i, 2] = "Ree/"
+                        #         break
     # =============================================================================
     #                 else:
     #                     self.kern_grid.iloc[i,2] = quantizeNotes(float(self.measure_raw.iloc[y,3]))
@@ -781,7 +785,7 @@ def csv2kern(filename):
                     note_onset = float(self.measure_raw.iloc[y, 3]) - measure_count * self.time_signature
                     i, quantized_onset = self.find_nearest( self.even_grid, note_onset )
                     with open('debug_log.txt', 'a') as f:
-                        print('note_onset: ', note_onset, file=f)
+                        print('note_onset - Chords: ', note_onset, file=f)
                         print('quantized_onset: ', quantized_onset, file=f)
                     self.kern_grid.iloc[i, 6] = ""
                     self.kern_grid_notes.iloc[i, 6] = find_chord_font_from_symbolic_type(str(self.measure_raw.iloc[y, 1]))

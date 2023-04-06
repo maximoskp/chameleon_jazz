@@ -223,7 +223,7 @@ def kern2csv4player_converter(file, data):
             def __init__(self, measure, measure_count):
                 self.df_measure_grid = pd.read_csv(
                     "kern_measure_grid_empty.krn", sep='\t', names=column_names)
-                self.df_measure_grid = self.df_measure_grid['Blank']
+                self.df_measure_grid = self.df_measure_grid['Blank'] # TODO: __max__ array grid for swing or even here
                 # TODO: If we create rythm & tempo change the following line should change
                 self.measure = measure[1:]
                 self.measure = self.measure.reset_index()
