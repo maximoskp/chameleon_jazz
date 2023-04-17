@@ -342,6 +342,7 @@ def kern2string(file_name, find_chord_in_line=None):
     return string, chord_idx
 
 def csv2kern(filename):
+    
     names = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
     names_grid = ['Bass', 'Kick-Snare', 'Hihat', 'Piano-F-Clef', 'empty', 'Piano-G-Clef', 'Chords']
     df_proto = pd.read_csv("kern_init.krn", sep='\t', names=names)
@@ -361,164 +362,44 @@ def csv2kern(filename):
         # df = pd.read_csv(filename, sep='\n', encoding=result["encoding"])
     # print('df: ', df)
 
+
+    #Load json files for for mappings, accidendal symbols, midi to kern notes, kern notes duration
+    f = open('json/csv_to_kern_fonts_mapping.json')
+    fonts_mapping = json.load(f)
+    
+    f = open('json/csv_to_kern_accidental_symbol_mapping.json')
+    accidental_symbols_mapping = json.load(f)
+    
+    f = open('json/csv_to_kern_midi_to_kern_notes.json')
+    miditokern = json.load(f)
+    
+    f = open('json/csv_to_kern_kern_note_duration_dictionary.json')
+    note_duration_dictionary = json.load(f)
+    
+
     df_measure_start = df.loc[df.iloc[:, 0].str.contains("Bar")]
 
-    # TODO find measure rythm
-    # print('df.columns[2]: ', df.columns[2])
-    # print('df.columns[0].split(, ): ', df.columns[0].split(', '))
-    # column_split = df.columns[0].split(', ')
-    # print('column_split:', column_split)
-    # global_rhythm = re.findall(r'\d+', df.columns[0][2])
     global_rhythm = re.findall(r'\d+', df.columns[2])
-    # global_rhythm = column_split[2].split('/')
-    # print('global_rhythm: ', global_rhythm)
 
-    # print('df_measure_start: ', df_measure_start)
-    # global_style = df_measure_start.iloc[0, 1].replace(" ", "")
-    # global_style = df.columns[0][1].replace(' ', '')
     global_style = df.columns[1].replace(' ', '')
 
-    # global_tempo = df_measure_start.iloc[0, 4]
-    # global_tempo = df.columns[0][4].replace(' ', '')
     global_tempo = df.columns[4].replace(' ', '')
 
-    # song_title = file[:len(file) - 12]
     song_title = 'test'
-    # global_tonality = df.columns[0][0]
+
     global_tonality = df.columns[0]
+
     kern_song_title_part_1 = "!!!system-decoration: \\{(s1,s2)\\}s3,s4\\" + "\n" + "!!!OTL: " + song_title + "\n" + \
         "**kern	**kern	**kern	**kern	**mxhm\n*part3	*part2	*part1	*part1	*part1\n*staff4	*staff3	*staff2	*staff1	*\n*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*\n*I'Cb.	*I'D. Set	*I'Pno.	*	*\n*clefF4	*clefX	*clefF4	*clefG2	*\n*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*"
+
     kern_song_top_altered = "*"+global_tonality+":\t"+"*"+global_tonality+":\t"+"*"+global_tonality+":\t"+"*"+global_tonality+":\t*" + \
         global_tonality+":\n*M"+global_rhythm[0]+"/4\t*M"+global_rhythm[0] + \
         "/4\t*M"+global_rhythm[0]+"/4\t*M"+global_rhythm[0]+"/4\t*"+ "\n*MM"+global_tempo.split('.')[0]+"\t*MM"+global_tempo.split('.')[0] + "\t*MM"+global_tempo.split('.')[0]+"\t*MM"+ global_tempo.split('.')[0]+"\t*" + "\n*SS"+global_style+"\t*SS"+global_style + "\t*SS"+global_style+"\t*SS"+ global_style +"\t*"
-    # kern_song_top_altered = "*"+global_tonality+": 	*"+global_tonality+":	*"+global_tonality+":	*"+global_tonality+":	*" + \
-    #     global_tonality+":\n*M"+global_rhythm[0]+"/4	*M"+global_rhythm[0] + \
-    #     "/4	*M"+global_rhythm[0]+"/4	*M"+global_rhythm[0]+"/4	*"
+    
     kern_song_first_measure = "=1	=1	=1	=1	=1\n*	*^	*^	*	*"
 
     kern_song_title_part = kern_song_title_part_1 + "\n" + \
         kern_song_top_altered + "\n" + kern_song_first_measure
-
-    fonts_mapping = {
-        " ": "", "": "", "7": "7", "9": "9", "7b9": "S", "7#9": "s", "7#11": "t", "7b5": "p", "7#5": "q", "9#11": "r", "9b5": "T", "9#5": "n", "9b13": "2", "7#9#5": "M", "7#9b5": "O", "7#9#11": "N", "7b9#11": "P", "7b9b5": "L", "7b9#5": "J", "7b9#9": "K", "7b9b13": "I", "7alt": "?", "13": "U", "13#11": "l", "13b9": "u", "13#9": "o", "replacedby7sus": "A", "deleted": "A", "replacedby7b9sus": "v", "replacedby7aad3sus": "H", "replacedby9sus": "B", "replacedby13sus": "C", "replacedby7b13sus": "w", "m": "a", "m7": "b", "m9": "h", "m11": "i", "\u00f87": "W", "\u00f811": "Y", "\u00f89": "X", "m\u03947": "f", "m\u03949": "g", "o7": "8", "o": ">", "m6": "j", "m6/9": "Z", "mb6": "R", "m13": "3", "m(#5)": "V", "add9": "=", "6": "6", "6/9": "k", "replacedbysus": "4", "replacedby+": "G", "\u03947": "c", "\u03949": "d", "\u03947#11": "x", "\u03947#5": "z", "\u03949#11": "y", "\u03947b5": "1", "\u039413": "e", "7b13": "m", "7#9b13": "0", "11": "Q", "5": "5", "madd9": "%", "7b9sus": "v", "7add3sus": "H", "9sus": "]", "13sus": "<", "7b13sus": "w", "7sus": "[", "+": "@", "sus": "4", "nan": "nan", "/": "nan", "/m": "nan", "/7": "nan", "/\u03947": "nan", "/m7": "nan", "/m\u03947": "nan", "barline": "0", "doublebarline": "1", "repeatStart": "2", "repeatEnd": "3", "accentUpbeat": "h", "accentDownbeat": "i", "samebar": "%", "repeatVersionStart~1": "4", "repeatVersionStart~2": "5", "repeatVersionStart~3": "6", "repeatVersionStart~4": "7", "sharp": "+", "flat": "&", "/A": "a", "/B": "b", "/C": "c", "/D": "d", "/E": "e", "/F": "f", "/G": "g", "/Ab": "h", "/Bb": "i", "/Cb": "j", "/Db": "k", "/Eb": "l", "/Gb": "n", "/A#": "o", "/C#": "q", "/D#": "r", "/F#": "t", "/G#": "u", "section~A": "A", "section~B": "B", "section~C": "C", "section~D": "D", "section~E": "E", "A": "A", "B": "B", "C": "C", "D": "D", "E": "E", "F": "F", "G": "G", "2/4": "a", "3/4": "b", "4/4": "c", "5/4": "d", "6/4": "e", "7/4": "f", "8/4": "g", "9/4": "h", "10/4": "i", "11/4": "j", "12/4": "k", "13/4": "l", "14/4": "m", "15/4": "n", "16/4": "o", "17/4": "p"}
-
-    accidental_symbols_mapping = {"-": "", "b": "&", "#": "+"}
-    # =============================================================================
-    # #fonts_mapping = {
-    #     " ": "", "": "", "7": "7", "9": "9", "7b9": "S", "7#9": "s", "7#11": "t", "7b5": "p", "7#5": "q", "9#11": "r", "9b5": "T", "9#5": "n", "9b13": "2", "7#9#5": "M", "7#9b5": "O", "7#9#11": "N", "7b9#11": "P", "7b9b5": "L", "7b9#5": "J", "7b9#9": "K", "7b9b13": "I", "7alt": "F", "13": "U", "13#11": "l", "13b9": "u", "13#9": "o", "replacedby7sus": "A", "deleted": "A", "replacedby7b9sus": "v", "replacedby7aad3sus": "H", "replacedby9sus": "B", "replacedby13sus": "C", "replacedby7b13sus": "w", "m": "a", "m7": "b", "m9": "h", "m11": "i", "\u00f87": "W", "\u00f811": "Y", "\u00f89": "X", "m\u03947": "f", "m\u03949": "g", "o7": "8", "o": "E", "m6": "j", "m6/9": "Z", "mb6": "R", "m13": "3", "m(#5)": "V", "add9": "D", "6": "6", "6/9": "k", "replacedbysus": "4", "replacedby+": "G", "\u03947": "c", "\u03949": "d", "\u03947#11": "x", "\u03947#5": "z", "\u03949#11": "y", "\u03947b5": "1", "\u039413": "e", "7b13": "m", "7#9b13": "0", "11": "Q", "5": "5", "madd9": "%", "7b9sus": "v", "7add3sus": "H", "9sus": "B", "13sus": "C", "7b13sus": "w", "7sus": "A", "+": "G", "sus": "4", "nan": "nan", "/": "nan", "/m": "nan", "/7": "nan", "/\u03947": "nan", "/m7": "nan", "/m\u03947": "nan", "barline": "0", "doublebarline": "1", "repeatStart": "2", "repeatEnd": "3", "accentUpbeat": "h", "accentDownbeat": "i", "samebar": "%", "repeatVersionStart~1": "4", "repeatVersionStart~2": "5", "repeatVersionStart~3": "6", "repeatVersionStart~4": "7", "sharp": "+", "flat": "&", "/A": "a", "/B": "b", "/C": "c", "/D": "d", "/E": "e", "/F": "f", "/G": "g", "/Ab": "h", "/Bb": "i", "/Cb": "j", "/Db": "k", "/Eb": "l", "/Gb": "n", "/A#": "o", "/C#": "q", "/D#": "r", "/F#": "t", "/G#": "u", "section~A": "A", "section~B": "B", "section~C": "C", "section~D": "D", "section~E": "E", "A": "A", "B": "B", "C": "C", "D": "D", "E": "E", "F": "F", "G": "G", "2/4": "a", "3/4": "b", "4/4": "c", "5/4": "d", "6/4": "e", "7/4": "f", "8/4": "g", "9/4": "h", "10/4": "i", "11/4": "j", "12/4": "k", "13/4": "l", "14/4": "m", "15/4": "n", "16/4": "o", "17/4": "p"}
-    # =============================================================================
-
-    miditokern = {
-        '24': "CCC",
-        '25': "CCC#",
-        '26': "DDD",
-        '27': "DDD#",
-        '28': "EEE",
-        '29': "FFF",
-        '30': "FFF#",
-        '31': "GGG",
-        '32': "GGG#",
-        '33': "AAA",
-        '34': "AAA#",
-        '35': "BBB",
-        '36': "CC",
-        '37': "CC#",
-        '38': "DD",
-        '39': "DD#",
-        '40': "EE",
-        '41': "FF",
-        '42': "FF#",
-        '43': "GG",
-        '44': "GG#",
-        '45': "AA",
-        '46': "AA#",
-        '47': "BB",
-        '48': "C",
-        '49': "C#",
-        '50': "D",
-        '51': "D#",
-        '52': "E",
-        '53': "F",
-        '54': "F#",
-        '55': "G",
-        '56': "G#",
-        '57': "A",
-        '58': "A#",
-        '59': "B",
-        '60': "c",
-        '61': "c#",
-        '62': "d",
-        '63': "d#",
-        '64': "e",
-        '65': "f",
-        '66': "f#",
-        '67': "g",
-        '68': "g#",
-        '69': "a",
-        '70': "a#",
-        '71': "b",
-        '72': "cc",
-        '73': "cc#",
-        '74': "dd",
-        '75': "dd#",
-        '76': "ee",
-        '77': "ff",
-        '78': "ff#",
-        '79': "gg",
-        '80': "gg#",
-        '81': "aa",
-        '82': "aa#",
-        '83': "bb",
-        '84': "ccc",
-        '85': "ccc#",
-        '86': "ddd",
-        '87': "ddd#",
-        '88': "eee",
-        '89': "fff",
-        '90': "fff#",
-        '91': "ggg",
-        '92': "ggg#",
-        '93': "aaa",
-        '94': "aaa#",
-        '95': "bbb",
-        '96': "cccc",
-        '97': "cccc#",
-        '98': "dddd",
-        '99': "dddd#",
-        '100': "eeee",
-        '101': "ffff",
-        '102': "ffff#",
-        '103': "gggg",
-        '104': "gggg#",
-        '105': "aaaa",
-        '106': "aaaa#",
-        '107': "bbbb",
-        '108': "cccc",
-        '109': "cccc#",
-        '110': "dddd",
-        '111': "dddd#",
-        '112': "eeee",
-        '113': "ffff",
-        '114': "ffff#",
-        '115': "gggg",
-        '116': "gggg#",
-        '117': "aaaa",
-        '118': "aaaa#",
-        '119': "bbbb",
-        '120': "cccc",
-        '121': "cccc#",
-        '122': "dddd",
-        '123': "dddd#",
-        '124': "eeee",
-        '125': "ffff",
-        '126': "ffff#",
-        '127': "gggg"
-    }
-
-    utfChordstoKern = {
-        'CΔ13': "C maj13",
-    }
-
 
     def find_measure_rythm(measure):
         if global_rhythm[0] == re.findall(r'\d+', measure.columns[2])[0]:
@@ -609,7 +490,7 @@ def csv2kern(filename):
 
 
     measures = []
-    # for i in range(len(df_measure_start.index)): # __max__
+    
     for i in range(len(df_measure_start.index)):
         if i < len( df_measure_start.index )-1:
             measures.append(df.iloc[df_measure_start.iloc[i].name:df_measure_start.iloc[(i+1)].name])
@@ -663,9 +544,7 @@ def csv2kern(filename):
             # TODO: adjust off-beats for swing
             self.swing_grid = np.array([0.0, 0.25, 0.333, 0.5, 0.666, 0.75, 1.0, 1.25, 1.333, 1.5, 1.666, 1.75, 2.0, 2.25, 2.333, 2.5, 2.666, 2.75, 3.0, 3.25, 3.333, 3.5, 3.666, 3.75])
             measure_header_string = measure.iloc[0].to_string()
-            # print('measure_header_string:', measure_header_string)
-            # comma_split = measure_header_string.split(', ')
-            # self.time_signature = comma_split[2]
+            
             self.time_signature = set_measure_rhythm(measure)
             # self.style = comma_split[1]
             self.style = set_measure_style(measure)
@@ -677,7 +556,7 @@ def csv2kern(filename):
             if self.style[1] == True or measure_count == 0:
                 self.style_change = pd.DataFrame(
                     [["!", "!", "!", "!", "!", "!LO:TX:a:t="+str(self.style[0]), "!"]], columns=names_grid)
-                # print("style_set")
+                
 
             if self.tempo[1] == True or measure_count == 0:
                 self.tempo_change = pd.DataFrame(
@@ -789,14 +668,8 @@ def csv2kern(filename):
                         print('quantized_onset: ', quantized_onset, file=f)
                     self.kern_grid.iloc[i, 6] = ""
                     self.kern_grid_notes.iloc[i, 6] = find_chord_font_from_symbolic_type(str(self.measure_raw.iloc[y, 1]))
-                    # for i in range(len(self.kern_grid)):
-                    #     if note_onset == float(self.kern_grid.iloc[i, 4]):
-                    #         self.kern_grid.iloc[i, 6] = ""
-                    #         self.kern_grid_notes.iloc[i, 6] = find_chord_font_from_symbolic_type(str(
-                    #             self.measure_raw.iloc[y, 1]))
-                    #         with open('debug_log.txt', 'a') as f:
-                    #             print('inside if: ', note_onset, file=f)
-                    #         break
+                    
+                    
             self.kern_grid = self.kern_grid.replace(
                 to_replace=["."], value=float('nan'))
             self.kern_grid_notes = self.kern_grid_notes.replace(
@@ -1012,10 +885,7 @@ def csv2kern(filename):
                     [self.style_change, self.kern_grid_merge])
                 self.kern_grid_merge = pd.concat(
                     [self.tempo_change, self.kern_grid_merge])
-                # self.kern_grid_merge = pd.concat(
-                #     [self.style_change, self.kern_grid_merge])
-                # self.kern_grid_merge = pd.concat(
-                #     [self.tempo_change, self.kern_grid_merge])
+               
             if not measure_count == 0:
                 self.kern_grid_merge = pd.concat(
                     [df_measureending, self.kern_grid_merge])
@@ -1049,11 +919,9 @@ def csv2kern(filename):
 
     # Append ending of kern file
     trackending = "==	==	==	==	==	==	==\n*-	*-	*-	*-	*-	*-	*-\n!!!system-decoration: {(s1,s2)}s3,s4e"
-    # print('kern_song_title_part: \n', kern_song_title_part)
-    # print('df_proto.to_string(): \n', df_proto.to_string())
-    # return kern_song_title_part + '\n' + '\n' + trackending
-    # out_string = tabulate( df_proto, showindex=False )
-    # out_string = df_proto.to_string(index=False, justify='left')
+    
     out_string = df_proto.to_csv(index=False, header=False, sep='\t')
-    # print('out_string: ', out_string)
+    
     return kern_song_title_part + '\n' + out_string + '\n' + trackending
+
+csv2kern("../data/csvs/A_BEAUTIFUL_FRIENDSHIP_r~1_h~5.csv")
