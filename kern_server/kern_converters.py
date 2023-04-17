@@ -924,4 +924,3 @@ def csv2kern(filename):
     
     return kern_song_title_part + '\n' + out_string + '\n' + trackending
 
-csv2kern("../data/csvs/A_BEAUTIFUL_FRIENDSHIP_r~1_h~5.csv")
