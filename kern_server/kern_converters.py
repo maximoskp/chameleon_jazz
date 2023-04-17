@@ -347,18 +347,18 @@ def csv2kern(filename):
     names_grid = ['Bass', 'Kick-Snare', 'Hihat', 'Piano-F-Clef', 'empty', 'Piano-G-Clef', 'Chords']
     df_proto = pd.read_csv("kern_init.krn", sep='\t', names=names)
     df_proto = df_proto.iloc[0:16]
-    # with open(filename, 'rb') as rawdata:
-    #     result = chardet.detect(rawdata.read(100000))
-    result = chardet.detect( str.encode( filename.getvalue() ) )
-    # print('encoding: ', result["encoding"])
+    with open(filename, 'rb') as rawdata:
+        result = chardet.detect(rawdata.read(100000))
+    #result = chardet.detect( str.encode( filename.getvalue() ) )
+    #print('encoding: ', result["encoding"])
 
 
     if result["encoding"] == "utf-16":
-        df = pd.read_csv(filename, sep='\,', encoding=result["encoding"])
+        df = pd.read_csv(filename, sep='\;', encoding=result["encoding"])
         for i in range(len(df.columns)-1):
             df.iloc[:, i] = df.iloc[:, i].str.replace(" ", "")
     else:
-        df = pd.read_csv(filename, sep='\, ', encoding=result["encoding"])
+        df = pd.read_csv(filename, sep='\;', encoding=result["encoding"])
         # df = pd.read_csv(filename, sep='\n', encoding=result["encoding"])
     # print('df: ', df)
 
