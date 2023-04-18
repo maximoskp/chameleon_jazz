@@ -347,25 +347,38 @@ def csv2kern(filename):
     names_grid = ['Bass', 'Kick-Snare', 'Hihat', 'Piano-F-Clef', 'empty', 'Piano-G-Clef', 'Chords']
     df_proto = pd.read_csv("kern_init.krn", sep='\t', names=names)
     df_proto = df_proto.iloc[0:16]
+
     
     df_measure_grid = pd.read_csv(
             "kern_measure_grid_empty.krn", sep='\t', names=names_grid)
     
     with open(filename, 'rb') as rawdata:
         result = chardet.detect(rawdata.read(100000))
+    
+    
+    #FOR ONLINE INTEGRATION UNCOMMENT THE FOLOWING:
     #result = chardet.detect( str.encode( filename.getvalue() ) )
-    #print('encoding: ', result["encoding"])
+    
 
 
+    #FOR ONLINE INTEGRATION COMMENT OUT THE FOLOWING:
     if result["encoding"] == "utf-16":
         df = pd.read_csv(filename, sep='\;', encoding=result["encoding"])
         for i in range(len(df.columns)-1):
             df.iloc[:, i] = df.iloc[:, i].str.replace(" ", "")
     else:
         df = pd.read_csv(filename, sep='\;', encoding=result["encoding"])
-        # df = pd.read_csv(filename, sep='\n', encoding=result["encoding"])
-    # print('df: ', df)
-
+    
+    #FOR ONLINE INTEGRATION UNCOMMENT THE FOLOWING:
+# =============================================================================
+#     if result["encoding"] == "utf-16":
+#         df = pd.read_csv(filename, sep='\,', encoding=result["encoding"])
+#         for i in range(len(df.columns)-1):
+#             df.iloc[:, i] = df.iloc[:, i].str.replace(" ", "")
+#     else:
+#         df = pd.read_csv(filename, sep='\, ', encoding=result["encoding"])
+# 
+# =============================================================================
 
     #Load json files for for mappings, accidendal symbols, midi to kern notes, kern notes duration
     f = open('json/csv_to_kern_fonts_mapping.json')
@@ -379,6 +392,9 @@ def csv2kern(filename):
     
     f = open('json/csv_to_kern_kern_note_duration_dictionary.json')
     note_duration_dictionary = json.load(f)
+    
+    f = open('json/csv_to_kern_pause_position.json')
+    pause_position_dictionary = json.load(f)
     
 
     df_measure_start = df.loc[df.iloc[:, 0].str.contains("Bar")]
@@ -394,13 +410,13 @@ def csv2kern(filename):
     global_tonality = df.columns[0]
 
     kern_song_title_part_1 = "!!!system-decoration: \\{(s1,s2)\\}s3,s4\\" + "\n" + "!!!OTL: " + song_title + "\n" + \
-        "**kern	**kern	**kern	**kern	**mxhm\n*part3	*part2	*part1	*part1	*part1\n*staff4	*staff3	*staff2	*staff1	*\n*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*\n*I'Cb.	*I'D. Set	*I'Pno.	*	*\n*clefF4	*clefX	*clefF4	*clefG2	*\n*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*"
+        "**kern\t**kern\t**kern\t**kern\t**mxhm\n*part3\t*part2\t*part1\t*part1\t*part1\n*staff4\t*staff3\t*staff2\t*staff1\t*\n*I'Contrabass'\t*I'Drumset'\t*'IPiano'\t*\t*\n*I'Cb.\t*I'D. Set\t*I'Pno.\t*\t*\n*clefF4\t*clefX\t*clefF4\t*clefG2\t*\n*k[b-e-a-]	*k[]\t*k[b-e-a-]\t*k[b-e-a-]\t*"
 
     kern_song_top_altered = "*"+global_tonality+":\t"+"*"+global_tonality+":\t"+"*"+global_tonality+":\t"+"*"+global_tonality+":\t*" + \
         global_tonality+":\n*M"+global_rhythm[0]+"/4\t*M"+global_rhythm[0] + \
         "/4\t*M"+global_rhythm[0]+"/4\t*M"+global_rhythm[0]+"/4\t*"+ "\n*MM"+global_tempo.split('.')[0]+"\t*MM"+global_tempo.split('.')[0] + "\t*MM"+global_tempo.split('.')[0]+"\t*MM"+ global_tempo.split('.')[0]+"\t*" + "\n*SS"+global_style+"\t*SS"+global_style + "\t*SS"+global_style+"\t*SS"+ global_style +"\t*"
     
-    kern_song_first_measure = "=1	=1	=1	=1	=1\n*	*^	*^	*	*"
+    kern_song_first_measure = "=1\t=1\t=1\t=1\t=1\n*\t*^\t*^\t*\t*"
 
     kern_song_title_part = kern_song_title_part_1 + "\n" + \
         kern_song_top_altered + "\n" + kern_song_first_measure
@@ -592,8 +608,12 @@ def csv2kern(filename):
                         i, quantized_onset = self.find_nearest( self.even_grid, note_onset )
                         if int(self.measure_raw.iloc[y, 1]) == 36:
                             self.kern_grid_notes.iloc[i, 1] = "Rf"+'\\'
+                            self.kern_grid.iloc[i, 1] = quantizeNotes(
+                                     float(self.measure_raw.iloc[y, 3]))
                         elif int(self.measure_raw.iloc[y, 1]) == 40:
                             self.kern_grid_notes.iloc[i, 1] = "Rcc"+'\\'
+                            self.kern_grid.iloc[i, 1] = quantizeNotes(
+                                     float(self.measure_raw.iloc[y, 3]))
                         # for i in range(len(self.kern_grid)):
                         #     if note_onset == float(self.kern_grid.iloc[i, 4]):
                         #         self.kern_grid.iloc[i, 1] = quantizeNotes(
@@ -608,6 +628,8 @@ def csv2kern(filename):
                         note_onset = float(self.measure_raw.iloc[y, 2]) - measure_count * self.time_signature
                         i, quantized_onset = self.find_nearest( self.even_grid, note_onset )
                         self.kern_grid_notes.iloc[i, 2] = "Ree/"
+                        self.kern_grid.iloc[i, 2] = quantizeNotes(
+                                     float(self.measure_raw.iloc[y, 3]))
                         # note_onset = float(
                         #     self.measure_raw.iloc[y, 2]) - measure_count*self.time_signature
                         # for i in range(len(self.kern_grid)):
@@ -684,18 +706,9 @@ def csv2kern(filename):
                 for y in range(len(self.kern_grid.columns)-1):
 
                     # Assign pause position to each instrument
-                    if y == 0:
-                        pause_position = ""
-                    elif y == 1:
-                        pause_position = "e"
-                    elif y == 2:
-                        pause_position = "ee"
-                    elif y == 3:
-                        pause_position = ""
-                    elif y == 4:
-                        pause_position = ""
-                    elif y == 5:
-                        pause_position = ""
+                    
+                    pause_position = pause_position_dictionary[str(y)]
+                    
 
                     if self.kern_grid.iloc[0+k:5+k, y].sum() == 0:
                         self.kern_grid.iloc[k, y] = 1
@@ -920,7 +933,7 @@ def csv2kern(filename):
         f.write(kern_song_title_part + "\n" + old)  # write the new line before
 
     # Append ending of kern file
-    trackending = "==	==	==	==	==	==	==\n*-	*-	*-	*-	*-	*-	*-\n!!!system-decoration: {(s1,s2)}s3,s4e"
+    trackending = "==\t==\t==\t==\t==\t==\t==\n*-\t*-\t*-\t*-\t*-\t*-\t*-\n!!!system-decoration: {(s1,s2)}s3,s4e"
     
     out_string = df_proto.to_csv(index=False, header=False, sep='\t')
     
