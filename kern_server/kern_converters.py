@@ -347,6 +347,10 @@ def csv2kern(filename):
     names_grid = ['Bass', 'Kick-Snare', 'Hihat', 'Piano-F-Clef', 'empty', 'Piano-G-Clef', 'Chords']
     df_proto = pd.read_csv("kern_init.krn", sep='\t', names=names)
     df_proto = df_proto.iloc[0:16]
+    
+    df_measure_grid = pd.read_csv(
+            "kern_measure_grid_empty.krn", sep='\t', names=names_grid)
+    
     with open(filename, 'rb') as rawdata:
         result = chardet.detect(rawdata.read(100000))
     #result = chardet.detect( str.encode( filename.getvalue() ) )
@@ -528,14 +532,12 @@ def csv2kern(filename):
 
 
     class Measure:
-        def __init__(self, measure, measure_count):
+        def __init__(self, measure, measure_count, df_measure_grid):
             # print('measure:', measure)
-            df_measure_grid = pd.read_csv(
-                "kern_measure_grid_empty.krn", sep='\t', names=names_grid)
-            df_measure_grid_notes = pd.read_csv(
-                "kern_measure_grid_empty.krn", sep='\t', names=names_grid)
-            self.kern_grid = df_measure_grid
-            self.kern_grid_notes = df_measure_grid_notes
+            
+            self.df_measure_grid_notes = copy.deepcopy(df_measure_grid)
+            self.kern_grid = copy.deepcopy(df_measure_grid)
+            self.kern_grid_notes = copy.deepcopy(self.df_measure_grid_notes)
             self.kern_grid_merge = copy.deepcopy(df_measure_grid)
             self.measure_raw = measure.iloc[:, :]
             # __max__
@@ -901,7 +903,7 @@ def csv2kern(filename):
 
     for i in range(len(measures)):
 
-        df_list.append(Measure(measures[i], i).kern_grid_merge)
+        df_list.append(Measure(measures[i], i, df_measure_grid).kern_grid_merge)
 
     df_proto = pd.concat(df_list, ignore_index=True)
 
@@ -924,3 +926,4 @@ def csv2kern(filename):
     
     return kern_song_title_part + '\n' + out_string + '\n' + trackending
 
+csv2kern("../data/csvs/A_BEAUTIFUL_FRIENDSHIP_r~1_h~5.csv")
