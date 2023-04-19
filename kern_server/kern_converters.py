@@ -357,28 +357,28 @@ def csv2kern(filename):
     
     
     #FOR ONLINE INTEGRATION UNCOMMENT THE FOLOWING:
-    #result = chardet.detect( str.encode( filename.getvalue() ) )
+    result = chardet.detect( str.encode( filename.getvalue() ) )
     
 
 
-    #FOR ONLINE INTEGRATION COMMENT OUT THE FOLOWING:
-    if result["encoding"] == "utf-16":
-        df = pd.read_csv(filename, sep='\;', encoding=result["encoding"])
-        for i in range(len(df.columns)-1):
-            df.iloc[:, i] = df.iloc[:, i].str.replace(" ", "")
-    else:
-        df = pd.read_csv(filename, sep='\;', encoding=result["encoding"])
-    
-    #FOR ONLINE INTEGRATION UNCOMMENT THE FOLOWING:
 # =============================================================================
+#     #FOR ONLINE INTEGRATION COMMENT OUT THE FOLOWING:
 #     if result["encoding"] == "utf-16":
-#         df = pd.read_csv(filename, sep='\,', encoding=result["encoding"])
+#         df = pd.read_csv(filename, sep='\;', encoding=result["encoding"])
 #         for i in range(len(df.columns)-1):
 #             df.iloc[:, i] = df.iloc[:, i].str.replace(" ", "")
 #     else:
-#         df = pd.read_csv(filename, sep='\, ', encoding=result["encoding"])
-# 
+#         df = pd.read_csv(filename, sep='\;', encoding=result["encoding"])
 # =============================================================================
+    
+    #FOR ONLINE INTEGRATION UNCOMMENT THE FOLOWING:
+    if result["encoding"] == "utf-16":
+        df = pd.read_csv(filename, sep='\,', encoding=result["encoding"])
+        for i in range(len(df.columns)-1):
+            df.iloc[:, i] = df.iloc[:, i].str.replace(" ", "")
+    else:
+        df = pd.read_csv(filename, sep='\, ', encoding=result["encoding"])
+
 
     #Load json files for for mappings, accidendal symbols, midi to kern notes, kern notes duration
     f = open('json/csv_to_kern_fonts_mapping.json')
