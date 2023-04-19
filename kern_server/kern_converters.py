@@ -396,6 +396,7 @@ def csv2kern(filename):
     f = open('json/csv_to_kern_pause_position.json')
     pause_position_dictionary = json.load(f)
     
+    
 
     df_measure_start = df.loc[df.iloc[:, 0].str.contains("Bar")]
 
@@ -433,8 +434,48 @@ def csv2kern(filename):
             return min(myList, key=lambda x: abs(x-note))
         else:
             return None
+        
+    def quantizeDupleNotes(note):
+        if not pd.isna(note):
+            myList = [0.25, 0.5, 0.75, 1]
 
+            return min(myList, key=lambda x: abs(x-note))
+        else:
+            return None
+    
+    def quantizeTripleNotes(note):
+        if not pd.isna(note):
+            myList = [0.333, 0.666]
 
+            return min(myList, key=lambda x: abs(x-note))
+        else:
+            return None
+    
+    def sum_numeric_values_from_df(df):
+        """
+        Converts the values in a specified column of a pandas DataFrame to numeric type,
+        filters out NaN values from the column, calculates the sum of the remaining
+        numeric values in the column, and returns the sum.
+    
+        Args:
+            df (pandas.DataFrame): The pandas DataFrame to process.
+            column_name (str): The name of the column to process.
+    
+        Returns:
+            float: The sum of the remaining numeric values in the column.
+        """
+        # convert the values in the specified column to numeric type
+        df = df.apply(pd.to_numeric, errors='coerce')
+
+        # filter out NaN values from all columns
+        df = df.dropna()
+    
+        # calculate the sum of the remaining numeric values in all columns
+        sum_values = df.sum().sum()
+    
+        return sum_values
+        
+    
     def note_duration(note):
         if not pd.isna(note):
 
@@ -581,8 +622,18 @@ def csv2kern(filename):
                     [["!", "!", "!", "!", "!", "!LO:TX:a:t=[quarter]="+str(self.tempo[0]), "!"]], columns=names_grid)
 
             # find all durations & notes
-
-            for y in range(len(self.measure_raw)):
+            
+            duplets_list = [0.25, 0.5, 0.75, 1.25, 1.5, 1.75, 2.25, 2.5, 2.75, 3.25, 3.5, 3,75]
+            triplets_list = [0.333, 0.666, 1.333, 1.666, 2.333, 2.666, 3.333, 3.666]
+            
+            idx_for_duplets_list = [1,3,5,7,9,11,13,15,17,19,21,23]
+            idx_for_triplets_list = [2,4,8,10,14,16,20,22]
+            idx_quarter_list = [0,6,12,18]
+            
+            duplets = True
+            
+            for y in range(len(self.measure_raw)-1,-1,-1):
+                #print(y)
                 with open('debug_log.txt', 'a') as f:
                     print('self.measure_raw.iloc[y, 0]: ', self.measure_raw.iloc[y, 0], file=f)
                 if self.measure_raw.iloc[y, 0] == "Bass":
@@ -602,42 +653,88 @@ def csv2kern(filename):
                 elif self.measure_raw.iloc[y, 0] == "Drums":
                     # Load Kick-Snare
                     if int(self.measure_raw.iloc[y, 1]) == 36 or int(self.measure_raw.iloc[y, 1]) == 40:
-                        # note_onset = float(
-                        #     self.measure_raw.iloc[y, 2]) - measure_count*self.time_signature
-                        note_onset = float(self.measure_raw.iloc[y, 2]) - measure_count * self.time_signature
-                        i, quantized_onset = self.find_nearest( self.even_grid, note_onset )
-                        if int(self.measure_raw.iloc[y, 1]) == 36:
-                            self.kern_grid_notes.iloc[i, 1] = "Rf"+'\\'
-                            self.kern_grid.iloc[i, 1] = quantizeNotes(
-                                     float(self.measure_raw.iloc[y, 3]))
-                        elif int(self.measure_raw.iloc[y, 1]) == 40:
-                            self.kern_grid_notes.iloc[i, 1] = "Rcc"+'\\'
-                            self.kern_grid.iloc[i, 1] = quantizeNotes(
-                                     float(self.measure_raw.iloc[y, 3]))
-                        # for i in range(len(self.kern_grid)):
-                        #     if note_onset == float(self.kern_grid.iloc[i, 4]):
-                        #         self.kern_grid.iloc[i, 1] = quantizeNotes(
-                        #             float(self.measure_raw.iloc[y, 3]))
-                        #         if int(self.measure_raw.iloc[y, 1]) == 36:
-                        #             self.kern_grid_notes.iloc[i, 1] = "Rf"+'\\'
-                        #         elif int(self.measure_raw.iloc[y, 1]) == 40:
-                        #             self.kern_grid_notes.iloc[i, 1] = "Rcc"+'\\'
-                        #         break
+                        note_onset = float(
+                            self.measure_raw.iloc[y, 2]) - measure_count*self.time_signature
+                                              
+                        for i in range(len(self.kern_grid)):
+                            
+                            if (math.floor(note_onset * 1000) / 1000) == float(self.kern_grid.iloc[i, 4]):
+                                
+                                if i in idx_for_duplets_list:
+                                    #print(float(self.kern_grid.iloc[i, 4]))
+                                    self.kern_grid.iloc[i, 1] = quantizeDupleNotes(float(self.measure_raw.iloc[y, 3]))
+                                    
+                                elif i in idx_for_triplets_list: 
+                                    #print(float(self.kern_grid.iloc[i, 4]))
+                                    self.kern_grid.iloc[i, 1] = quantizeTripleNotes(float(self.measure_raw.iloc[y, 3]))
+                                elif i in idx_quarter_list and sum_numeric_values_from_df(self.kern_grid.iloc[i:i+5, 2])%0.333 == 0:
+                                    self.kern_grid.iloc[i, 1] = quantizeTripleNotes(float(self.measure_raw.iloc[y, 3]))
+                                    
+                                else:
+                                    self.kern_grid.iloc[i, 1] = quantizeDupleNotes(float(self.measure_raw.iloc[y, 3]))
+                                    
+                                    
+                                    
+                                if int(self.measure_raw.iloc[y, 1]) == 36:
+                                    self.kern_grid_notes.iloc[i, 1] = "Rf"+'\\'
+                                elif int(self.measure_raw.iloc[y, 1]) == 40:
+                                    self.kern_grid_notes.iloc[i, 1] = "Rcc"+'\\'
+                                break
+                            #print(self.kern_grid.iloc[10, 1])
+# =============================================================================
+#                         note_onset = float(self.measure_raw.iloc[y, 2]) - measure_count * self.time_signature
+#                         print(round(note_onset, 3), self.measure_raw.iloc[y, 1])
+#                         i, quantized_onset = self.find_nearest( self.even_grid, note_onset )
+#                         if int(self.measure_raw.iloc[y, 1]) == 36:
+#                             self.kern_grid_notes.iloc[i, 1] = "Rf"+'\\'
+#                             self.kern_grid.iloc[i, 1] = quantizeNotes(
+#                                      float(self.measure_raw.iloc[y, 3]))
+#                         elif int(self.measure_raw.iloc[y, 1]) == 40:
+#                             self.kern_grid_notes.iloc[i, 1] = "Rcc"+'\\'
+#                             self.kern_grid.iloc[i, 1] = quantizeNotes(
+#                                      float(self.measure_raw.iloc[y, 3]))
+# =============================================================================
+                        
                     # Load Hi-Hats
                     elif int(self.measure_raw.iloc[y, 1]) == 59 or int(self.measure_raw.iloc[y, 1]) == 44:
-                        note_onset = float(self.measure_raw.iloc[y, 2]) - measure_count * self.time_signature
-                        i, quantized_onset = self.find_nearest( self.even_grid, note_onset )
-                        self.kern_grid_notes.iloc[i, 2] = "Ree/"
-                        self.kern_grid.iloc[i, 2] = quantizeNotes(
-                                     float(self.measure_raw.iloc[y, 3]))
-                        # note_onset = float(
-                        #     self.measure_raw.iloc[y, 2]) - measure_count*self.time_signature
-                        # for i in range(len(self.kern_grid)):
-                        #     if note_onset == float(self.kern_grid.iloc[i, 4]):
-                        #         self.kern_grid.iloc[i, 2] = quantizeNotes(
-                        #             float(self.measure_raw.iloc[y, 3]))
-                        #         self.kern_grid_notes.iloc[i, 2] = "Ree/"
-                        #         break
+# =============================================================================
+#                         note_onset = float(self.measure_raw.iloc[y, 2]) - measure_count * self.time_signature
+#                         i, quantized_onset = self.find_nearest( self.even_grid, note_onset )
+#                         self.kern_grid_notes.iloc[i, 2] = "Ree/"
+#                         self.kern_grid.iloc[i, 2] = quantizeNotes(
+#                                      float(self.measure_raw.iloc[y, 3]))
+# =============================================================================
+                        note_onset = float(
+                            self.measure_raw.iloc[y, 2]) - measure_count*self.time_signature
+                        we_quantize_in_duplets = True
+                        for i in range(len(self.kern_grid)):
+                            #print(i)
+                            if (math.floor(note_onset * 1000) / 1000) == float(self.kern_grid.iloc[i, 4]):
+                                
+                                        
+                                if i in idx_for_duplets_list:
+                                    #print(float(self.kern_grid.iloc[i, 4]))
+                                    self.kern_grid.iloc[i, 2] = quantizeDupleNotes(float(self.measure_raw.iloc[y, 3]))
+                                    self.kern_grid_notes.iloc[i, 2] = "Ree/"
+                                elif i in idx_for_triplets_list: 
+                                    #print(float(self.kern_grid.iloc[i, 4]))
+                                    self.kern_grid.iloc[i, 2] = quantizeTripleNotes(float(self.measure_raw.iloc[y, 3]))
+                                    self.kern_grid_notes.iloc[i, 2] = "Ree/"
+                                elif i in idx_quarter_list and sum_numeric_values_from_df(self.kern_grid.iloc[i:i+5, 2])%0.333 == 0:
+                                    self.kern_grid.iloc[i, 2] = quantizeTripleNotes(float(self.measure_raw.iloc[y, 3]))
+                                    self.kern_grid_notes.iloc[i, 2] = "Ree/"
+                                else:
+                                    self.kern_grid.iloc[i, 2] = quantizeDupleNotes(float(self.measure_raw.iloc[y, 3]))
+                                    self.kern_grid_notes.iloc[i, 2] = "Ree/"
+                                    
+                                
+                               
+                                    
+                                    #(self.kern_grid.iloc[i, 2], i, duplets)
+                                
+                                #print()
+                                break
+                            
     # =============================================================================
     #                 else:
     #                     self.kern_grid.iloc[i,2] = quantizeNotes(float(self.measure_raw.iloc[y,3]))
@@ -694,11 +791,27 @@ def csv2kern(filename):
                     self.kern_grid_notes.iloc[i, 6] = find_chord_font_from_symbolic_type(str(self.measure_raw.iloc[y, 1]))
                     
                     
+            #Beautify kern file extinguishing useless pauses:     
+            for y in range(len(self.kern_grid.columns)-1):
+                if y == 4:
+                    continue
+                for d in range(0, len(self.kern_grid), 6):
+                    
+                    if sum_numeric_values_from_df(self.kern_grid.iloc[d:d+5, y]) == self.kern_grid.iloc[d, y]:
+                        for i in range(d, d+5):
+                            if i == d:
+                                self.kern_grid.iloc[i, y] = 1
+                            else:
+                                self.kern_grid.iloc[i, y] = "."
+                                self.kern_grid_notes.iloc[i, y] = "."
+                        
+                    
+                    
             self.kern_grid = self.kern_grid.replace(
                 to_replace=["."], value=float('nan'))
             self.kern_grid_notes = self.kern_grid_notes.replace(
                 to_replace=["."], value=float('nan'))
-
+            #print(self.kern_grid_notes)
             y = 0
             k = 0
             pause_position = ""
@@ -713,7 +826,11 @@ def csv2kern(filename):
                     if self.kern_grid.iloc[0+k:5+k, y].sum() == 0:
                         self.kern_grid.iloc[k, y] = 1
                         self.kern_grid_notes.iloc[k, y] = "r" + pause_position
-
+                    
+                    #if measure_count == 0 :
+                        #print(self.kern_grid)
+                        
+                    
                     if self.kern_grid.iloc[0+k:5+k, y].sum() != 1:
                         if self.kern_grid.iloc[0+k:5+k, y].sum() % (0.250) == 0:
                             if self.kern_grid.iloc[0+k:5+k, y].sum() == 0.250:
@@ -734,15 +851,18 @@ def csv2kern(filename):
                                     self.kern_grid.iloc[k+5, y] = 0.250
                                     self.kern_grid_notes.iloc[k+5,
                                                             y] = "r" + pause_position
+                                
                             elif self.kern_grid.iloc[0+k:5+k, y].sum() == 0.500:
-                                if math.isnan(self.kern_grid.iloc[k+0, y]) and self.kern_grid.iloc[k+0, y] != 0.250:
+                                if math.isnan(self.kern_grid.iloc[k+0, y]) and self.kern_grid.iloc[k+1, y] != 0.250:
                                     self.kern_grid.iloc[k+0, y] = 0.500
                                     self.kern_grid_notes.iloc[k,
                                                             y] = "r" + pause_position
-                                if math.isnan(self.kern_grid.iloc[k+3, y]) and self.kern_grid.iloc[k+3, y] != 0.250:
+                                if math.isnan(self.kern_grid.iloc[k+3, y]) and self.kern_grid.iloc[k+5, y] != 0.250:
                                     self.kern_grid.iloc[k+3, y] = 0.500
                                     self.kern_grid_notes.iloc[k+3,
                                                             y] = "r" + pause_position
+                                    
+                                
                             elif self.kern_grid.iloc[0+k:5+k, y].sum() == 0.750:
                                 if self.kern_grid.iloc[k, y] == 0.750:
                                     self.kern_grid.iloc[k+5, y] = 0.250
@@ -769,7 +889,8 @@ def csv2kern(filename):
                                         self.kern_grid.iloc[k+5, y] = 0.250
                                         self.kern_grid_notes.iloc[k+5,
                                                                 y] = "r" + pause_position
-
+                        
+                            
                         elif self.kern_grid.iloc[0+k:5+k, y].sum() % (0.333) == 0:
                             if self.kern_grid.iloc[0+k:5+k, y].sum() == 0.333:
 
@@ -813,7 +934,7 @@ def csv2kern(filename):
 
                     elif i > 17 and i <= 23:
                         k = 18
-
+            
             for i in range(len(self.kern_grid)):
                 for y in range(len(self.kern_grid.columns)-1):
                     #self.kern_grid.iloc[i,y] = 'x'
@@ -830,21 +951,26 @@ def csv2kern(filename):
             self.kern_grid.fillna(".", inplace=True)
             self.kern_grid_notes.fillna(".", inplace=True)
 
-            #Beautify kern file extinguishing useless pauses:     
-            for y in range(len(self.kern_grid.columns)-1):
-                if y == 4:
-                    continue
-                for d in range(0, len(self.kern_grid), 6):
-                    contained_pause_df = self.kern_grid_notes.iloc[d:d+6, y].str.contains("r")
-                    contained_dots_df = self.kern_grid_notes.iloc[d:d+6, y].str.contains(re.escape("."))
-                    for i in range(d, d+6):
-                        if contained_pause_df.iloc[0] == False and not (contained_pause_df.iloc[:]).value_counts()[False] <= 1:
-                            if i == d:
-                                self.kern_grid.iloc[i, y] = "4"
-                            else:
-                                self.kern_grid.iloc[i, y] = "."
-                                self.kern_grid_notes.iloc[i, y] = "."
+
+# =============================================================================
+#             #Beautify kern file extinguishing useless pauses:     
+#             for y in range(len(self.kern_grid.columns)-1):
+#                 if y == 4 or y==2:
+#                     continue
+#                 for d in range(0, len(self.kern_grid), 6):
+#                     contained_pause_df = self.kern_grid_notes.iloc[d:d+6, y].str.contains("r")
+#                     contained_dots_df = self.kern_grid_notes.iloc[d:d+6, y].str.contains(re.escape("."))
+#                     for i in range(d, d+6):
+#                         if contained_pause_df.iloc[0] == False and not (contained_pause_df.iloc[:]).value_counts()[False] <= 1:
+#                             print(contained_pause_df.iloc[:])
+#                             if i == d:
+#                                 self.kern_grid.iloc[i, y] = "4"
+#                             else:
+#                                 self.kern_grid.iloc[i, y] = "."
+#                                 self.kern_grid_notes.iloc[i, y] = "."
+# =============================================================================
                             # print(self.kern_grid.iloc[i, y],self.kern_grid_notes.iloc[i, y])
+
             
             for i in range(len(self.kern_grid)):
                 for y in range(len(self.kern_grid.columns)):
