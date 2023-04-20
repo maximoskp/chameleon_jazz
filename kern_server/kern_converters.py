@@ -342,183 +342,85 @@ def kern2string(file_name, find_chord_in_line=None):
     return string, chord_idx
 
 def csv2kern(filename):
+    
     names = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
     names_grid = ['Bass', 'Kick-Snare', 'Hihat', 'Piano-F-Clef', 'empty', 'Piano-G-Clef', 'Chords']
     df_proto = pd.read_csv("kern_init.krn", sep='\t', names=names)
     df_proto = df_proto.iloc[0:16]
-    # with open(filename, 'rb') as rawdata:
-    #     result = chardet.detect(rawdata.read(100000))
+
+    
+    df_measure_grid = pd.read_csv(
+            "kern_measure_grid_empty.krn", sep='\t', names=names_grid)
+    
+    with open(filename, 'rb') as rawdata:
+        result = chardet.detect(rawdata.read(100000))
+    
+    
+    #FOR ONLINE INTEGRATION UNCOMMENT THE FOLOWING:
     result = chardet.detect( str.encode( filename.getvalue() ) )
-    # print('encoding: ', result["encoding"])
+    
 
 
+# =============================================================================
+#     #FOR ONLINE INTEGRATION COMMENT OUT THE FOLOWING:
+#     if result["encoding"] == "utf-16":
+#         df = pd.read_csv(filename, sep='\;', encoding=result["encoding"])
+#         for i in range(len(df.columns)-1):
+#             df.iloc[:, i] = df.iloc[:, i].str.replace(" ", "")
+#     else:
+#         df = pd.read_csv(filename, sep='\;', encoding=result["encoding"])
+# =============================================================================
+    
+    #FOR ONLINE INTEGRATION UNCOMMENT THE FOLOWING:
     if result["encoding"] == "utf-16":
         df = pd.read_csv(filename, sep='\,', encoding=result["encoding"])
         for i in range(len(df.columns)-1):
             df.iloc[:, i] = df.iloc[:, i].str.replace(" ", "")
     else:
         df = pd.read_csv(filename, sep='\, ', encoding=result["encoding"])
-        # df = pd.read_csv(filename, sep='\n', encoding=result["encoding"])
-    # print('df: ', df)
+
+
+    #Load json files for for mappings, accidendal symbols, midi to kern notes, kern notes duration
+    f = open('json/csv_to_kern_fonts_mapping.json')
+    fonts_mapping = json.load(f)
+    
+    f = open('json/csv_to_kern_accidental_symbol_mapping.json')
+    accidental_symbols_mapping = json.load(f)
+    
+    f = open('json/csv_to_kern_midi_to_kern_notes.json')
+    miditokern = json.load(f)
+    
+    f = open('json/csv_to_kern_kern_note_duration_dictionary.json')
+    note_duration_dictionary = json.load(f)
+    
+    f = open('json/csv_to_kern_pause_position.json')
+    pause_position_dictionary = json.load(f)
+    
+    
 
     df_measure_start = df.loc[df.iloc[:, 0].str.contains("Bar")]
 
-    # TODO find measure rythm
-    # print('df.columns[2]: ', df.columns[2])
-    # print('df.columns[0].split(, ): ', df.columns[0].split(', '))
-    # column_split = df.columns[0].split(', ')
-    # print('column_split:', column_split)
-    # global_rhythm = re.findall(r'\d+', df.columns[0][2])
     global_rhythm = re.findall(r'\d+', df.columns[2])
-    # global_rhythm = column_split[2].split('/')
-    # print('global_rhythm: ', global_rhythm)
 
-    # print('df_measure_start: ', df_measure_start)
-    # global_style = df_measure_start.iloc[0, 1].replace(" ", "")
-    # global_style = df.columns[0][1].replace(' ', '')
     global_style = df.columns[1].replace(' ', '')
 
-    # global_tempo = df_measure_start.iloc[0, 4]
-    # global_tempo = df.columns[0][4].replace(' ', '')
     global_tempo = df.columns[4].replace(' ', '')
 
-    # song_title = file[:len(file) - 12]
     song_title = 'test'
-    # global_tonality = df.columns[0][0]
+
     global_tonality = df.columns[0]
+
     kern_song_title_part_1 = "!!!system-decoration: \\{(s1,s2)\\}s3,s4\\" + "\n" + "!!!OTL: " + song_title + "\n" + \
-        "**kern	**kern	**kern	**kern	**mxhm\n*part3	*part2	*part1	*part1	*part1\n*staff4	*staff3	*staff2	*staff1	*\n*I'Contrabass'	*I'Drumset'	*'IPiano'	*	*\n*I'Cb.	*I'D. Set	*I'Pno.	*	*\n*clefF4	*clefX	*clefF4	*clefG2	*\n*k[b-e-a-]	*k[]	*k[b-e-a-]	*k[b-e-a-]	*"
+        "**kern\t**kern\t**kern\t**kern\t**mxhm\n*part3\t*part2\t*part1\t*part1\t*part1\n*staff4\t*staff3\t*staff2\t*staff1\t*\n*I'Contrabass'\t*I'Drumset'\t*'IPiano'\t*\t*\n*I'Cb.\t*I'D. Set\t*I'Pno.\t*\t*\n*clefF4\t*clefX\t*clefF4\t*clefG2\t*\n*k[b-e-a-]	*k[]\t*k[b-e-a-]\t*k[b-e-a-]\t*"
+
     kern_song_top_altered = "*"+global_tonality+":\t"+"*"+global_tonality+":\t"+"*"+global_tonality+":\t"+"*"+global_tonality+":\t*" + \
         global_tonality+":\n*M"+global_rhythm[0]+"/4\t*M"+global_rhythm[0] + \
         "/4\t*M"+global_rhythm[0]+"/4\t*M"+global_rhythm[0]+"/4\t*"+ "\n*MM"+global_tempo.split('.')[0]+"\t*MM"+global_tempo.split('.')[0] + "\t*MM"+global_tempo.split('.')[0]+"\t*MM"+ global_tempo.split('.')[0]+"\t*" + "\n*SS"+global_style+"\t*SS"+global_style + "\t*SS"+global_style+"\t*SS"+ global_style +"\t*"
-    # kern_song_top_altered = "*"+global_tonality+": 	*"+global_tonality+":	*"+global_tonality+":	*"+global_tonality+":	*" + \
-    #     global_tonality+":\n*M"+global_rhythm[0]+"/4	*M"+global_rhythm[0] + \
-    #     "/4	*M"+global_rhythm[0]+"/4	*M"+global_rhythm[0]+"/4	*"
-    kern_song_first_measure = "=1	=1	=1	=1	=1\n*	*^	*^	*	*"
+    
+    kern_song_first_measure = "=1\t=1\t=1\t=1\t=1\n*\t*^\t*^\t*\t*"
 
     kern_song_title_part = kern_song_title_part_1 + "\n" + \
         kern_song_top_altered + "\n" + kern_song_first_measure
-
-    fonts_mapping = {
-        " ": "", "": "", "7": "7", "9": "9", "7b9": "S", "7#9": "s", "7#11": "t", "7b5": "p", "7#5": "q", "9#11": "r", "9b5": "T", "9#5": "n", "9b13": "2", "7#9#5": "M", "7#9b5": "O", "7#9#11": "N", "7b9#11": "P", "7b9b5": "L", "7b9#5": "J", "7b9#9": "K", "7b9b13": "I", "7alt": "?", "13": "U", "13#11": "l", "13b9": "u", "13#9": "o", "replacedby7sus": "A", "deleted": "A", "replacedby7b9sus": "v", "replacedby7aad3sus": "H", "replacedby9sus": "B", "replacedby13sus": "C", "replacedby7b13sus": "w", "m": "a", "m7": "b", "m9": "h", "m11": "i", "\u00f87": "W", "\u00f811": "Y", "\u00f89": "X", "m\u03947": "f", "m\u03949": "g", "o7": "8", "o": ">", "m6": "j", "m6/9": "Z", "mb6": "R", "m13": "3", "m(#5)": "V", "add9": "=", "6": "6", "6/9": "k", "replacedbysus": "4", "replacedby+": "G", "\u03947": "c", "\u03949": "d", "\u03947#11": "x", "\u03947#5": "z", "\u03949#11": "y", "\u03947b5": "1", "\u039413": "e", "7b13": "m", "7#9b13": "0", "11": "Q", "5": "5", "madd9": "%", "7b9sus": "v", "7add3sus": "H", "9sus": "]", "13sus": "<", "7b13sus": "w", "7sus": "[", "+": "@", "sus": "4", "nan": "nan", "/": "nan", "/m": "nan", "/7": "nan", "/\u03947": "nan", "/m7": "nan", "/m\u03947": "nan", "barline": "0", "doublebarline": "1", "repeatStart": "2", "repeatEnd": "3", "accentUpbeat": "h", "accentDownbeat": "i", "samebar": "%", "repeatVersionStart~1": "4", "repeatVersionStart~2": "5", "repeatVersionStart~3": "6", "repeatVersionStart~4": "7", "sharp": "+", "flat": "&", "/A": "a", "/B": "b", "/C": "c", "/D": "d", "/E": "e", "/F": "f", "/G": "g", "/Ab": "h", "/Bb": "i", "/Cb": "j", "/Db": "k", "/Eb": "l", "/Gb": "n", "/A#": "o", "/C#": "q", "/D#": "r", "/F#": "t", "/G#": "u", "section~A": "A", "section~B": "B", "section~C": "C", "section~D": "D", "section~E": "E", "A": "A", "B": "B", "C": "C", "D": "D", "E": "E", "F": "F", "G": "G", "2/4": "a", "3/4": "b", "4/4": "c", "5/4": "d", "6/4": "e", "7/4": "f", "8/4": "g", "9/4": "h", "10/4": "i", "11/4": "j", "12/4": "k", "13/4": "l", "14/4": "m", "15/4": "n", "16/4": "o", "17/4": "p"}
-
-    accidental_symbols_mapping = {"-": "", "b": "&", "#": "+"}
-    # =============================================================================
-    # #fonts_mapping = {
-    #     " ": "", "": "", "7": "7", "9": "9", "7b9": "S", "7#9": "s", "7#11": "t", "7b5": "p", "7#5": "q", "9#11": "r", "9b5": "T", "9#5": "n", "9b13": "2", "7#9#5": "M", "7#9b5": "O", "7#9#11": "N", "7b9#11": "P", "7b9b5": "L", "7b9#5": "J", "7b9#9": "K", "7b9b13": "I", "7alt": "F", "13": "U", "13#11": "l", "13b9": "u", "13#9": "o", "replacedby7sus": "A", "deleted": "A", "replacedby7b9sus": "v", "replacedby7aad3sus": "H", "replacedby9sus": "B", "replacedby13sus": "C", "replacedby7b13sus": "w", "m": "a", "m7": "b", "m9": "h", "m11": "i", "\u00f87": "W", "\u00f811": "Y", "\u00f89": "X", "m\u03947": "f", "m\u03949": "g", "o7": "8", "o": "E", "m6": "j", "m6/9": "Z", "mb6": "R", "m13": "3", "m(#5)": "V", "add9": "D", "6": "6", "6/9": "k", "replacedbysus": "4", "replacedby+": "G", "\u03947": "c", "\u03949": "d", "\u03947#11": "x", "\u03947#5": "z", "\u03949#11": "y", "\u03947b5": "1", "\u039413": "e", "7b13": "m", "7#9b13": "0", "11": "Q", "5": "5", "madd9": "%", "7b9sus": "v", "7add3sus": "H", "9sus": "B", "13sus": "C", "7b13sus": "w", "7sus": "A", "+": "G", "sus": "4", "nan": "nan", "/": "nan", "/m": "nan", "/7": "nan", "/\u03947": "nan", "/m7": "nan", "/m\u03947": "nan", "barline": "0", "doublebarline": "1", "repeatStart": "2", "repeatEnd": "3", "accentUpbeat": "h", "accentDownbeat": "i", "samebar": "%", "repeatVersionStart~1": "4", "repeatVersionStart~2": "5", "repeatVersionStart~3": "6", "repeatVersionStart~4": "7", "sharp": "+", "flat": "&", "/A": "a", "/B": "b", "/C": "c", "/D": "d", "/E": "e", "/F": "f", "/G": "g", "/Ab": "h", "/Bb": "i", "/Cb": "j", "/Db": "k", "/Eb": "l", "/Gb": "n", "/A#": "o", "/C#": "q", "/D#": "r", "/F#": "t", "/G#": "u", "section~A": "A", "section~B": "B", "section~C": "C", "section~D": "D", "section~E": "E", "A": "A", "B": "B", "C": "C", "D": "D", "E": "E", "F": "F", "G": "G", "2/4": "a", "3/4": "b", "4/4": "c", "5/4": "d", "6/4": "e", "7/4": "f", "8/4": "g", "9/4": "h", "10/4": "i", "11/4": "j", "12/4": "k", "13/4": "l", "14/4": "m", "15/4": "n", "16/4": "o", "17/4": "p"}
-    # =============================================================================
-
-    miditokern = {
-        '24': "CCC",
-        '25': "CCC#",
-        '26': "DDD",
-        '27': "DDD#",
-        '28': "EEE",
-        '29': "FFF",
-        '30': "FFF#",
-        '31': "GGG",
-        '32': "GGG#",
-        '33': "AAA",
-        '34': "AAA#",
-        '35': "BBB",
-        '36': "CC",
-        '37': "CC#",
-        '38': "DD",
-        '39': "DD#",
-        '40': "EE",
-        '41': "FF",
-        '42': "FF#",
-        '43': "GG",
-        '44': "GG#",
-        '45': "AA",
-        '46': "AA#",
-        '47': "BB",
-        '48': "C",
-        '49': "C#",
-        '50': "D",
-        '51': "D#",
-        '52': "E",
-        '53': "F",
-        '54': "F#",
-        '55': "G",
-        '56': "G#",
-        '57': "A",
-        '58': "A#",
-        '59': "B",
-        '60': "c",
-        '61': "c#",
-        '62': "d",
-        '63': "d#",
-        '64': "e",
-        '65': "f",
-        '66': "f#",
-        '67': "g",
-        '68': "g#",
-        '69': "a",
-        '70': "a#",
-        '71': "b",
-        '72': "cc",
-        '73': "cc#",
-        '74': "dd",
-        '75': "dd#",
-        '76': "ee",
-        '77': "ff",
-        '78': "ff#",
-        '79': "gg",
-        '80': "gg#",
-        '81': "aa",
-        '82': "aa#",
-        '83': "bb",
-        '84': "ccc",
-        '85': "ccc#",
-        '86': "ddd",
-        '87': "ddd#",
-        '88': "eee",
-        '89': "fff",
-        '90': "fff#",
-        '91': "ggg",
-        '92': "ggg#",
-        '93': "aaa",
-        '94': "aaa#",
-        '95': "bbb",
-        '96': "cccc",
-        '97': "cccc#",
-        '98': "dddd",
-        '99': "dddd#",
-        '100': "eeee",
-        '101': "ffff",
-        '102': "ffff#",
-        '103': "gggg",
-        '104': "gggg#",
-        '105': "aaaa",
-        '106': "aaaa#",
-        '107': "bbbb",
-        '108': "cccc",
-        '109': "cccc#",
-        '110': "dddd",
-        '111': "dddd#",
-        '112': "eeee",
-        '113': "ffff",
-        '114': "ffff#",
-        '115': "gggg",
-        '116': "gggg#",
-        '117': "aaaa",
-        '118': "aaaa#",
-        '119': "bbbb",
-        '120': "cccc",
-        '121': "cccc#",
-        '122': "dddd",
-        '123': "dddd#",
-        '124': "eeee",
-        '125': "ffff",
-        '126': "ffff#",
-        '127': "gggg"
-    }
-
-    utfChordstoKern = {
-        'CΔ13': "C maj13",
-    }
-
 
     def find_measure_rythm(measure):
         if global_rhythm[0] == re.findall(r'\d+', measure.columns[2])[0]:
@@ -532,8 +434,48 @@ def csv2kern(filename):
             return min(myList, key=lambda x: abs(x-note))
         else:
             return None
+        
+    def quantizeDupleNotes(note):
+        if not pd.isna(note):
+            myList = [0.25, 0.5, 0.75, 1]
 
+            return min(myList, key=lambda x: abs(x-note))
+        else:
+            return None
+    
+    def quantizeTripleNotes(note):
+        if not pd.isna(note):
+            myList = [0.333, 0.666]
 
+            return min(myList, key=lambda x: abs(x-note))
+        else:
+            return None
+    
+    def sum_numeric_values_from_df(df):
+        """
+        Converts the values in a specified column of a pandas DataFrame to numeric type,
+        filters out NaN values from the column, calculates the sum of the remaining
+        numeric values in the column, and returns the sum.
+    
+        Args:
+            df (pandas.DataFrame): The pandas DataFrame to process.
+            column_name (str): The name of the column to process.
+    
+        Returns:
+            float: The sum of the remaining numeric values in the column.
+        """
+        # convert the values in the specified column to numeric type
+        df = df.apply(pd.to_numeric, errors='coerce')
+
+        # filter out NaN values from all columns
+        df = df.dropna()
+    
+        # calculate the sum of the remaining numeric values in all columns
+        sum_values = df.sum().sum()
+    
+        return sum_values
+        
+    
     def note_duration(note):
         if not pd.isna(note):
 
@@ -609,7 +551,7 @@ def csv2kern(filename):
 
 
     measures = []
-    # for i in range(len(df_measure_start.index)): # __max__
+    
     for i in range(len(df_measure_start.index)):
         if i < len( df_measure_start.index )-1:
             measures.append(df.iloc[df_measure_start.iloc[i].name:df_measure_start.iloc[(i+1)].name])
@@ -647,14 +589,12 @@ def csv2kern(filename):
 
 
     class Measure:
-        def __init__(self, measure, measure_count):
+        def __init__(self, measure, measure_count, df_measure_grid):
             # print('measure:', measure)
-            df_measure_grid = pd.read_csv(
-                "kern_measure_grid_empty.krn", sep='\t', names=names_grid)
-            df_measure_grid_notes = pd.read_csv(
-                "kern_measure_grid_empty.krn", sep='\t', names=names_grid)
-            self.kern_grid = df_measure_grid
-            self.kern_grid_notes = df_measure_grid_notes
+            
+            self.df_measure_grid_notes = copy.deepcopy(df_measure_grid)
+            self.kern_grid = copy.deepcopy(df_measure_grid)
+            self.kern_grid_notes = copy.deepcopy(self.df_measure_grid_notes)
             self.kern_grid_merge = copy.deepcopy(df_measure_grid)
             self.measure_raw = measure.iloc[:, :]
             # __max__
@@ -663,9 +603,7 @@ def csv2kern(filename):
             # TODO: adjust off-beats for swing
             self.swing_grid = np.array([0.0, 0.25, 0.333, 0.5, 0.666, 0.75, 1.0, 1.25, 1.333, 1.5, 1.666, 1.75, 2.0, 2.25, 2.333, 2.5, 2.666, 2.75, 3.0, 3.25, 3.333, 3.5, 3.666, 3.75])
             measure_header_string = measure.iloc[0].to_string()
-            # print('measure_header_string:', measure_header_string)
-            # comma_split = measure_header_string.split(', ')
-            # self.time_signature = comma_split[2]
+            
             self.time_signature = set_measure_rhythm(measure)
             # self.style = comma_split[1]
             self.style = set_measure_style(measure)
@@ -677,15 +615,25 @@ def csv2kern(filename):
             if self.style[1] == True or measure_count == 0:
                 self.style_change = pd.DataFrame(
                     [["!", "!", "!", "!", "!", "!LO:TX:a:t="+str(self.style[0]), "!"]], columns=names_grid)
-                # print("style_set")
+                
 
             if self.tempo[1] == True or measure_count == 0:
                 self.tempo_change = pd.DataFrame(
                     [["!", "!", "!", "!", "!", "!LO:TX:a:t=[quarter]="+str(self.tempo[0]), "!"]], columns=names_grid)
 
             # find all durations & notes
-
-            for y in range(len(self.measure_raw)):
+            
+            duplets_list = [0.25, 0.5, 0.75, 1.25, 1.5, 1.75, 2.25, 2.5, 2.75, 3.25, 3.5, 3,75]
+            triplets_list = [0.333, 0.666, 1.333, 1.666, 2.333, 2.666, 3.333, 3.666]
+            
+            idx_for_duplets_list = [1,3,5,7,9,11,13,15,17,19,21,23]
+            idx_for_triplets_list = [2,4,8,10,14,16,20,22]
+            idx_quarter_list = [0,6,12,18]
+            
+            duplets = True
+            
+            for y in range(len(self.measure_raw)-1,-1,-1):
+                #print(y)
                 with open('debug_log.txt', 'a') as f:
                     print('self.measure_raw.iloc[y, 0]: ', self.measure_raw.iloc[y, 0], file=f)
                 if self.measure_raw.iloc[y, 0] == "Bass":
@@ -705,36 +653,88 @@ def csv2kern(filename):
                 elif self.measure_raw.iloc[y, 0] == "Drums":
                     # Load Kick-Snare
                     if int(self.measure_raw.iloc[y, 1]) == 36 or int(self.measure_raw.iloc[y, 1]) == 40:
-                        # note_onset = float(
-                        #     self.measure_raw.iloc[y, 2]) - measure_count*self.time_signature
-                        note_onset = float(self.measure_raw.iloc[y, 2]) - measure_count * self.time_signature
-                        i, quantized_onset = self.find_nearest( self.even_grid, note_onset )
-                        if int(self.measure_raw.iloc[y, 1]) == 36:
-                            self.kern_grid_notes.iloc[i, 1] = "Rf"+'\\'
-                        elif int(self.measure_raw.iloc[y, 1]) == 40:
-                            self.kern_grid_notes.iloc[i, 1] = "Rcc"+'\\'
-                        # for i in range(len(self.kern_grid)):
-                        #     if note_onset == float(self.kern_grid.iloc[i, 4]):
-                        #         self.kern_grid.iloc[i, 1] = quantizeNotes(
-                        #             float(self.measure_raw.iloc[y, 3]))
-                        #         if int(self.measure_raw.iloc[y, 1]) == 36:
-                        #             self.kern_grid_notes.iloc[i, 1] = "Rf"+'\\'
-                        #         elif int(self.measure_raw.iloc[y, 1]) == 40:
-                        #             self.kern_grid_notes.iloc[i, 1] = "Rcc"+'\\'
-                        #         break
+                        note_onset = float(
+                            self.measure_raw.iloc[y, 2]) - measure_count*self.time_signature
+                                              
+                        for i in range(len(self.kern_grid)):
+                            
+                            if (math.floor(note_onset * 1000) / 1000) == float(self.kern_grid.iloc[i, 4]):
+                                
+                                if i in idx_for_duplets_list:
+                                    #print(float(self.kern_grid.iloc[i, 4]))
+                                    self.kern_grid.iloc[i, 1] = quantizeDupleNotes(float(self.measure_raw.iloc[y, 3]))
+                                    
+                                elif i in idx_for_triplets_list: 
+                                    #print(float(self.kern_grid.iloc[i, 4]))
+                                    self.kern_grid.iloc[i, 1] = quantizeTripleNotes(float(self.measure_raw.iloc[y, 3]))
+                                elif i in idx_quarter_list and sum_numeric_values_from_df(self.kern_grid.iloc[i:i+5, 2])%0.333 == 0:
+                                    self.kern_grid.iloc[i, 1] = quantizeTripleNotes(float(self.measure_raw.iloc[y, 3]))
+                                    
+                                else:
+                                    self.kern_grid.iloc[i, 1] = quantizeDupleNotes(float(self.measure_raw.iloc[y, 3]))
+                                    
+                                    
+                                    
+                                if int(self.measure_raw.iloc[y, 1]) == 36:
+                                    self.kern_grid_notes.iloc[i, 1] = "Rf"+'\\'
+                                elif int(self.measure_raw.iloc[y, 1]) == 40:
+                                    self.kern_grid_notes.iloc[i, 1] = "Rcc"+'\\'
+                                break
+                            #print(self.kern_grid.iloc[10, 1])
+# =============================================================================
+#                         note_onset = float(self.measure_raw.iloc[y, 2]) - measure_count * self.time_signature
+#                         print(round(note_onset, 3), self.measure_raw.iloc[y, 1])
+#                         i, quantized_onset = self.find_nearest( self.even_grid, note_onset )
+#                         if int(self.measure_raw.iloc[y, 1]) == 36:
+#                             self.kern_grid_notes.iloc[i, 1] = "Rf"+'\\'
+#                             self.kern_grid.iloc[i, 1] = quantizeNotes(
+#                                      float(self.measure_raw.iloc[y, 3]))
+#                         elif int(self.measure_raw.iloc[y, 1]) == 40:
+#                             self.kern_grid_notes.iloc[i, 1] = "Rcc"+'\\'
+#                             self.kern_grid.iloc[i, 1] = quantizeNotes(
+#                                      float(self.measure_raw.iloc[y, 3]))
+# =============================================================================
+                        
                     # Load Hi-Hats
                     elif int(self.measure_raw.iloc[y, 1]) == 59 or int(self.measure_raw.iloc[y, 1]) == 44:
-                        note_onset = float(self.measure_raw.iloc[y, 2]) - measure_count * self.time_signature
-                        i, quantized_onset = self.find_nearest( self.even_grid, note_onset )
-                        self.kern_grid_notes.iloc[i, 2] = "Ree/"
-                        # note_onset = float(
-                        #     self.measure_raw.iloc[y, 2]) - measure_count*self.time_signature
-                        # for i in range(len(self.kern_grid)):
-                        #     if note_onset == float(self.kern_grid.iloc[i, 4]):
-                        #         self.kern_grid.iloc[i, 2] = quantizeNotes(
-                        #             float(self.measure_raw.iloc[y, 3]))
-                        #         self.kern_grid_notes.iloc[i, 2] = "Ree/"
-                        #         break
+# =============================================================================
+#                         note_onset = float(self.measure_raw.iloc[y, 2]) - measure_count * self.time_signature
+#                         i, quantized_onset = self.find_nearest( self.even_grid, note_onset )
+#                         self.kern_grid_notes.iloc[i, 2] = "Ree/"
+#                         self.kern_grid.iloc[i, 2] = quantizeNotes(
+#                                      float(self.measure_raw.iloc[y, 3]))
+# =============================================================================
+                        note_onset = float(
+                            self.measure_raw.iloc[y, 2]) - measure_count*self.time_signature
+                        we_quantize_in_duplets = True
+                        for i in range(len(self.kern_grid)):
+                            #print(i)
+                            if (math.floor(note_onset * 1000) / 1000) == float(self.kern_grid.iloc[i, 4]):
+                                
+                                        
+                                if i in idx_for_duplets_list:
+                                    #print(float(self.kern_grid.iloc[i, 4]))
+                                    self.kern_grid.iloc[i, 2] = quantizeDupleNotes(float(self.measure_raw.iloc[y, 3]))
+                                    self.kern_grid_notes.iloc[i, 2] = "Ree/"
+                                elif i in idx_for_triplets_list: 
+                                    #print(float(self.kern_grid.iloc[i, 4]))
+                                    self.kern_grid.iloc[i, 2] = quantizeTripleNotes(float(self.measure_raw.iloc[y, 3]))
+                                    self.kern_grid_notes.iloc[i, 2] = "Ree/"
+                                elif i in idx_quarter_list and sum_numeric_values_from_df(self.kern_grid.iloc[i:i+5, 2])%0.333 == 0:
+                                    self.kern_grid.iloc[i, 2] = quantizeTripleNotes(float(self.measure_raw.iloc[y, 3]))
+                                    self.kern_grid_notes.iloc[i, 2] = "Ree/"
+                                else:
+                                    self.kern_grid.iloc[i, 2] = quantizeDupleNotes(float(self.measure_raw.iloc[y, 3]))
+                                    self.kern_grid_notes.iloc[i, 2] = "Ree/"
+                                    
+                                
+                               
+                                    
+                                    #(self.kern_grid.iloc[i, 2], i, duplets)
+                                
+                                #print()
+                                break
+                            
     # =============================================================================
     #                 else:
     #                     self.kern_grid.iloc[i,2] = quantizeNotes(float(self.measure_raw.iloc[y,3]))
@@ -789,19 +789,29 @@ def csv2kern(filename):
                         print('quantized_onset: ', quantized_onset, file=f)
                     self.kern_grid.iloc[i, 6] = ""
                     self.kern_grid_notes.iloc[i, 6] = find_chord_font_from_symbolic_type(str(self.measure_raw.iloc[y, 1]))
-                    # for i in range(len(self.kern_grid)):
-                    #     if note_onset == float(self.kern_grid.iloc[i, 4]):
-                    #         self.kern_grid.iloc[i, 6] = ""
-                    #         self.kern_grid_notes.iloc[i, 6] = find_chord_font_from_symbolic_type(str(
-                    #             self.measure_raw.iloc[y, 1]))
-                    #         with open('debug_log.txt', 'a') as f:
-                    #             print('inside if: ', note_onset, file=f)
-                    #         break
+                    
+                    
+            #Beautify kern file extinguishing useless pauses:     
+            for y in range(len(self.kern_grid.columns)-1):
+                if y == 4:
+                    continue
+                for d in range(0, len(self.kern_grid), 6):
+                    
+                    if sum_numeric_values_from_df(self.kern_grid.iloc[d:d+5, y]) == self.kern_grid.iloc[d, y]:
+                        for i in range(d, d+5):
+                            if i == d:
+                                self.kern_grid.iloc[i, y] = 1
+                            else:
+                                self.kern_grid.iloc[i, y] = "."
+                                self.kern_grid_notes.iloc[i, y] = "."
+                        
+                    
+                    
             self.kern_grid = self.kern_grid.replace(
                 to_replace=["."], value=float('nan'))
             self.kern_grid_notes = self.kern_grid_notes.replace(
                 to_replace=["."], value=float('nan'))
-
+            #print(self.kern_grid_notes)
             y = 0
             k = 0
             pause_position = ""
@@ -809,23 +819,18 @@ def csv2kern(filename):
                 for y in range(len(self.kern_grid.columns)-1):
 
                     # Assign pause position to each instrument
-                    if y == 0:
-                        pause_position = ""
-                    elif y == 1:
-                        pause_position = "e"
-                    elif y == 2:
-                        pause_position = "ee"
-                    elif y == 3:
-                        pause_position = ""
-                    elif y == 4:
-                        pause_position = ""
-                    elif y == 5:
-                        pause_position = ""
+                    
+                    pause_position = pause_position_dictionary[str(y)]
+                    
 
                     if self.kern_grid.iloc[0+k:5+k, y].sum() == 0:
                         self.kern_grid.iloc[k, y] = 1
                         self.kern_grid_notes.iloc[k, y] = "r" + pause_position
-
+                    
+                    #if measure_count == 0 :
+                        #print(self.kern_grid)
+                        
+                    
                     if self.kern_grid.iloc[0+k:5+k, y].sum() != 1:
                         if self.kern_grid.iloc[0+k:5+k, y].sum() % (0.250) == 0:
                             if self.kern_grid.iloc[0+k:5+k, y].sum() == 0.250:
@@ -846,15 +851,18 @@ def csv2kern(filename):
                                     self.kern_grid.iloc[k+5, y] = 0.250
                                     self.kern_grid_notes.iloc[k+5,
                                                             y] = "r" + pause_position
+                                
                             elif self.kern_grid.iloc[0+k:5+k, y].sum() == 0.500:
-                                if math.isnan(self.kern_grid.iloc[k+0, y]) and self.kern_grid.iloc[k+0, y] != 0.250:
+                                if math.isnan(self.kern_grid.iloc[k+0, y]) and self.kern_grid.iloc[k+1, y] != 0.250:
                                     self.kern_grid.iloc[k+0, y] = 0.500
                                     self.kern_grid_notes.iloc[k,
                                                             y] = "r" + pause_position
-                                if math.isnan(self.kern_grid.iloc[k+3, y]) and self.kern_grid.iloc[k+3, y] != 0.250:
+                                if math.isnan(self.kern_grid.iloc[k+3, y]) and self.kern_grid.iloc[k+5, y] != 0.250:
                                     self.kern_grid.iloc[k+3, y] = 0.500
                                     self.kern_grid_notes.iloc[k+3,
                                                             y] = "r" + pause_position
+                                    
+                                
                             elif self.kern_grid.iloc[0+k:5+k, y].sum() == 0.750:
                                 if self.kern_grid.iloc[k, y] == 0.750:
                                     self.kern_grid.iloc[k+5, y] = 0.250
@@ -881,7 +889,8 @@ def csv2kern(filename):
                                         self.kern_grid.iloc[k+5, y] = 0.250
                                         self.kern_grid_notes.iloc[k+5,
                                                                 y] = "r" + pause_position
-
+                        
+                            
                         elif self.kern_grid.iloc[0+k:5+k, y].sum() % (0.333) == 0:
                             if self.kern_grid.iloc[0+k:5+k, y].sum() == 0.333:
 
@@ -925,7 +934,7 @@ def csv2kern(filename):
 
                     elif i > 17 and i <= 23:
                         k = 18
-
+            
             for i in range(len(self.kern_grid)):
                 for y in range(len(self.kern_grid.columns)-1):
                     #self.kern_grid.iloc[i,y] = 'x'
@@ -942,21 +951,26 @@ def csv2kern(filename):
             self.kern_grid.fillna(".", inplace=True)
             self.kern_grid_notes.fillna(".", inplace=True)
 
-            #Beautify kern file extinguishing useless pauses:     
-            for y in range(len(self.kern_grid.columns)-1):
-                if y == 4:
-                    continue
-                for d in range(0, len(self.kern_grid), 6):
-                    contained_pause_df = self.kern_grid_notes.iloc[d:d+6, y].str.contains("r")
-                    contained_dots_df = self.kern_grid_notes.iloc[d:d+6, y].str.contains(re.escape("."))
-                    for i in range(d, d+6):
-                        if contained_pause_df.iloc[0] == False and not (contained_pause_df.iloc[:]).value_counts()[False] <= 1:
-                            if i == d:
-                                self.kern_grid.iloc[i, y] = "4"
-                            else:
-                                self.kern_grid.iloc[i, y] = "."
-                                self.kern_grid_notes.iloc[i, y] = "."
+
+# =============================================================================
+#             #Beautify kern file extinguishing useless pauses:     
+#             for y in range(len(self.kern_grid.columns)-1):
+#                 if y == 4 or y==2:
+#                     continue
+#                 for d in range(0, len(self.kern_grid), 6):
+#                     contained_pause_df = self.kern_grid_notes.iloc[d:d+6, y].str.contains("r")
+#                     contained_dots_df = self.kern_grid_notes.iloc[d:d+6, y].str.contains(re.escape("."))
+#                     for i in range(d, d+6):
+#                         if contained_pause_df.iloc[0] == False and not (contained_pause_df.iloc[:]).value_counts()[False] <= 1:
+#                             print(contained_pause_df.iloc[:])
+#                             if i == d:
+#                                 self.kern_grid.iloc[i, y] = "4"
+#                             else:
+#                                 self.kern_grid.iloc[i, y] = "."
+#                                 self.kern_grid_notes.iloc[i, y] = "."
+# =============================================================================
                             # print(self.kern_grid.iloc[i, y],self.kern_grid_notes.iloc[i, y])
+
             
             for i in range(len(self.kern_grid)):
                 for y in range(len(self.kern_grid.columns)):
@@ -1012,10 +1026,7 @@ def csv2kern(filename):
                     [self.style_change, self.kern_grid_merge])
                 self.kern_grid_merge = pd.concat(
                     [self.tempo_change, self.kern_grid_merge])
-                # self.kern_grid_merge = pd.concat(
-                #     [self.style_change, self.kern_grid_merge])
-                # self.kern_grid_merge = pd.concat(
-                #     [self.tempo_change, self.kern_grid_merge])
+               
             if not measure_count == 0:
                 self.kern_grid_merge = pd.concat(
                     [df_measureending, self.kern_grid_merge])
@@ -1031,7 +1042,7 @@ def csv2kern(filename):
 
     for i in range(len(measures)):
 
-        df_list.append(Measure(measures[i], i).kern_grid_merge)
+        df_list.append(Measure(measures[i], i, df_measure_grid).kern_grid_merge)
 
     df_proto = pd.concat(df_list, ignore_index=True)
 
@@ -1048,12 +1059,10 @@ def csv2kern(filename):
         f.write(kern_song_title_part + "\n" + old)  # write the new line before
 
     # Append ending of kern file
-    trackending = "==	==	==	==	==	==	==\n*-	*-	*-	*-	*-	*-	*-\n!!!system-decoration: {(s1,s2)}s3,s4e"
-    # print('kern_song_title_part: \n', kern_song_title_part)
-    # print('df_proto.to_string(): \n', df_proto.to_string())
-    # return kern_song_title_part + '\n' + '\n' + trackending
-    # out_string = tabulate( df_proto, showindex=False )
-    # out_string = df_proto.to_string(index=False, justify='left')
+    trackending = "==\t==\t==\t==\t==\t==\t==\n*-\t*-\t*-\t*-\t*-\t*-\t*-\n!!!system-decoration: {(s1,s2)}s3,s4e"
+    
     out_string = df_proto.to_csv(index=False, header=False, sep='\t')
-    # print('out_string: ', out_string)
+    
     return kern_song_title_part + '\n' + out_string + '\n' + trackending
+
+csv2kern("../data/csvs/A_BEAUTIFUL_FRIENDSHIP_r~1_h~5.csv")
