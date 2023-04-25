@@ -352,8 +352,8 @@ def csv2kern(filename):
     df_measure_grid = pd.read_csv(
             "kern_measure_grid_empty.krn", sep='\t', names=names_grid)
     
-    with open(filename, 'rb') as rawdata:
-        result = chardet.detect(rawdata.read(100000))
+    # with open(filename, 'rb') as rawdata:
+    #     result = chardet.detect(rawdata.read(100000))
     
     
     #FOR ONLINE INTEGRATION UNCOMMENT THE FOLOWING:
