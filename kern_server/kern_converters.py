@@ -357,27 +357,29 @@ def csv2kern(filename):
     
     
     #FOR ONLINE INTEGRATION UNCOMMENT THE FOLOWING:
-    result = chardet.detect( str.encode( filename.getvalue() ) )
+# =============================================================================
+#     result = chardet.detect( str.encode( filename.getvalue() ) )
+# =============================================================================
     
 
 
-# =============================================================================
-#     #FOR ONLINE INTEGRATION COMMENT OUT THE FOLOWING:
-#     if result["encoding"] == "utf-16":
-#         df = pd.read_csv(filename, sep='\;', encoding=result["encoding"])
-#         for i in range(len(df.columns)-1):
-#             df.iloc[:, i] = df.iloc[:, i].str.replace(" ", "")
-#     else:
-#         df = pd.read_csv(filename, sep='\;', encoding=result["encoding"])
-# =============================================================================
-    
-    #FOR ONLINE INTEGRATION UNCOMMENT THE FOLOWING:
+    #FOR ONLINE INTEGRATION COMMENT OUT THE FOLOWING:
     if result["encoding"] == "utf-16":
-        df = pd.read_csv(filename, sep='\,', encoding=result["encoding"])
+        df = pd.read_csv(filename, sep='\;', encoding=result["encoding"])
         for i in range(len(df.columns)-1):
             df.iloc[:, i] = df.iloc[:, i].str.replace(" ", "")
     else:
-        df = pd.read_csv(filename, sep='\, ', encoding=result["encoding"])
+        df = pd.read_csv(filename, sep='\;', encoding=result["encoding"])
+    
+    #FOR ONLINE INTEGRATION UNCOMMENT THE FOLOWING:
+# =============================================================================
+#     if result["encoding"] == "utf-16":
+#         df = pd.read_csv(filename, sep='\,', encoding=result["encoding"])
+#         for i in range(len(df.columns)-1):
+#             df.iloc[:, i] = df.iloc[:, i].str.replace(" ", "")
+#     else:
+#         df = pd.read_csv(filename, sep='\, ', encoding=result["encoding"])
+# =============================================================================
 
 
     #Load json files for for mappings, accidendal symbols, midi to kern notes, kern notes duration
@@ -1065,4 +1067,4 @@ def csv2kern(filename):
     
     return kern_song_title_part + '\n' + out_string + '\n' + trackending
 
-csv2kern("../data/csvs/A_BEAUTIFUL_FRIENDSHIP_r~1_h~5.csv")
+csv2kern("../data/csvs/A_CHILD_IS_BORN_r~1_h~1.csv")
