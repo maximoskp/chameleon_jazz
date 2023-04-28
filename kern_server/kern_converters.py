@@ -352,8 +352,8 @@ def csv2kern(filename):
     df_measure_grid = pd.read_csv(
             "kern_measure_grid_empty.krn", sep='\t', names=names_grid)
     
-    with open(filename, 'rb') as rawdata:
-        result = chardet.detect(rawdata.read(100000))
+    # with open(filename, 'rb') as rawdata:
+    #     result = chardet.detect(rawdata.read(100000))
     
     
     #FOR ONLINE INTEGRATION UNCOMMENT THE FOLOWING:
@@ -1067,4 +1067,4 @@ def csv2kern(filename):
     
     return kern_song_title_part + '\n' + out_string + '\n' + trackending
 
-csv2kern("../data/csvs/A_CHILD_IS_BORN_r~1_h~1.csv")
+# csv2kern("../data/csvs/A_BEAUTIFUL_FRIENDSHIP_r~1_h~5.csv")
