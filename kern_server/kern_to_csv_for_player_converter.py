@@ -61,18 +61,32 @@ def kern2csv4player_converter(file, data):
             # Split the string into lines
             lines = string.split("\n")
             
-            # Get the third line
-            third_line = lines[len(lines)-4]
-        
+            line_idx = 1
+            tab_found = False
+            while not tab_found and line_idx < len(lines):
+                # Get the corresponding line before the end
+                third_line = lines[len(lines)-line_idx]
+                if "\t" in third_line or "  " in third_line:
+                    tab_found = True
+                    break
+                else:
+                    line_idx += 1
+            if not tab_found:
+                print('ERROR: no tab found while scanning kern')
+
             # Count the number of tab characters in the third line
-            num_tabs = third_line.count("\t")
-        
+            # num_tabs = third_line.count("\t")
+            num_tabs = len(third_line.split("\t")) - 1
+            if num_tabs == 0:
+                num_tabs = len(third_line.split("  ")) - 1
+            if num_tabs == 0:
+                print("ERROR: num_tabs is still zero")
             return num_tabs
         
         
         num_columns = count_tabs(data)
         
-        if num_columns < 4:
+        if num_columns < 2:
             column_names = ["Instrument", "Blank"]
             multinstrument = False
         else:    
@@ -108,8 +122,8 @@ def kern2csv4player_converter(file, data):
         
         testline = StringIO(testline)
         
-        
         df = pd.read_csv(testline, sep='\t', names=column_names)
+        # df = df.dropna()
         
         # Split the DataFrame into a list of dataframes, where each dataframe contains the data for one measure
         
@@ -123,9 +137,9 @@ def kern2csv4player_converter(file, data):
         
         def note_duration(note):
             if not pd.isna(note):
-        
+                
                 result = 'None'
-        
+
                 if note == "1":
                     result = "4"
                 elif note == '2.':
@@ -233,6 +247,7 @@ def kern2csv4player_converter(file, data):
         
         def valid_note_for_player_CSV(instrument, note_pitch,
                                     note_duration_part, note_onset, note_velocity, measure_count):
+            
             if not instrument == "None" and not note_pitch == None and not note_duration_part == "None" and not note_onset == "None":
                 
                 valid_row = [instrument, note_pitch, note_onset + measure_count * int(global_time_signature[0]),
@@ -319,7 +334,6 @@ def kern2csv4player_converter(file, data):
                     
                 
                     for i in range(len(self.measure)):
-                        
                         note_duration_part = str(int(self.measure_note_duration_list[i]))                        
                         note_pitch = pitch_dictionary.get(self.note_pitch_list[i])
                         note_duration_part = note_duration_dictionary.get(note_duration_part, float('nan'))
