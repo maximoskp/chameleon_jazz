@@ -44,6 +44,8 @@ def kern2csv4player_converter(file, data):
             # Load the data from the file using json.load() method
             note_duration_kern_to_csv_dictionary = json.load(myfile)
         
+        orchestra_instruments = ['Violin', 'Viola', 'Cello', 'Double Bass', 'Harp', 'Flute', 'Piccolo', 'Oboe', 'English Horn', 'Clarinet', 'Bass Clarinet', 'Bassoon', 'Contrabassoon', 'Trumpet', 'French Horn', 'Trombone', 'Bass Trombone', 'Tuba', 'Timpani', 'Percussion']
+
         
         column_names = ['Contrabass', 'Drums_Snare_Kick',
                         'Drums_hihat', 'Piano_1', 'Blank', 'Piano_2', 'Chords']
@@ -55,6 +57,13 @@ def kern2csv4player_converter(file, data):
         
         df_measure_grid_for_single_inst = pd.read_csv(
                     "kern_measure_grid_empty_for_sinlge_ins.krn", sep='\t', names=["a"])
+        
+        
+        def keep_first_lines(long_string, num_lines):
+            lines = long_string.split('\n')[:num_lines]
+            short_string = '\n'.join(lines)
+            return short_string
+        
         
         def count_tabs(string):
             
@@ -87,6 +96,13 @@ def kern2csv4player_converter(file, data):
         num_columns = count_tabs(data)
         
         if num_columns < 2:
+            string_to_be_searched_for_instrument = keep_first_lines(data, 10)
+            for instrument in orchestra_instruments:
+                if instrument in string_to_be_searched_for_instrument:
+                    instrument_name = instrument
+                    break
+                else:
+                    instrument_name = "Piano"
             column_names = ["Instrument", "Blank"]
             multinstrument = False
         else:    
@@ -123,11 +139,13 @@ def kern2csv4player_converter(file, data):
         testline = StringIO(testline)
         
         df = pd.read_csv(testline, sep='\t', names=column_names)
-        # df = df.dropna()
         
+        #print(data)
         # Split the DataFrame into a list of dataframes, where each dataframe contains the data for one measure
         
-        df_measure_start = df.loc[df.iloc[:, 0].str.contains("=")]
+        df_measure_start = df.loc[df.iloc[:, 0].str.contains('\=\d+', regex=True)]
+
+        
         
         measures = []
         for i in range(len(df_measure_start.index)-1):
@@ -199,10 +217,15 @@ def kern2csv4player_converter(file, data):
         
                 global_time_signature = global_time_signature.split('/')
         
-        def split_df(df):
+        def split_df(df_input):
+            # Filter out rows containing "r"
+            mask = df_input['Instrument'].str.contains('r|!!|LO', case=False)
+            df_input = df_input[~mask]
+
+            
             # Split the data column into two dataframes
-            df_numbers = df['Instrument'].str.extract('(\d+)', expand=False)
-            df_chars = df['Instrument'].str.extract('(\D+)', expand=False)
+            df_numbers = df_input['Instrument'].str.extract('(\d+)', expand=False)
+            df_chars = df_input['Instrument'].str.extract('([aAbBcCdDeEfFgG#\-]+)', expand=False, flags=re.IGNORECASE)
             
             return df_numbers, df_chars
         
@@ -284,16 +307,16 @@ def kern2csv4player_converter(file, data):
                 self.df_measure_grid = self.df_measure_grid['Blank']
                 
                 self.df_measure_grid_for_single_inst = df_measure_grid_for_single_inst
-                
+
                 # TODO: If we create rythm & tempo change the following line should change
                 
                 self.measure = measure[1:]
                 self.measure = self.measure.reset_index()               
-        
+
                 # create a boolean mask indicating where either '!' or '*' or '=' stops occurring
                 mask = self.measure[column_names[0]].str.contains(
                     '!|\*|=').cumsum().duplicated(keep='last')
-        
+                
                 # find the index where the '!' or '*' or '=' character stops occurring
                 stop_idx = mask.idxmax()
                 
@@ -323,9 +346,10 @@ def kern2csv4player_converter(file, data):
                 if multinstrument == False:
                     
                     a,b = split_df(self.measure)
+                    #print(b)
                     self.measure_note_duration_list = []
                     for i in range(len(a)):
-                        
+                        #print(a.iloc[i])
                         self.measure_note_duration_list.append(note_duration_kern_to_csv_dictionary[a.iloc[i]])
                     self.measure_note_duration_list = [float(x) for x in self.measure_note_duration_list]
                     
@@ -333,12 +357,12 @@ def kern2csv4player_converter(file, data):
                     self.note_pitch_list = b.values.tolist()
                     
                 
-                    for i in range(len(self.measure)):
+                    for i in range(len(a)):
                         note_duration_part = str(int(self.measure_note_duration_list[i]))                        
                         note_pitch = pitch_dictionary.get(self.note_pitch_list[i])
                         note_duration_part = note_duration_dictionary.get(note_duration_part, float('nan'))
                         note_onset = self.note_onsets_list[i]
-                        instrument = instrument_dictionary.get("4")
+                        instrument = instrument_name
                                               
                         
                         if valid_note_for_player_CSV(instrument, note_pitch, note_duration_part, note_onset, random.randint(60, 80), measure_count):
@@ -411,13 +435,11 @@ def kern2csv4player_converter(file, data):
             arr.append(l)
         return kern2csv4playerString, arr
 
-# =============================================================================
-# #FOR ONLINE INTEGRATION COMMENT OUT THE FOLLOWING:
-# file = "kern_files/D_dorian_mode.krn"
-# with open(file, 'r') as f:
-#     data = f.read()
-#     kern2csv4playerString = kern2csv4player_converter( StringIO(data), data)
-#     #print(kern2csv4playerString)
-# =============================================================================
+#FOR ONLINE INTEGRATION COMMENT OUT THE FOLLOWING:
+file = "kern_files/D_dorian_mode.krn"
+with open(file, 'r') as f:
+    data = f.read()
+    kern2csv4playerString = kern2csv4player_converter( StringIO(data), data)
+    print(kern2csv4playerString)
 
 
