@@ -360,7 +360,8 @@ def kern2csv4player_converter(file, data):
                     for i in range(len(a)):
                         note_duration_part = str(int(self.measure_note_duration_list[i]))                        
                         note_pitch = pitch_dictionary.get(self.note_pitch_list[i])
-                        note_duration_part = note_duration_dictionary.get(note_duration_part, float('nan'))
+                        # note_duration_part = note_duration_dictionary.get(note_duration_part, float('nan'))
+                        note_duration_part = self.measure_note_duration_list[i]
                         note_onset = self.note_onsets_list[i]
                         instrument = instrument_name
                                               
@@ -385,10 +386,11 @@ def kern2csv4player_converter(file, data):
                                 # Split the string based on the index of the letter
                                 note_duration_part = str(self.measure.iloc[i, y])[:index]
                                 note_pitch = str(self.measure.iloc[i, y])[index:]
-                                note_duration_part = note_duration_dictionary.get(note_duration_part, float('nan'))
+                                # note_duration_part = note_duration_dictionary.get(note_duration_part, float('nan'))
+                                note_duration_part = note_duration_kern_to_csv_dictionary.get(note_duration_part, float('nan'))
                                 note_onset = self.df_measure_grid_for_single_inst.iloc[i, 0]
                                 instrument = instrument_dictionary.get(str(y))
-                                    
+                                
                                 if " " in note_pitch:
                                     note_pitch_list = note_pitch.split()
                                     
@@ -433,13 +435,15 @@ def kern2csv4player_converter(file, data):
             for c in nl.split(', '):
                 l.append( c )
             arr.append(l)
+        with open('debug_log.txt', 'w') as f:
+            print('kern2csv4playerString: ', kern2csv4playerString, file=f)
         return kern2csv4playerString, arr
 
-#FOR ONLINE INTEGRATION COMMENT OUT THE FOLLOWING:
-file = "kern_files/D_dorian_mode.krn"
-with open(file, 'r') as f:
-    data = f.read()
-    kern2csv4playerString = kern2csv4player_converter( StringIO(data), data)
-    print(kern2csv4playerString)
+# #FOR ONLINE INTEGRATION COMMENT OUT THE FOLLOWING:
+# file = "kern_files/study61.krn"
+# with open(file, 'r') as f:
+#     data = f.read()
+#     kern2csv4playerString = kern2csv4player_converter( StringIO(data), data)
+#     print(kern2csv4playerString)
 
 
