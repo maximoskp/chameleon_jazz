@@ -184,6 +184,7 @@ function play_array( a, has_precount=true, has_chords=true, has_header=true ){
         }else if( a[i][0] == 'Chord' ){
           show_chord(a[i]);
           i++;
+          var barForSVG = a[i][0].split("~")[1].split("@")[0]
         }else{
           i++;
         }

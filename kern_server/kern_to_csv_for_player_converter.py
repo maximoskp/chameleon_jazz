@@ -69,7 +69,6 @@ def kern2csv4player_converter(file, data):
             
             # Split the string into lines
             lines = string.split("\n")
-            
             line_idx = 1
             tab_found = False
             while not tab_found and line_idx < len(lines):
@@ -84,7 +83,7 @@ def kern2csv4player_converter(file, data):
                 print('ERROR: no tab found while scanning kern')
 
             # Count the number of tab characters in the third line
-            # num_tabs = third_line.count("\t")
+
             num_tabs = len(third_line.split("\t")) - 1
             if num_tabs == 0:
                 num_tabs = len(third_line.split("  ")) - 1
@@ -93,24 +92,52 @@ def kern2csv4player_converter(file, data):
             return num_tabs
         
         
-        num_columns = count_tabs(data)
-        
-        if num_columns < 2:
-            string_to_be_searched_for_instrument = keep_first_lines(data, 10)
-            for instrument in orchestra_instruments:
-                if instrument in string_to_be_searched_for_instrument:
-                    instrument_name = instrument
+        def count_instruments(string_to_count_character):
+            # Split the string into lines using the newline character '\n'
+            lines = string_to_count_character.split('\n')
+            
+            # Loop over the lines until the first line containing '*I' is found
+            for line in lines:
+                if '*I' in line:
+                    # Count the number of occurrences of '*I' in the line
+                    
+                    fields = line.split('\t')
+                    new_list = [s.replace('\'', '').replace('"', '').replace('*I', '') for s in fields]
+                    ins_list = [s for s in new_list if s.isalpha()]                    
                     break
                 else:
-                    instrument_name = "Piano"
-            column_names = ["Instrument", "Blank"]
-            multinstrument = False
-        else:    
+                    ins_list = ['Piano']
+            if len(ins_list) == 0:
+                ins_list = ['Piano']
+
+            return len(ins_list), ins_list
+        
+        inst_count, inst_list = count_instruments(data)
+        num_columns = count_tabs(data) + 1
+
+        if len(inst_list) < 3 and not len(inst_list) == 0 and num_columns == len(inst_list):
+            column_names = inst_list
+        elif len(inst_list) < 3 and not len(inst_list) == 0 and not num_columns == len(inst_list):
+            column_names = [inst_list[0], "Blank"]
+        elif len(inst_list) == 3:
             column_names = ['Contrabass', 'Drums_Snare_Kick',
                         'Drums_hihat', 'Piano_1', 'Blank', 'Piano_2', 'Chords']
-            multinstrument = True
-        
-        
+        else:
+            if num_columns < 2:
+                string_to_be_searched_for_instrument = keep_first_lines(data, 10)
+                for instrument in orchestra_instruments:
+                    if instrument in string_to_be_searched_for_instrument:
+                        instrument_name = instrument
+                        break
+                    else:
+                        instrument_name = "Piano"
+                column_names = ["Instrument", "Blank"]
+                
+            else:    
+                column_names = ['Contrabass', 'Drums_Snare_Kick',
+                            'Drums_hihat', 'Piano_1', 'Blank', 'Piano_2', 'Chords']
+            
+               
         # Find the first meter
         def word_search(key, d):
             
@@ -124,107 +151,84 @@ def kern2csv4player_converter(file, data):
                     break
             return start_line
         
+        def keep_lines_until(data, keyword, column_names):
+            lines = []
+            for line in data.splitlines():
+                lines.append(line)
+                if keyword in line:
+                    break
+            first_lines = StringIO('\n'.join(lines))  
+            df = pd.read_csv(first_lines, sep='\t', names=column_names)
+            return df
         
-        keyword = "=1"
-        start_line = word_search(keyword, data)-1
+        def get_dataframe(data, keyword, column_names):
+            start_line = data.find(keyword) - 1
+            last_line = data.count('\n')
+            testline = data[start_line:]
+            testline = StringIO(testline)
+            df = pd.read_csv(testline, sep='\t', names=column_names)
         
-        last_line = data.count('\n')
+            return df
         
-        testline = data.splitlines()[start_line:]
+        df_song_meta_kern = keep_lines_until(data, keyword="=1", column_names=column_names)       
+        df = get_dataframe(data, keyword = "=1", column_names=column_names)
         
-        testline = testline[:]
-        
-        testline = '\n'.join(testline)
-        
-        testline = StringIO(testline)
-        
-        df = pd.read_csv(testline, sep='\t', names=column_names)
-        
-        #print(data)
         # Split the DataFrame into a list of dataframes, where each dataframe contains the data for one measure
         
+        df.fillna('')
         df_measure_start = df.loc[df.iloc[:, 0].str.contains('\=\d+|==', regex=True)]
-
-
-        print(df_measure_start)
         
         measures = []
         
         for i in range(len(df_measure_start.index)-1):
             
             measures.append(df.iloc[df_measure_start.iloc[i].name:df_measure_start.iloc[(i+1)].name])
-          
-            
+  
+        def get_global_tempo(starting_df):
+            pattern_for_tempo = re.escape('*MM')
+            first_occurrence_tempo = starting_df.iloc[:, 0].str.contains(pattern_for_tempo)
         
-        #print(measures)
-        def note_duration(note):
-            if not pd.isna(note):
-                
-                result = 'None'
-
-                if note == "1":
-                    result = "4"
-                elif note == '2.':
-                    result = "3"
-                elif note == "2":
-                    result = "2"
-                elif note == '4':
-                    result = '1'
-                elif note == '8.':
-                    result = "0.750"
-                elif note == '6':
-                    result = "0.666"
-                elif note == '8':
-                    result = '0.5'
-                elif note == '12':
-                    result = "0.333"
-                elif note == '16':
-                    result = "0.25"
-                elif note == '32':
-                    result = "0.125"
-                return result
-            else:
-                return float('NaN')
-        
-        
-        # find global_tempo
-        pattern_for_tempo = re.escape('*MM')
-        # first_occurrence = df["Piano_2"].str.contains("!LO:TX:a:t=\[quarter\]=")
-        first_occurrence_tempo = starting_df.iloc[:, 0].str.contains(pattern_for_tempo)
-        
-        global_tempo = str(120)
-        for i in range(len(first_occurrence_tempo)):
-            if first_occurrence_tempo.iloc[i] == True:
-                global_tempo = starting_df.iloc[i, 0].replace('*MM', "")
-        if global_tempo == '.0':
             global_tempo = str(120)
-            
-        # find global_style
-        pattern_for_style = re.escape('*SS')
-        first_occurrence_style = starting_df.iloc[:, 0].str.contains(pattern_for_style)
-        global_style = 'Swing'
-        for i in range(len(first_occurrence_style)):
-            if first_occurrence_style.iloc[i] == True:
-        
-                global_style = starting_df.iloc[i,0].replace(
-                    '*SS', "")
-        
-        # find global_time_signature
-        pattern_for_time_signature = re.escape('*M')
-        pattern_for_time_signature2 = re.escape('/')
-        first_occurrence_time = starting_df.iloc[:, 0].str.contains(pattern_for_time_signature) & starting_df.iloc[:,0].str.contains(pattern_for_time_signature2) 
-        for i in range(len(first_occurrence_time)):
-            if first_occurrence_time.iloc[i] == True:
+            for i in range(len(first_occurrence_tempo)):
+                if first_occurrence_tempo.iloc[i] == True:
+                    global_tempo = starting_df.iloc[i, 0].replace('*MM', "")
+            if global_tempo == '.0':
+                global_tempo = str(120)
                 
-                global_time_signature = starting_df.iloc[i, 0].replace(
-                    '*M', "")
+            return global_tempo
         
-                global_time_signature = global_time_signature.split('/')
+        def get_global_style(starting_df):
+            pattern_for_style = re.escape('*SS')
+            first_occurrence_style = starting_df.iloc[:, 0].str.contains(pattern_for_style)
+            global_style = 'Swing'
+            for i in range(len(first_occurrence_style)):
+                if first_occurrence_style.iloc[i] == True:
+                    global_style = starting_df.iloc[i, 0].replace('*SS', "")
+            return global_style
+        
+        def get_global_time_signature(df):
+            pattern_for_time_signature = re.escape('*M')
+            pattern_for_time_signature2 = re.escape('/')
+            first_occurrence_time = df.iloc[:, 0].str.contains(pattern_for_time_signature) & df.iloc[:, 0].str.contains(pattern_for_time_signature2)
+            global_time_signature = '4/4'
+            for i in range(len(first_occurrence_time)):
+                if first_occurrence_time.iloc[i]:
+                    global_time_signature = df.iloc[i, 0].replace('*M', "")
+                    global_time_signature = global_time_signature.split('/')
+                    break
+            return global_time_signature
+        
+        global_tempo = get_global_tempo(df_song_meta_kern)
+        global_style = get_global_style(df_song_meta_kern)
+        global_time_signature = get_global_time_signature(df_song_meta_kern)
+
         
         def split_df(df_input):
-            #print(df_input)
             # Filter out rows containing "r"
-            mask = df_input['Instrument'].str.contains('r|!!|LO', case=False)
+            
+            df_input.fillna('.', inplace=True)
+            mask = df_input.str.contains('!!|LO', case=False)
+            
             df_input = df_input[~mask]
 
             df_input = df_input.fillna('')
@@ -232,27 +236,24 @@ def kern2csv4player_converter(file, data):
 
             # Split the data column into two dataframes
             # Extract numbers and characters
-           
             
+            df_numbers = df_input.str.extract('(\d+\.?\d*)', expand=False)
+            df_rest = df_input.str.replace('(\d+\.?\d*)', '', regex=True)
             
-            df_numbers = df_input['Instrument'].str.extract('(\d+)', expand=False)
-            df_chars = df_input['Instrument'].str.extract('([aAbBcCdDeEfFgG#\-]+)', expand=False, flags=re.IGNORECASE)
-            cols_with_spaces = df_input.apply(lambda x: x.str.contains(' ')).any(axis=0).index[df_input.apply(lambda x: x.str.contains(' ')).any(axis=0)]
-            #print("cols_with_spaces",cols_with_spaces)
-            if cols_with_spaces.size>0:
-                #print("TRUE")
-                polyphony = True
-            else:
-                polyphony = False
+            df_chars = df_rest.str.extract('([aAbBcCdDeEfFgG# \-]+)', expand=False, flags=re.IGNORECASE)
+        
+            df_numbers = df_numbers.fillna('')
+            df_chars = df_chars.fillna('')
+
             
-            return df_numbers, df_chars, polyphony
+            return df_numbers, df_chars
         
         def find_row_starting_with_number(df):
             found = False
             for col in df.columns:
                 for index, value in df[col].items():
-                    if str(value)[0].isdigit():
-                        print(f"Row {index} in column '{col}' starts with a number.")
+                    if str(value)[0].isdigit() or str(value)[0] == '(':
+                        #print(f"Row {index} in column '{col}' starts with a number.")
                         return index
                 if found:
                     break
@@ -328,10 +329,15 @@ def kern2csv4player_converter(file, data):
            idx = (np.abs(array - value)).argmin()
            return array[idx]
         
+        def sort_arrays(array, key):
+            return sorted(array, key=lambda x: x[key])
+        
         class MeasureforCSV:
         
             def __init__(self, measure, measure_count, df_measure_grid, df_measure_grid_for_single_inst):
-
+                print(measure)
+                if len(inst_list) == 0 or len(inst_list) == 2 or len(inst_list) > 4 or (measure.columns[0] == 'Piano' and len(inst_list) == 1):
+                    return
                 self.df_measure_grid = df_measure_grid
                 self.df_measure_grid = self.df_measure_grid['Blank']
                 
@@ -343,29 +349,8 @@ def kern2csv4player_converter(file, data):
                 #print(find_row_starting_with_number(self.measure),self.measure)
                 self.measure = measure[find_row_starting_with_number(self.measure):]
                 self.measure = self.measure.reset_index(drop=True)  
-                #print(self.measure )
-                #print(self.measure)
-# =============================================================================
-#                 # create a boolean mask indicating where either '!' or '*' or '=' stops occurring
-#                 mask = self.measure[column_names[0]].str.contains(
-#                     '!|\*|=').cumsum().duplicated(keep='last')
-#                 
-#                 # find the index where the '!' or '*' or '=' character stops occurring
-#                 stop_idx = mask.idxmax()
-#                 
-#                 # define the number of blank rows to add
-#                 num_blank_rows = stop_idx + 1
-#                 print(num_blank_rows)
-#                 # create a new DataFrame with the blank values
-#                 new_data = pd.DataFrame({0: [''] * num_blank_rows})
-#                 print(new_data)
-#                 # concatenate the new DataFrame and the original DataFrame
-#                 self.df_measure_grid = pd.concat(
-#                     [new_data, self.df_measure_grid], ignore_index=True)
-# =============================================================================
                 num_blank_rows = 1
-                self.measure_tempo = global_tempo
-                
+                self.measure_tempo = global_tempo         
                 self.measure_style = global_style
         
         
@@ -375,122 +360,61 @@ def kern2csv4player_converter(file, data):
             
                 self.measure_player_grid = []
                 self.measure_player_grid.append(self.measure_start_line)
-                #print(multinstrument)
-                #print(self.measure)
+
                 #Create CSV for single instrument
-                if multinstrument == False:
+                 #%%
+                
+                if len(inst_list) == 1:
                     
                     #Check for polyphony
-                    #print("HERE",self.measure)
                     
-                    a,b,c = split_df(self.measure)
-                    #print(a)
-                    
-                    if c : 
-                        for i in range(len(self.measure)):
-                            for y in range(1,len(self.measure.columns)):
-                                
-                                if isinstance(self.measure.iloc[i, y], str):
-
-                                    
-                                    splited_notes = self.measure.iloc[i, y].split()
-                                    for k in range(len(splited_notes)):
-                                        index = 0
-                                        for x in range(len(str(splited_notes[k]))):
-                                            #print(x)
-                                            if str(splited_notes[k])[x].isalpha():
-                                                index = x
-                                                break
-                                                
-                                        
-                                        self.measure_note_duration_list = []
-                                        for n in range(len(a)): 
-                                            #print(a.iloc[i])
-                                            self.measure_note_duration_list.append(note_duration_kern_to_csv_dictionary[a.iloc[n]])
-                                        self.measure_note_duration_list = [float(x) for x in self.measure_note_duration_list]
-                                        
-                                        self.note_onsets_list = get_note_onsets(self.measure_note_duration_list)
-                                        #self.note_pitch_list = b.values.tolist()
-                                        #print(self.note_onsets_list, i)
-                                        
-                                        # Split the string based on the index of the letter
-                                        note_duration_part = str(splited_notes[k])[:index]
-                                        
-                                        
-                                        note_pitch = pitch_dictionary.get(str(splited_notes[k])[index:])
-                                        #print(note_duration_part, type(note_duration_part))
-                                        # note_duration_part = note_duration_dictionary.get(note_duration_part, float('nan'))
-                                        note_duration_part = note_duration_kern_to_csv_dictionary.get(note_duration_part, float('nan'))
-                                        #print(note_duration_part)
-                                        note_onset = self.note_onsets_list[i]
-                                        instrument = instrument_dictionary.get(str(4)) #load piano
-                                        
-                                        if valid_note_for_player_CSV(instrument, note_pitch, note_duration_part, note_onset, random.randint(60, 80), measure_count):
-                                                self.measure_player_grid.append(valid_note_for_player_CSV(instrument, note_pitch, note_duration_part, note_onset, random.randint(60, 80), measure_count))
-                                    
-                                    if " " in note_pitch:
-                                        note_pitch_list = note_pitch.split()
-                                        
-                                        for n in range(len(note_pitch_list)):
-                                            
-                                            note_pitch = pitch_dictionary.get(note_pitch_list[n])
-                                            
-                                            if valid_note_for_player_CSV(instrument, note_pitch, note_duration_part, note_onset, random.randint(60, 80), measure_count):
-                                                self.measure_player_grid.append(valid_note_for_player_CSV(instrument, note_pitch, note_duration_part, note_onset, random.randint(60, 80), measure_count))
-                    else:
+                    for y in range(len(self.measure.columns)):
+                        if self.measure.columns[y] == "Blank":
+                             continue
                         
+                        a,b = split_df(self.measure.iloc[:, y])                    
                         self.measure_note_duration_list = []
-                        for i in range(len(a)): 
-                            print(a.iloc[i])
+                        for i in range(len(a)):  
                             
                             self.measure_note_duration_list.append(note_duration_kern_to_csv_dictionary[a.iloc[i]])
-                        self.measure_note_duration_list = [float(x) for x in self.measure_note_duration_list]
-                        
+                            
+                        self.measure_note_duration_list = [float(x) for x in self.measure_note_duration_list]                        
                         self.note_onsets_list = get_note_onsets(self.measure_note_duration_list)
-                        self.note_pitch_list = b.values.tolist()
-                        
+                        self.note_pitch_list = b.values.tolist()                        
                     
                         for i in range(len(a)):
                             note_duration_part = str(int(self.measure_note_duration_list[i]))                        
                             note_pitch = pitch_dictionary.get(self.note_pitch_list[i])
-                            
                             note_duration_part = self.measure_note_duration_list[i]
                             note_onset = self.note_onsets_list[i]
-                            instrument = instrument_name
-                                                  
-                            
+                            instrument = self.measure.columns[y]
+                                                                                                          
                             if valid_note_for_player_CSV(instrument, note_pitch, note_duration_part, note_onset, random.randint(60, 80), measure_count):
                                             self.measure_player_grid.append(valid_note_for_player_CSV(instrument, note_pitch, note_duration_part, note_onset, random.randint(60, 80), measure_count))
+
                                         
-                                        
+                #%%                    
                 else:
-                    #print("self.measure: ", self.measure)
-                    ##print("measure_count:",measure_count)
+                    
                     #Create CSV for JGT instruments (Piano, Drums, Bass)
                     for i in range(len(self.measure)-num_blank_rows):
                         for y in range(len(self.measure.columns)):
-                            #print(self.measure)
-                            #print(self.df_measure_grid, self.df_measure_grid_for_single_inst)
-                            if y == 1 or y == 2 or y == 3 or y == 4 or y == 6:
-                                #print(self.measure.iloc[i, y], i)
+                            #print(self.measure, self.measure.iloc[:, 0])
+                            if y== 0 or y == 1 or y == 2 or y == 3 or y == 5:
+                                
                                 index = 0
                                 for x in range(len(str(self.measure.iloc[i, y]))):
                                     if str(self.measure.iloc[i, y])[x].isalpha():
                                         index = x
                                         break
-                                        
-                                
+                                                                     
                                 # Split the string based on the index of the letter
                                 note_duration_part = str(self.measure.iloc[i, y])[:index]
-                                note_pitch = str(self.measure.iloc[i, y])[index:]
-                                # note_duration_part = note_duration_dictionary.get(note_duration_part, float('nan'))
-                                #print(note_duration_part, note_pitch, measure_count, instrument_dictionary.get(str(y)))
+                                note_pitch = str(self.measure.iloc[i, y])[index:]                               
                                 note_duration_part = note_duration_kern_to_csv_dictionary.get(note_duration_part, float('nan'))
-                                note_onset = self.df_measure_grid_for_single_inst.iloc[i, 0]
-                                #print(note_onset, note_duration_part, i, self.measure_start_line)
-                                instrument = instrument_dictionary.get(str(y))
-                                #print(note_onset,note_pitch)
-                                
+                                note_onset = self.df_measure_grid_for_single_inst.iloc[i, 0]                               
+                                instrument = instrument_dictionary.get(str(y))                               
+                                if instrument == "Piano": print(self.measure_start_line, str(self.measure.iloc[i, y])[:index], note_pitch)
                                 if " " in note_pitch:
                                     note_pitch_list = note_pitch.split()
                                     
@@ -503,23 +427,20 @@ def kern2csv4player_converter(file, data):
                                 else:
                                     
                                     #prepare the note pitch for the drum notes
-                                    note_pitch = note_pitch.replace("Rf", "CC").replace("Rcc", "EE").replace("Ree", "GG#").replace("\\", "").replace("/", "")
-                                    
+                                    note_pitch = note_pitch.replace("Rf", "CC").replace("Rcc", "EE").replace("Ree", "GG#").replace("\\", "").replace("/", "")                                    
                                     note_pitch = pitch_dictionary.get(note_pitch)
                                     
                                     if valid_note_for_player_CSV(instrument, note_pitch, note_duration_part, note_onset, random.randint(60, 80), measure_count):
                                         self.measure_player_grid.append(valid_note_for_player_CSV(instrument, note_pitch, note_duration_part, note_onset, random.randint(60, 80), measure_count))
                             
                             
-        
-                            
+                self.measure_player_grid[1:] = sorted(self.measure_player_grid[1:], key=lambda x: float(x[2]))                           
         data = []
-        
+
         for i in range(len(measures)):
-            #print(len(measures), measures)
+            
             data.append(MeasureforCSV(measures[i], i, df_measure_grid, df_measure_grid_for_single_inst).measure_player_grid)
-        
-        #print(data)
+               
         reduced_list = [item for sublist in data for item in sublist]
         
         kern2csv4playerString = ''
@@ -527,7 +448,6 @@ def kern2csv4player_converter(file, data):
         for lst in data:
             kern2csv4playerStringByMeasure = '\n'.join([', '.join(map(str, inner_lst)) for inner_lst in lst])
             kern2csv4playerString += kern2csv4playerStringByMeasure + "\n"
-
 
         # make array
         arr = []
@@ -540,11 +460,11 @@ def kern2csv4player_converter(file, data):
             print('kern2csv4playerString: ', kern2csv4playerString, file=f)
         return kern2csv4playerString, arr
 
-#FOR ONLINE INTEGRATION COMMENT OUT THE FOLLOWING:
-file = "kern_files/dueto.krn"
-with open(file, 'r') as f:
-    data = f.read()
-    kern2csv4playerString, b = kern2csv4player_converter( StringIO(data), data)
-    print(kern2csv4playerString)
-
-
+# =============================================================================
+# #FOR ONLINE INTEGRATION COMMENT OUT THE FOLLOWING:
+# file = "kern_files/a_blues_basic_guitar_voicings.krn"
+# with open(file, 'r') as f:
+#     data = f.read()
+#     kern2csv4playerString, b = kern2csv4player_converter( StringIO(data), data)
+#     print(b)
+# =============================================================================
