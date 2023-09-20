@@ -334,6 +334,7 @@ def kern2string(file_name, find_chord_in_line=None):
                     acc_chord = acc_chord.replace( acc_chord[1], fonts2acc[ acc_chord[1] ] )
             if len(chord_split) > 1:
                 # type other than "major", i.e. no type
+                # print('chord_split:', chord_split)
                 string += ',chord~' + acc_chord + fonts2types[chord_split[1]] + '@' + t
             else:
                 string += ',chord~' + acc_chord + '@' + t
@@ -356,28 +357,30 @@ def csv2kern(filename):
     #     result = chardet.detect(rawdata.read(100000))
     
     
-    #FOR ONLINE INTEGRATION UNCOMMENT THE FOLOWING:
+# =============================================================================
+#     #FOR ONLINE INTEGRATION UNCOMMENT THE FOLOWING:
     result = chardet.detect( str.encode( filename.getvalue() ) )
+# =============================================================================
     
 
 
-# =============================================================================
-#     #FOR ONLINE INTEGRATION COMMENT OUT THE FOLOWING:
-#     if result["encoding"] == "utf-16":
-#         df = pd.read_csv(filename, sep='\;', encoding=result["encoding"])
-#         for i in range(len(df.columns)-1):
-#             df.iloc[:, i] = df.iloc[:, i].str.replace(" ", "")
-#     else:
-#         df = pd.read_csv(filename, sep='\;', encoding=result["encoding"])
-# =============================================================================
+    #FOR ONLINE INTEGRATION COMMENT OUT THE FOLOWING:
+    # if result["encoding"] == "utf-16":
+    #     df = pd.read_csv(filename, sep='\;', encoding=result["encoding"])
+    #     for i in range(len(df.columns)-1):
+    #         df.iloc[:, i] = df.iloc[:, i].str.replace(" ", "")
+    # else:
+    #     df = pd.read_csv(filename, sep='\;', encoding=result["encoding"])
     
-    #FOR ONLINE INTEGRATION UNCOMMENT THE FOLOWING:
+# =============================================================================
+#     #FOR ONLINE INTEGRATION UNCOMMENT THE FOLOWING:
     if result["encoding"] == "utf-16":
         df = pd.read_csv(filename, sep='\,', encoding=result["encoding"])
         for i in range(len(df.columns)-1):
             df.iloc[:, i] = df.iloc[:, i].str.replace(" ", "")
     else:
         df = pd.read_csv(filename, sep='\, ', encoding=result["encoding"])
+# =============================================================================
 
 
     #Load json files for for mappings, accidendal symbols, midi to kern notes, kern notes duration
@@ -429,6 +432,7 @@ def csv2kern(filename):
 
     def quantizeNotes(note):
         if not pd.isna(note):
+            #print("NOTE:",note)
             myList = [0.25, 0.333, 0.5, 0.666, 0.75, 1]
 
             return min(myList, key=lambda x: abs(x-note))
@@ -446,7 +450,17 @@ def csv2kern(filename):
     def quantizeTripleNotes(note):
         if not pd.isna(note):
             myList = [0.333, 0.666]
-
+            
+            #print(min(myList, key=lambda x: abs(x-note)), note)
+            return min(myList, key=lambda x: abs(x-note))
+        else:
+            return None
+    
+    def quantizeTripleNotesForPiano(note):
+        if not pd.isna(note):
+            myList = [0.333]
+            
+            #print(min(myList, key=lambda x: abs(x-note)), note)
             return min(myList, key=lambda x: abs(x-note))
         else:
             return None
@@ -634,32 +648,61 @@ def csv2kern(filename):
             
             for y in range(len(self.measure_raw)-1,-1,-1):
                 #print(y)
-                with open('debug_log.txt', 'a') as f:
-                    print('self.measure_raw.iloc[y, 0]: ', self.measure_raw.iloc[y, 0], file=f)
+# =============================================================================
+#                 with open('debug_log.txt', 'a') as f:
+#                     print('self.measure_raw.iloc[y, 0]: ', self.measure_raw.iloc[y, 0], file=f)
+# =============================================================================
                 if self.measure_raw.iloc[y, 0] == "Bass":
 
                     note_onset = float(
-                        self.measure_raw.iloc[y, 2]) - measure_count*self.time_signature
+                            self.measure_raw.iloc[y, 2]) - measure_count*self.time_signature
 
                     for i in range(len(self.kern_grid)):
+                        #print(np.around(note_onset, decimals=2, out=None), np.around(float(self.kern_grid.iloc[i, 4]), decimals=2, out=None))
+                        
+                        if np.around(note_onset, decimals=2, out=None) == np.around(float(self.kern_grid.iloc[i, 4]), decimals=2, out=None):
 
-                        if note_onset == float(self.kern_grid.iloc[i, 4]):
-                            self.kern_grid.iloc[i, 0] = quantizeNotes(
-                                float(self.measure_raw.iloc[y, 3]))
-                            self.kern_grid_notes.iloc[i,
-                                                    0] = miditokern[self.measure_raw.iloc[y, 1]]
+# =============================================================================
+#                         if note_onset == float(self.kern_grid.iloc[i, 4]):
+# =============================================================================
+                            if i in idx_for_duplets_list:
+                                self.kern_grid.iloc[i, 0] = quantizeDupleNotes(float(self.measure_raw.iloc[y, 3]))
+                                #print(i)
+                            elif i in idx_for_triplets_list:
+                                self.kern_grid.iloc[i, 0] = quantizeTripleNotesForPiano(float(self.measure_raw.iloc[y, 3]))
+                                #print(i)
+                            elif i in idx_quarter_list and sum_numeric_values_from_df(self.kern_grid.iloc[i:i+5, 2])%0.333 == 0:
+                                self.kern_grid.iloc[i, 0] = quantizeTripleNotesForPiano(float(self.measure_raw.iloc[y, 3]))
+                                #print(i)
+                            else:
+                                self.kern_grid.iloc[i, 0] = quantizeDupleNotes(float(self.measure_raw.iloc[y, 3]))
+                                #print(i)
+                            if self.kern_grid_notes.iloc[i, 0] == '.':
+                                self.kern_grid_notes.iloc[i,
+                                                        0] = miditokern[self.measure_raw.iloc[y, 1]]
+
+                            else:
+                                self.kern_grid_notes.iloc[i, 0] = str(
+                                    self.kern_grid_notes.iloc[i, 0]) + ' ' + miditokern[self.measure_raw.iloc[y, 1]]
                             break
+# =============================================================================
+#                                 self.kern_grid.iloc[i, 0] = quantizeNotes(
+#                                     float(self.measure_raw.iloc[y, 3]))
+#                                 self.kern_grid_notes.iloc[i,
+#                                                         0] = miditokern[self.measure_raw.iloc[y, 1]]
+#                                 break
+# =============================================================================
 
                 elif self.measure_raw.iloc[y, 0] == "Drums":
                     # Load Kick-Snare
                     if int(self.measure_raw.iloc[y, 1]) == 36 or int(self.measure_raw.iloc[y, 1]) == 40:
                         note_onset = float(
                             self.measure_raw.iloc[y, 2]) - measure_count*self.time_signature
-                                              
+                        #print(note_onset)
                         for i in range(len(self.kern_grid)):
                             
                             if (math.floor(note_onset * 1000) / 1000) == float(self.kern_grid.iloc[i, 4]):
-                                
+                                #print("MATH",(math.floor(note_onset * 1000) / 1000))
                                 if i in idx_for_duplets_list:
                                     #print(float(self.kern_grid.iloc[i, 4]))
                                     self.kern_grid.iloc[i, 1] = quantizeDupleNotes(float(self.measure_raw.iloc[y, 3]))
@@ -750,10 +793,23 @@ def csv2kern(filename):
                             self.measure_raw.iloc[y, 2]) - measure_count*self.time_signature
 
                         for i in range(len(self.kern_grid)):
-
-                            if note_onset == float(self.kern_grid.iloc[i, 4]):
-                                self.kern_grid.iloc[i, 3] = quantizeNotes(
-                                    float(self.measure_raw.iloc[y, 3]))
+                            #print(np.around(note_onset, decimals=2, out=None), np.around(float(self.kern_grid.iloc[i, 4]), decimals=2, out=None))
+                            
+                            if np.around(note_onset, decimals=2, out=None) == np.around(float(self.kern_grid.iloc[i, 4]), decimals=2, out=None):
+                                #print(float(self.kern_grid.iloc[i, 4]), note_onset)
+                                #self.kern_grid.iloc[i, 3] = quantizeNotes(float(self.measure_raw.iloc[y, 3]))
+                                if i in idx_for_duplets_list:
+                                    self.kern_grid.iloc[i, 3] = quantizeDupleNotes(float(self.measure_raw.iloc[y, 3]))
+                                    #print(i)
+                                elif i in idx_for_triplets_list:
+                                    self.kern_grid.iloc[i, 3] = quantizeTripleNotesForPiano(float(self.measure_raw.iloc[y, 3]))
+                                    #print(i)
+                                elif i in idx_quarter_list and sum_numeric_values_from_df(self.kern_grid.iloc[i:i+5, 2])%0.333 == 0:
+                                    self.kern_grid.iloc[i, 3] = quantizeTripleNotesForPiano(float(self.measure_raw.iloc[y, 3]))
+                                    #print(i)
+                                else:
+                                    self.kern_grid.iloc[i, 3] = quantizeDupleNotes(float(self.measure_raw.iloc[y, 3]))
+                                    #print(i)
                                 if self.kern_grid_notes.iloc[i, 3] == '.':
                                     self.kern_grid_notes.iloc[i,
                                                             3] = miditokern[self.measure_raw.iloc[y, 1]]
@@ -764,15 +820,36 @@ def csv2kern(filename):
                                 break
 
                     elif int(self.measure_raw.iloc[y, 1]) >= 60:
-
+                        
                         note_onset = float(
                             self.measure_raw.iloc[y, 2]) - measure_count*self.time_signature
-
+                        
                         for i in range(len(self.kern_grid)):
-
-                            if note_onset == float(self.kern_grid.iloc[i, 4]):
-                                self.kern_grid.iloc[i, 5] = quantizeNotes(
-                                    float(self.measure_raw.iloc[y, 3]))
+                            #print(note_onset, float(self.kern_grid.iloc[i, 4]))
+                            if np.around(note_onset, decimals=2, out=None) == np.around(float(self.kern_grid.iloc[i, 4]), decimals=2, out=None):
+# =============================================================================
+#                                 print("QUANTIZE:",quantizeNotes(
+#                                     float(self.measure_raw.iloc[y, 3])), float(self.measure_raw.iloc[y, 3]))
+# =============================================================================
+# =============================================================================
+#                                 with open('debug_log.txt', 'a') as f:
+#                                     print('note_onset - Piano: ', note_onset, measure_count, file=f)
+#                                     print('quantized_Notes: ', quantizeNotes(
+#                                     float(self.measure_raw.iloc[y, 3])), measure_count, file=f)
+# =============================================================================
+                                if i in idx_for_duplets_list:
+                                    self.kern_grid.iloc[i, 5] = quantizeDupleNotes(float(self.measure_raw.iloc[y, 3]))
+                                    #print(i)
+                                elif i in idx_for_triplets_list:
+                                    self.kern_grid.iloc[i, 5] = quantizeTripleNotesForPiano(float(self.measure_raw.iloc[y, 3]))
+                                    #print(i)
+                                elif i in idx_quarter_list and sum_numeric_values_from_df(self.kern_grid.iloc[i:i+5, 2])%0.333 == 0:
+                                    self.kern_grid.iloc[i, 5] = quantizeTripleNotesForPiano(float(self.measure_raw.iloc[y, 3]))
+                                    #print(i)
+                                else:
+                                    self.kern_grid.iloc[i, 5] = quantizeDupleNotes(float(self.measure_raw.iloc[y, 3]))
+                                    #print(i)
+                                #self.kern_grid.iloc[i, 5] = quantizeNotes(float(self.measure_raw.iloc[y, 3]))
                                 if self.kern_grid_notes.iloc[i, 5] == '.':
                                     self.kern_grid_notes.iloc[i,
                                                             5] = miditokern[self.measure_raw.iloc[y, 1]]
@@ -784,13 +861,15 @@ def csv2kern(filename):
                 elif self.measure_raw.iloc[y, 0] == "Chord":
                     note_onset = float(self.measure_raw.iloc[y, 3]) - measure_count * self.time_signature
                     i, quantized_onset = self.find_nearest( self.even_grid, note_onset )
-                    with open('debug_log.txt', 'a') as f:
-                        print('note_onset - Chords: ', note_onset, file=f)
-                        print('quantized_onset: ', quantized_onset, file=f)
+# =============================================================================
+#                     with open('debug_log.txt', 'a') as f:
+#                         print('note_onset - Chords: ', note_onset, file=f)
+#                         print('quantized_onset: ', quantized_onset, file=f)
+# =============================================================================
                     self.kern_grid.iloc[i, 6] = ""
                     self.kern_grid_notes.iloc[i, 6] = find_chord_font_from_symbolic_type(str(self.measure_raw.iloc[y, 1]))
                     
-                    
+            #print(self.kern_grid, measure_count)
             #Beautify kern file extinguishing useless pauses:     
             for y in range(len(self.kern_grid.columns)-1):
                 if y == 4:
@@ -1031,19 +1110,45 @@ def csv2kern(filename):
                 self.kern_grid_merge = pd.concat(
                     [df_measureending, self.kern_grid_merge])
         # end __init__
+        
+      
+
         def find_nearest(self, array, value):
             array = np.asarray(array)
             idx = (np.abs(array - value)).argmin()
             return idx, array[idx]
         # end __find_nearest__
 
-
+# =============================================================================
+#    # Create a list of arguments for the process_measure function
+#     # Create a list of arguments for the process_measure function
+#     args_list = [(measure, i, df_measure_grid) for i, measure in enumerate(measures)]
+#     
+#     # Record the start time
+#     start_time = time.time()
+#     
+#     # Execute the process_measure.py script in a separate process using subprocess.run
+#     process = subprocess.run(
+#         ["python", "process_measure.py"],
+#         input="\n".join(map(repr, args_list)).encode(),
+#         stdout=subprocess.PIPE,
+#     )
+#     
+#     # Unpickle the results from the subprocess
+#     df_list = pickle.loads(process.stdout)
+#     
+#     # Record the end time
+#     end_time = time.time()
+#     
+#     # Calculate the execution time
+#     execution_time = end_time - start_time
+#     print("Total Execution Time:", execution_time, "seconds")
+# =============================================================================
     df_list = []
-
     for i in range(len(measures)):
 
         df_list.append(Measure(measures[i], i, df_measure_grid).kern_grid_merge)
-
+   
     df_proto = pd.concat(df_list, ignore_index=True)
 
     # Write to txt file

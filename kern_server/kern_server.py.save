@@ -1,0 +1,193 @@
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+import requests
+import json
+import os
+import csv
+import sys
+from io import StringIO
+import kern_converters as kcv
+import reharmonization_functions as rhf
+from urllib.parse import urlparse, quote
+import kern_to_csv_for_player_converter as k2csv
+
+# FRONTEND_HOST = None
+
+# if len(sys.argv) > 1:
+#     FRONTEND_HOST = sys.argv[1]
+# else:
+#     sys.exit('WARNING: no acceptable FRONTEND_HOST is given as argument')
+
+f = open('../data/json_files/chord_types_mapping_web.json')
+types2fonts = json.load(f)
+f.close()
+
+api = Flask(__name__)
+CORS(api)
+
+cors = CORS(api, resources={r"/api/*": {"origins": "*"}})
+
+@api.route('/sending_kern', methods=['GET','POST'])
+def get_sending_kern():
+    # example run: https://maxim.mus.auth.gr:6001/sending_kern?line=17&column=8&chord=Cm&kernfile=lalala
+    with open('debug_log.txt', 'w') as f:
+        # print('request:', request.args)
+        print('kernfile:', request.args['kernfile'], file=f)
+        kernfile = request.args['kernfile']
+        # print('line:', request.args['line'])
+        line = int(request.args['line'])
+        # print('column:', request.args['column'])
+        column = int(request.args['column'])
+        # print('current:', request.args['current'])
+        current = request.args['current']
+        # print('root:', request.args['root'])
+        # print('accidental:', request.args['accidental'])
+        # print('variation:', request.args['variation'])
+        print('reharmonize:', request.args['reharmonize'], file=f)
+        reharmonize = request.args['reharmonize']
+        print('reharmonize:', reharmonize, file=f)
+        linesplit = kernfile.split('\n')
+        columnsplit = linesplit[line-1].split('\t')
+        # print('text position:', columnsplit[column-1])
+        if reharmonize == 'true':
+            # newchord = 'Dm'
+            before_str, chord_idx = kcv.kern2string( StringIO(kernfile), find_chord_in_line=line )
+            print('chord_idx: ', chord_idx)
+            if chord_idx == -1:
+                chord_idx = 0
+            print('before_str:', before_str, file=f)
+            mod_piece = rhf.substitute_chord_by_string( before_str, chord_idx )
+            mod_string = mod_piece['string']
+            print('mod_piece:', mod_piece, file=f)
+            # get new chord from gjt string:
+            chordsplit = mod_string.split('chord~')
+            atplit = chordsplit[chord_idx+1].split('@')
+            newchord = atplit[0]
+            print('newchord - suggest:', 'x'+newchord+'x', file=f)
+            # transform chord to kern fonts chord
+            # check if flat / sharp
+            if len(newchord) > 1:
+                idx4space = 1
+                if newchord[1] == 'b' or newchord[1] == '#':
+                    idx4space = 2
+                if len(newchord) > idx4space:
+                    print('replacing for idx4space: ', idx4space, file=f)
+                    newchord = newchord.replace( newchord[idx4space:], ' ' + types2fonts[ newchord[idx4space:] ] )
+                else:
+                    print('no need to convert type - idx4space: ', idx4space, file=f)
+            else:
+                print('no need to convert type - len <= 1', file=f)
+        else:
+            newchord = request.args['root']
+            if request.args['accidental'] != 'null':
+                newchord += request.args['accidental']
+            newchord += ' ' + request.args['variation']
+            print('newchord - edit:', 'x'+newchord+'x', file=f)
+        # newchord = 'C'
+        print('newchord:', newchord, file=f)
+        columnsplit[column-1] = newchord
+        newline = '\t'.join(columnsplit)
+        linesplit[line-1] = newline
+        newkern = '\n'.join(linesplit)
+        print('newkern:', newkern, file=f)
+        new_gjt_string, _ = kcv.kern2string( StringIO(newkern) )
+        print('new_gjt_string:', new_gjt_string, file=f)
+        # http://helen.mus.auth.gr:5000/get_csv_from_string?string=new_gjt_string
+        response = requests.get("http://helen.mus.auth.gr:5000/get_csv_from_string?string=" + quote(new_gjt_string))
+        song = response.json()
+        print('csv: ', song['csv_string'], file=f)
+        test_kern = kcv.csv2kern( StringIO( song['csv_string'] ) )
+        print('test_kern:', test_kern, file=f)
+        # print('newkern:', newkern)
+        # escape \n
+        # test_kern = test_kern.replace( '\n', '<br>' )
+        resp = {'new': test_kern, 'newchord': newchord}
+        print('resp:', resp, file=f)
+        # return json.dumps(resp)
+        return jsonify(resp)
+# end get_check_get
+
+
+@api.route('/kern_for_player', methods=['GET','POST'])
+def kern_for_player():
+    # example run: https://maxim.mus.auth.gr:6001/kern_for_player?kernfile=lalala
+    # print('request:', request.args)
+    print('kernfile:', request.args['kernfile'])
+    kernfile = request.args['kernfile']
+    csv_string, csv_array = k2csv.kern2csv4player_converter( StringIO( kernfile ) , kernfile )
+    resp = {'csv_string': csv_string, 'csv_array': csv_array}
+    return json.dumps(resp)
+# end get_check_get
+
+# TESTS ==================================
+@api.route('/test_static_kern', methods=['GET','POST'])
+def test_static_kern():
+    # example run: http://155.207.188.7:6001/test_static_kern?filename=A_BEAUTIFUL_FRIENDSHIP.krn
+    print(request.args)
+    filepath = 'data/krn/' + request.args['filename']
+    print('filepath: ' + filepath)
+    f = open( filepath )
+    data = f.read()
+    f.close()
+    resp = {'new': data}
+    return json.dumps(resp)
+# end get_check_get
+
+@api.route('/test_static_kern2string', methods=['GET','POST'])
+def test_static_kern2string():
+    # example run: http://155.207.188.7:6001/test_static_kern2string?filename=A_BEAUTIFUL_FRIENDSHIP.krn
+    print(request.args)
+    filepath = 'data/krn/' + request.args['filename']
+    s = kcv.kern2string( filepath )
+    resp = {'string': s}
+    return json.dumps(resp)
+# end get_check_get
+
+# TESTS ==================================
+
+'''
+# for tackling CORS etc
+if FRONTEND_HOST is not None:
+    @api.after_request
+    def after_request(response):
+        """!
+        @brief Add necessary info to headers. Useful for preventing CORS permission errors.
+        """
+        response.headers.add("Access-Control-Allow-Origin", FRONTEND_HOST)
+        response.headers.add("Access-Control-Allow-Credentials", "true")
+        response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
+        response.headers.add("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS")
+        return response
+    # end after_request
+
+'''
+
+# HOSTNAME_WHITELIST = [
+#     # "http://localhost:3000",
+#     # "https://test.com",
+#     # "https://www.test.com",
+#     "https://musicolab.hmu.gr/"
+# ]
+# # api = create_app()
+# @api.after_request
+# def after_request(response):
+#     """!
+#     @brief Add necessary info to headers. Useful for preventing CORS permission errors.
+#     """
+#     parsed_uri = urlparse(request.referrer)
+#     url = "{uri.scheme}://{uri.netloc}".format(uri=parsed_uri)
+#     if url in HOSTNAME_WHITELIST:
+#         response.headers.add("Access-Control-Allow-Origin", url)
+#         response.headers.add("Access-Control-Allow-Credentials", "true")
+#         response.headers.add(
+#             "Access-Control-Allow-Headers", "Content-Type,Authorization"
+#         )
+#         response.headers.add(
+#             "Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS"
+#         )
+#     return response
+
+if __name__ == '__main__':
+    # api.run()
+    api.run(ssl_context=('/home/maximos/Documents/SSL_certificates/server.crt', '/home/maximos/Documents/SSL_certificates/server.key'),Σας ευχαριστώ! host='0.0.0.0', port=6001, debug=True)
+    # api.run(ssl_context=('/etc/letsencrypt/live/maxim.mus.auth.gr/fullchain.pem', '/etc/letsencrypt/live/maxim.mus.auth.gr/privkey.pem'), host='0.0.0.0', port=6001, debug=True)
