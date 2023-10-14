@@ -1,0 +1,9 @@
+{
+    "BL_STRAIGHT NO CHASER-harmonic_Tonal": {
+        "string": "style~Swing,tempo~180,tonality~Bb,bar~4/4,chord~Bb7@0.0,bar~4/4,chord~EbmΔ7@0.0,bar~4/4,chord~EbmΔ7@0.0,bar~4/4,chord~EbmΔ7@0.0,bar~4/4,chord~EbmΔ7@0.0,bar~4/4,chord~Ebm7@0.0,bar~4/4,chord~EbmΔ7@0.0,bar~4/4,chord~EbmΔ7@0.0,bar~4/4,chord~Gb @0.0,bar~4/4,chord~Go7@0.0,bar~4/4,chord~Cø7@0.0,bar~4/4,chord~F13#11@0.0,end",
+        "original_string": "BL_STRAIGHT NO CHASER-harmonic_Tonal",
+        "unfolded_string": "style~Swing,tempo~180,tonality~Bb,bar~4/4,chord~Bb7@0.0,bar~4/4,chord~EbmΔ7@0.0,bar~4/4,chord~EbmΔ7@0.0,bar~4/4,chord~EbmΔ7@0.0,bar~4/4,chord~EbmΔ7@0.0,bar~4/4,chord~Ebm7@0.0,bar~4/4,chord~EbmΔ7@0.0,bar~4/4,chord~EbmΔ7@0.0,bar~4/4,chord~Gb @0.0,bar~4/4,chord~Go7@0.0,bar~4/4,chord~Cø7@0.0,bar~4/4,chord~F13#11@0.0,end",
+        "appearing_name": "BL_Straight No Chaser-harmonic_Tonal",
+        "tonality": "Bb"
+    }
+}

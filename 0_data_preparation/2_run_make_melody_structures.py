@@ -44,13 +44,38 @@ with open('../data/all_melody_structs.pickle', 'wb') as handle:
     pickle.dump(all_structs, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 # %% global HMM
-print('constructing global HMM')
+print('constructing global and partial HMMs')
 globalHMM = ccc.ChameleonHMM()
+
+# harmonic styles
+stylesHMM = {
+    'harmonic': {},
+    'genre': {}
+}
 
 for s in all_structs:
     globalHMM.add_melody_information_with_matrix( s.hmm.melody_per_chord )
     globalHMM.add_transition_information( s.hmm.transition_matrix )
     globalHMM.add_chord_distribution( s.hmm.chords_distribution )
+    # harmonic styles
+    if s.harmonic_style is not None:
+        if s.harmonic_style not in stylesHMM['harmonic'].keys():
+            tmpHMM = ccc.ChameleonHMM()
+        else:
+            tmpHM = stylesHMM['harmonic'][s.harmonic_style]
+        tmpHMM.add_melody_information_with_matrix( s.hmm.melody_per_chord )
+        tmpHMM.add_transition_information( s.hmm.transition_matrix )
+        tmpHMM.add_chord_distribution( s.hmm.chords_distribution )
+        stylesHMM['harmonic'][s.harmonic_style] = tmpHMM
+    if s.genre_style is not None:
+        if s.genre_style not in stylesHMM['genre'].keys():
+            tmpHMM = ccc.ChameleonHMM()
+        else:
+            tmpHMM = stylesHMM['genre'][s.genre_style]
+        tmpHMM.add_melody_information_with_matrix( s.hmm.melody_per_chord )
+        tmpHMM.add_transition_information( s.hmm.transition_matrix )
+        tmpHMM.add_chord_distribution( s.hmm.chords_distribution )
+        stylesHMM['genre'][s.genre_style] = tmpHMM
 
 
 # fill-in new chords with their rpcp
@@ -62,9 +87,25 @@ for i in range( mGlobal.shape[0] ):
         mGlobal[i,:] = globalHMM.chord_state2rpcp( globalHMM.all_chord_states[i] )
 globalHMM.melody_per_chord = sparse.csr_matrix(mGlobal)
 
+# in styles
+for style_type in ['harmonic', 'genre']:
+    for k in stylesHMM[style_type].keys():
+        tmp_hmm = stylesHMM[style_type][k]
+        if len(tmp_hmm.all_chord_states) == 0:
+            tmp_hmm.initialize_chord_states()
+        mStyle = tmp_hmm.melody_per_chord.toarray()
+        for i in range( mStyle.shape[0] ):
+            if np.sum( mStyle[i,:] ) == 0:
+                mStyle[i,:] = tmp_hmm.chord_state2rpcp( tmp_hmm.all_chord_states[i] )
+        tmp_hmm.melody_per_chord = sparse.csr_matrix(mStyle)
+
 print('saving globalHMM')
 with open('../data/globalHMM.pickle', 'wb') as handle:
     pickle.dump(globalHMM, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+print('saving stylesHMM')
+with open('../data/stylesHMM.pickle', 'wb') as handle:
+    pickle.dump(stylesHMM, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 # %% test plot
 '''

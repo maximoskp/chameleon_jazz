@@ -86,6 +86,12 @@ class ChameleonContext:
     all_chord_states = []
     all_states_np = []
     all_chord_symbols = []
+    # subgroups
+    songs_excel_path = '../data/1058_songs_without_melodies.xlsx'
+    metadata = pd.read_excel(songs_excel_path)
+    metadata = metadata.set_index('Title')
+    metadata = metadata.dropna()
+    metadata['appearing_name'] = metadata['appearing_name'].str.lower()
     # translation between numeric root/types and chord state (string)
     def chord2state(self, numeric_root=None, numeric_type=None, tonality='estimated_tonality'):
         if numeric_root is None:
@@ -1230,6 +1236,13 @@ class Chart(ChameleonContext):
         self.piece_name = struct_in['appearing_name']
         self.key = struct_in['original_key']
         self.tonality = self.tonality_from_symbol( struct_in['tonality'] )
+        self.harmonic_style = None
+        self.genre_style = None
+        if self.metadata['appearing_name'].eq( self.piece_name.lower() ).any():
+            tmp_row = self.metadata[ self.metadata['appearing_name']==self.piece_name.lower() ]
+            self.harmonic_style = tmp_row.iloc[0]['harmonic_style']
+            self.genre_style = tmp_row.iloc[0]['genre_style']
+            self.year = tmp_row.iloc[0]['composition_date']
         self.make_sections()
         self.make_stats()        
         # do we need to keep:
