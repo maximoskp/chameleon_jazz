@@ -14,7 +14,6 @@ def print_ascii_chart(s):
             if i >= len(comma_split):
                 break
         elif 'bar' in c:
-            print(bar_counter)
             if bar_counter == 4:
                 chart_out += '|\n'
                 bar_counter = 0
@@ -51,5 +50,5 @@ def print_ascii_chart(s):
     return chart_out
 # end print_ascii_chart
 
-chart_out = print_ascii_chart(s)
-print(chart_out)
+# chart_out = print_ascii_chart(s)
+# print(chart_out)
