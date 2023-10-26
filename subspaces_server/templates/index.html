@@ -3,8 +3,8 @@
 		<title>Plot Chameleon Data</title>
 
 		<!-- Load plotly.js into the DOM -->
-		<script src='https://cdn.plot.ly/plotly-2.9.0.min.js'></script>
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js' ></script>
+		<!-- <script src='https://cdn.plot.ly/plotly-2.9.0.min.js'></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js' ></script> -->
 
 		<!-- For DropDown filtering -->
 		<!-- <script type="text/javascript" src="static/js/libraries/jquery-3-4-0-min.js"></script> -->
@@ -27,335 +27,19 @@
 
 		<!-- Load Audio Player library-->
 		<!-- <script type="text/javascript" src="static/js/libraries/webaudiofontplayer.js"></script> -->
-    <script src='https://surikov.github.io/webaudiofont/npm/dist/WebAudioFontPlayer.js'></script>
+	    <!-- <script src='https://surikov.github.io/webaudiofont/npm/dist/WebAudioFontPlayer.js'></script> -->
 		<!-- <script type="text/javascript" src="static/js/libraries/0000_JCLive_sf2_file.js"></script> -->
-		<script src='https://surikov.github.io/webaudiofontdata/sound/0000_JCLive_sf2_file.js'></script>
+		<!-- <script src='https://surikov.github.io/webaudiofontdata/sound/0000_JCLive_sf2_file.js'></script> -->
 		<!-- <script type="text/javascript" src="static/js/libraries/0320_Aspirin_sf2_file.js"></script> -->
-    <script src='https://surikov.github.io/webaudiofontdata/sound/0320_Aspirin_sf2_file.js'></script>
-
-		<!-- workbench initialises gjt player -->
-    <script type="text/javascript" src="static/js/gjt_player.js"></script>
-    <!-- workbench initialises audio manager -->
-    <script type="text/javascript" src="static/js/audioManager.js"></script>
-    <!-- workbench also needs to initialise audio sources -->
-    <script type="text/javascript" src="static/js/audioSources.js"></script>
-    <!-- workbench loads metronome -->
-    <script type="text/javascript" src="static/metronome_js/metronome.js"></script>
+		<!-- <script src='https://surikov.github.io/webaudiofontdata/sound/0320_Aspirin_sf2_file.js'></script>  -->
 		<!-- Load main javascript -->
-    <script type="text/javascript" src="static/js/main.js"></script>
+    	<script type="text/javascript" src="static/js/main.js"></script>
 
-		<script>
-
-			// Initialise audio
-			var audioContext = audioManager.audioContext;
-			var player = new WebAudioFontPlayer();
-
-			function initialiseSizes(){
-				sizeslist = [];
-				for (i=0; i<nameslist.length; i++) {
-					sizeslist[i] = 5;
-				}
-				return sizeslist;
-			};
-
-			function clusterTrace(element) {
-
-					nameslist = nameslist;
-					g = document.getElementById("clusterTrace").value;
-					k = Number(g) + 1;
-					document.getElementsByClassName("infos__slide-cluster-trace")[0].setAttribute('data-content', k);
-					colors = [];
-
-					sizes = initialiseSizes();
-
-					function find_index_of_name(a) {
-						const array = nameslist;
-						const substring = a;
-
-						myindex = array.findIndex(element => {
-							if (element.includes(substring)) {
-								return true;
-							}
-						});
-						return myindex;
-					}
-
-					if (document.getElementById("first-song").value != "" && document.getElementById("first-song").value != "None" ) {
-						if (document.getElementById("first-song").value != "None") {
-							var firstSongValue = replaceAllSpaces(document.getElementById("first-song").value);
-							firstSongIndex = find_index_of_name(firstSongValue);
-							sizes[firstSongIndex] = 15;
-						}
-					}
-					if (document.getElementById("second-song").value != "" && document.getElementById("second-song").value != "None") {
-						if (document.getElementById("second-song").value != "None") {
-							var secondSongValue = replaceAllSpaces(document.getElementById("second-song").value);
-							secondSongIndex = find_index_of_name(secondSongValue);
-							sizes[secondSongIndex] = 15;
-						}
-					}
-
-					if (g == -1) {
-						Plotly.restyle(myDiv, {marker: {opacity: 0.8,size: sizes,color: colors},type: 'scatter3d'}, 0);
-					} else if (g >= 0 || g <= 18) {
-						if (currentPlot == 1) {
-							console.log(currentPlot);
-							Plotly.restyle(myDiv, {marker: {opacity: 0.8,size: sizes,color: clusterColors[g].traceColorList},type: 'scatter3d'}, 0);
-						} else if (currentPlot == 2) {
-							console.log(currentPlot);
-							console.log(clusterColorsTonalities[g].traceColorList);
-							Plotly.restyle(myDiv, {marker: {opacity: 0.8,size: sizes,color: clusterColorsTonalities[g].traceColorList},type: 'scatter3d'}, 0);
-						}
-						//clusterColors[g].traceColorList[index] = "#ed4b11";
-
-					} else {
-						console.log(g);
-					}
-			}
-
-			function prepareTracesTonalities(traces) {
-				function lstm_tsne_3D_tonalities_data(data) {
-					function RGBToHex(r,g,b) {
-						r = r.toString(16);
-						g = g.toString(16);
-						b = b.toString(16);
-
-						if (r.length == 1)
-							r = "0" + r;
-						if (g.length == 1)
-							g = "0" + g;
-						if (b.length == 1)
-							b = "0" + b;
-
-						return "#" + r + g + b;
-					}
-
-					r_centroids = [];
-					g_centroids = [];
-					b_centroids	= [];
-					hexColor = {};
-					clusterColorsTonalities = {};
-
-					for (z = 0; z < Object.keys(traces).length; z++)	{
-
-						hexColor[z] = {};
-						hexColor[z].centroids = {};
-
-						r_centroids = [];
-						g_centroids = [];
-						b_centroids	= [];
-
-						clusterColorsTonalities[z] = {};
-						clusterColorsTonalities[z].traceColorList = [];
-
-						for (i = 0; i < Object.keys(traces[Object.keys(traces)[z]].centroids).length; i++) {
-							r_centroids[i] = JSON.parse(traces[Object.keys(traces)[z]].centroids[i])[0];
-							g_centroids[i] = JSON.parse(traces[Object.keys(traces)[z]].centroids[i])[1];
-							b_centroids[i] = JSON.parse(traces[Object.keys(traces)[z]].centroids[i])[2];
-							hexColor[z].centroids[i] = RGBToHex(r_centroids[i],g_centroids[i],b_centroids[i]);
-						}
-
-						for (k=0; k<data.length; k++) {
-							var color_id = JSON.parse(traces[Object.keys(traces)[z]].id_per_point)[k];
-							clusterColorsTonalities[z].traceColorList[k] = hexColor[z].centroids[color_id];
-
-						}
-					}
-
-					colors = [];
-					x_axis = [];
-					y_axis = [];
-					z_axis = [];
-
-					for (i=0; i<data.length; i++) {
-						x_axis.push(data[i][0]);
-						y_axis.push(data[i][1]);
-						z_axis.push(data[i][2]);
-					}
-				}
-				send_request_get_response(location.href + 'lstm_tsne_3D_tonalities', lstm_tsne_3D_tonalities_data);
-			}
-
-			function prepareTracesNeutral(traces) {
-				function lstm_tsne_3D_neutral_data(data) {
-					function RGBToHex(r,g,b) {
-			      r = r.toString(16);
-			      g = g.toString(16);
-			      b = b.toString(16);
-
-			      if (r.length == 1)
-			        r = "0" + r;
-			      if (g.length == 1)
-			        g = "0" + g;
-			      if (b.length == 1)
-			        b = "0" + b;
-
-			      return "#" + r + g + b;
-			    }
-
-					r_centroids = [];
-					g_centroids = [];
-					b_centroids	= [];
-					hexColor = {};
-					clusterColors = {};
-
-					for (z = 0; z < Object.keys(traces).length; z++)	{
-
-						hexColor[z] = {};
-						hexColor[z].centroids = {};
-
-						r_centroids = [];
-						g_centroids = [];
-						b_centroids	= [];
-
-						clusterColors[z] = {};
-						clusterColors[z].traceColorList = [];
-
-						for (i = 0; i < Object.keys(traces[Object.keys(traces)[z]].centroids).length; i++) {
-							r_centroids[i] = JSON.parse(traces[Object.keys(traces)[z]].centroids[i])[0];
-							g_centroids[i] = JSON.parse(traces[Object.keys(traces)[z]].centroids[i])[1];
-							b_centroids[i] = JSON.parse(traces[Object.keys(traces)[z]].centroids[i])[2];
-							hexColor[z].centroids[i] = RGBToHex(r_centroids[i],g_centroids[i],b_centroids[i]);
-						}
-
-						for (k=0; k<data.length; k++) {
-							var color_id = JSON.parse(traces[Object.keys(traces)[z]].id_per_point)[k];
-							clusterColors[z].traceColorList[k] = hexColor[z].centroids[color_id];
-
-						}
-					}
-
-					colors = [];
-					x_axis = [];
-					y_axis = [];
-					z_axis = [];
-
-					for (i=0; i<data.length; i++) {
-						x_axis.push(data[i][0]);
-	          y_axis.push(data[i][1]);
-	          z_axis.push(data[i][2]);
-					}
-				}
-				send_request_get_response(location.href + 'lstm_tsne_3D_neutral', lstm_tsne_3D_neutral_data);
-			}
-
-			send_request_get_response( location.href + 'clusters_lstm_3D_neutral', prepareTracesNeutral );
-
-			currentPlot = 1;
-
-			function run_lstm_tsne_3D_neutral() {
-				if (document.getElementsByClassName("nav-link")[0].classList.contains("active")) {
-
-				} else {
-						document.getElementsByClassName("nav-link")[0].classList.add("active");
-						document.getElementsByClassName("nav-link")[1].classList.remove("active");
-						document.getElementsByClassName("nav-link")[2].classList.remove("active");
-				}
-				document.getElementsByClassName("user-select-none")[0].classList.remove("hidden");
-				document.getElementsByClassName("infos__highlight-song-selectors-container")[0].classList.remove("hidden");
-				send_request_get_response(location.href + 'lstm_tsne_3D_neutral', lstm_tsne_3D_neutral);
-				document.getElementsByClassName("infos__pole-selectors-container")[0].classList.add("hidden");
-				document.getElementsByClassName("infos__cluster-message")[0].classList.remove("hidden");
-				document.getElementsByClassName("infos__slide-cluster-trace")[0].classList.remove("hidden");
-				document.getElementById("clusterTrace").value = -1;
-				document.getElementsByClassName("infos__slide-cluster-trace")[0].setAttribute('data-content', 0);
-				$("#first-song").data('selectize').setValue('None', false);
-				$("#second-song").data('selectize').setValue('None', false);
-				currentPlot = 1;
-			}
-
-			function run_lstm_tsne_3D_tonalities() {
-				document.getElementsByClassName("nav-link")[0].classList.remove("active");
-				document.getElementsByClassName("nav-link")[1].classList.add("active");
-				document.getElementsByClassName("nav-link")[2].classList.remove("active");
-				document.getElementsByClassName("user-select-none")[0].classList.remove("hidden");
-				document.getElementsByClassName("infos__highlight-song-selectors-container")[0].classList.remove("hidden");
-				send_request_get_response( location.href + 'clusters_lstm_3D_tonalities', prepareTracesTonalities );
-				send_request_get_response(location.href + 'lstm_tsne_3D_tonalities', lstm_tsne_3D_tonalities);
-				document.getElementsByClassName("infos__pole-selectors-container")[0].classList.add("hidden");
-				document.getElementsByClassName("infos__cluster-message")[0].classList.remove("hidden");
-				document.getElementsByClassName("infos__slide-cluster-trace")[0].classList.remove("hidden");
-				document.getElementById("clusterTrace").value = -1;
-				document.getElementsByClassName("infos__slide-cluster-trace")[0].setAttribute('data-content', 0);
-				$("#first-song").data('selectize').setValue('None', false);
-				$("#second-song").data('selectize').setValue('None', false);
-				currentPlot = 2;
-			}
-
-			function run_alpha_beta_pole() {
-				document.getElementsByClassName("nav-link")[0].classList.remove("active");
-				document.getElementsByClassName("nav-link")[1].classList.remove("active");
-				document.getElementsByClassName("nav-link")[2].classList.add("active");
-				document.getElementsByClassName("infos__pole-selectors-container")[0].classList.remove("hidden");
-				document.getElementsByClassName("user-select-none")[0].classList.add("hidden");
-				document.getElementsByClassName("infos__highlight-song-selectors-container")[0].classList.add("hidden");
-				document.getElementsByClassName("infos__pole-message")[0].classList.remove("hidden");
-				document.getElementsByClassName("infos__cluster-message")[0].classList.add("hidden");
-				document.getElementsByClassName("infos__slide-cluster-trace")[0].classList.add("hidden");
-				document.getElementById("clusterTrace").value = -1;
-				document.getElementsByClassName("infos__slide-cluster-trace")[0].setAttribute('data-content', 0);
-				$("#first-song").data('selectize').setValue('None', false);
-				$("#second-song").data('selectize').setValue('None', false);
-				currentPlot = 3;
-			}
-
-			function plot(alphaPole = "ALL_OF_ME", betaPole = "GIANT_STEPS") {
-
-				alphaPole = document.getElementById("alpha-pole").value;
-				betaPole = document.getElementById("beta-pole").value;
-
-				var selectedAlphaPole = replaceAllSpaces(alphaPole);
-				var selectedbetaPole = replaceAllSpaces(betaPole);
-
-				send_request_get_response( location.href + 'visualizenn?name1='+selectedAlphaPole+'&name2='+selectedbetaPole, trans_visualisation );
-			}
-
-			load_all_drums();
-			player.loader.decodeAfterLoading(audioContext, '0000_JCLive_sf2_file');
-      //player.loader.decodeAfterLoading(audioContext, '0320_Aspirin_sf2_file');
-      //player.loader.decodeAfterLoading(audioContext, '35_16_JCLive_sf2_file');
-			var playstop = false;
-			var visualizenn = [];
-
-			function trans_visualisation( response ){
-					initialise_plotly_chart(response, nameslist);
-			}
-
-			//$(document).ready(plot());
-			function play(selectedsongString, r, h){
-				if (typeof(selectedsongString) != "undefined") {
-					if (document.getElementsByClassName('player__play-button--play-pause')[0].firstElementChild.className == "play") {
-			        document.getElementsByClassName('player__play-button--play-pause')[0].firstElementChild.className = "pause";
-			        }
-			    else if (document.getElementsByClassName('player__play-button--play-pause')[0].firstElementChild.className == "pause") {
-			        document.getElementsByClassName('player__play-button--play-pause')[0].firstElementChild.className = "play";
-			    }
-
-					send_GJT_play_request( location.href+'songcsvcomplex?name='+selectedsongString+'&r='+r+'&h='+h);
-
-				} else {
-					Swal.fire({
-						icon: 'info',
-						text:'Please choose song from plot',
-						width: '20rem'
-					})
-				}
-
-				function getFirstHighlightedSongValue() {
-					return document.getElementById("first-song").value;
-				}
-
-			}
-		</script>
 	</head>
 	{% include 'sidenavigation.html' %}
 	<body>
 	<div class="main__container">
-	  <div class="plot__main-container">
-	      <div class="plot__container" id="myDiv"></div>
-	  </div>
-
-		 <div class="secondary__container">
+		<div class="secondary__container">
 			<span class="main__info-icon" onclick="mainInfo()">&#9432;</span>
 			<div class="title__main-container">
 				<div class="title__song-name">
@@ -377,160 +61,185 @@
 				<div class="title__song-tonality">
 					Tonality: -
 				</div>
-
 			</div>
-		  <div class="infos__main-container">
-		        <div class="infos__pole-selectors-container hidden">
-								<div class="infos__pole-message hidden">
-										Select Alpha & Beta Pole
-								</div>
-		            <div class="infos__alhpa-pole-select" style="width:240px;">
-		                <select id="alpha-pole" placeholder="Alpha pole song...">
-		                    <option value="0"></option>
-		                    <option value="1">Audi</option>
-		                </select>
-		            </div>
-		            <div class="infos__alhpa-pole-select" style="width:240px;">
-		                <select id="beta-pole" placeholder="Beta pole song...">
-		                    <option value="0"></option>
-		                    <option value="1">Audi</option>
-		                </select>
-		            </div>
-								<button class="infos__alpha-beta-button" onclick="plot()" type="button">Plot</button>
-		        </div>
-		        <div class="infos__slide-selectors-container">
-								<div class="infos__pole-message">
-										Select Complexity
-								</div>
-		            <div class="infos__slide-container infos__slide-harmonic-complexity" data-content="Harmonic Complexity: 1">
-		                <input type="range" onchange="addComplexity()" onfocus="storePreviousvalue()" min="1" max="5" value="1" class="slider" id="harmonicComplexity">
-		            </div>
-		            <div class="infos__slide-container infos__slide-rytmhic-complexity" data-content="Rhythmic Complexity: 1">
-		                <input type="range" onchange="addComplexity()" onfocus="storePreviousvalue()" min="1" max="5" value="1" class="slider" id="rythmicComplexity">
-		            </div>
-		        </div>
-						<div class="infos__highlight-song-selectors-container">
-								<div class="infos__pole-message">
-										Select song/s to highlight
-								</div>
+		  	<div class="infos__main-container">		        
+				<div class="infos__highlight-song-selectors-container">
 		            <div class="infos__highlight-song-select" style="width:240px;">
-		                <select id="first-song" placeholder="Song to highlight">
-
+		                <select id="songname-selector" placeholder="Song to blend">
 		                </select>
 		            </div>
 		            <div class="infos__highlight-song-select" style="width:240px;">
-		                <select id="second-song" placeholder="Song to highlight">
-
+		                <select id="blending-characteristics-selector" placeholder="Blend with">
 		                </select>
 		            </div>
+					<div class="submit_for_blending">
+						<button id="sendButton">Send String to Flask</button>
+					</div>
 		        </div>
-		  </div>
-			<div class="infos__cluster-message">
-					Number of Clustering
-			</div>
-			<div class="infos__slide-container infos__slide-cluster-trace" data-content="0">
-					<input type="range" min="-1" max="18" value="-1" class="slider" id="clusterTrace">
-			</div>
-			<div class="infos__play-message">
-					Select a song from plot to Play
-			</div>
-		  <div class="player__main-container">
-		      <div class="player__play-button__container player__play-button--play-pause">
-					     <div onclick="play()"class="play" type="button">Play</div>
-			    </div>
-		      <div class="player__chord-progression__container">
-		            <span id='chord'> -- </span>
-		      </div>
-		      <div class="player__chord-progression__container player__2nd-chord__container">
-		            <span id='chord1'> -- </span>
-		      </div>
-		      <div class="player__chord-progression__container player__3rd-chord__container">
-		            <span id='chord2'> -- </span>
-		      </div>
-		      <div class="player__chord-progression__container player__4th-chord__container">
-		            <span id='chord3'> -- </span>
-		      </div>
-		      <div class="player__chord-progression__container player__5th-chord__container">
-		            Ebmaj9
-		      </div>
-				</div>
-	  </div>
+		  	</div>	
+			<div class="response_container" id="response_container">
 
+			</div>	
+	  	</div>
 	</div>
 	<script>
 
-	// Create harmonicComplexity & rythmicComplexity Interaction UI (load song onchange)
+	function applyNamesToSelect(response) {
 
-	h = 1;
-	r = 1;
-
-
-	function addEvent(selectedsong, r=1, h=1) {
-		if (selectedsong == document.getElementsByClassName("title__song-name")[0].innerText) {
-			console.log("The same song");
-		} else {
-			document.getElementsByClassName("title__song-name")[0].innerText = selectedsong;
-			document.getElementsByClassName("title__song-tempo")[0].innerText = 90;
-			document.getElementsByClassName("infos__play-message")[0].innerText = "Loaded song: "+selectedsong;
+		var namesforselect = [];
+		namesforselect.push("None");
+		for (i=0; i<response.length; i++) {
+			namesforselect.push(response[i].replaceAll("_", " "));
 		}
-		selectedsong = selectedsong.replace(/'/g, "\'");
-	  var selectedsongString = selectedsong.replaceAll(" ", "_");
-	  if (selectedsongString.charAt(0) == "_") {
-	    selectedsongString = selectedsongString.substring(1);
-	  }
-	  if (selectedsongString.charAt(selectedsongString.length - 1) == "_") {
-	    selectedsongString = selectedsongString.substring(0, selectedsongString.length - 1);
-	  }
-	  h = document.getElementById("harmonicComplexity").value;
-	  r = document.getElementById("rythmicComplexity").value;
-		function assign_tempo(response) {
-			document.getElementsByClassName("title__song-tempo")[0].innerText = "Tempo: " + response[Object.keys(response)[0]][4];
-			document.getElementsByClassName("title__song-style")[0].innerText = "Style: " + response[Object.keys(response)[0]][1];
-			document.getElementsByClassName("title__song-rythm")[0].innerText = "Rythm: " + response[Object.keys(response)[0]][2];
-			document.getElementsByClassName("title__song-tonality")[0].innerText = "Tonality: " + response[Object.keys(response)[0]][0];
-		}
-		console.log(selectedsongString);
-		send_request_get_response(location.href+'songtempo?name='+selectedsongString+'&r='+r+'&h='+h, assign_tempo)
-	  document.getElementsByClassName('player__play-button--play-pause')[0].firstElementChild.setAttribute('onclick', 'play(\''+selectedsongString+'\',\''+r+'\',\''+h+'\')');
+		var items = namesforselect.map(function(x) { return { item: x }; });
+
+		$("#songname-selector").selectize({
+			delimiter: ',',
+			persist: false,
+			create: false,
+			options: items,
+			searchField: ['item'],
+			labelField: "item",
+			valueField: "item",
+		});
 	}
+	send_request_get_response( location.href + 'songsnameslist', applyNamesToSelect );
 
-	function storePreviousvalue() {
-		harmonicComplexityPreviousValue = document.getElementById("harmonicComplexity").value;
-		rythmicComplexityPreviousValue = document.getElementById("rythmicComplexity").value;
-	}
 
-	isplaying = document.getElementsByClassName('player__play-button--play-pause')[0].firstElementChild;
-	function addComplexity() {
-		if (isplaying.classList.contains("pause") || typeof(selectedsong) == "undefined") {
+	function applyBlendingModesToSelect(response) {
+		// Create an array of strings containing secondary values
+		const secondaryValues = [];
 
-			console.log(document.getElementById("harmonicComplexity").value);
-			console.log(document.getElementById("rythmicComplexity").value);
-			if (typeof(selectedsong) == "undefined") {
-				Swal.fire({
-				icon: 'info',
-				text:'Please select song to change complexity',
-				width: '20rem'
-				});
-				document.getElementById("harmonicComplexity").value = 1;
-				document.getElementById("rythmicComplexity").value = 1;
-			} else {
-				Swal.fire({
-					icon: 'info',
-					text:'Please pause song to change complexity',
-					width: '20rem'
-				});
-				document.getElementById("harmonicComplexity").value = harmonicComplexityPreviousValue;
-				document.getElementById("rythmicComplexity").value = rythmicComplexityPreviousValue;
-			}
-
-		} else {
-				h = document.getElementById("harmonicComplexity").value;
-			  r = document.getElementById("rythmicComplexity").value;
-				document.getElementsByClassName("infos__slide-harmonic-complexity")[0].setAttribute('data-content', "Harmonic Complexity: "+h);
-				document.getElementsByClassName("infos__slide-rytmhic-complexity")[0].setAttribute('data-content', "Rhythmic Complexity: "+r);
-			  addEvent(selectedsong, r, h);
-			}
+		for (const key in response) {
+		if (response.hasOwnProperty(key)) {
+			const firstValue = response[key][0];
+			response[key].forEach(secondaryValue => {
+			secondaryValues.push(`${key}: ${secondaryValue}`);
+			});
 		}
+		}
+
+		// Print the array of secondary values
+		console.log(secondaryValues);
+
+		var namesforselect = [];
+		namesforselect.push("None");
+		for (i=0; i<secondaryValues.length; i++) {
+			namesforselect.push(secondaryValues[i].replaceAll("_", " "));
+		}
+		var items = namesforselect.map(function(x) { return { item: x }; });
+
+		$("#blending-characteristics-selector").selectize({
+			delimiter: ',',
+			persist: false,
+			create: false,
+			options: items,
+			searchField: ['item'],
+			labelField: "item",
+			valueField: "item"
+		});
+	}
+	send_request_get_response( location.href + 'stylesHMM', applyBlendingModesToSelect );
+	function sendUserOption(userOption) {
+		g = document.getElementById("songname-selector").value;
+		console.log(g)
+
+	}
+	
+	// document.getElementById("songname-selector").onchange = function () {
+
+			
+    //         // Get the string to send
+    //         const dataToSend = document.getElementById("songname-selector").value; // Replace with the data you want to send
+
+    //         // Send an HTTP POST request to the Flask server
+    //         fetch('/receive-user-option', {
+    //             method: 'POST',
+    //             body: dataToSend
+    //         })
+    //         .then(response => response.text())
+    //         .then(responseText => {
+    //             alert(responseText); // Display the response from the server
+    //         })
+    //         .catch(error => {
+    //             console.error('Error:', error);
+    //         });
+    //     };
+	// document.getElementById("blending-characteristics-selector").onchange = function() {clusterTrace("second-song")};
+	
+	
+
+	document.getElementById('sendButton').addEventListener('click', function () {
+
+		
+
+		const songnameValue = document.getElementById("songname-selector").value;
+		const blendingCharacteristicsValue = document.getElementById("blending-characteristics-selector").value;
+		const responseContainer = document.getElementById("response_container");
+		console.log(songnameValue, blendingCharacteristicsValue);
+		// Check if both dropdowns have "None" selected
+		if (songnameValue === '' || songnameValue === 'None' || blendingCharacteristicsValue === '' || blendingCharacteristicsValue === 'None') {
+			// Display a SweetAlert alert message
+			Swal.fire({
+				title: 'Selection Required',
+				text: 'Please select both song name and blending characteristics.',
+				icon: 'error',
+				confirmButtonText: 'OK'
+			});
+		} else {
+			// Get the string to send
+			const jsonData = {
+				song_name: songnameValue,
+				blending_characteristic: blendingCharacteristicsValue
+			};
+
+			// Convert the JavaScript object to a JSON string
+			const dataToSend = JSON.stringify(jsonData);
+			// Send an HTTP POST request to the Flask server
+			fetch('/receive-user-option', {
+				method: 'POST',
+				body: dataToSend
+			})
+			.then(response => response.text())
+			.then(responseText => {
+				
+
+				// Split the input string into rows based on "||"
+				const rows = responseText.split("||");
+
+				// Create a table element
+				const table = document.createElement("table");
+
+				// Iterate through rows
+				rows.forEach((rowText) => {
+				// Split the row into cells based on "|"
+				const cells = rowText.split("|");
+
+				// Create a new row for each row in the table
+				const row = document.createElement("tr");
+
+				// Iterate through cells and create cell elements
+				cells.forEach((cellText) => {
+					// Create a new cell for each cell in the row
+					const cell = document.createElement("td");
+					cell.textContent = cellText.trim(); // Trim any leading/trailing spaces
+					row.appendChild(cell);
+				});
+
+				// Add the row to the table
+				table.appendChild(row);
+				});
+
+				// Append the table to your document (e.g., a specific HTML element with an id)
+				document.getElementById("response_container").appendChild(table);
+				alert(responseText); // Display the response from the server
+			})
+			.catch(error => {
+				console.error('Error:', error);
+			});
+		}
+		
+    });
 
 	// Main Info message
 
@@ -556,86 +265,45 @@
 		}
 
 	}
+	// // Select all div elements with the class "option"
+	// const parentElement = document.querySelector("div.infos__main-container > div > div:nth-child(1) > div > div.selectize-dropdown.single > div");
+	
 
-	// Create Aplha & Beta pole DropDown select Elements AND First, Second Song selection
+	// const optionDivs = parentElement.querySelectorAll('.option');
 
-	function applyNamesToSelect(response) {
+	// // Create an empty array to store the inner text of the div elements
+	// const optionTextArray = [];
 
-		var namesforselect = [];
-		namesforselect.push("None");
-		for (i=0; i<response.length; i++) {
-			namesforselect.push(response[i].replaceAll("_", " "));
-		}
-		var items = namesforselect.map(function(x) { return { item: x }; });
+	// // Loop through each div and extract the inner text
+	// optionDivs.forEach((div) => {
+	// optionTextArray.push(div.innerText);
+	// });
+	// console.log(optionTextArray);
+	// // Create Aplha & Beta pole DropDown select Elements AND First, Second Song selection
 
-		$("#alpha-pole").selectize({
-			delimiter: ',',
-			persist: false,
-			create: false,
-			options: items,
-			searchField: ['item'],
-			labelField: "item",
-			valueField: "item",
-		});
+	
+	
 
-		$("#beta-pole").selectize({
-			delimiter: ',',
-			persist: false,
-			create: false,
-			options: items,
-			searchField: ['item'],
-			labelField: "item",
-			valueField: "item"
-		});
+// 	//run_lstm_tsne_3D_neutral();
 
-		$("#first-song").selectize({
-			delimiter: ',',
-			persist: false,
-			create: false,
-			options: items,
-			searchField: ['item'],
-			labelField: "item",
-			valueField: "item",
-		});
+// 	function testAsync(){
+//     return new Promise((resolve,reject)=>{
+//         //here our function should be implemented
+//         setTimeout(()=>{
+//             console.log("Hello from inside the testAsync function");
+//             resolve();
+//         ;} , 5000
+//         );
+//     });
+// 		}
 
-		$("#second-song").selectize({
-			delimiter: ',',
-			persist: false,
-			create: false,
-			options: items,
-			searchField: ['item'],
-			labelField: "item",
-			valueField: "item"
-		});
+// 		async function callerFun(){
+// 		    console.log("Caller");
+// 		    await testAsync();
+// 		    console.log("After waiting");
+// 		}
 
-
-
-	}
-	send_request_get_response( location.href + 'nameslist', applyNamesToSelect );
-	document.getElementsByClassName("play")[0].disabled = true;
-	document.getElementById("first-song").onchange = function() {clusterTrace("first-song")};
-	document.getElementById("second-song").onchange = function() {clusterTrace("second-song")};
-	document.getElementById("clusterTrace").oninput = function() {clusterTrace("clusterTrace")};
-	//run_lstm_tsne_3D_neutral();
-
-	function testAsync(){
-    return new Promise((resolve,reject)=>{
-        //here our function should be implemented
-        setTimeout(()=>{
-            console.log("Hello from inside the testAsync function");
-            resolve();
-        ;} , 5000
-        );
-    });
-		}
-
-		async function callerFun(){
-		    console.log("Caller");
-		    await testAsync();
-		    console.log("After waiting");
-		}
-
-callerFun();
+// callerFun();
 	</script>
 
 </body>
