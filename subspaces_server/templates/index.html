@@ -1,0 +1,310 @@
+<html>
+	<head>
+		<title>Plot Chameleon Data</title>
+
+		<!-- Load plotly.js into the DOM -->
+		<!-- <script src='https://cdn.plot.ly/plotly-2.9.0.min.js'></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js' ></script> -->
+
+		<!-- For DropDown filtering -->
+		<!-- <script type="text/javascript" src="static/js/libraries/jquery-3-4-0-min.js"></script> -->
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+
+		<!-- Load Bootstrap, style.css & favicon-->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+		<link rel="icon" type="image/x-icon" href="static/images/favicon_musicolab.png">
+		<link rel="stylesheet" href="/static/css/style.css">
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+		<!-- SweetAlert library -->
+		<!-- <script type="text/javascript" src="static/js/libraries/sweetalert-2-11-min.js"></script> -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+		<!-- Load Audio Player library-->
+		<!-- <script type="text/javascript" src="static/js/libraries/webaudiofontplayer.js"></script> -->
+	    <!-- <script src='https://surikov.github.io/webaudiofont/npm/dist/WebAudioFontPlayer.js'></script> -->
+		<!-- <script type="text/javascript" src="static/js/libraries/0000_JCLive_sf2_file.js"></script> -->
+		<!-- <script src='https://surikov.github.io/webaudiofontdata/sound/0000_JCLive_sf2_file.js'></script> -->
+		<!-- <script type="text/javascript" src="static/js/libraries/0320_Aspirin_sf2_file.js"></script> -->
+		<!-- <script src='https://surikov.github.io/webaudiofontdata/sound/0320_Aspirin_sf2_file.js'></script>  -->
+		<!-- Load main javascript -->
+    	<script type="text/javascript" src="static/js/main.js"></script>
+
+	</head>
+	{% include 'sidenavigation.html' %}
+	<body>
+	<div class="main__container">
+		<div class="secondary__container">
+			<span class="main__info-icon" onclick="mainInfo()">&#9432;</span>
+			<div class="title__main-container">
+				<div class="title__song-name">
+					Song: -
+				</div>
+				<span class="title__divider">  </span>
+				<div class="title__song-tempo">
+					Tempo: -
+				</div>
+				<span class="title__divider">  </span>
+				<div class="title__song-style">
+					Style: -
+				</div>
+				<span class="title__divider">  </span>
+				<div class="title__song-rythm">
+					Rhythm: -
+				</div>
+				<span class="title__divider">  </span>
+				<div class="title__song-tonality">
+					Tonality: -
+				</div>
+			</div>
+		  	<div class="infos__main-container">		        
+				<div class="infos__highlight-song-selectors-container">
+		            <div class="infos__highlight-song-select" style="width:240px;">
+		                <select id="songname-selector" placeholder="Song to blend">
+		                </select>
+		            </div>
+		            <div class="infos__highlight-song-select" style="width:240px;">
+		                <select id="blending-characteristics-selector" placeholder="Blend with">
+		                </select>
+		            </div>
+					<div class="submit_for_blending">
+						<button id="sendButton">Send String to Flask</button>
+					</div>
+		        </div>
+		  	</div>	
+			<div class="response_container" id="response_container">
+
+			</div>	
+	  	</div>
+	</div>
+	<script>
+
+	function applyNamesToSelect(response) {
+
+		var namesforselect = [];
+		namesforselect.push("None");
+		for (i=0; i<response.length; i++) {
+			namesforselect.push(response[i].replaceAll("_", " "));
+		}
+		var items = namesforselect.map(function(x) { return { item: x }; });
+
+		$("#songname-selector").selectize({
+			delimiter: ',',
+			persist: false,
+			create: false,
+			options: items,
+			searchField: ['item'],
+			labelField: "item",
+			valueField: "item",
+		});
+	}
+	send_request_get_response( location.href + 'songsnameslist', applyNamesToSelect );
+
+
+	function applyBlendingModesToSelect(response) {
+		// Create an array of strings containing secondary values
+		const secondaryValues = [];
+
+		for (const key in response) {
+		if (response.hasOwnProperty(key)) {
+			const firstValue = response[key][0];
+			response[key].forEach(secondaryValue => {
+			secondaryValues.push(`${key}: ${secondaryValue}`);
+			});
+		}
+		}
+
+		// Print the array of secondary values
+		console.log(secondaryValues);
+
+		var namesforselect = [];
+		namesforselect.push("None");
+		for (i=0; i<secondaryValues.length; i++) {
+			namesforselect.push(secondaryValues[i].replaceAll("_", " "));
+		}
+		var items = namesforselect.map(function(x) { return { item: x }; });
+
+		$("#blending-characteristics-selector").selectize({
+			delimiter: ',',
+			persist: false,
+			create: false,
+			options: items,
+			searchField: ['item'],
+			labelField: "item",
+			valueField: "item"
+		});
+	}
+	send_request_get_response( location.href + 'stylesHMM', applyBlendingModesToSelect );
+	function sendUserOption(userOption) {
+		g = document.getElementById("songname-selector").value;
+		console.log(g)
+
+	}
+	
+	// document.getElementById("songname-selector").onchange = function () {
+
+			
+    //         // Get the string to send
+    //         const dataToSend = document.getElementById("songname-selector").value; // Replace with the data you want to send
+
+    //         // Send an HTTP POST request to the Flask server
+    //         fetch('/receive-user-option', {
+    //             method: 'POST',
+    //             body: dataToSend
+    //         })
+    //         .then(response => response.text())
+    //         .then(responseText => {
+    //             alert(responseText); // Display the response from the server
+    //         })
+    //         .catch(error => {
+    //             console.error('Error:', error);
+    //         });
+    //     };
+	// document.getElementById("blending-characteristics-selector").onchange = function() {clusterTrace("second-song")};
+	
+	
+
+	document.getElementById('sendButton').addEventListener('click', function () {
+
+		
+
+		const songnameValue = document.getElementById("songname-selector").value;
+		const blendingCharacteristicsValue = document.getElementById("blending-characteristics-selector").value;
+		const responseContainer = document.getElementById("response_container");
+		console.log(songnameValue, blendingCharacteristicsValue);
+		// Check if both dropdowns have "None" selected
+		if (songnameValue === '' || songnameValue === 'None' || blendingCharacteristicsValue === '' || blendingCharacteristicsValue === 'None') {
+			// Display a SweetAlert alert message
+			Swal.fire({
+				title: 'Selection Required',
+				text: 'Please select both song name and blending characteristics.',
+				icon: 'error',
+				confirmButtonText: 'OK'
+			});
+		} else {
+			// Get the string to send
+			const jsonData = {
+				song_name: songnameValue,
+				blending_characteristic: blendingCharacteristicsValue
+			};
+
+			// Convert the JavaScript object to a JSON string
+			const dataToSend = JSON.stringify(jsonData);
+			// Send an HTTP POST request to the Flask server
+			fetch('/receive-user-option', {
+				method: 'POST',
+				body: dataToSend
+			})
+			.then(response => response.text())
+			.then(responseText => {
+				
+
+				// Split the input string into rows based on "||"
+				const rows = responseText.split("||");
+
+				// Create a table element
+				const table = document.createElement("table");
+
+				// Iterate through rows
+				rows.forEach((rowText) => {
+				// Split the row into cells based on "|"
+				const cells = rowText.split("|");
+
+				// Create a new row for each row in the table
+				const row = document.createElement("tr");
+
+				// Iterate through cells and create cell elements
+				cells.forEach((cellText) => {
+					// Create a new cell for each cell in the row
+					const cell = document.createElement("td");
+					cell.textContent = cellText.trim(); // Trim any leading/trailing spaces
+					row.appendChild(cell);
+				});
+
+				// Add the row to the table
+				table.appendChild(row);
+				});
+
+				// Append the table to your document (e.g., a specific HTML element with an id)
+				document.getElementById("response_container").appendChild(table);
+				alert(responseText); // Display the response from the server
+			})
+			.catch(error => {
+				console.error('Error:', error);
+			});
+		}
+		
+    });
+
+	// Main Info message
+
+	function mainInfo() {
+		if (currentPlot == 1) {
+			Swal.fire({
+				icon: 'info',
+				html:'<p class="swal__paragraph"><span></span>The graph allows you to navigate through over 1065 jazz standards. You can use standard UI interaction gestures with a mouse, e.g. left and right click track, scroll wheel to zoom in and out</p><p class="swal__paragraph">After selecting a piece on the graph by clicking on it, you can use the controls on the right to play the selected bass, with the selected rhythm and harmonic complexity levels</p><p class="swal__paragraph">The graph has been generated based on <b>neutralised</b> songs\'s <b>tonalities</b></p>',
+				width: '20rem'
+			});
+		} else if (currentPlot == 2) {
+			Swal.fire({
+				icon: 'info',
+				html:'<p class="swal__paragraph"><span></span>The graph allows you to navigate through over 1065 jazz standards. You can use standard UI interaction gestures with a mouse, e.g. left and right click track, scroll wheel to zoom in and out</p><p class="swal__paragraph">After selecting a piece on the graph by clicking on it, you can use the controls on the right to play the selected bass, with the selected rhythm and harmonic complexity levels</p><p class="swal__paragraph">The graph has been generated based on songs\'s <b>original tonalities</b></p>',
+				width: '20rem'
+			});
+		} else if (currentPlot == 3) {
+			Swal.fire({
+				icon: 'info',
+				text:'Plot 3',
+				width: '20rem'
+			});
+		}
+
+	}
+	// // Select all div elements with the class "option"
+	// const parentElement = document.querySelector("div.infos__main-container > div > div:nth-child(1) > div > div.selectize-dropdown.single > div");
+	
+
+	// const optionDivs = parentElement.querySelectorAll('.option');
+
+	// // Create an empty array to store the inner text of the div elements
+	// const optionTextArray = [];
+
+	// // Loop through each div and extract the inner text
+	// optionDivs.forEach((div) => {
+	// optionTextArray.push(div.innerText);
+	// });
+	// console.log(optionTextArray);
+	// // Create Aplha & Beta pole DropDown select Elements AND First, Second Song selection
+
+	
+	
+
+// 	//run_lstm_tsne_3D_neutral();
+
+// 	function testAsync(){
+//     return new Promise((resolve,reject)=>{
+//         //here our function should be implemented
+//         setTimeout(()=>{
+//             console.log("Hello from inside the testAsync function");
+//             resolve();
+//         ;} , 5000
+//         );
+//     });
+// 		}
+
+// 		async function callerFun(){
+// 		    console.log("Caller");
+// 		    await testAsync();
+// 		    console.log("After waiting");
+// 		}
+
+// callerFun();
+	</script>
+
+</body>
+</html>
