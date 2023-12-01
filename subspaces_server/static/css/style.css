@@ -70,7 +70,7 @@ span {
 .main__info-icon {
   cursor: pointer;
   position: absolute;
-  top: 120px;
+  top: 170px;
   right: 20px;
 }
 
@@ -128,6 +128,7 @@ span {
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  margin-top: 80px;
 }
 
 .infos__pole-selectors-container {
@@ -385,7 +386,7 @@ span {
     position: inherit;
   }
   .main__info-icon {
-    top: 500;
+    top:500;
   }
 
   .plot__main-container {
@@ -422,4 +423,18 @@ span {
   .player__play-button__container {
     width: 88px;
   }
+}
+
+.osmdContainer {
+  max-width: 1100px;
+  margin: auto;
+}
+
+#download_button {
+  display: none;
+}
+
+.buttons_container {
+  display: flex;
+  flex-direction: row;
 }

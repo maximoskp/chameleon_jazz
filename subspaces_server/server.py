@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, send_from_directory
 from flask_cors import CORS
 import pickle
 import json
@@ -6,6 +6,7 @@ import os
 import csv
 import sys
 import pandas as pd
+import re
 if sys.version_info >= (3,8):
     import pickle
 else:
@@ -16,10 +17,8 @@ sys.path.append('..' + os.sep +'3_harmonization')
 import blending_styles_module as bsm
 sys.path.append('..' + os.sep +'3_harmonization')
 import aux_output as aux_output
-from music21 import converter, stream
-
-
-
+import music21
+from music21 import converter, stream, meter, key, chord, harmony, pitch, layout, expressions, note
 
 
 # Open necessary pickles and jsons
@@ -30,8 +29,9 @@ with open('songnames.json') as json_file:
 with open('../data/stylesHMM.pickle', 'rb') as handle:
     stylesHMM = pickle.load(handle)
 
-
-
+# Load the chord symbol mapping from the provided JSON
+with open('../data/json_files/type2pcs_dictionary.json', 'r') as json_file:
+    chord_mapping = json.load(json_file)
 
 api = Flask(__name__)
 CORS(api)
@@ -50,14 +50,10 @@ def index():
     return render_template("index.html")
     
 songs_with_melodies_names = [struct.piece_name for struct in all_structs]
-# print(len(songs_with_melodies_names))
-# songs_with_melodies_names = list(songs_with_melodies.keys())
 harmonic_context = list(stylesHMM[list(stylesHMM.keys())[0]].keys())
 genre_style = list(stylesHMM[list(stylesHMM.keys())[1]].keys())
 names_in_list = all_structs[0].metadata.index.tolist()
 names_in_list_test = all_structs[12].piece_name
-# print(names_in_list_test)
-# print(len(all_structs))
 
 @api.route('/stylesHMM', methods=['GET'])
 def get_stylesHMM():
@@ -75,6 +71,10 @@ def get_songslist():
     return jsonify(songs_with_melodies_names)
 # end songsnameslist
 
+@api.route('/download/<filename>')
+def download_file(filename):
+    return send_from_directory('static/xml/', filename)
+
 @api.route('/receive-user-option', methods=['POST'])
 def receive_user_option():
     if request.method == 'POST':
@@ -82,21 +82,36 @@ def receive_user_option():
         data = request.data.decode("utf-8")  # Decode the incoming data
 
         jsondata = json.loads(data)
-        # print(jsondata)
-        # print(jsondata["blending_characteristic"])
-        # print(jsondata["song_name"])
-        # print(names_in_list)
+
         # Open a file for writing (use a context manager to ensure the file is properly closed)
         with open("debug_output.txt", "w") as debug_file:
             # Use the print function to write the variable's value to the file
             print(jsondata["song_name"], file=debug_file)
             print(songs_with_melodies, file=debug_file)
-        try:
-            
+        try: 
             matching_index = songs_with_melodies.index(jsondata["song_name"])
             print(f"Index of: {matching_index}")
         except ValueError:
             print("'PARA VER AS MENINAS' not found in the list")
+
+        song_name_underscore = jsondata["song_name"].replace(" ", "_")
+        # Replace single quotes with underscores if they are not adjacent to underscores
+        if "'" in song_name_underscore and ("_'" not in song_name_underscore) and ("'_") not in song_name_underscore:
+            song_name_underscore = song_name_underscore.replace("'", "_")
+
+        song_name_underscore = song_name_underscore.replace("'", "")
+        song_name_underscore = song_name_underscore.replace("-", "_")
+        print(song_name_underscore)
+
+        # Assuming the directory path is Documents/repos/chameleon_jazz/data/Songs/Library_melodies
+        directory_path = "../data/Songs/Library_melodies"
+
+        # Construct the full filename by joining song_name_underscore with ".xml"
+        filename_to_search = f"{song_name_underscore}.mxl"
+
+        # Construct the full path of the file
+        full_path_to_search = os.path.join(directory_path, filename_to_search)
+
         string_split = jsondata["blending_characteristic"].split(": ")
         piece_idx = matching_index
         style_type = string_split[0]
@@ -104,348 +119,139 @@ def receive_user_option():
 
         b, s = bsm.blend_piece_with_style( piece_idx, style_type, style_subtype )
 
-        print(b)
-        # print(s)
-        # print(c)
-        # # Find the index that matches the string
-        file_path = "../data/Songs/Library_melodies/Relaxin_at_Camarillo.mxl"  # Replace with the path to your MusicXML file
-        score = converter.parse(file_path)
+        # Get the first key dynamically
+        first_key = list(b.keys())[0]
 
+        # Access the 'string' value
+        string_value = b[first_key]["string"]
 
-        
-        # Process the received string (data) here
-        return s
+        pattern = r"chord~(.*?)@"
 
-#datapath = '/Users/konstantinosvelenis/Documents/repos/visualization_server/chameleon_jazz-dev/visualisation_server/generated_csvs'
+        result = re.findall(pattern, string_value)
+        # print("result:", result)
+        # Check if the file exists
+        if os.path.exists(full_path_to_search):
+            # # Assuming the full path to the XML file is stored in full_path_to_search
+            score = converter.parse(full_path_to_search)
+            # print(f"Found: {full_path_to_search}")
+            # #score = converter.parse(full_path_to_search)
 
-# fileslist = os.listdir( datapath )
+            # # Function to print all chords in a measure
+            # def print_chords(measure):
+            #     for element in measure:
+            #         if 'ChordSymbol' in element.classes:
+            #             root_note = 'C'
+            #             chord_type = 'dominant-seventh'  # 7 (dominant seventh)
+            #             added_tone = 'M3'  # major third
+            #             suspended_note = 'D'  # 2nd or 4th
 
-# def getSongFromCSVFile( f ):
-#     print('datapath + os.sep + f: ', datapath + os.sep + f)
-#     resp = []
-#     with open( datapath + os.sep + f , newline='\n', encoding='utf-16') as csvfile:
-#         songreader = csv.reader(csvfile, delimiter='\t', quotechar='|')
-#         for row in songreader:
-#             # print( ','.join( row ) )
-#             # print( row )
-#             row_elements = row[0].split(',')
-#             tmp_arr = []
-#             for r in row_elements:
-#                 if r[0] == ' ' and len(r) > 1:
-#                     r = r[1:]
-#                 if r.isdigit():
-#                     tmp_arr.append( int(r) )
-#                 else:
-#                     if is_number(r):
-#                         tmp_arr.append( float(r) )
-#                     else:
-#                         tmp_arr.append( r )
-#             resp.append( tmp_arr )
+            #             # Create a ChordSymbol object with the specified components
+            #             new_chord_symbol = harmony.ChordSymbol(f'{root_note}{chord_type}{added_tone}({suspended_note})')
 
-#     return resp
-# # end getSongFromCSVFile
+            #             # Replace the original chord symbol with the new chord symbol
+            #             measure.replace(element, new_chord_symbol)
 
-# def getTempoFromCSVFile( f ):
-#     print('datapath + os.sep + f: ', datapath + os.sep + f)
-#     resp = []
-#     with open( datapath + os.sep + f , newline='\n', encoding='utf-16') as csvfile:
-#         songreader = csv.reader(csvfile, delimiter='\t', quotechar='|')
-#         for row in songreader:
-#             # print( ','.join( row ) )
-#             # print( row )
-#             row_elements = row[0].split(',')
-#             tmp_arr = []
-#             for r in row_elements:
-#                 if r[0] == ' ' and len(r) > 1:
-#                     r = r[1:]
-#                 if r.isdigit():
-#                     tmp_arr.append( int(r) )
-#                 else:
-#                     if is_number(r):
-#                         tmp_arr.append( float(r) )
-#                     else:
-#                         tmp_arr.append( r )
-#             resp.append( tmp_arr )
-#         resp = resp[0]
-#     return resp
+            #             # print(element)
 
-
-# print(dir(all_structs[0]))
-# print(all_structs[0].metadata)
-# print(all_structs[0].metadata.index.tolist())
-
-
-# print(list(stylesHMM[list(stylesHMM.keys())[0]].keys()), list(stylesHMM[list(stylesHMM.keys())[1]].keys()))
-
-# @api.route('/all_structs', methods=['GET'])
-# def get_lstm_tsne_neutral_data():
-#     # example run: http://localhost:5000/lstm_tsne_3D_neutral
-#     all_structs = all_structs.tolist()
+            # def get_chord_pitches(chord_symbol):
+            #     # Extract the root and extended type from the chord symbol
+            #     if len(chord_symbol) > 1 and chord_symbol[1] in ('b', '#'):
+            #         root = chord_symbol[:1]
+            #         extended_type = chord_symbol[2:]
+            #     else:
+            #         root = chord_symbol[0]
+            #         extended_type = chord_symbol[1:]
+            #     # print("Root is: ", root)
+            #     # print("Extended type is: ", extended_type)
+                
     
-#     return jsonify(all_structs)
-# end lstm_tsne_3D_neutral
+
+            #     # Check if the root is in the mapping
+            #     if extended_type in chord_mapping:
+            #         # Get the extended type pitches from the mapping
+            #         extended_type_intervals = chord_mapping[extended_type].get("extended_type", [])
+
+            #         # Map the extended type intervals to pitches
+            #         pitches = [pitch.Pitch(root + "4").transpose(interval) for interval in extended_type_intervals]
+
+            #         # Convert pitches to strings
+            #         pitch_strings = [str(p) for p in pitches]
+
+            #         return pitch_strings
+
+            #     else:
+            #         print(f"Root note '{extended_type}' not found in the mapping.")
+            #         return []
+            
+
+            # # Example usage:
+            # resulting_pitches = []
+            # for element in result:
+            #     resulting_pitches.append(get_chord_pitches(element))
+            
+            # c = []
+            # csymbol = []
+            # for element in resulting_pitches:
+            #     print("Element: ",element)
+            #     c.append(chord.Chord(element))
+                
+            # for element in c :
+            #     csymbol.append(harmony.chordSymbolFigureFromChord(element, True))    
+            # # print(c)
+            # print("csymbol is: ",csymbol)
+            # replacement_chords = csymbol
+            # Iterator for replacement chords
+            replacement_iterator = iter(result)
+            
+            # Iterate through measures in the first part of the score
+            for measure in score.parts[0].getElementsByClass('Measure'):
+
+                for element in measure:
+                    #print(element)
+                    if isinstance(element, harmony.ChordSymbol):
+                        try:
+                            new_chord_symbol = next(replacement_iterator)
+                            n = measure.getElementAtOrBefore(element.offset, classList=(note.Note, note.Rest, chord.Chord))
+                            print("new_chord_symbol:", new_chord_symbol, n)
+                            n.lyric = new_chord_symbol                            
+                        except StopIteration:
+                            break
+
+               
+
+            def generate_xml(sc, fileName="test_xml.xml", destination="/Users/maximoskaliakatsos-papakostas/Documents/python/miscResults/"):
+                mf = music21.musicxml.m21ToXml.GeneralObjectExporter(sc)
+                mfText = mf.parse().decode('utf-8')
+                f = open(destination + fileName, 'w')
+                f.write(mfText.strip())
+                f.close()
+
+            def generate_midi(sc, fileName="test_midi.mid", destination="/Users/maximoskaliakatsos-papakostas/Documents/python/miscResults/"):
+                # we might want the take the name from uData information, e.g. the uData.input_id, which might preserve a unique key for identifying which file should be sent are response to which user
+                mf = music21.midi.translate.streamToMidiFile(sc)
+                mf.open(destination + fileName, 'wb')
+                mf.write()
+                mf.close()
+
+            # Specify the filename for the new score
+            output_filename = song_name_underscore + "_blended_with_" + style_subtype
+            generate_xml(score, output_filename + '.xml', "static/xml/")
+            generate_midi(score, output_filename + '.mid', "static/midi/")
+            # Save the altered score to a MusicXML file
+            
+            
+
+        else:
+            print(f"File not found: {full_path_to_search}")
 
 
-# @api.route('/nameslist', methods=['GET'])
-# def get_nameslist():
-#     # example run: http://localhost:5000/nameslist
-#     #return render_template("", nameslist=nameslist)
-#     return jsonify(nameslist)
-#     #return json.dumps(nameslist)
-# # end nameslist
+        # print(b)
+        # print(s)
+        
 
-# @api.route('/infostructure', methods=['GET'])
-# def get_infostructure():
-#     return jsonify(chart_info_structs)
-
-# @api.route('/songcsv', methods=['GET'])
-# def get_songcsv():
-#     # example run: http://localhost:5000/songcsv?index=10?
-#     # keywords should be:
-#     # 'index': NUMBER
-#     # 'name': NAME
-#     args = request.args
-#     argkeys = args.keys()
-#     resp = {}
-#     print('args: ', args)
-#     for k in argkeys:
-#         if k == 'index':
-#             n = int(args[k])
-#             if n < 0 or n > len(fileslist):
-#                 print('ERROR: ' + str(n) + ' exceeds limits')
-#             else:
-#                 resp[fileslist[n]] = getSongFromCSVFile( fileslist[ n ] )
-#         if k == 'name':
-#             n = args[k]
-#             print('n: ', n)
-#             if n not in fileslist:
-#                 print('ERROR: ' + n + ' not in song names')
-#             else:
-#                 resp[n] = getSongFromCSVFile( n )
-#         if k != 'index' and k != 'name':
-#             print('ERROR: arguments named \'index\' and \'name\' are only available')
-#     # print(resp)
-#     return jsonify(resp)
-# # end get_songcsv
-
-# @api.route('/songcsvcomplex', methods=['GET'])
-# def get_songcsvcomplex():
-#     # example run: http://localhost:5000/songcsvcomplex?name="NAME_WITH_UNDERSCORES"&r=3&h=3
-#     # keywords should be:
-#     # 'index': NUMBER
-#     # 'name': NAME
-#     args = request.args
-#     argkeys = args.keys()
-#     resp = {}
-#     print('args: ', args)
-#     propername = ''
-#     for k in argkeys:
-#         if k == 'name':
-#             propername = args[k] + propername
-#         if k == 'r':
-#             if '_h~' in propername:
-#                 tmp_split = propername.split('_h~')
-#                 propername = '_h~'.join( [tmp_split[0] + '_r~' + args[k] , tmp_split[1]] )
-#             else:
-#                 propername = propername + '_r~' + args[k]
-#         if k == 'h':
-#             propername = propername + '_h~' + args[k]
-#         if k != 'r' and k != 'name' and k != 'h':
-#             print('ERROR: arguments named \'index\' and \'name\' are only available')
-#     propername += '.csv'
-#     if propername not in fileslist:
-#         print('ERROR: ' + propername + ' not in song names')
-#     else:
-#         resp[propername] = getSongFromCSVFile( propername )
-#     # print(resp)
-#     return jsonify(resp)
-# # end get_songcsv
-
-# @api.route('/songtempo', methods=['GET'])
-# def get_songtempo():
-#     # example run: http://localhost:5000/songcsvcomplex?name="NAME_WITH_UNDERSCORES"&r=3&h=3
-#     # keywords should be:
-#     # 'index': NUMBER
-#     # 'name': NAME
-#     args = request.args
-#     argkeys = args.keys()
-#     resp = {}
-#     print('args: ', args)
-#     propername = ''
-#     for k in argkeys:
-#         if k == 'name':
-#             propername = args[k] + propername
-#         if k == 'r':
-#             if '_h~' in propername:
-#                 tmp_split = propername.split('_h~')
-#                 propername = '_h~'.join( [tmp_split[0] + '_r~' + args[k] , tmp_split[1]] )
-#             else:
-#                 propername = propername + '_r~' + args[k]
-#         if k == 'h':
-#             propername = propername + '_h~' + args[k]
-#         if k != 'r' and k != 'name' and k != 'h':
-#             print('ERROR: arguments named \'index\' and \'name\' are only available')
-#     propername += '.csv'
-#     if propername not in fileslist:
-#         print('ERROR: ' + propername + ' not in song names')
-#     else:
-#         resp[propername] = getTempoFromCSVFile( propername )
-#     # print(resp)
-#     return jsonify(resp)
-# # end get_songcsv
-
-# # for visualisation
-
-# @api.route('/visualizenn', methods=['GET'])
-# def get_visualizenn():
-#     # example run: http://localhost:5000/visualizenn?name1="NAME_WITH_UNDERSCORES"&name2="NAME_WITH_UNDERSCORES"
-#     # keywords should be:
-#     # 'index': NUMBER
-#     # 'name': NAME
-#     args = request.args
-#     argkeys = args.keys()
-#     resp = {}
-#     print('args: ', args)
-#     name1 = None
-#     name2 = None
-#     for k in argkeys:
-#         if k == 'name1':
-#             name1 = args[k].replace('_', ' ')
-#         if k == 'name2':
-#             name2 = args[k].replace('_', ' ')
-#     if name1 is not None and name2 is not None:
-#         hh, c, z = ssm.nn_shaping( name1, name2  )
-#         resp = {
-#             'hh': hh.tolist(),
-#             'c': c.tolist(),
-#             'z': z.tolist(),
-#             'info':{
-#                 'hh': 'x and y coordinates',
-#                 'c': 'R and B color values - G is a zero column',
-#                 'z': 'z coordinate'
-#             }
-#         }
-#     print('resp: ', resp)
-#     return jsonify(resp)
-# # end get_visualizenn
-
-# @api.route('/visualizedistr', methods=['GET'])
-# def get_visualizedistr():
-#     # example run: http://localhost:5000/visualizedistr?name1="NAME_WITH_UNDERSCORES"&name2="NAME_WITH_UNDERSCORES"
-#     # keywords should be:
-#     # 'index': NUMBER
-#     # 'name': NAME
-#     args = request.args
-#     argkeys = args.keys()
-#     resp = {}
-#     print('args: ', args)
-#     name1 = None
-#     name2 = None
-#     for k in argkeys:
-#         if k == 'name1':
-#             name1 = args[k].replace('_', ' ')
-#         if k == 'name2':
-#             name2 = args[k].replace('_', ' ')
-#     if name1 is not None and name2 is not None:
-#         hh, c, z = ssm.distr_shaping( name1, name2  )
-#         resp = {
-#             'hh': hh.tolist(),
-#             'c': c.tolist(),
-#             'z': z.tolist(),
-#             'info':{
-#                 'hh': 'x and y coordinates',
-#                 'c': 'R and B color values - G is a zero column',
-#                 'z': 'z coordinate'
-#             }
-#         }
-#     # print(resp)
-#     return jsonify(resp)
-# # end get_visualizedistr
-
-# @api.route('/visualizetrans', methods=['GET'])
-# def get_visualizetrans():
-#     # example run: http://localhost:5000/visualizetrans?name1="NAME_WITH_UNDERSCORES"&name2="NAME_WITH_UNDERSCORES"
-#     # keywords should be:
-#     # 'index': NUMBER
-#     # 'name': NAME
-#     args = request.args
-#     argkeys = args.keys()
-#     resp = {}
-#     print('args: ', args)
-#     name1 = None
-#     name2 = None
-#     for k in argkeys:
-#         if k == 'name1':
-#             name1 = args[k].replace('_', ' ')
-#         if k == 'name2':
-#             name2 = args[k].replace('_', ' ')
-#     if name1 is not None and name2 is not None:
-#         hh, c, z = ssm.trans_shaping( name1, name2  )
-#         resp = {
-#             'hh': hh.tolist(),
-#             'c': c.tolist(),
-#             'z': z.tolist(),
-#             'info':{
-#                 'hh': 'x and y coordinates',
-#                 'c': 'R and B color values - G is a zero column',
-#                 'z': 'z coordinate'
-#             }
-#         }
-#     # print(resp)
-#     return jsonify(resp)
-# # end get_visualizetrans
-
-# @api.route('/clusters_lstm_3D_tonalities', methods=['GET'])
-# def get_clusters_lstm_3D_tonalities():
-#     clusters_lstm_3D_tonalities = clusters_lstm_3D_tonalities_raw;
-#     return jsonify(clusters_lstm_3D_tonalities);
-
-# @api.route('/clusters_lstm_3D_neutral', methods=['GET'])
-# def get_clusters_lstm_3D_neutral():
-#     clusters_lstm_3D_neutral = clusters_lstm_3D_neutral_raw;
-#     return jsonify(clusters_lstm_3D_neutral);
-
-# # # for tackling CORS etc
-# #FRONTEND_HOST = "http://155.207.188.7:1234"
-# #@api.after_request
-# #def after_request(response):
-# #    """!
-# #    @brief Add necessary info to headers. Useful for preventing CORS permission errors.
-# #    """
-# #    response.headers.add("Access-Control-Allow-Origin", FRONTEND_HOST)
-# #    response.headers.add("Access-Control-Allow-Credentials", "true")
-# #    response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
-# #    response.headers.add("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS")
-# #    return response
-#  # end after_request
-
-# '''
-# HOSTNAME_WHITELIST = [
-#     "http://localhost:3000",
-#     "https://test.com",
-#     "https://www.test.com",
-# ]
-# app = create_app()
-# @app.after_request
-# def after_request(response):
-#     """!
-#     @brief Add necessary info to headers. Useful for preventing CORS permission errors.
-#     """
-#     parsed_uri = urlparse(request.referrer)
-#     url = "{uri.scheme}://{uri.netloc}".format(uri=parsed_uri)
-#     if url in HOSTNAME_WHITELIST:
-#         response.headers.add("Access-Control-Allow-Origin", url)
-#         response.headers.add("Access-Control-Allow-Credentials", "true")
-#         response.headers.add(
-#             "Access-Control-Allow-Headers", "Content-Type,Authorization"
-#         )
-#         response.headers.add(
-#             "Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS"
-#         )
-#     return response
-# '''
+        return s
 
 if __name__ == '__main__':
     # api.run()
     # api.run(host='0.0.0.0', port=5000, debug=True)
-    api.run(ssl_context=('/home/maximos/Documents/SSL_certificates/server.crt', '/home/maximos/Documents/SSL_certificates/server.key'), host='0.0.0.0', port=5000, debug=True)
+    api.run(ssl_context=('/home/maximos/Documents/SSL_certificates/server.crt', '/home/maximos/Documents/SSL_certificates/server.key'), host='0.0.0.0', port=5001, debug=True)

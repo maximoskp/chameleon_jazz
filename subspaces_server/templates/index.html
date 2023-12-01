@@ -2,13 +2,6 @@
 	<head>
 		<title>Plot Chameleon Data</title>
 
-		<!-- Load plotly.js into the DOM -->
-		<!-- <script src='https://cdn.plot.ly/plotly-2.9.0.min.js'></script>
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js' ></script> -->
-
-		<!-- For DropDown filtering -->
-		<!-- <script type="text/javascript" src="static/js/libraries/jquery-3-4-0-min.js"></script> -->
-
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
@@ -22,18 +15,12 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
 		<!-- SweetAlert library -->
-		<!-- <script type="text/javascript" src="static/js/libraries/sweetalert-2-11-min.js"></script> -->
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-		<!-- Load Audio Player library-->
-		<!-- <script type="text/javascript" src="static/js/libraries/webaudiofontplayer.js"></script> -->
-	    <!-- <script src='https://surikov.github.io/webaudiofont/npm/dist/WebAudioFontPlayer.js'></script> -->
-		<!-- <script type="text/javascript" src="static/js/libraries/0000_JCLive_sf2_file.js"></script> -->
-		<!-- <script src='https://surikov.github.io/webaudiofontdata/sound/0000_JCLive_sf2_file.js'></script> -->
-		<!-- <script type="text/javascript" src="static/js/libraries/0320_Aspirin_sf2_file.js"></script> -->
-		<!-- <script src='https://surikov.github.io/webaudiofontdata/sound/0320_Aspirin_sf2_file.js'></script>  -->
-		<!-- Load main javascript -->
+	
     	<script type="text/javascript" src="static/js/main.js"></script>
+		<script src="https://unpkg.com/opensheetmusicdisplay@0.8.3/build/opensheetmusicdisplay.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@magenta/music@1.23.1/dist/magentamusic.min.js"></script>
 
 	</head>
 	{% include 'sidenavigation.html' %}
@@ -41,27 +28,7 @@
 	<div class="main__container">
 		<div class="secondary__container">
 			<span class="main__info-icon" onclick="mainInfo()">&#9432;</span>
-			<div class="title__main-container">
-				<div class="title__song-name">
-					Song: -
-				</div>
-				<span class="title__divider">  </span>
-				<div class="title__song-tempo">
-					Tempo: -
-				</div>
-				<span class="title__divider">  </span>
-				<div class="title__song-style">
-					Style: -
-				</div>
-				<span class="title__divider">  </span>
-				<div class="title__song-rythm">
-					Rhythm: -
-				</div>
-				<span class="title__divider">  </span>
-				<div class="title__song-tonality">
-					Tonality: -
-				</div>
-			</div>
+			
 		  	<div class="infos__main-container">		        
 				<div class="infos__highlight-song-selectors-container">
 		            <div class="infos__highlight-song-select" style="width:240px;">
@@ -72,18 +39,41 @@
 		                <select id="blending-characteristics-selector" placeholder="Blend with">
 		                </select>
 		            </div>
-					<div class="submit_for_blending">
-						<button id="sendButton">Send String to Flask</button>
+					<div class="buttons_container">
+						<div class="submit_for_blending">
+							<button id="sendButton">Blend it!</button>
+						</div>
+						<a id="download_button" href="/download/Rhythm_a_ning_blended_with_Fusion.xml" download="Rhythm_a_ning_blended_with_Fusion.xml">
+							<button>Download File</button>
+						</a>
 					</div>
+					
 		        </div>
 		  	</div>	
 			<div class="response_container" id="response_container">
 
-			</div>	
+			</div>
+			
 	  	</div>
+			
+	</div>
+	<div class="osmdContainer" id="osmdContainer">
+
 	</div>
 	<script>
-
+		// var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdContainer");
+		// 	osmd.setOptions({
+		// 		backend: "svg",
+		// 		drawTitle: true,
+		// 		// drawingParameters: "compacttight" // don't display title, composer etc., smaller margins
+		// 	});
+		// 	osmd
+		// 		.load("static/xml/altered_score.xml")
+		// 		.then(
+		// 		function() {
+		// 			osmd.render();
+		// 		}
+		// 		)
 	function applyNamesToSelect(response) {
 
 		var namesforselect = [];
@@ -173,8 +163,8 @@
 
 		
 
-		const songnameValue = document.getElementById("songname-selector").value;
-		const blendingCharacteristicsValue = document.getElementById("blending-characteristics-selector").value;
+		var songnameValue = document.getElementById("songname-selector").value;
+		var blendingCharacteristicsValue = document.getElementById("blending-characteristics-selector").value;
 		const responseContainer = document.getElementById("response_container");
 		console.log(songnameValue, blendingCharacteristicsValue);
 		// Check if both dropdowns have "None" selected
@@ -202,37 +192,80 @@
 			})
 			.then(response => response.text())
 			.then(responseText => {
+
+
 				
 
-				// Split the input string into rows based on "||"
-				const rows = responseText.split("||");
+				// Get the element with the id "osmdContainer"
+				var osmdContainer = document.getElementById("osmdContainer");
 
-				// Create a table element
-				const table = document.createElement("table");
+				// Clear the HTML content of the element
+				osmdContainer.innerHTML = "";
 
-				// Iterate through rows
-				rows.forEach((rowText) => {
-				// Split the row into cells based on "|"
-				const cells = rowText.split("|");
+				songnameValue = songnameValue.replace(/'/g, "_");
+				songnameValue = songnameValue.replace(/-/g, "_");
+				songnameValue = songnameValue.replace(/ /g, "_");
+				blendingCharacteristicsValue = blendingCharacteristicsValue.replace("genre: ", "")
+				blendingCharacteristicsValue = blendingCharacteristicsValue.replace("harmonic: ", "")
+				songnameValue = songnameValue + "_blended_with_" + blendingCharacteristicsValue + ".xml";
 
-				// Create a new row for each row in the table
-				const row = document.createElement("tr");
+				function changeDownloadAttributes(newFilename) {
 
-				// Iterate through cells and create cell elements
-				cells.forEach((cellText) => {
-					// Create a new cell for each cell in the row
-					const cell = document.createElement("td");
-					cell.textContent = cellText.trim(); // Trim any leading/trailing spaces
-					row.appendChild(cell);
+					// Get the <a> element by its ID
+					var downloadLink = document.getElementById('download_button');
+					// Make the download link visible
+    				downloadLink.style.display = 'inline';
+					// Update the href and download attributes
+					downloadLink.href = "/download/" + newFilename;
+					downloadLink.download = newFilename;
+				}
+				newFilename = songnameValue;
+				changeDownloadAttributes(newFilename);
+
+				console.log(songnameValue);
+				console.log(blendingCharacteristicsValue);
+				
+				var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdContainer");
+				osmd.setOptions({
+					backend: "svg",
+					drawTitle: true,
 				});
+				osmd
+					.load("static/xml/" + songnameValue)
+					.then(
+					function() {
+						osmd.render();
+					}
+					)
+				// // Split the input string into rows based on "||"
+				// const rows = responseText.split("||");
 
-				// Add the row to the table
-				table.appendChild(row);
-				});
+				// // Create a table element
+				// const table = document.createElement("table");
 
-				// Append the table to your document (e.g., a specific HTML element with an id)
-				document.getElementById("response_container").appendChild(table);
-				alert(responseText); // Display the response from the server
+				// // Iterate through rows
+				// rows.forEach((rowText) => {
+				// // Split the row into cells based on "|"
+				// const cells = rowText.split("|");
+
+				// // Create a new row for each row in the table
+				// const row = document.createElement("tr");
+
+				// // Iterate through cells and create cell elements
+				// cells.forEach((cellText) => {
+				// 	// Create a new cell for each cell in the row
+				// 	const cell = document.createElement("td");
+				// 	cell.textContent = cellText.trim(); // Trim any leading/trailing spaces
+				// 	row.appendChild(cell);
+				// });
+
+				// // Add the row to the table
+				// table.appendChild(row);
+				// });
+
+				// // Append the table to your document (e.g., a specific HTML element with an id)
+				// document.getElementById("response_container").appendChild(table);
+				// alert(responseText); // Display the response from the server
 			})
 			.catch(error => {
 				console.error('Error:', error);
@@ -244,66 +277,12 @@
 	// Main Info message
 
 	function mainInfo() {
-		if (currentPlot == 1) {
-			Swal.fire({
+		Swal.fire({
 				icon: 'info',
-				html:'<p class="swal__paragraph"><span></span>The graph allows you to navigate through over 1065 jazz standards. You can use standard UI interaction gestures with a mouse, e.g. left and right click track, scroll wheel to zoom in and out</p><p class="swal__paragraph">After selecting a piece on the graph by clicking on it, you can use the controls on the right to play the selected bass, with the selected rhythm and harmonic complexity levels</p><p class="swal__paragraph">The graph has been generated based on <b>neutralised</b> songs\'s <b>tonalities</b></p>',
+				html:'<p class="swal__paragraph"><span></span>The UI allows you to blend a song with a harmonic subspace of a jazz idiom. </p><p class="swal__paragraph">After selecting a piece and an idiom click "Blend it!" and the resulting score will appear beneath. The Chord Symbols above the melody are the original ones and the Chord Symbols below the melody are the generated ones</p><p class="swal__paragraph">All your blends are being saved and you can access them from the menu bar</p>',
 				width: '20rem'
 			});
-		} else if (currentPlot == 2) {
-			Swal.fire({
-				icon: 'info',
-				html:'<p class="swal__paragraph"><span></span>The graph allows you to navigate through over 1065 jazz standards. You can use standard UI interaction gestures with a mouse, e.g. left and right click track, scroll wheel to zoom in and out</p><p class="swal__paragraph">After selecting a piece on the graph by clicking on it, you can use the controls on the right to play the selected bass, with the selected rhythm and harmonic complexity levels</p><p class="swal__paragraph">The graph has been generated based on songs\'s <b>original tonalities</b></p>',
-				width: '20rem'
-			});
-		} else if (currentPlot == 3) {
-			Swal.fire({
-				icon: 'info',
-				text:'Plot 3',
-				width: '20rem'
-			});
-		}
-
 	}
-	// // Select all div elements with the class "option"
-	// const parentElement = document.querySelector("div.infos__main-container > div > div:nth-child(1) > div > div.selectize-dropdown.single > div");
-	
-
-	// const optionDivs = parentElement.querySelectorAll('.option');
-
-	// // Create an empty array to store the inner text of the div elements
-	// const optionTextArray = [];
-
-	// // Loop through each div and extract the inner text
-	// optionDivs.forEach((div) => {
-	// optionTextArray.push(div.innerText);
-	// });
-	// console.log(optionTextArray);
-	// // Create Aplha & Beta pole DropDown select Elements AND First, Second Song selection
-
-	
-	
-
-// 	//run_lstm_tsne_3D_neutral();
-
-// 	function testAsync(){
-//     return new Promise((resolve,reject)=>{
-//         //here our function should be implemented
-//         setTimeout(()=>{
-//             console.log("Hello from inside the testAsync function");
-//             resolve();
-//         ;} , 5000
-//         );
-//     });
-// 		}
-
-// 		async function callerFun(){
-// 		    console.log("Caller");
-// 		    await testAsync();
-// 		    console.log("After waiting");
-// 		}
-
-// callerFun();
 	</script>
 
 </body>
